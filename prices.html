@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="PlayFinder — порівняння цін на ігри в різних магазинах."
+    >
+
+    <meta
+        name="theme-color"
+        content="#071116"
+    >
+
+    <title>
+        Порівняння цін — PlayFinder
+    </title>
+
+
+    <!-- =====================================================
+         PRECONNECT
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://cdnjs.cloudflare.com"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="/src/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+    <div class="container header__container">
+
+
+        <!-- Logo -->
+
+        <a
+            href="./index.html"
+            class="logo"
+            aria-label="PlayFinder"
+        >
+
+            <span class="logo__icon">
+                <i class="fa-solid fa-gamepad"></i>
+            </span>
+
+            <span class="logo__content">
+
+                <span class="logo__name">
+                    Play<span>Finder</span>
+                </span>
+
+                <span class="logo__slogan">
+                    БІЛЬШЕ ІГОР. КРАЩІ ЦІНИ.
+                </span>
+
+            </span>
+
+        </a>
+
+
+        <!-- Navigation -->
+
+        <nav
+            class="nav"
+            aria-label="Основна навігація"
+        >
+
+            <a
+                href="./index.html"
+                class="nav__link"
+            >
+                Головна
+            </a>
+
+            <a
+                href="./games.html"
+                class="nav__link"
+            >
+                Ігри
+            </a>
+
+            <a
+                href="./prices.html"
+                class="nav__link nav__link--active"
+                aria-current="page"
+            >
+                Порівняння цін
+            </a>
+
+            <a
+                href="./about.html"
+                class="nav__link"
+            >
+                Про нас
+            </a>
+
+        </nav>
+
+
+        <!-- Search -->
+
+        <form
+            class="header-search"
+            id="headerSearchForm"
+            role="search"
+        >
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                id="headerSearchInput"
+                type="search"
+                placeholder="Пошук ігор, жанрів, видавців..."
+                autocomplete="off"
+                aria-label="Пошук ігор"
+            >
+
+            <div
+                class="search-results"
+                id="searchResults"
+                hidden
+            ></div>
+
+        </form>
+
+
+        <!-- Actions -->
+
+        <div class="header-actions">
+
+
+            <button
+                class="header-action"
+                id="languageButton"
+                type="button"
+                aria-label="Змінити мову"
+            >
+
+                <i class="fa-solid fa-globe"></i>
+
+                <span>UA</span>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </button>
+
+
+            <a
+                href="./favorites.html"
+                class="header-action header-action--favorite"
+                aria-label="Обране"
+            >
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span>
+                    Обране
+                </span>
+
+            </a>
+
+
+            <a
+                href="./login.html"
+                class="login-button"
+            >
+
+                <i class="fa-regular fa-user"></i>
+
+                <span>
+                    Увійти
+                </span>
+
+            </a>
+
+
+            <button
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                type="button"
+                aria-label="Відкрити меню"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MOBILE MENU
+========================================================= -->
+
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+    hidden
+>
+
+    <nav>
+
+        <a href="./index.html">
+            Головна
+        </a>
+
+        <a href="./games.html">
+            Ігри
+        </a>
+
+        <a
+            href="./prices.html"
+            class="active"
+        >
+            Порівняння цін
+        </a>
+
+        <a href="./favorites.html">
+            Обране
+        </a>
+
+        <a href="./about.html">
+            Про нас
+        </a>
+
+        <a href="./login.html">
+            Увійти
+        </a>
+
+    </nav>
+
+</div>
+
+
+
+<!-- =========================================================
+     MOBILE SEARCH
+========================================================= -->
+
+<div class="prices-mobile-search-wrap">
+
+    <div class="container">
+
+        <form
+            class="mobile-search prices-mobile-search"
+            id="mobileSearchForm"
+            role="search"
+        >
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                id="mobileSearchInput"
+                type="search"
+                placeholder="Знайти гру для порівняння..."
+                autocomplete="off"
+                aria-label="Пошук гри"
+            >
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="prices-page">
+
+    <div class="container prices-page__container">
+
+
+
+        <!-- =================================================
+             BREADCRUMBS
+        ================================================== -->
+
+        <nav
+            class="breadcrumbs"
+            aria-label="Breadcrumb"
+        >
+
+            <a href="./index.html">
+                Головна
+            </a>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+            <span>
+                Порівняння цін
+            </span>
+
+        </nav>
+
+
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <section class="prices-header">
+
+            <div>
+
+                <span class="prices-header__eyebrow">
+                    ЗНАЙДІТЬ НАЙКРАЩУ ПРОПОЗИЦІЮ
+                </span>
+
+                <h1>
+                    Порівняння цін
+                </h1>
+
+                <p>
+                    Оберіть гру та порівняйте актуальні ціни
+                    в різних магазинах.
+                </p>
+
+            </div>
+
+
+            <div class="prices-header__stats">
+
+                <div>
+
+                    <strong id="storesCount">
+                        30+
+                    </strong>
+
+                    <span>
+                        магазинів
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <strong id="gamesCount">
+                        10 000+
+                    </strong>
+
+                    <span>
+                        ігор
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <strong>
+                        EUR
+                    </strong>
+
+                    <span>
+                        основна валюта
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             GAME SEARCH / SELECT
+        ================================================== -->
+
+        <section class="price-game-search">
+
+            <div class="price-game-search__content">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                <div>
+
+                    <label for="priceGameSearch">
+                        Знайдіть гру
+                    </label>
+
+                    <input
+                        id="priceGameSearch"
+                        type="search"
+                        placeholder="Наприклад: Grand Theft Auto V"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <button
+                    id="priceGameSearchButton"
+                    type="button"
+                >
+                    Знайти
+                </button>
+
+            </div>
+
+
+            <div
+                class="price-game-search__results"
+                id="priceGameSearchResults"
+                hidden
+            ></div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SELECTED GAME
+        ================================================== -->
+
+        <section
+            class="price-game-card"
+            id="selectedPriceGame"
+        >
+
+
+            <!-- Cover -->
+
+            <div class="price-game-card__cover">
+
+                <img
+                    id="priceGameCover"
+                    src="./assets/images/placeholders/game-placeholder.webp"
+                    alt=""
+                    width="420"
+                    height="420"
+                >
+
+            </div>
+
+
+
+            <!-- Info -->
+
+            <div class="price-game-card__info">
+
+                <div class="price-game-card__top">
+
+                    <div>
+
+                        <span class="price-game-card__label">
+                            ОБРАНА ГРА
+                        </span>
+
+                        <h2 id="priceGameTitle">
+                            Grand Theft Auto V
+                        </h2>
+
+                    </div>
+
+
+                    <button
+                        class="price-game-card__favorite"
+                        id="priceFavoriteButton"
+                        type="button"
+                        aria-label="Додати в обране"
+                    >
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+
+                <div
+                    class="price-game-card__genres"
+                    id="priceGameGenres"
+                >
+
+                    <span>
+                        Екшен
+                    </span>
+
+                    <span>
+                        Пригоди
+                    </span>
+
+                    <span>
+                        Відкритий світ
+                    </span>
+
+                </div>
+
+
+
+                <p
+                    class="price-game-card__description"
+                    id="priceGameDescription"
+                >
+                    Три унікальні герої, величезний відкритий світ
+                    і безмежні можливості.
+                </p>
+
+
+
+                <div class="price-game-card__meta">
+
+                    <span>
+
+                        <i class="fa-solid fa-building"></i>
+
+                        <strong id="priceGameDeveloper">
+                            Rockstar Games
+                        </strong>
+
+                    </span>
+
+
+                    <span>
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        <strong id="priceGameRelease">
+                            2015
+                        </strong>
+
+                    </span>
+
+
+                    <span
+                        id="priceGamePlatforms"
+                    >
+
+                        <i class="fa-brands fa-windows"></i>
+
+                        <i class="fa-brands fa-playstation"></i>
+
+                        <i class="fa-brands fa-xbox"></i>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Rating -->
+
+            <div class="price-game-card__rating">
+
+                <i class="fa-solid fa-star"></i>
+
+                <strong id="priceGameRating">
+                    4.7
+                </strong>
+
+                <span id="priceGameRatingsCount">
+                    (450K)
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             GAME NAV TABS
+        ================================================== -->
+
+        <nav
+            class="price-tabs"
+            aria-label="Навігація по грі"
+        >
+
+            <a
+                href="./game.html"
+                class="price-tabs__item"
+            >
+                Огляд
+            </a>
+
+            <button
+                class="price-tabs__item price-tabs__item--active"
+                type="button"
+                data-price-tab="comparison"
+            >
+                Порівняння цін
+            </button>
+
+            <button
+                class="price-tabs__item"
+                type="button"
+                data-price-tab="screenshots"
+            >
+                Скріншоти
+            </button>
+
+            <button
+                class="price-tabs__item"
+                type="button"
+                data-price-tab="requirements"
+            >
+                Системні вимоги
+            </button>
+
+            <button
+                class="price-tabs__item"
+                type="button"
+                data-price-tab="similar"
+            >
+                Схожі ігри
+            </button>
+
+        </nav>
+
+
+
+        <!-- =================================================
+             MAIN PRICE LAYOUT
+        ================================================== -->
+
+        <div class="price-layout">
+
+
+
+            <!-- =============================================
+                 MAIN COLUMN
+            ============================================== -->
+
+            <div class="price-main">
+
+
+
+                <!-- =========================================
+                     TITLE + FILTERS
+                ========================================== -->
+
+                <section class="price-comparison">
+
+
+                    <header class="price-comparison__header">
+
+                        <div>
+
+                            <h2>
+                                Порівняння цін
+                            </h2>
+
+                            <p>
+                                Знайдено
+
+                                <strong id="offersFoundCount">
+                                    6
+                                </strong>
+
+                                пропозицій
+                            </p>
+
+                        </div>
+
+                    </header>
+
+
+
+                    <!-- Filters -->
+
+                    <div class="price-comparison__filters">
+
+
+                        <!-- Edition -->
+
+                        <label class="price-filter">
+
+                            <span>
+                                Видання
+                            </span>
+
+                            <select id="priceEditionFilter">
+
+                                <option value="standard">
+                                    Standard Edition
+                                </option>
+
+                                <option value="deluxe">
+                                    Deluxe Edition
+                                </option>
+
+                                <option value="ultimate">
+                                    Ultimate Edition
+                                </option>
+
+                            </select>
+
+                        </label>
+
+
+
+                        <!-- Region -->
+
+                        <label class="price-filter">
+
+                            <span>
+                                Регіон
+                            </span>
+
+                            <select id="priceRegionFilter">
+
+                                <option value="all">
+                                    Усі регіони
+                                </option>
+
+                                <option value="eu">
+                                    Європа
+                                </option>
+
+                                <option value="global">
+                                    Global
+                                </option>
+
+                                <option value="us">
+                                    США
+                                </option>
+
+                            </select>
+
+                        </label>
+
+
+
+                        <!-- Currency -->
+
+                        <label class="price-filter">
+
+                            <span>
+                                Валюта
+                            </span>
+
+                            <select id="priceCurrencyFilter">
+
+                                <option value="EUR">
+                                    EUR
+                                </option>
+
+                                <option value="USD">
+                                    USD
+                                </option>
+
+                                <option value="GBP">
+                                    GBP
+                                </option>
+
+                            </select>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- =====================================
+                         STORE OFFERS
+                    ====================================== -->
+
+                    <div
+                        class="price-offers"
+                        id="priceOffers"
+                    ></div>
+
+
+
+                    <!-- Loading -->
+
+                    <div
+                        class="price-offers-loading"
+                        id="priceOffersLoading"
+                        hidden
+                    >
+
+                        <div class="price-offer-skeleton"></div>
+
+                        <div class="price-offer-skeleton"></div>
+
+                        <div class="price-offer-skeleton"></div>
+
+                        <div class="price-offer-skeleton"></div>
+
+                        <div class="price-offer-skeleton"></div>
+
+                    </div>
+
+
+
+                    <!-- Empty -->
+
+                    <div
+                        class="price-empty"
+                        id="priceOffersEmpty"
+                        hidden
+                    >
+
+                        <i class="fa-solid fa-tag"></i>
+
+                        <h3>
+                            Пропозицій не знайдено
+                        </h3>
+
+                        <p>
+                            Спробуйте змінити регіон або видання гри.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- =========================================
+                     PRICE HISTORY
+                ========================================== -->
+
+                <section class="price-history">
+
+                    <header class="price-section-heading">
+
+                        <div>
+
+                            <h2>
+                                Історія ціни
+                            </h2>
+
+                            <p>
+                                Як змінювалася найнижча ціна
+                            </p>
+
+                        </div>
+
+
+                        <select id="priceHistoryPeriod">
+
+                            <option value="30">
+                                30 днів
+                            </option>
+
+                            <option value="90">
+                                3 місяці
+                            </option>
+
+                            <option value="180">
+                                6 місяців
+                            </option>
+
+                            <option value="365">
+                                1 рік
+                            </option>
+
+                        </select>
+
+                    </header>
+
+
+                    <div class="price-history__summary">
+
+                        <div>
+
+                            <span>
+                                Поточна
+                            </span>
+
+                            <strong id="currentLowestPrice">
+                                €19.99
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Найнижча
+                            </span>
+
+                            <strong id="historicalLowestPrice">
+                                €14.99
+                            </strong>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Середня
+                            </span>
+
+                            <strong id="averagePrice">
+                                €27.43
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Chart -->
+
+                    <div class="price-history__chart">
+
+                        <canvas
+                            id="priceHistoryChart"
+                            width="900"
+                            height="280"
+                            aria-label="Графік історії ціни"
+                        ></canvas>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 RIGHT SIDEBAR
+            ============================================== -->
+
+            <aside class="price-sidebar">
+
+
+
+                <!-- =========================================
+                     ALERT
+                ========================================== -->
+
+                <section class="price-sidebar-card price-alert">
+
+                    <div class="price-alert__icon">
+
+                        <i class="fa-regular fa-bell"></i>
+
+                    </div>
+
+
+                    <h2>
+                        Повідомити про
+                        <br>
+                        зниження ціни
+                    </h2>
+
+
+                    <p>
+                        Отримайте сповіщення,
+                        коли ціна стане нижчою.
+                    </p>
+
+
+                    <form id="priceAlertForm">
+
+                        <label for="priceAlertEmail">
+                            Email
+                        </label>
+
+                        <input
+                            id="priceAlertEmail"
+                            type="email"
+                            placeholder="Ваш email"
+                            autocomplete="email"
+                            required
+                        >
+
+
+                        <label for="targetPrice">
+                            Бажана ціна
+                        </label>
+
+                        <div class="price-alert__price-input">
+
+                            <span>
+                                €
+                            </span>
+
+                            <input
+                                id="targetPrice"
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                placeholder="15.00"
+                            >
+
+                        </div>
+
+
+                        <button type="submit">
+                            Стежити за ціною
+                        </button>
+
+                    </form>
+
+                </section>
+
+
+
+                <!-- =========================================
+                     BEST PRICE
+                ========================================== -->
+
+                <section class="price-sidebar-card price-best">
+
+                    <span class="price-best__label">
+                        НАЙКРАЩА ЦІНА
+                    </span>
+
+
+                    <strong
+                        class="price-best__value"
+                        id="sidebarBestPrice"
+                    >
+                        €19.99
+                    </strong>
+
+
+                    <span
+                        class="price-best__store"
+                        id="sidebarBestStore"
+                    >
+                        Steam
+                    </span>
+
+
+                    <span
+                        class="price-best__saving"
+                        id="sidebarBestSaving"
+                    >
+                        Економія €20.00
+                    </span>
+
+                </section>
+
+
+
+                <!-- =========================================
+                     SIMILAR GAMES
+                ========================================== -->
+
+                <section class="price-sidebar-card">
+
+                    <header class="price-sidebar-heading">
+
+                        <h2>
+                            Схожі ігри
+                        </h2>
+
+
+                        <a href="./games.html">
+                            Всі
+
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </header>
+
+
+                    <div
+                        class="price-similar-games"
+                        id="priceSimilarGames"
+                    ></div>
+
+                </section>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container footer__inner">
+
+
+        <!-- Logo -->
+
+        <a
+            href="./index.html"
+            class="footer__logo logo"
+            aria-label="PlayFinder"
+        >
+
+            <span class="logo__icon">
+                <i class="fa-solid fa-gamepad"></i>
+            </span>
+
+
+            <span class="logo__content">
+
+                <span class="logo__name">
+                    Play<span>Finder</span>
+                </span>
+
+                <span class="logo__slogan">
+                    БІЛЬШЕ ІГОР. КРАЩІ ЦІНИ.
+                </span>
+
+            </span>
+
+        </a>
+
+
+
+        <!-- Navigation -->
+
+        <nav
+            class="footer__nav"
+            aria-label="Навігація у футері"
+        >
+
+            <a href="./index.html">
+                Головна
+            </a>
+
+            <a href="./games.html">
+                Ігри
+            </a>
+
+            <a
+                href="./prices.html"
+                class="active"
+            >
+                Порівняння цін
+            </a>
+
+            <a href="./about.html">
+                Про нас
+            </a>
+
+        </nav>
+
+
+
+        <!-- Socials -->
+
+        <div class="footer__socials">
+
+            <a
+                href="#"
+                aria-label="Discord"
+            >
+                <i class="fa-brands fa-discord"></i>
+            </a>
+
+
+            <a
+                href="#"
+                aria-label="YouTube"
+            >
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+
+            <a
+                href="#"
+                aria-label="X"
+            >
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+
+            <a
+                href="#"
+                aria-label="Instagram"
+            >
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+        </div>
+
+
+
+        <!-- Copyright -->
+
+        <div class="footer__copyright">
+
+            © 2026 PlayFinder.
+
+            <span>
+                Усі права захищені.
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     MOBILE BOTTOM NAVIGATION
+========================================================= -->
+
+<nav
+    class="mobile-bottom-nav"
+    aria-label="Мобільна навігація"
+>
+
+    <a href="./index.html">
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>
+            Головна
+        </span>
+
+    </a>
+
+
+    <a href="./games.html">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <span>
+            Пошук
+        </span>
+
+    </a>
+
+
+    <a href="./favorites.html">
+
+        <i class="fa-regular fa-heart"></i>
+
+        <span>
+            Обране
+        </span>
+
+    </a>
+
+
+    <a href="./login.html">
+
+        <i class="fa-regular fa-user"></i>
+
+        <span>
+            Увійти
+        </span>
+
+    </a>
+
+</nav>
+
+
+
+<!-- =========================================================
+     PRICE OFFER TEMPLATE
+========================================================= -->
+
+<template id="priceOfferTemplate">
+
+    <article
+        class="price-offer"
+        data-offer-id=""
+    >
+
+
+        <!-- Store -->
+
+        <div class="price-offer__store">
+
+            <div class="price-offer__logo">
+
+                <img
+                    src=""
+                    alt=""
+                    width="36"
+                    height="36"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div>
+
+                <strong
+                    class="price-offer__store-name"
+                ></strong>
+
+
+                <span
+                    class="price-offer__region"
+                ></span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Edition -->
+
+        <div class="price-offer__edition">
+
+            <span
+                class="price-offer__best-label"
+                hidden
+            >
+                Найкраща ціна
+            </span>
+
+
+            <span
+                class="price-offer__edition-name"
+            ></span>
+
+        </div>
+
+
+
+        <!-- Price -->
+
+        <div class="price-offer__price">
+
+            <span
+                class="price-offer__old-price"
+                hidden
+            ></span>
+
+
+            <strong
+                class="price-offer__current-price"
+            ></strong>
+
+        </div>
+
+
+
+        <!-- Discount -->
+
+        <div
+            class="price-offer__discount"
+            hidden
+        ></div>
+
+
+
+        <!-- Button -->
+
+        <a
+            class="price-offer__button"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            Перейти
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </article>
+
+</template>
+
+
+
+<!-- =========================================================
+     SEARCH GAME RESULT TEMPLATE
+========================================================= -->
+
+<template id="priceGameSearchResultTemplate">
+
+    <button
+        class="price-search-result"
+        type="button"
+        data-game-id=""
+    >
+
+
+        <img
+            class="price-search-result__cover"
+            src=""
+            alt=""
+            width="60"
+            height="60"
+            loading="lazy"
+        >
+
+
+        <div>
+
+            <strong
+                class="price-search-result__title"
+            ></strong>
+
+
+            <span
+                class="price-search-result__meta"
+            ></span>
+
+        </div>
+
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+    </button>
+
+</template>
+
+
+
+<!-- =========================================================
+     SIMILAR GAME TEMPLATE
+========================================================= -->
+
+<template id="priceSimilarGameTemplate">
+
+    <a
+        href="#"
+        class="price-similar-game"
+        data-game-id=""
+    >
+
+
+        <img
+            class="price-similar-game__image"
+            src=""
+            alt=""
+            width="70"
+            height="70"
+            loading="lazy"
+        >
+
+
+        <div>
+
+            <strong
+                class="price-similar-game__title"
+            ></strong>
+
+
+            <span>
+
+                Від
+
+                <b
+                    class="price-similar-game__price"
+                ></b>
+
+            </span>
+
+        </div>
+
+
+        <i class="fa-solid fa-chevron-right"></i>
+
+    </a>
+
+</template>
+
+
+
+<!-- =========================================================
+     API CONFIG
+========================================================= -->
+
+<script>
+
+    window.PLAYFINDER_CONFIG = {
+
+        locale: "uk-UA",
+
+        currency: "EUR",
+
+
+        api: {
+
+            baseUrl: "/api",
+
+
+            endpoints: {
+
+                games:
+                    "/games",
+
+                search:
+                    "/games/search",
+
+                prices:
+                    "/prices",
+
+                priceHistory:
+                    "/prices/history",
+
+                stores:
+                    "/stores",
+
+                similar:
+                    "/games/similar",
+
+                priceAlerts:
+                    "/price-alerts"
+
+            }
+
+        },
+
+
+        prices: {
+
+            defaultRegion:
+                "all",
+
+            defaultCurrency:
+                "EUR",
+
+            defaultEdition:
+                "standard",
+
+            historyPeriod:
+                30
+
+        }
+
+    };
+
+</script>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script
+    type="module"
+    src="./js/app.js"
+></script>
+
+
+<script
+    type="module"
+    src="./js/prices.js"
+></script>
+
+
+</body>
+
+</html>

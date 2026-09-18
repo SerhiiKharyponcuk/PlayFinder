@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Про PlayFinder — сервіс для пошуку ігор та порівняння цін у магазинах."
+    >
+
+    <meta
+        name="theme-color"
+        content="#071116"
+    >
+
+    <title>
+        Про нас — PlayFinder
+    </title>
+
+
+    <!-- =====================================================
+         PRECONNECT
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://cdnjs.cloudflare.com"
+    >
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="/src/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+    <div class="container header__container">
+
+
+        <!-- Logo -->
+
+        <a
+            href="./index.html"
+            class="logo"
+            aria-label="PlayFinder"
+        >
+
+            <span class="logo__icon">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+            </span>
+
+
+            <span class="logo__content">
+
+                <span class="logo__name">
+
+                    Play<span>Finder</span>
+
+                </span>
+
+
+                <span class="logo__slogan">
+
+                    БІЛЬШЕ ІГОР. КРАЩІ ЦІНИ.
+
+                </span>
+
+            </span>
+
+        </a>
+
+
+
+        <!-- Navigation -->
+
+        <nav
+            class="nav"
+            aria-label="Основна навігація"
+        >
+
+            <a
+                href="./index.html"
+                class="nav__link"
+            >
+                Головна
+            </a>
+
+
+            <a
+                href="./games.html"
+                class="nav__link"
+            >
+                Ігри
+            </a>
+
+
+            <a
+                href="./prices.html"
+                class="nav__link"
+            >
+                Порівняння цін
+            </a>
+
+
+            <a
+                href="./about.html"
+                class="nav__link nav__link--active"
+                aria-current="page"
+            >
+                Про нас
+            </a>
+
+        </nav>
+
+
+
+        <!-- Search -->
+
+        <form
+            class="header-search"
+            id="headerSearchForm"
+            role="search"
+        >
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+
+            <input
+                id="headerSearchInput"
+                type="search"
+                placeholder="Пошук ігор, жанрів, видавців..."
+                autocomplete="off"
+                aria-label="Пошук ігор"
+            >
+
+
+            <div
+                class="search-results"
+                id="searchResults"
+                hidden
+            ></div>
+
+        </form>
+
+
+
+        <!-- Actions -->
+
+        <div class="header-actions">
+
+
+            <!-- Language -->
+
+            <button
+                class="header-action"
+                id="languageButton"
+                type="button"
+                aria-label="Змінити мову"
+            >
+
+                <i class="fa-solid fa-globe"></i>
+
+                <span>UA</span>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </button>
+
+
+
+            <!-- Favorites -->
+
+            <a
+                href="./favorites.html"
+                class="header-action header-action--favorite"
+                aria-label="Обране"
+            >
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span>
+                    Обране
+                </span>
+
+            </a>
+
+
+
+            <!-- Login -->
+
+            <a
+                href="./login.html"
+                class="login-button"
+            >
+
+                <i class="fa-regular fa-user"></i>
+
+                <span>
+                    Увійти
+                </span>
+
+            </a>
+
+
+
+            <!-- Mobile menu -->
+
+            <button
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                type="button"
+                aria-label="Відкрити меню"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MOBILE MENU
+========================================================= -->
+
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+    hidden
+>
+
+    <nav>
+
+        <a href="./index.html">
+            Головна
+        </a>
+
+        <a href="./games.html">
+            Ігри
+        </a>
+
+        <a href="./prices.html">
+            Порівняння цін
+        </a>
+
+        <a href="./favorites.html">
+            Обране
+        </a>
+
+        <a
+            href="./about.html"
+            class="active"
+        >
+            Про нас
+        </a>
+
+        <a href="./login.html">
+            Увійти
+        </a>
+
+    </nav>
+
+</div>
+
+
+
+<!-- =========================================================
+     MOBILE SEARCH
+========================================================= -->
+
+<div class="about-mobile-search-wrap">
+
+    <div class="container">
+
+        <form
+            class="mobile-search about-mobile-search"
+            id="mobileSearchForm"
+            role="search"
+        >
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+
+            <input
+                id="mobileSearchInput"
+                type="search"
+                placeholder="Пошук ігор..."
+                autocomplete="off"
+                aria-label="Пошук ігор"
+            >
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="about-page">
+
+    <div class="container about-page__container">
+
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="about-hero">
+
+
+            <!-- Background -->
+
+            <div class="about-hero__background">
+
+                <img
+                    src="./assets/images/hero/about-hero.webp"
+                    alt=""
+                    width="1400"
+                    height="520"
+                    fetchpriority="high"
+                >
+
+            </div>
+
+
+            <div class="about-hero__shade"></div>
+
+
+
+            <!-- Content -->
+
+            <div class="about-hero__content">
+
+
+                <span class="about-hero__eyebrow">
+
+                    ПРО НАС
+
+                </span>
+
+
+                <h1>
+
+                    PlayFinder —
+                    <br>
+
+                    більше ігор, кращі ціни
+
+                </h1>
+
+
+                <p>
+
+                    Ми допомагаємо гравцям знаходити найкращі
+                    пропозиції на ігри та економити час і гроші.
+
+                    Усі магазини в одному місці — зручно,
+                    швидко, надійно.
+
+                </p>
+
+
+                <a
+                    href="#mission"
+                    class="about-hero__button"
+                >
+
+                    Наша місія
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Handwriting -->
+
+            <div class="about-hero__handwriting">
+
+                Грайте
+                <br>
+
+                більше
+                <br>
+
+                за менше
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ADVANTAGES
+        ================================================== -->
+
+        <section
+            class="about-features"
+            id="mission"
+        >
+
+
+            <!-- Feature 1 -->
+
+            <article class="about-feature">
+
+                <div class="about-feature__icon">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Порівняння цін
+                    </h2>
+
+
+                    <p>
+
+                        Знаходимо найвигідніші пропозиції
+                        у десятках магазинів.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Feature 2 -->
+
+            <article class="about-feature">
+
+                <div class="about-feature__icon">
+
+                    <i class="fa-regular fa-clock"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Економія часу
+                    </h2>
+
+
+                    <p>
+
+                        Вся інформація в одному місці —
+                        більше не потрібно відкривати
+                        кожен магазин окремо.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Feature 3 -->
+
+            <article class="about-feature">
+
+                <div class="about-feature__icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Актуальні дані
+                    </h2>
+
+
+                    <p>
+
+                        Регулярно оновлюємо ціни,
+                        магазини та інформацію про ігри.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- Feature 4 -->
+
+            <article class="about-feature">
+
+                <div class="about-feature__icon">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Для геймерів
+                    </h2>
+
+
+                    <p>
+
+                        Ми теж любимо ігри й створюємо
+                        сервіс, яким користувалися б самі.
+
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             OUR STORY
+        ================================================== -->
+
+        <section class="about-story">
+
+
+            <!-- Mobile / tablet title -->
+
+            <button
+                class="about-section-toggle"
+                id="storyToggle"
+                type="button"
+                aria-expanded="true"
+                aria-controls="storyContent"
+            >
+
+                <span>
+                    Наша історія
+                </span>
+
+
+                <i class="fa-solid fa-chevron-up"></i>
+
+            </button>
+
+
+
+            <div
+                class="about-story__content"
+                id="storyContent"
+            >
+
+
+                <!-- Text -->
+
+                <div class="about-story__text">
+
+                    <h2>
+                        Наша історія
+                    </h2>
+
+
+                    <p>
+
+                        PlayFinder створений командою ентузіастів,
+                        які вірять, що ігри повинні бути доступними
+                        для всіх.
+
+                    </p>
+
+
+                    <p>
+
+                        Ми об'єднали нашу досвід у розробці,
+                        аналітиці та любов до ігор, щоб створити
+                        зручний сервіс для геймерів по всьому світу.
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- Stats -->
+
+                <div class="about-stats">
+
+
+                    <!-- Shops -->
+
+                    <article class="about-stat">
+
+                        <i class="fa-solid fa-gamepad"></i>
+
+
+                        <strong id="aboutStoresCount">
+
+                            50+
+
+                        </strong>
+
+
+                        <span>
+
+                            магазинів
+
+                        </span>
+
+                    </article>
+
+
+
+                    <!-- Users -->
+
+                    <article class="about-stat">
+
+                        <i class="fa-solid fa-users"></i>
+
+
+                        <strong id="aboutUsersCount">
+
+                            100K+
+
+                        </strong>
+
+
+                        <span>
+
+                            користувачів
+
+                        </span>
+
+                    </article>
+
+
+
+                    <!-- Deals -->
+
+                    <article class="about-stat">
+
+                        <i class="fa-solid fa-star"></i>
+
+
+                        <strong id="aboutDealsCount">
+
+                            1M+
+
+                        </strong>
+
+
+                        <span>
+
+                            знайдених
+                            <br>
+                            пропозицій
+
+                        </span>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             VALUES
+        ================================================== -->
+
+        <section class="about-values">
+
+
+            <!-- Header -->
+
+            <button
+                class="about-section-toggle"
+                id="valuesToggle"
+                type="button"
+                aria-expanded="true"
+                aria-controls="valuesContent"
+            >
+
+                <span>
+                    Наші цінності
+                </span>
+
+
+                <i class="fa-solid fa-chevron-up"></i>
+
+            </button>
+
+
+
+            <div
+                class="about-values__content"
+                id="valuesContent"
+            >
+
+
+                <h2 class="about-values__title">
+
+                    Наші цінності
+
+                </h2>
+
+
+
+                <div class="about-values__grid">
+
+
+
+                    <!-- Transparency -->
+
+                    <article class="about-value">
+
+                        <div class="about-value__icon">
+
+                            <i class="fa-solid fa-bullseye"></i>
+
+                        </div>
+
+
+                        <h3>
+
+                            Прозорість
+
+                        </h3>
+
+
+                        <p>
+
+                            Чесні ціни та надійна інформація.
+
+                        </p>
+
+                    </article>
+
+
+
+                    <!-- Community -->
+
+                    <article class="about-value">
+
+                        <div class="about-value__icon">
+
+                            <i class="fa-solid fa-users"></i>
+
+                        </div>
+
+
+                        <h3>
+
+                            Спільнота
+
+                        </h3>
+
+
+                        <p>
+
+                            Ми слухаємо геймерів
+                            і враховуємо ваші побажання.
+
+                        </p>
+
+                    </article>
+
+
+
+                    <!-- Quality -->
+
+                    <article class="about-value">
+
+                        <div class="about-value__icon">
+
+                            <i class="fa-regular fa-gem"></i>
+
+                        </div>
+
+
+                        <h3>
+
+                            Якість
+
+                        </h3>
+
+
+                        <p>
+
+                            Працюємо над постійним
+                            покращенням сервісу.
+
+                        </p>
+
+                    </article>
+
+
+
+                    <!-- Development -->
+
+                    <article class="about-value">
+
+                        <div class="about-value__icon">
+
+                            <i class="fa-regular fa-lemon"></i>
+
+                        </div>
+
+
+                        <h3>
+
+                            Розвиток
+
+                        </h3>
+
+
+                        <p>
+
+                            Додаємо нові функції
+                            та магазини.
+
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <section class="about-cta">
+
+
+            <!-- Background -->
+
+            <div class="about-cta__background"></div>
+
+
+
+            <!-- Content -->
+
+            <div class="about-cta__content">
+
+
+                <div>
+
+                    <h2>
+
+                        Приєднуйтесь до спільноти PlayFinder
+
+                    </h2>
+
+
+                    <p>
+
+                        Слідкуйте за знижками,
+                        новинками та спеціальними пропозиціями.
+
+                    </p>
+
+                </div>
+
+
+
+                <a
+                    href="./games.html"
+                    class="about-cta__button"
+                >
+
+                    Розпочати зараз
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="container footer__inner">
+
+
+        <!-- Logo -->
+
+        <a
+            href="./index.html"
+            class="footer__logo logo"
+            aria-label="PlayFinder"
+        >
+
+            <span class="logo__icon">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+            </span>
+
+
+            <span class="logo__content">
+
+                <span class="logo__name">
+
+                    Play<span>Finder</span>
+
+                </span>
+
+
+                <span class="logo__slogan">
+
+                    БІЛЬШЕ ІГОР. КРАЩІ ЦІНИ.
+
+                </span>
+
+            </span>
+
+        </a>
+
+
+
+        <!-- Footer nav -->
+
+        <nav
+            class="footer__nav"
+            aria-label="Навігація у футері"
+        >
+
+            <a href="./index.html">
+
+                Головна
+
+            </a>
+
+
+            <a href="./games.html">
+
+                Ігри
+
+            </a>
+
+
+            <a href="./prices.html">
+
+                Порівняння цін
+
+            </a>
+
+
+            <a
+                href="./about.html"
+                class="active"
+            >
+
+                Про нас
+
+            </a>
+
+        </nav>
+
+
+
+        <!-- Socials -->
+
+        <div class="footer__socials">
+
+            <a
+                href="#"
+                aria-label="Discord"
+            >
+
+                <i class="fa-brands fa-discord"></i>
+
+            </a>
+
+
+            <a
+                href="#"
+                aria-label="YouTube"
+            >
+
+                <i class="fa-brands fa-youtube"></i>
+
+            </a>
+
+
+            <a
+                href="#"
+                aria-label="X"
+            >
+
+                <i class="fa-brands fa-x-twitter"></i>
+
+            </a>
+
+
+            <a
+                href="#"
+                aria-label="Instagram"
+            >
+
+                <i class="fa-brands fa-instagram"></i>
+
+            </a>
+
+        </div>
+
+
+
+        <!-- Copyright -->
+
+        <div class="footer__copyright">
+
+            © 2026 PlayFinder.
+
+            <span>
+
+                Усі права захищені.
+
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================================================
+     MOBILE BOTTOM NAVIGATION
+========================================================= -->
+
+<nav
+    class="mobile-bottom-nav"
+    aria-label="Мобільна навігація"
+>
+
+
+    <a href="./index.html">
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>
+            Головна
+        </span>
+
+    </a>
+
+
+    <a href="./games.html">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <span>
+            Пошук
+        </span>
+
+    </a>
+
+
+    <a href="./favorites.html">
+
+        <i class="fa-regular fa-heart"></i>
+
+        <span>
+            Обране
+        </span>
+
+    </a>
+
+
+    <a href="./login.html">
+
+        <i class="fa-regular fa-user"></i>
+
+        <span>
+            Увійти
+        </span>
+
+    </a>
+
+</nav>
+
+
+
+<!-- =========================================================
+     APPLICATION CONFIG
+========================================================= -->
+
+<script>
+
+    window.PLAYFINDER_CONFIG = {
+
+        locale: "uk-UA",
+
+        currency: "EUR",
+
+
+        api: {
+
+            baseUrl: "/api",
+
+
+            endpoints: {
+
+                search:
+                    "/games/search",
+
+                stats:
+                    "/stats",
+
+                stores:
+                    "/stores"
+
+            }
+
+        }
+
+    };
+
+</script>
+
+
+
+<!-- =========================================================
+     MAIN JS
+========================================================= -->
+
+<script
+    type="module"
+    src="./js/app.js"
+></script>
+
+
+<script
+    type="module"
+    src="./js/about.js"
+></script>
+
+
+</body>
+
+</html>

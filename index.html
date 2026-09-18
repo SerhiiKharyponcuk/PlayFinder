@@ -1,0 +1,2378 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="PlayFinder — порівнюйте ціни на ігри та знаходьте найвигідніші пропозиції."
+    >
+
+    <meta
+        name="theme-color"
+        content="#071116"
+    >
+
+    <title>
+        PlayFinder — більше ігор, кращі ціни
+    </title>
+
+
+    <!-- =====================================================
+         PRECONNECT
+    ====================================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://cdnjs.cloudflare.com"
+    >
+
+
+    <!-- =====================================================
+         ICONS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="/src/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+    <div class="container header__container">
+
+
+        <!-- =================================================
+             LOGO
+        ================================================== -->
+
+        <a
+            href="./index.html"
+            class="logo"
+            aria-label="PlayFinder"
+        >
+
+            <span class="logo__icon">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+            </span>
+
+
+            <span class="logo__content">
+
+                <span class="logo__name">
+
+                    Play<span>Finder</span>
+
+                </span>
+
+
+                <span class="logo__slogan">
+
+                    БІЛЬШЕ ІГОР. КРАЩІ ЦІНИ.
+
+                </span>
+
+            </span>
+
+        </a>
+
+
+
+        <!-- =================================================
+             DESKTOP NAVIGATION
+        ================================================== -->
+
+        <nav
+            class="nav"
+            aria-label="Основна навігація"
+        >
+
+            <a
+                href="./index.html"
+                class="nav__link nav__link--active"
+            >
+                Головна
+            </a>
+
+
+            <a
+                href="./games.html"
+                class="nav__link"
+            >
+                Ігри
+            </a>
+
+
+            <a
+                href="./prices.html"
+                class="nav__link"
+            >
+                Порівняння цін
+            </a>
+
+
+            <a
+                href="./about.html"
+                class="nav__link"
+            >
+                Про нас
+            </a>
+
+        </nav>
+
+
+
+        <!-- =================================================
+             DESKTOP / TABLET SEARCH
+        ================================================== -->
+
+        <form
+            class="header-search"
+            id="headerSearchForm"
+            role="search"
+        >
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+
+            <input
+                id="headerSearchInput"
+                type="search"
+                placeholder="Пошук ігор, жанрів, видавців..."
+                autocomplete="off"
+                aria-label="Пошук ігор"
+            >
+
+
+            <!-- API autocomplete -->
+
+            <div
+                class="search-results"
+                id="searchResults"
+                hidden
+            ></div>
+
+        </form>
+
+
+
+        <!-- =================================================
+             HEADER ACTIONS
+        ================================================== -->
+
+        <div class="header-actions">
+
+
+            <!-- Language -->
+
+            <button
+                class="header-action"
+                id="languageButton"
+                type="button"
+                aria-label="Змінити мову"
+            >
+
+                <i class="fa-solid fa-globe"></i>
+
+                <span>UA</span>
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+            </button>
+
+
+
+            <!-- Favorites -->
+
+            <a
+                href="./favorites.html"
+                class="header-action header-action--favorite"
+                aria-label="Обране"
+            >
+
+                <i class="fa-regular fa-heart"></i>
+
+                <span>
+                    Обране
+                </span>
+
+            </a>
+
+
+
+            <!-- Login -->
+
+            <a
+                href="./login.html"
+                class="login-button"
+            >
+
+                <i class="fa-regular fa-user"></i>
+
+                <span>
+                    Увійти
+                </span>
+
+            </a>
+
+
+
+            <!-- Mobile menu -->
+
+            <button
+                class="mobile-menu-button"
+                id="mobileMenuButton"
+                type="button"
+                aria-label="Відкрити меню"
+                aria-expanded="false"
+                aria-controls="mobileMenu"
+            >
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MOBILE MENU
+========================================================= -->
+
+<div
+    class="mobile-menu"
+    id="mobileMenu"
+    hidden
+>
+
+    <nav>
+
+        <a href="./index.html">
+            Головна
+        </a>
+
+        <a href="./games.html">
+            Ігри
+        </a>
+
+        <a href="./prices.html">
+            Порівняння цін
+        </a>
+
+        <a href="./favorites.html">
+            Обране
+        </a>
+
+        <a href="./about.html">
+            Про нас
+        </a>
+
+        <a href="./login.html">
+            Увійти
+        </a>
+
+    </nav>
+
+</div>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="home-page">
+
+    <div class="container home-grid">
+
+
+
+        <!-- =================================================
+             MOBILE SEARCH
+        ================================================== -->
+
+        <form
+            class="mobile-search"
+            id="mobileSearchForm"
+            role="search"
+        >
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+
+            <input
+                id="mobileSearchInput"
+                type="search"
+                placeholder="Пошук ігор, жанрів, видавців..."
+                autocomplete="off"
+                aria-label="Пошук ігор"
+            >
+
+        </form>
+
+
+
+        <!-- =================================================
+             LEFT FILTER SIDEBAR
+             DESKTOP ONLY
+        ================================================== -->
+
+        <aside class="catalog-sidebar">
+
+
+            <!-- =============================================
+                 PLATFORMS
+            ============================================== -->
+
+            <section class="catalog-filter">
+
+                <button
+                    class="catalog-filter__title"
+                    type="button"
+                >
+
+                    <span>
+                        Платформи
+                    </span>
+
+                    <i class="fa-solid fa-chevron-up"></i>
+
+                </button>
+
+
+                <div class="catalog-filter__body">
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="platform"
+                            value="pc"
+                            checked
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            PC
+                        </span>
+
+                    </label>
+
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="platform"
+                            value="playstation"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            PlayStation
+                        </span>
+
+                    </label>
+
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="platform"
+                            value="xbox"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Xbox
+                        </span>
+
+                    </label>
+
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="platform"
+                            value="nintendo"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Nintendo
+                        </span>
+
+                    </label>
+
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="platform"
+                            value="steam-deck"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Steam Deck
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 GENRES
+            ============================================== -->
+
+            <section class="catalog-filter">
+
+                <button
+                    class="catalog-filter__title"
+                    type="button"
+                >
+
+                    <span>
+                        Жанри
+                    </span>
+
+                    <i class="fa-solid fa-chevron-up"></i>
+
+                </button>
+
+
+                <div class="catalog-filter__body">
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="genre"
+                            value="action"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Екшен
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="genre"
+                            value="adventure"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Пригоди
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="genre"
+                            value="rpg"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            RPG
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="genre"
+                            value="strategy"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Стратегії
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="genre"
+                            value="simulation"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Симулятори
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="genre"
+                            value="sport"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Спорт
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="genre"
+                            value="racing"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Гонки
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="genre"
+                            value="indie"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Інді
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        class="catalog-more"
+                        type="button"
+                    >
+
+                        Більше жанрів
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 STORES
+            ============================================== -->
+
+            <section class="catalog-filter">
+
+                <button
+                    class="catalog-filter__title"
+                    type="button"
+                >
+
+                    <span>
+                        Магазини
+                    </span>
+
+                    <i class="fa-solid fa-chevron-up"></i>
+
+                </button>
+
+
+                <div class="catalog-filter__body">
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="store"
+                            value="steam"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Steam
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="store"
+                            value="epic"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Epic Games
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="store"
+                            value="gog"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            GOG
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="store"
+                            value="ubisoft"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Ubisoft Store
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="store"
+                            value="ea"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            EA App
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="store"
+                            value="microsoft"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Microsoft Store
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="store"
+                            value="playstation-store"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            PlayStation Store
+                        </span>
+
+                    </label>
+
+
+                    <label class="catalog-check">
+
+                        <input
+                            type="checkbox"
+                            name="store"
+                            value="nintendo"
+                        >
+
+                        <span class="catalog-check__box"></span>
+
+                        <span>
+                            Nintendo eShop
+                        </span>
+
+                    </label>
+
+
+                    <button
+                        class="catalog-more"
+                        type="button"
+                    >
+
+                        Більше магазинів
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 SORT
+            ============================================== -->
+
+            <section class="catalog-sort">
+
+                <label for="sidebarSort">
+
+                    Сортувати
+
+                </label>
+
+
+                <select id="sidebarSort">
+
+                    <option value="popular">
+                        За популярністю
+                    </option>
+
+                    <option value="rating">
+                        За рейтингом
+                    </option>
+
+                    <option value="price">
+                        За ціною
+                    </option>
+
+                    <option value="release">
+                        За датою виходу
+                    </option>
+
+                </select>
+
+            </section>
+
+        </aside>
+
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="hero">
+
+
+            <!-- Background -->
+
+            <div class="hero__background">
+
+                <img
+                    src="./assets/images/hero-home.webp"
+                    alt=""
+                    width="1200"
+                    height="500"
+                    fetchpriority="high"
+                >
+
+            </div>
+
+
+            <div class="hero__shade"></div>
+
+
+
+            <!-- Content -->
+
+            <div class="hero__content">
+
+                <span class="hero__eyebrow">
+
+                    КРАЩІ ЦІНИ — БІЛЬШЕ ІГОР
+
+                </span>
+
+
+                <h1>
+
+                    Порівнюємо ціни
+                    <br>
+
+                    на ігри — знаходимо
+                    <br>
+
+                    <strong>
+                        найвигіднішу пропозицію
+                    </strong>
+
+                </h1>
+
+
+                <p>
+
+                    Один пошук — десятки магазинів.
+                    <br>
+
+                    Економте час і гроші на улюблених іграх.
+
+                </p>
+
+
+                <a
+                    href="./prices.html"
+                    class="hero__button"
+                >
+
+                    Порівняти ціни
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Handwriting -->
+
+            <div class="hero__handwriting">
+
+                Грайте
+                <br>
+
+                більше
+                <br>
+
+                за менше
+
+            </div>
+
+
+
+            <!-- Hero benefits -->
+
+            <div class="hero__features">
+
+                <span>
+
+                    <i class="fa-regular fa-heart"></i>
+
+                    Популярні магазини
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-regular fa-circle-check"></i>
+
+                    Актуальні ціни
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-regular fa-star"></i>
+
+                    Реальні пропозиції
+
+                </span>
+
+            </div>
+
+
+
+            <!-- Slider dots -->
+
+            <div
+                class="hero__dots"
+                id="heroDots"
+            >
+
+                <button
+                    class="active"
+                    type="button"
+                    aria-label="Слайд 1"
+                ></button>
+
+                <button
+                    type="button"
+                    aria-label="Слайд 2"
+                ></button>
+
+                <button
+                    type="button"
+                    aria-label="Слайд 3"
+                ></button>
+
+                <button
+                    type="button"
+                    aria-label="Слайд 4"
+                ></button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             QUICK FILTERS
+             TABLET / MOBILE
+        ================================================== -->
+
+        <section class="quick-filters">
+
+
+            <!-- Platform -->
+
+            <label class="quick-filter">
+
+                <i class="fa-solid fa-gamepad"></i>
+
+
+                <span>
+
+                    <small>
+                        Платформа
+                    </small>
+
+
+                    <select id="platformFilter">
+
+                        <option value="">
+                            Усі платформи
+                        </option>
+
+                        <option value="pc">
+                            PC
+                        </option>
+
+                        <option value="playstation">
+                            PlayStation
+                        </option>
+
+                        <option value="xbox">
+                            Xbox
+                        </option>
+
+                        <option value="nintendo">
+                            Nintendo
+                        </option>
+
+                    </select>
+
+                </span>
+
+            </label>
+
+
+
+            <!-- Genre -->
+
+            <label class="quick-filter">
+
+                <i class="fa-solid fa-tag"></i>
+
+
+                <span>
+
+                    <small>
+                        Жанр
+                    </small>
+
+
+                    <select id="genreFilter">
+
+                        <option value="">
+                            Усі жанри
+                        </option>
+
+                        <option value="action">
+                            Екшен
+                        </option>
+
+                        <option value="adventure">
+                            Пригоди
+                        </option>
+
+                        <option value="rpg">
+                            RPG
+                        </option>
+
+                        <option value="strategy">
+                            Стратегії
+                        </option>
+
+                    </select>
+
+                </span>
+
+            </label>
+
+
+
+            <!-- Store -->
+
+            <label class="quick-filter">
+
+                <i class="fa-solid fa-store"></i>
+
+
+                <span>
+
+                    <small>
+                        Магазин
+                    </small>
+
+
+                    <select id="storeFilter">
+
+                        <option value="">
+                            Усі магазини
+                        </option>
+
+                        <option value="steam">
+                            Steam
+                        </option>
+
+                        <option value="epic">
+                            Epic Games
+                        </option>
+
+                        <option value="gog">
+                            GOG
+                        </option>
+
+                    </select>
+
+                </span>
+
+            </label>
+
+
+
+            <!-- Sort -->
+
+            <label class="quick-filter">
+
+                <i class="fa-solid fa-sliders"></i>
+
+
+                <span>
+
+                    <small>
+                        Сортування
+                    </small>
+
+
+                    <select id="sortFilter">
+
+                        <option value="popular">
+                            Популярні
+                        </option>
+
+                        <option value="rating">
+                            Рейтинг
+                        </option>
+
+                        <option value="price">
+                            За ціною
+                        </option>
+
+                        <option value="release">
+                            Нові
+                        </option>
+
+                    </select>
+
+                </span>
+
+            </label>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MAIN GAMES CONTENT
+        ================================================== -->
+
+        <div class="home-main">
+
+
+
+            <!-- =============================================
+                 POPULAR GAMES
+            ============================================== -->
+
+            <section
+                class="games-section"
+                id="popularSection"
+            >
+
+                <header class="section-heading">
+
+                    <h2>
+                        Популярні ігри
+                    </h2>
+
+
+                    <a href="./games.html?sort=popular">
+
+                        Всі ігри
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </header>
+
+
+
+                <!--
+                    API / JS вставляє сюди картки.
+                -->
+
+                <div
+                    class="games-grid games-grid--popular"
+                    id="popularGames"
+                    aria-live="polite"
+                ></div>
+
+
+                <!-- Loading -->
+
+                <div
+                    class="games-loading"
+                    id="popularLoading"
+                    hidden
+                >
+
+                    <div class="game-skeleton"></div>
+
+                    <div class="game-skeleton"></div>
+
+                    <div class="game-skeleton"></div>
+
+                    <div class="game-skeleton"></div>
+
+                    <div class="game-skeleton"></div>
+
+                    <div class="game-skeleton"></div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 NEW RELEASES
+            ============================================== -->
+
+            <section
+                class="games-section"
+                id="newReleasesSection"
+            >
+
+                <header class="section-heading">
+
+                    <h2>
+                        Нові релізи
+                    </h2>
+
+
+                    <a href="./games.html?sort=release">
+
+                        Всі
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </header>
+
+
+
+                <div
+                    class="games-grid games-grid--releases"
+                    id="newReleaseGames"
+                    aria-live="polite"
+                ></div>
+
+
+                <div
+                    class="games-loading"
+                    id="newReleasesLoading"
+                    hidden
+                >
+
+                    <div class="game-skeleton"></div>
+
+                    <div class="game-skeleton"></div>
+
+                    <div class="game-skeleton"></div>
+
+                    <div class="game-skeleton"></div>
+
+                    <div class="game-skeleton"></div>
+
+                    <div class="game-skeleton"></div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RIGHT SIDEBAR
+        ================================================== -->
+
+        <aside class="home-sidebar">
+
+
+
+            <!-- =============================================
+                 BEST PRICES
+            ============================================== -->
+
+            <section class="sidebar-card sidebar-deals">
+
+                <header class="sidebar-heading">
+
+                    <h2>
+                        Найкращі ціни зараз
+                    </h2>
+
+
+                    <a href="./prices.html">
+
+                        Всі
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </header>
+
+
+                <div
+                    class="deal-list"
+                    id="bestDeals"
+                ></div>
+
+
+                <div
+                    class="deal-loading"
+                    id="dealsLoading"
+                    hidden
+                >
+
+                    <div class="deal-skeleton"></div>
+
+                    <div class="deal-skeleton"></div>
+
+                    <div class="deal-skeleton"></div>
+
+                    <div class="deal-skeleton"></div>
+
+                    <div class="deal-skeleton"></div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 WHY PLAYFINDER
+            ============================================== -->
+
+            <section class="sidebar-card sidebar-why">
+
+                <h2>
+                    Чому PlayFinder?
+                </h2>
+
+
+
+                <div class="why-row">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+
+                    <span>
+
+                        <strong>
+                            Порівняння цін
+                        </strong>
+
+                        <small>
+                            У понад 30 магазинах
+                        </small>
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="why-row">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+
+                    <span>
+
+                        <strong>
+                            Завжди актуальні дані
+                        </strong>
+
+                        <small>
+                            Регулярно перевіряємо ціни
+                        </small>
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="why-row">
+
+                    <i class="fa-regular fa-clock"></i>
+
+
+                    <span>
+
+                        <strong>
+                            Економія вашого часу
+                        </strong>
+
+                        <small>
+                            Усе в одному місці
+                        </small>
+
+                    </span>
+
+                </div>
+
+
+
+                <div class="why-row">
+
+                    <i class="fa-solid fa-gamepad"></i>
+
+
+                    <span>
+
+                        <strong>
+                            Жодних прихованих платежів
+                        </strong>
+
+                        <small>
+                            Показуємо реальні ціни
+                        </small>
+
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =============================================
+                 NEWSLETTER
+            ============================================== -->
+
+            <section class="sidebar-card newsletter">
+
+
+                <div class="newsletter__header">
+
+                    <i class="fa-regular fa-envelope"></i>
+
+
+                    <div>
+
+                        <h2>
+                            Будьте в курсі
+                        </h2>
+
+
+                        <p>
+
+                            Отримуйте сповіщення про нові
+                            ігри та найкращі ціни.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <form id="newsletterForm">
+
+                    <label
+                        for="newsletterEmail"
+                        class="sr-only"
+                    >
+                        Email
+                    </label>
+
+
+                    <input
+                        id="newsletterEmail"
+                        type="email"
+                        placeholder="Ваш email"
+                        autocomplete="email"
+                        required
+                    >
+
+
+                    <button type="submit">
+
+                        Підписатися
+
+                    </button>
+
+                </form>
+
+            </section>
+
+        </aside>
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     FOOTER
+     DESKTOP / TABLET
+========================================================= -->
+<footer class="footer">
+
+    <div class="container footer__inner">
+
+
+        <!-- Logo -->
+
+        <a
+            href="./index.html"
+            class="footer__logo logo"
+            aria-label="PlayFinder"
+        >
+
+            <span class="logo__icon">
+                <i class="fa-solid fa-gamepad"></i>
+            </span>
+
+            <span class="logo__content">
+
+                <span class="logo__name">
+                    Play<span>Finder</span>
+                </span>
+
+                <span class="logo__slogan">
+                    БІЛЬШЕ ІГОР. КРАЩІ ЦІНИ.
+                </span>
+
+            </span>
+
+        </a>
+
+
+        <!-- Desktop navigation -->
+
+        <nav
+            class="footer__nav"
+            aria-label="Навігація у футері"
+        >
+
+            <a href="./index.html">
+                Головна
+            </a>
+
+            <a href="./games.html">
+                Ігри
+            </a>
+
+            <a href="./prices.html">
+                Порівняння цін
+            </a>
+
+            <a
+                href="./about.html"
+                class="active"
+            >
+                Про нас
+            </a>
+
+        </nav>
+
+
+        <!-- Socials -->
+
+        <div class="footer__socials">
+
+            <a
+                href="#"
+                aria-label="Discord"
+            >
+                <i class="fa-brands fa-discord"></i>
+            </a>
+
+            <a
+                href="#"
+                aria-label="YouTube"
+            >
+                <i class="fa-brands fa-youtube"></i>
+            </a>
+
+            <a
+                href="#"
+                aria-label="X"
+            >
+                <i class="fa-brands fa-x-twitter"></i>
+            </a>
+
+            <a
+                href="#"
+                aria-label="Instagram"
+            >
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+
+        </div>
+
+
+        <!-- Copyright -->
+
+        <div class="footer__copyright">
+
+            © 2026 PlayFinder.
+            <span>Усі права захищені.</span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     MOBILE BOTTOM NAVIGATION
+========================================================= -->
+
+<nav
+    class="mobile-bottom-nav"
+    aria-label="Мобільна навігація"
+>
+
+    <a
+        href="./index.html"
+        class="active"
+    >
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>
+            Головна
+        </span>
+
+    </a>
+
+
+    <a href="./games.html">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <span>
+            Пошук
+        </span>
+
+    </a>
+
+
+    <a href="./favorites.html">
+
+        <i class="fa-regular fa-heart"></i>
+
+        <span>
+            Обране
+        </span>
+
+    </a>
+
+
+    <a href="./login.html">
+
+        <i class="fa-regular fa-user"></i>
+
+        <span>
+            Увійти
+        </span>
+
+    </a>
+
+</nav>
+
+
+
+<!-- =========================================================
+     GAME CARD TEMPLATE
+
+     JavaScript створює картки з RAWG / backend API.
+========================================================= -->
+
+<template id="gameCardTemplate">
+
+    <article
+        class="game-card"
+        data-game-id=""
+    >
+
+
+        <!-- Image -->
+
+        <div class="game-card__image">
+
+            <a
+                href="#"
+                class="game-card__image-link"
+            >
+
+                <img
+                    class="game-card__cover"
+                    src=""
+                    alt=""
+                    width="320"
+                    height="240"
+                    loading="lazy"
+                    decoding="async"
+                >
+
+            </a>
+
+
+
+            <!-- Favorite -->
+
+            <button
+                class="game-card__favorite"
+                type="button"
+                aria-label="Додати в обране"
+            >
+
+                <i class="fa-regular fa-heart"></i>
+
+            </button>
+
+
+
+            <!-- Discount -->
+
+            <span
+                class="game-card__discount"
+                hidden
+            ></span>
+
+        </div>
+
+
+
+        <!-- Content -->
+
+        <div class="game-card__body">
+
+
+            <!-- Title -->
+
+            <a
+                href="#"
+                class="game-card__title"
+            ></a>
+
+
+
+            <!-- Platforms -->
+
+            <div class="game-card__platforms"></div>
+
+
+
+            <!-- Rating -->
+
+            <div
+                class="game-card__rating"
+                hidden
+            >
+
+                <i class="fa-solid fa-star"></i>
+
+                <span
+                    class="game-card__rating-value"
+                ></span>
+
+            </div>
+
+
+
+            <!-- Price -->
+
+            <div class="game-card__price">
+
+                <span>
+                    Від
+                </span>
+
+                <strong></strong>
+
+            </div>
+
+
+
+            <!-- Old price -->
+
+            <div
+                class="game-card__old-price"
+                hidden
+            ></div>
+
+
+
+            <!-- Stores -->
+
+            <div class="game-card__stores">
+
+                <span
+                    class="game-card__store-count"
+                ></span>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</template>
+
+
+
+<!-- =========================================================
+     BEST PRICE TEMPLATE
+========================================================= -->
+
+<template id="dealTemplate">
+
+    <article
+        class="deal-item"
+        data-game-id=""
+    >
+
+
+        <a
+            href="#"
+            class="deal-item__image-link"
+        >
+
+            <img
+                class="deal-item__image"
+                src=""
+                alt=""
+                width="100"
+                height="100"
+                loading="lazy"
+                decoding="async"
+            >
+
+        </a>
+
+
+
+        <div class="deal-item__content">
+
+
+            <a
+                href="#"
+                class="deal-item__title"
+            ></a>
+
+
+            <span
+                class="deal-item__platform"
+            ></span>
+
+
+            <div class="deal-item__price">
+
+                <span>
+                    Від
+                </span>
+
+                <strong></strong>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</template>
+
+
+
+<!-- =========================================================
+     SEARCH RESULT TEMPLATE
+========================================================= -->
+
+<template id="searchResultTemplate">
+
+    <a
+        href="#"
+        class="search-result"
+        data-game-id=""
+    >
+
+
+        <img
+            class="search-result__image"
+            src=""
+            alt=""
+            width="80"
+            height="80"
+            loading="lazy"
+        >
+
+
+        <div>
+
+            <strong
+                class="search-result__title"
+            ></strong>
+
+
+            <span
+                class="search-result__meta"
+            ></span>
+
+        </div>
+
+    </a>
+
+</template>
+
+
+
+<!-- =========================================================
+     GAME MODAL
+
+     Пізніше сюди підтягуємо:
+     RAWG:
+     - name
+     - description
+     - background_image
+     - screenshots
+     - rating
+     - genres
+     - developer
+     - publisher
+     - released
+
+     Price API:
+     - stores
+     - current price
+     - old price
+========================================================= -->
+
+<dialog
+    class="game-modal"
+    id="gameModal"
+>
+
+
+    <!-- Close -->
+
+    <button
+        class="game-modal__close"
+        id="gameModalClose"
+        type="button"
+        aria-label="Закрити"
+    >
+
+        <i class="fa-solid fa-xmark"></i>
+
+    </button>
+
+
+
+    <div class="game-modal__content">
+
+
+
+        <!-- =============================================
+             MEDIA
+        ============================================== -->
+
+        <div class="game-modal__media">
+
+
+            <img
+                id="modalGameImage"
+                src=""
+                alt=""
+            >
+
+
+            <div
+                class="game-modal__video"
+                id="modalGameVideo"
+                hidden
+            ></div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             INFO
+        ============================================== -->
+
+        <div class="game-modal__information">
+
+
+            <div class="game-modal__top">
+
+
+                <div>
+
+                    <h2 id="modalGameTitle"></h2>
+
+
+                    <div
+                        class="game-modal__genres"
+                        id="modalGameGenres"
+                    ></div>
+
+                </div>
+
+
+
+                <div class="game-modal__rating">
+
+                    <i class="fa-solid fa-star"></i>
+
+
+                    <strong
+                        id="modalGameRating"
+                    ></strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="game-modal__platforms"
+                id="modalGamePlatforms"
+            ></div>
+
+
+
+            <p
+                class="game-modal__description"
+                id="modalGameDescription"
+            ></p>
+
+
+
+            <dl class="game-modal__meta">
+
+
+                <div>
+
+                    <dt>
+                        Розробник
+                    </dt>
+
+                    <dd
+                        id="modalGameDeveloper"
+                    ></dd>
+
+                </div>
+
+
+
+                <div>
+
+                    <dt>
+                        Видавець
+                    </dt>
+
+                    <dd
+                        id="modalGamePublisher"
+                    ></dd>
+
+                </div>
+
+
+
+                <div>
+
+                    <dt>
+                        Дата релізу
+                    </dt>
+
+                    <dd
+                        id="modalGameRelease"
+                    ></dd>
+
+                </div>
+
+            </dl>
+
+
+
+            <!-- Price -->
+
+            <div class="game-modal__price">
+
+                <span>
+                    Найкраща ціна
+                </span>
+
+
+                <strong
+                    id="modalGamePrice"
+                ></strong>
+
+            </div>
+
+
+
+            <!-- Stores -->
+
+            <div
+                class="game-modal__stores"
+                id="modalGameStores"
+            ></div>
+
+
+
+            <a
+                href="#"
+                id="modalGameLink"
+                class="button button--primary"
+            >
+
+                Переглянути гру
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</dialog>
+
+
+
+<!-- =========================================================
+     STORE OFFER TEMPLATE
+========================================================= -->
+
+<template id="storeOfferTemplate">
+
+    <div
+        class="store-offer"
+        data-store=""
+    >
+
+
+        <div class="store-offer__store">
+
+
+            <img
+                class="store-offer__logo"
+                src=""
+                alt=""
+                width="40"
+                height="40"
+            >
+
+
+            <div>
+
+                <strong
+                    class="store-offer__name"
+                ></strong>
+
+
+                <span
+                    class="store-offer__edition"
+                ></span>
+
+            </div>
+
+        </div>
+
+
+
+        <strong
+            class="store-offer__price"
+        ></strong>
+
+
+
+        <a
+            class="store-offer__button"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            Перейти
+
+            <i class="fa-solid fa-arrow-right"></i>
+
+        </a>
+
+    </div>
+
+</template>
+
+
+
+<!-- =========================================================
+     APPLICATION CONFIG
+========================================================= -->
+
+<script>
+
+    window.PLAYFINDER_CONFIG = {
+
+        locale: "uk-UA",
+
+        currency: "EUR",
+
+
+        api: {
+
+            baseUrl: "/api",
+
+
+            endpoints: {
+
+                popular:
+                    "/games/popular",
+
+                releases:
+                    "/games/releases",
+
+                game:
+                    "/games",
+
+                search:
+                    "/games/search",
+
+                deals:
+                    "/deals",
+
+                platforms:
+                    "/platforms",
+
+                genres:
+                    "/genres",
+
+                stores:
+                    "/stores"
+
+            }
+
+        },
+
+
+        home: {
+
+            desktop: {
+
+                popular:
+                    6,
+
+                releases:
+                    6,
+
+                deals:
+                    5
+
+            },
+
+
+            tablet: {
+
+                popular:
+                    4,
+
+                releases:
+                    4,
+
+                deals:
+                    5
+
+            },
+
+
+            mobile: {
+
+                popular:
+                    3,
+
+                releases:
+                    3,
+
+                deals:
+                    0
+
+            }
+
+        }
+
+    };
+
+</script>
+
+
+
+<!-- =========================================================
+     MAIN JS
+========================================================= -->
+
+<script
+    type="module"
+    src="./js/app.js"
+></script>
+
+
+</body>
+
+</html>
