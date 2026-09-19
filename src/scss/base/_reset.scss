@@ -1,0 +1,78 @@
+/* ==========================================================
+   RESET
+========================================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    min-width: 320px;
+
+    background: var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+img {
+    display: block;
+
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button,
+select {
+    cursor: pointer;
+}
+
+button {
+    border: 0;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================================
+   CONTAINER
+
+   1280px screen:
+   22px + 1236px + 22px
+
+   точно близько до desktop-макета
+========================================================== */
+

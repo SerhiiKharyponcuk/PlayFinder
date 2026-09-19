@@ -1,0 +1,24 @@
+/* ==========================================================
+   GAMES GRID — DESKTOP
+========================================================== */
+
+.games-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(6, minmax(0, 1fr));
+
+    gap: 9px;
+}
+
+
+/* homepage = maximum six */
+
+@media (min-width: 1200px) {
+
+    .games-grid .game-card:nth-child(n + 7) {
+        display: none;
+    }
+}
+
+

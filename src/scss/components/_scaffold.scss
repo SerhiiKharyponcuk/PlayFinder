@@ -1,0 +1,17 @@
+// hidden має працювати також на елементах із display: grid/flex.
+[hidden] { display: none !important; }
+
+.mobile-menu--open { display: block; }
+.page-state {
+  grid-column: 1 / -1;
+  padding: 16px;
+  color: var(--text-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.placeholder-page {
+  padding-block: 48px;
+  &__title { margin-top: 0; }
+  &__message { color: var(--text-soft); }
+  &__link { color: var(--accent); }
+}

@@ -1,0 +1,90 @@
+/* ==========================================================
+   DEAL LIST
+========================================================== */
+
+.deal-list {
+    padding: 4px;
+}
+
+.deal-item {
+    display: grid;
+
+    grid-template-columns:
+        51px minmax(0, 1fr);
+
+    align-items: center;
+
+    min-height: 57px;
+
+    gap: 8px;
+
+    padding: 4px;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, 0.025);
+}
+
+.deal-item:last-child {
+    border-bottom: 0;
+}
+
+.deal-item__image {
+    width: 51px;
+    height: 48px;
+
+    border-radius: 2px;
+
+    object-fit: cover;
+}
+
+.deal-item__content {
+    min-width: 0;
+}
+
+.deal-item__title {
+    display: block;
+
+    overflow: hidden;
+
+    color: #f2f4f5;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+.deal-item__platform {
+    display: block;
+
+    margin-top: 1px;
+
+    color: #74848a;
+
+    font-size: 8px;
+}
+
+.deal-item__price {
+    display: flex;
+
+    gap: 4px;
+
+    margin-top: 2px;
+
+    font-size: 8px;
+}
+
+.deal-item__price .deal-item__price-text {
+    color: #8d9a9f;
+}
+
+.deal-item__price .deal-item__price-value {
+    color: var(--mint);
+
+    font-size: 11px;
+}
+
+

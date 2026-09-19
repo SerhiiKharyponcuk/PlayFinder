@@ -1,0 +1,185 @@
+/* ==========================================================
+   LEFT SIDEBAR
+========================================================== */
+
+.catalog-sidebar {
+    grid-area: filters;
+
+    overflow: hidden;
+
+    border: 1px solid var(--line);
+
+    border-radius: var(--radius-card);
+
+    background: var(--panel);
+}
+
+.catalog-filter {
+    border-bottom: 1px solid var(--line);
+}
+
+.catalog-filter__title {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    min-height: 43px;
+
+    padding: 0 13px;
+
+    background: none;
+
+    color: #f2f4f5;
+
+    font-weight: 700;
+
+    font-size: 12px;
+}
+
+.catalog-filter__title .catalog-filter__title-icon {
+    color: #9aa7ac;
+
+    font-size: 9px;
+}
+
+.catalog-filter__body {
+    display: grid;
+
+    gap: 8px;
+
+    padding:
+        0 13px 13px;
+}
+
+
+/* Checkbox */
+
+.catalog-check {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-height: 16px;
+
+    color: #c5cdd0;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+.catalog-check .catalog-check__input {
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.catalog-check__box {
+    position: relative;
+
+    display: block;
+
+    width: 14px;
+    height: 14px;
+
+    flex: 0 0 auto;
+
+    border: 1px solid #728087;
+
+    border-radius: 2px;
+}
+
+.catalog-check .catalog-check__input:checked +
+.catalog-check__box {
+    border-color: var(--accent);
+
+    background: var(--accent);
+}
+
+.catalog-check .catalog-check__input:checked +
+.catalog-check__box::after {
+    content: "";
+
+    position: absolute;
+
+    left: 4px;
+    top: 1px;
+
+    width: 3px;
+    height: 7px;
+
+    border:
+        solid white;
+
+    border-width:
+        0 2px 2px 0;
+
+    transform: rotate(45deg);
+}
+
+.catalog-more {
+    justify-self: start;
+
+    margin-top: 3px;
+
+    padding: 0;
+
+    color: var(--accent);
+
+    background: none;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+.catalog-more .catalog-more__icon {
+    margin-left: 4px;
+
+    font-size: 8px;
+}
+
+
+/* Sort */
+
+.catalog-sort {
+    padding: 12px 13px;
+}
+
+.catalog-sort .catalog-sort__label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+.catalog-sort .catalog-sort__select {
+    width: 100%;
+    height: 32px;
+
+    padding-inline: 8px;
+
+    border: 1px solid #35464e;
+
+    border-radius: 3px;
+
+    outline: none;
+
+    color: #dce1e3;
+
+    background: #101f26;
+
+    font-size: 10px;
+}
+
+

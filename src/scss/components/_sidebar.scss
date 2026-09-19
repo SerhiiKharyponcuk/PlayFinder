@@ -1,0 +1,59 @@
+/* ==========================================================
+   RIGHT SIDEBAR
+========================================================== */
+
+.home-sidebar {
+    grid-area: sidebar;
+
+    display: grid;
+
+    gap: 11px;
+
+    align-content: start;
+}
+
+.sidebar-card {
+    overflow: hidden;
+
+    border: 1px solid var(--line);
+
+    border-radius: 4px;
+
+    background: var(--panel);
+}
+
+
+/* heading */
+
+.sidebar-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    height: 36px;
+
+    padding-inline: 11px;
+
+    border-bottom: 1px solid #15242b;
+}
+
+.sidebar-heading .sidebar-heading__title {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+.sidebar-heading .sidebar-heading__link {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: var(--accent);
+
+    font-size: 9px;
+}
+
+

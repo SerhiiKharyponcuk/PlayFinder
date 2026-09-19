@@ -1,0 +1,862 @@
+/* ==========================================================
+   TABLET
+   768px — 1199px
+========================================================== */
+
+@media (max-width: 1199px) {
+
+    .container {
+        width: calc(100% - 32px);
+    }
+
+
+    /* Header */
+
+    .nav {
+        display: none;
+    }
+
+    .header-search {
+        max-width: 320px;
+
+        margin-left: auto;
+    }
+
+    .mobile-menu-button {
+        display: grid;
+
+        place-items: center;
+
+        width: 36px;
+        height: 36px;
+
+        padding: 0;
+
+        color: #e4e8ea;
+
+        background: transparent;
+
+        font-size: 18px;
+    }
+
+
+    /* Main layout */
+
+    .home-grid {
+        grid-template-columns:
+            minmax(0, 1fr)
+            228px;
+
+        grid-template-areas:
+            "hero hero"
+            "quick quick"
+            "main sidebar";
+
+        column-gap: 12px;
+
+        row-gap: 12px;
+    }
+
+    .catalog-sidebar {
+        display: none;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        height: 249px;
+    }
+
+    .hero__content {
+        left: 22px;
+        top: 27px;
+
+        width: 410px;
+    }
+
+    .hero .hero__title {
+        font-size: 27px;
+    }
+
+
+    /* quick filters */
+
+    .quick-filters {
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
+        gap: 9px;
+    }
+
+    .quick-filter {
+        display: grid;
+
+        grid-template-columns:
+            32px minmax(0, 1fr);
+
+        align-items: center;
+
+        min-height: 56px;
+
+        padding:
+            7px 9px;
+
+        border: 1px solid var(--line);
+
+        border-radius: 4px;
+
+        background: var(--panel);
+    }
+
+    .quick-filter > .quick-filter__icon {
+        color: #dbe1e3;
+
+        font-size: 17px;
+    }
+
+    .quick-filter > .quick-filter__text {
+        min-width: 0;
+    }
+
+    .quick-filter .quick-filter__caption {
+        display: block;
+
+        color: #8b999f;
+
+        font-size: 8px;
+    }
+
+    .quick-filter .quick-filter__select {
+        width: 100%;
+
+        padding: 0;
+
+        border: 0;
+
+        outline: 0;
+
+        color: #eff2f3;
+
+        background: transparent;
+
+        font-size: 10px;
+    }
+
+
+    /* Cards become horizontal */
+
+    .games-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+    .games-grid .game-card:nth-child(n + 5) {
+        display: none;
+    }
+
+    .game-card {
+        display: grid;
+
+        grid-template-columns:
+            43% minmax(0, 1fr);
+
+        min-height: 111px;
+    }
+
+    .game-card__image {
+        height: 100%;
+
+        aspect-ratio: auto;
+    }
+
+    .game-card__body {
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        min-width: 0;
+
+        padding:
+            9px 8px;
+    }
+
+    .game-card__title {
+        min-height: auto;
+
+        margin-bottom: 5px;
+
+        font-size: 10px;
+    }
+
+    .game-card__price {
+        margin-top: auto;
+    }
+
+    .section-heading {
+        height: 28px;
+    }
+
+    .section-heading .section-heading__title {
+        font-size: 19px;
+    }
+
+
+    /* sidebar */
+
+    .sidebar-heading .sidebar-heading__title {
+        font-size: 12px;
+    }
+
+    .sidebar-deals .deal-item:nth-child(n + 6) {
+        display: none;
+    }
+}
+
+
+/* ==========================================================
+   MOBILE
+   375px reference
+========================================================== */
+
+@media (max-width: 767px) {
+
+    :root {
+        --header-height: 56px;
+    }
+
+    body {
+        padding-bottom: 61px;
+    }
+
+    .container {
+        width: calc(100% - 20px);
+    }
+
+
+    /* Header */
+
+    .header {
+        height: 56px;
+    }
+
+    .header__container {
+        gap: 7px;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    .logo__icon {
+        width: 34px;
+        height: 30px;
+
+        font-size: 17px;
+    }
+
+    .logo__name {
+        font-size: 18px;
+    }
+
+    .logo__slogan {
+        font-size: 4px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .header-search,
+    .nav,
+    .header-action:first-of-type,
+    .login-button {
+        display: none;
+    }
+
+    .header-action--favorite {
+        width: 34px;
+        height: 34px;
+
+        justify-content: center;
+
+        padding: 0;
+    }
+
+    .header-action--favorite .header-action__text {
+        display: none;
+    }
+
+    .header-action--favorite .header-action__icon {
+        font-size: 20px;
+    }
+
+    .mobile-menu-button {
+        width: 34px;
+        height: 34px;
+
+        font-size: 18px;
+    }
+
+
+    /* Main */
+
+    .home-page {
+        padding-top: 8px;
+    }
+
+    .home-grid {
+        display: grid;
+
+        grid-template-columns: minmax(0, 1fr);
+
+        grid-template-areas:
+            "search"
+            "hero"
+            "quick"
+            "main"
+            "sidebar";
+
+        gap: 9px;
+    }
+
+
+    /* Search */
+
+    .mobile-search {
+        display: flex;
+
+        align-items: center;
+
+        height: 42px;
+
+        padding-inline: 12px;
+
+        border: 1px solid #293942;
+
+        border-radius: 4px;
+
+        background: #0d1920;
+
+        gap: 10px;
+    }
+
+    .mobile-search .mobile-search__icon {
+        color: #b8c1c5;
+
+        font-size: 16px;
+    }
+
+    .mobile-search .mobile-search__input {
+        flex: 1;
+
+        min-width: 0;
+
+        border: 0;
+        outline: 0;
+
+        color: #fff;
+
+        background: transparent;
+
+        font-size: 11px;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        height: 235px;
+    }
+
+    .hero__background .hero__background-image {
+        object-position: 58% center;
+    }
+
+    .hero__shade {
+        background:
+            linear-gradient(
+                90deg,
+                rgba(4, 12, 16, 0.97) 0%,
+                rgba(4, 12, 16, 0.87) 38%,
+                rgba(4, 12, 16, 0.33) 72%,
+                rgba(4, 12, 16, 0.18) 100%
+            );
+    }
+
+    .hero__content {
+        left: 12px;
+        top: 18px;
+
+        width: 60%;
+    }
+
+    .hero__eyebrow {
+        margin-bottom: 6px;
+
+        font-size: 6px;
+
+        letter-spacing: 1.6px;
+    }
+
+    .hero .hero__title {
+        margin-bottom: 7px;
+
+        font-size: 20px;
+
+        line-height: 1.08;
+
+        letter-spacing: -0.5px;
+    }
+
+    .hero .hero__text {
+        margin-bottom: 11px;
+
+        font-size: 8px;
+
+        line-height: 1.35;
+    }
+
+    .hero__button {
+        width: 126px;
+        height: 31px;
+
+        gap: 9px;
+
+        font-size: 8px;
+    }
+
+    .hero__handwriting {
+        top: 25px;
+        right: 15px;
+
+        font-size: 10px;
+    }
+
+    .hero__features {
+        display: none;
+    }
+
+    .hero__dots {
+        right: 10px;
+        bottom: 8px;
+    }
+
+    .hero__dots .hero__dot {
+        width: 15px;
+    }
+
+
+    /* filters */
+
+    .quick-filters {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+
+        gap: 5px;
+    }
+
+    .quick-filter {
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 2px;
+
+        height: 54px;
+
+        min-width: 0;
+
+        padding: 4px;
+
+        text-align: center;
+    }
+
+    .quick-filter > .quick-filter__icon {
+        font-size: 15px;
+    }
+
+    .quick-filter .quick-filter__caption {
+        font-size: 6px;
+    }
+
+    .quick-filter .quick-filter__select {
+        max-width: 100%;
+
+        font-size: 7px;
+
+        text-align: center;
+    }
+
+
+    /* Sections */
+
+    .games-section {
+        margin-bottom: 13px;
+    }
+
+    .section-heading {
+        height: 29px;
+
+        margin-bottom: 3px;
+    }
+
+    .section-heading .section-heading__title {
+        font-size: 17px;
+    }
+
+    .section-heading .section-heading__link {
+        font-size: 8px;
+    }
+
+
+    /* ==============================================
+       POPULAR — MOBILE LIST
+    ============================================== */
+
+    .games-grid--popular {
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 6px;
+    }
+
+    .games-grid--popular
+    .game-card {
+        display: grid;
+
+        grid-template-columns:
+            42% minmax(0, 1fr);
+
+        height: 93px;
+
+        min-height: 0;
+    }
+
+    .games-grid--popular
+    .game-card:nth-child(n + 4) {
+        display: none;
+    }
+
+    .games-grid--popular
+    .game-card__image {
+        height: 100%;
+
+        aspect-ratio: auto;
+    }
+
+    .games-grid--popular
+    .game-card__body {
+        display: flex;
+
+        justify-content: center;
+
+        flex-direction: column;
+
+        padding:
+            7px 9px;
+    }
+
+    .games-grid--popular
+    .game-card__title {
+        font-size: 10px;
+    }
+
+    .games-grid--popular
+    .game-card__price .game-card__price-value {
+        font-size: 13px;
+    }
+
+    .games-grid--popular
+    .game-card__stores {
+        font-size: 7px;
+    }
+
+
+    /* ==============================================
+       NEW RELEASES — 3 COLUMNS
+    ============================================== */
+
+    .games-grid--releases {
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 6px;
+    }
+
+    .games-grid--releases
+    .game-card {
+        display: block;
+
+        height: auto;
+    }
+
+    .games-grid--releases
+    .game-card:nth-child(n + 4) {
+        display: none;
+    }
+
+    .games-grid--releases
+    .game-card__image {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 1.08 / 1;
+    }
+
+    .games-grid--releases
+    .game-card__body {
+        display: block;
+
+        padding:
+            6px 6px 7px;
+    }
+
+    .games-grid--releases
+    .game-card__title {
+        min-height: 26px;
+
+        margin-bottom: 3px;
+
+        font-size: 8px;
+    }
+
+    .games-grid--releases
+    .game-card__platforms {
+        min-height: 10px;
+
+        margin-bottom: 2px;
+
+        font-size: 7px;
+    }
+
+    .games-grid--releases
+    .game-card__price {
+        gap: 2px;
+    }
+
+    .games-grid--releases
+    .game-card__price .game-card__price-text {
+        font-size: 7px;
+    }
+
+    .games-grid--releases
+    .game-card__price .game-card__price-value {
+        font-size: 10px;
+    }
+
+    .games-grid--releases
+    .game-card__stores {
+        font-size: 6px;
+    }
+
+    .game-card__favorite {
+        top: 4px;
+        right: 4px;
+
+        width: 21px;
+        height: 21px;
+
+        font-size: 11px;
+    }
+
+
+    /* ==============================================
+       RIGHT SIDEBAR ON MOBILE
+
+       reference:
+       deals and why disappear,
+       newsletter remains
+    ============================================== */
+
+    .home-sidebar {
+        display: block;
+    }
+
+    .sidebar-deals,
+    .sidebar-why {
+        display: none;
+    }
+
+
+    /* Newsletter mobile */
+
+    .newsletter {
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            43%;
+
+        align-items: center;
+
+        gap: 8px;
+
+        padding: 10px;
+    }
+
+    .newsletter__header {
+        margin: 0;
+    }
+
+    .newsletter__header > .newsletter__header-icon {
+        font-size: 17px;
+    }
+
+    .newsletter .newsletter__title {
+        font-size: 10px;
+    }
+
+    .newsletter .newsletter__text {
+        font-size: 7px;
+    }
+
+    .newsletter .newsletter__input {
+        height: 27px;
+
+        font-size: 7px;
+    }
+
+    .newsletter .newsletter__button {
+        height: 28px;
+
+        font-size: 8px;
+    }
+
+
+    /* ==============================================
+       BOTTOM NAV
+    ============================================== */
+
+    .mobile-bottom-nav {
+        position: fixed;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        z-index: 1000;
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        height: 61px;
+
+        border-top: 1px solid #1e3038;
+
+        background:
+            rgba(7, 17, 22, 0.98);
+
+        backdrop-filter: blur(12px);
+    }
+
+    .mobile-bottom-nav .mobile-bottom-nav__link {
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        flex-direction: column;
+
+        gap: 3px;
+
+        color: #7f8d93;
+
+        font-size: 8px;
+    }
+
+    .mobile-bottom-nav .mobile-bottom-nav__icon {
+        font-size: 17px;
+    }
+
+    .mobile-bottom-nav .mobile-bottom-nav__link--active {
+        color: var(--accent);
+    }
+}
+
+
+/* ==========================================================
+   VERY SMALL MOBILE
+========================================================== */
+
+@media (max-width: 360px) {
+
+    .logo__slogan {
+        display: none;
+    }
+
+    .hero .hero__title {
+        font-size: 18px;
+    }
+
+    .hero__content {
+        width: 64%;
+    }
+
+    .quick-filter .quick-filter__select {
+        font-size: 6px;
+    }
+}
+
+
+/* ==========================================================
+   PERFORMANCE
+========================================================== */
+
+.games-section {
+    content-visibility: auto;
+
+    contain-intrinsic-size: auto 300px;
+}
+
+.game-card {
+    contain:
+        layout paint style;
+}
+
+.game-card__cover {
+    content-visibility: auto;
+}
+
+
+/* no desktop hover animation on touchscreen */
+
+@media (hover: none) {
+
+    .game-card:hover {
+        transform: none;
+    }
+}
+
+
+/* reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration:
+            0.01ms !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+    }
+}
+

@@ -1,0 +1,205 @@
+/* ==========================================================
+   FOOTER
+   Спільний футер PlayFinder як у макеті
+========================================================== */
+
+.footer {
+    margin-top: 18px;
+    border-top: 1px solid #16252c;
+    background: #061015;
+}
+
+.footer__inner {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    min-height: 72px;
+    gap: 42px;
+}
+
+/* Footer logo */
+
+.footer__logo {
+    flex-shrink: 0;
+    margin-right: 0;
+}
+
+.footer__logo .logo__icon {
+    width: 39px;
+    height: 33px;
+    font-size: 19px;
+}
+
+.footer__logo .logo__name {
+    font-size: 20px;
+}
+
+.footer__logo .logo__slogan {
+    margin-top: 4px;
+    font-size: 5px;
+    letter-spacing: 1.8px;
+}
+
+/* Footer navigation */
+
+.footer__nav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+}
+
+.footer__nav .footer__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 72px;
+    color: #aab5ba;
+    font-size: 10px;
+    white-space: nowrap;
+    transition: color 150ms ease;
+}
+
+.footer__nav .footer__link:hover {
+    color: #fff;
+}
+
+.footer__nav .footer__link--active {
+    color: var(--accent);
+}
+
+.footer__nav .footer__link--active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    height: 2px;
+    background: var(--accent);
+}
+
+/* Social links */
+
+.footer__socials {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer__socials .footer__socials-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b7c1c5;
+    font-size: 16px;
+    transition: color 150ms ease, transform 150ms ease;
+}
+
+.footer__socials .footer__socials-link:hover {
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* Copyright */
+
+.footer__copyright {
+    color: #7f8c92;
+    font-size: 9px;
+    line-height: 1.45;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.footer__copyright .footer__copyright-text {
+    display: inline;
+}
+
+/* Tablet footer */
+
+@media (max-width: 1199px) {
+    .footer__inner {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "footer-logo footer-socials"
+            "footer-logo footer-copy";
+        min-height: 86px;
+        column-gap: 20px;
+        row-gap: 2px;
+    }
+
+    .footer__logo {
+        grid-area: footer-logo;
+    }
+
+    .footer__nav {
+        display: none;
+    }
+
+    .footer__socials {
+        grid-area: footer-socials;
+        align-self: end;
+        justify-content: flex-end;
+        padding-bottom: 3px;
+    }
+
+    .footer__copyright {
+        grid-area: footer-copy;
+        align-self: start;
+    }
+}
+
+/* Mobile footer */
+
+@media (max-width: 767px) {
+    .footer {
+        margin-top: 12px;
+    }
+
+    .footer__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 68px;
+        gap: 14px;
+    }
+
+    .footer__nav,
+    .footer__socials {
+        display: none;
+    }
+
+    .footer__logo {
+        margin-right: 0;
+    }
+
+    .footer__logo .logo__icon {
+        width: 31px;
+        height: 27px;
+        border-radius: 7px;
+        font-size: 15px;
+    }
+
+    .footer__logo .logo__name {
+        font-size: 16px;
+    }
+
+    .footer__logo .logo__slogan {
+        display: block;
+        margin-top: 3px;
+        font-size: 4px;
+        letter-spacing: 1.1px;
+    }
+
+    .footer__copyright {
+        max-width: 130px;
+        font-size: 7px;
+        white-space: normal;
+        text-align: right;
+    }
+
+    .footer__copyright .footer__copyright-text {
+        display: block;
+    }
+}
+
+

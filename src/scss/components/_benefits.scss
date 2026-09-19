@@ -1,0 +1,57 @@
+/* ==========================================================
+   WHY
+========================================================== */
+
+.sidebar-why {
+    padding:
+        12px 11px 13px;
+}
+
+.sidebar-why > .sidebar-why__title {
+    margin:
+        0 0 10px;
+
+    font-size: 13px;
+}
+
+.why-row {
+    display: grid;
+
+    grid-template-columns:
+        28px 1fr;
+
+    align-items: center;
+
+    gap: 7px;
+
+    min-height: 40px;
+}
+
+.why-row > .why-row__icon {
+    color: var(--mint);
+
+    font-size: 18px;
+
+    text-align: center;
+}
+
+.why-row .why-row__value,
+.why-row .why-row__caption {
+    display: block;
+}
+
+.why-row .why-row__value {
+    color: #e7ecee;
+
+    font-size: 9px;
+}
+
+.why-row .why-row__caption {
+    margin-top: 1px;
+
+    color: #7f8e94;
+
+    font-size: 8px;
+}
+
+

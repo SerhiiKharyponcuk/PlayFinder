@@ -24,7 +24,6 @@
         Порівняння цін — PlayFinder
     </title>
 
-
     <!-- =====================================================
          PRECONNECT
     ====================================================== -->
@@ -33,7 +32,6 @@
         rel="preconnect"
         href="https://cdnjs.cloudflare.com"
     >
-
 
     <!-- =====================================================
          FONT AWESOME
@@ -44,21 +42,13 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
 
-
     <!-- =====================================================
          MAIN CSS
     ====================================================== -->
 
-    <link
-        rel="stylesheet"
-        href="/src/style.css"
-    >
-
 </head>
 
-
-<body>
-
+<body data-page="prices">
 
 <!-- =========================================================
      HEADER
@@ -67,7 +57,6 @@
 <header class="header">
 
     <div class="container header__container">
-
 
         <!-- Logo -->
 
@@ -84,7 +73,7 @@
             <span class="logo__content">
 
                 <span class="logo__name">
-                    Play<span>Finder</span>
+                    Play<span class="logo__name-text">Finder</span>
                 </span>
 
                 <span class="logo__slogan">
@@ -94,7 +83,6 @@
             </span>
 
         </a>
-
 
         <!-- Navigation -->
 
@@ -134,7 +122,6 @@
 
         </nav>
 
-
         <!-- Search -->
 
         <form
@@ -143,7 +130,7 @@
             role="search"
         >
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass header-search__icon"></i>
 
             <input
                 id="headerSearchInput"
@@ -151,7 +138,7 @@
                 placeholder="Пошук ігор, жанрів, видавців..."
                 autocomplete="off"
                 aria-label="Пошук ігор"
-            >
+             class="header-search__input">
 
             <div
                 class="search-results"
@@ -161,11 +148,9 @@
 
         </form>
 
-
         <!-- Actions -->
 
         <div class="header-actions">
-
 
             <button
                 class="header-action"
@@ -174,14 +159,13 @@
                 aria-label="Змінити мову"
             >
 
-                <i class="fa-solid fa-globe"></i>
+                <i class="fa-solid fa-globe header-action__icon"></i>
 
                 <span>UA</span>
 
-                <i class="fa-solid fa-chevron-down"></i>
+                <i class="fa-solid fa-chevron-down header-action__icon"></i>
 
             </button>
-
 
             <a
                 href="./favorites.html"
@@ -189,14 +173,13 @@
                 aria-label="Обране"
             >
 
-                <i class="fa-regular fa-heart"></i>
+                <i class="fa-regular fa-heart header-action__icon"></i>
 
-                <span>
+                <span class="header-action__text">
                     Обране
                 </span>
 
             </a>
-
 
             <a
                 href="./login.html"
@@ -211,15 +194,12 @@
 
             </a>
 
-
             <button
                 class="mobile-menu-button"
                 id="mobileMenuButton"
                 type="button"
                 aria-label="Відкрити меню"
-                aria-expanded="false"
-                aria-controls="mobileMenu"
-            >
+             data-menu-toggle aria-controls="mobile-menu" aria-expanded="false">
 
                 <i class="fa-solid fa-bars"></i>
 
@@ -231,52 +211,48 @@
 
 </header>
 
-
-
 <!-- =========================================================
      MOBILE MENU
 ========================================================= -->
 
 <div
     class="mobile-menu"
-    id="mobileMenu"
+    id="mobile-menu"
     hidden
->
+ data-mobile-menu>
 
     <nav>
 
-        <a href="./index.html">
+        <a href="./index.html" class="mobile-menu__link">
             Головна
         </a>
 
-        <a href="./games.html">
+        <a href="./games.html" class="mobile-menu__link">
             Ігри
         </a>
 
         <a
             href="./prices.html"
-            class="active"
+            class="mobile-menu__link mobile-menu__link--active"
         >
             Порівняння цін
         </a>
 
-        <a href="./favorites.html">
+        <a href="./favorites.html" class="mobile-menu__link">
             Обране
         </a>
 
-        <a href="./about.html">
+        <a href="./about.html" class="mobile-menu__link">
             Про нас
         </a>
 
-        <a href="./login.html">
+        <a href="./login.html" class="mobile-menu__link">
             Увійти
         </a>
 
     </nav>
 
 </div>
-
-
 
 <!-- =========================================================
      MOBILE SEARCH
@@ -292,7 +268,7 @@
             role="search"
         >
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-magnifying-glass mobile-search__icon"></i>
 
             <input
                 id="mobileSearchInput"
@@ -300,15 +276,13 @@
                 placeholder="Знайти гру для порівняння..."
                 autocomplete="off"
                 aria-label="Пошук гри"
-            >
+             class="mobile-search__input">
 
         </form>
 
     </div>
 
 </div>
-
-
 
 <!-- =========================================================
      MAIN
@@ -317,8 +291,6 @@
 <main class="prices-page">
 
     <div class="container prices-page__container">
-
-
 
         <!-- =================================================
              BREADCRUMBS
@@ -329,19 +301,17 @@
             aria-label="Breadcrumb"
         >
 
-            <a href="./index.html">
+            <a href="./index.html" class="breadcrumbs__link">
                 Головна
             </a>
 
-            <i class="fa-solid fa-chevron-right"></i>
+            <i class="fa-solid fa-chevron-right breadcrumbs__icon"></i>
 
-            <span>
+            <span class="breadcrumbs__text">
                 Порівняння цін
             </span>
 
         </nav>
-
-
 
         <!-- =================================================
              PAGE HEADER
@@ -355,27 +325,26 @@
                     ЗНАЙДІТЬ НАЙКРАЩУ ПРОПОЗИЦІЮ
                 </span>
 
-                <h1>
+                <h1 class="prices-header__title">
                     Порівняння цін
                 </h1>
 
-                <p>
+                <p class="prices-header__text">
                     Оберіть гру та порівняйте актуальні ціни
                     в різних магазинах.
                 </p>
 
             </div>
 
-
             <div class="prices-header__stats">
 
                 <div>
 
-                    <strong id="storesCount">
+                    <strong id="storesCount" class="prices-header__stats-value">
                         30+
                     </strong>
 
-                    <span>
+                    <span class="prices-header__stats-text">
                         магазинів
                     </span>
 
@@ -383,11 +352,11 @@
 
                 <div>
 
-                    <strong id="gamesCount">
+                    <strong id="gamesCount" class="prices-header__stats-value">
                         10 000+
                     </strong>
 
-                    <span>
+                    <span class="prices-header__stats-text">
                         ігор
                     </span>
 
@@ -395,11 +364,11 @@
 
                 <div>
 
-                    <strong>
+                    <strong class="prices-header__stats-value">
                         EUR
                     </strong>
 
-                    <span>
+                    <span class="prices-header__stats-text">
                         основна валюта
                     </span>
 
@@ -409,8 +378,6 @@
 
         </section>
 
-
-
         <!-- =================================================
              GAME SEARCH / SELECT
         ================================================== -->
@@ -419,12 +386,11 @@
 
             <div class="price-game-search__content">
 
-                <i class="fa-solid fa-magnifying-glass"></i>
-
+                <i class="fa-solid fa-magnifying-glass price-game-search__content-icon"></i>
 
                 <div>
 
-                    <label for="priceGameSearch">
+                    <label for="priceGameSearch" class="price-game-search__label">
                         Знайдіть гру
                     </label>
 
@@ -433,20 +399,18 @@
                         type="search"
                         placeholder="Наприклад: Grand Theft Auto V"
                         autocomplete="off"
-                    >
+                     class="price-game-search__input">
 
                 </div>
-
 
                 <button
                     id="priceGameSearchButton"
                     type="button"
-                >
+                 class="price-game-search__content-button">
                     Знайти
                 </button>
 
             </div>
-
 
             <div
                 class="price-game-search__results"
@@ -455,8 +419,6 @@
             ></div>
 
         </section>
-
-
 
         <!-- =================================================
              SELECTED GAME
@@ -467,22 +429,19 @@
             id="selectedPriceGame"
         >
 
-
             <!-- Cover -->
 
             <div class="price-game-card__cover">
 
                 <img
                     id="priceGameCover"
-                    src="./assets/images/placeholders/game-placeholder.webp"
+                    src="/images/game-placeholder.svg"
                     alt=""
                     width="420"
                     height="420"
-                >
+                 class="price-game-card__cover-image">
 
             </div>
-
-
 
             <!-- Info -->
 
@@ -496,12 +455,11 @@
                             ОБРАНА ГРА
                         </span>
 
-                        <h2 id="priceGameTitle">
+                        <h2 id="priceGameTitle" class="price-game-card__title">
                             Grand Theft Auto V
                         </h2>
 
                     </div>
-
 
                     <button
                         class="price-game-card__favorite"
@@ -516,28 +474,24 @@
 
                 </div>
 
-
-
                 <div
                     class="price-game-card__genres"
                     id="priceGameGenres"
                 >
 
-                    <span>
+                    <span class="price-game-card__genres-text">
                         Екшен
                     </span>
 
-                    <span>
+                    <span class="price-game-card__genres-text">
                         Пригоди
                     </span>
 
-                    <span>
+                    <span class="price-game-card__genres-text">
                         Відкритий світ
                     </span>
 
                 </div>
-
-
 
                 <p
                     class="price-game-card__description"
@@ -547,41 +501,37 @@
                     і безмежні можливості.
                 </p>
 
-
-
                 <div class="price-game-card__meta">
 
-                    <span>
+                    <span class="price-game-card__meta-text">
 
-                        <i class="fa-solid fa-building"></i>
+                        <i class="fa-solid fa-building price-game-card__meta-icon"></i>
 
-                        <strong id="priceGameDeveloper">
+                        <strong id="priceGameDeveloper" class="price-game-card__meta-value">
                             Rockstar Games
                         </strong>
 
                     </span>
 
+                    <span class="price-game-card__meta-text">
 
-                    <span>
+                        <i class="fa-regular fa-calendar price-game-card__meta-icon"></i>
 
-                        <i class="fa-regular fa-calendar"></i>
-
-                        <strong id="priceGameRelease">
+                        <strong id="priceGameRelease" class="price-game-card__meta-value">
                             2015
                         </strong>
 
                     </span>
 
-
                     <span
                         id="priceGamePlatforms"
-                    >
+                     class="price-game-card__meta-text">
 
-                        <i class="fa-brands fa-windows"></i>
+                        <i class="fa-brands fa-windows price-game-card__meta-icon"></i>
 
-                        <i class="fa-brands fa-playstation"></i>
+                        <i class="fa-brands fa-playstation price-game-card__meta-icon"></i>
 
-                        <i class="fa-brands fa-xbox"></i>
+                        <i class="fa-brands fa-xbox price-game-card__meta-icon"></i>
 
                     </span>
 
@@ -589,27 +539,23 @@
 
             </div>
 
-
-
             <!-- Rating -->
 
             <div class="price-game-card__rating">
 
-                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star price-game-card__rating-icon"></i>
 
-                <strong id="priceGameRating">
+                <strong id="priceGameRating" class="price-game-card__rating-value">
                     4.7
                 </strong>
 
-                <span id="priceGameRatingsCount">
+                <span id="priceGameRatingsCount" class="price-game-card__rating-text">
                     (450K)
                 </span>
 
             </div>
 
         </section>
-
-
 
         <!-- =================================================
              GAME NAV TABS
@@ -661,15 +607,11 @@
 
         </nav>
 
-
-
         <!-- =================================================
              MAIN PRICE LAYOUT
         ================================================== -->
 
         <div class="price-layout">
-
-
 
             <!-- =============================================
                  MAIN COLUMN
@@ -677,24 +619,21 @@
 
             <div class="price-main">
 
-
-
                 <!-- =========================================
                      TITLE + FILTERS
                 ========================================== -->
 
                 <section class="price-comparison">
 
-
                     <header class="price-comparison__header">
 
                         <div>
 
-                            <h2>
+                            <h2 class="price-comparison__header-title">
                                 Порівняння цін
                             </h2>
 
-                            <p>
+                            <p class="price-comparison__header-text">
                                 Знайдено
 
                                 <strong id="offersFoundCount">
@@ -708,22 +647,19 @@
 
                     </header>
 
-
-
                     <!-- Filters -->
 
                     <div class="price-comparison__filters">
-
 
                         <!-- Edition -->
 
                         <label class="price-filter">
 
-                            <span>
+                            <span class="price-filter__text">
                                 Видання
                             </span>
 
-                            <select id="priceEditionFilter">
+                            <select id="priceEditionFilter" class="price-filter__select">
 
                                 <option value="standard">
                                     Standard Edition
@@ -741,17 +677,15 @@
 
                         </label>
 
-
-
                         <!-- Region -->
 
                         <label class="price-filter">
 
-                            <span>
+                            <span class="price-filter__text">
                                 Регіон
                             </span>
 
-                            <select id="priceRegionFilter">
+                            <select id="priceRegionFilter" class="price-filter__select">
 
                                 <option value="all">
                                     Усі регіони
@@ -773,17 +707,15 @@
 
                         </label>
 
-
-
                         <!-- Currency -->
 
                         <label class="price-filter">
 
-                            <span>
+                            <span class="price-filter__text">
                                 Валюта
                             </span>
 
-                            <select id="priceCurrencyFilter">
+                            <select id="priceCurrencyFilter" class="price-filter__select">
 
                                 <option value="EUR">
                                     EUR
@@ -803,8 +735,6 @@
 
                     </div>
 
-
-
                     <!-- =====================================
                          STORE OFFERS
                     ====================================== -->
@@ -813,8 +743,6 @@
                         class="price-offers"
                         id="priceOffers"
                     ></div>
-
-
 
                     <!-- Loading -->
 
@@ -836,8 +764,6 @@
 
                     </div>
 
-
-
                     <!-- Empty -->
 
                     <div
@@ -846,21 +772,19 @@
                         hidden
                     >
 
-                        <i class="fa-solid fa-tag"></i>
+                        <i class="fa-solid fa-tag price-empty__icon"></i>
 
-                        <h3>
+                        <h3 class="price-empty__subtitle">
                             Пропозицій не знайдено
                         </h3>
 
-                        <p>
+                        <p class="price-empty__text">
                             Спробуйте змінити регіон або видання гри.
                         </p>
 
                     </div>
 
                 </section>
-
-
 
                 <!-- =========================================
                      PRICE HISTORY
@@ -872,18 +796,17 @@
 
                         <div>
 
-                            <h2>
+                            <h2 class="price-section-heading__title">
                                 Історія ціни
                             </h2>
 
-                            <p>
+                            <p class="price-section-heading__text">
                                 Як змінювалася найнижча ціна
                             </p>
 
                         </div>
 
-
-                        <select id="priceHistoryPeriod">
+                        <select id="priceHistoryPeriod" class="price-section-heading__select">
 
                             <option value="30">
                                 30 днів
@@ -905,49 +828,45 @@
 
                     </header>
 
-
                     <div class="price-history__summary">
 
                         <div>
 
-                            <span>
+                            <span class="price-history__summary-text">
                                 Поточна
                             </span>
 
-                            <strong id="currentLowestPrice">
+                            <strong id="currentLowestPrice" class="price-history__summary-value">
                                 €19.99
                             </strong>
 
                         </div>
 
-
                         <div>
 
-                            <span>
+                            <span class="price-history__summary-text">
                                 Найнижча
                             </span>
 
-                            <strong id="historicalLowestPrice">
+                            <strong id="historicalLowestPrice" class="price-history__summary-value">
                                 €14.99
                             </strong>
 
                         </div>
 
-
                         <div>
 
-                            <span>
+                            <span class="price-history__summary-text">
                                 Середня
                             </span>
 
-                            <strong id="averagePrice">
+                            <strong id="averagePrice" class="price-history__summary-value">
                                 €27.43
                             </strong>
 
                         </div>
 
                     </div>
-
 
                     <!-- Chart -->
 
@@ -966,15 +885,11 @@
 
             </div>
 
-
-
             <!-- =============================================
                  RIGHT SIDEBAR
             ============================================== -->
 
             <aside class="price-sidebar">
-
-
 
                 <!-- =========================================
                      ALERT
@@ -988,23 +903,20 @@
 
                     </div>
 
-
-                    <h2>
+                    <h2 class="price-alert__title">
                         Повідомити про
                         <br>
                         зниження ціни
                     </h2>
 
-
-                    <p>
+                    <p class="price-alert__text">
                         Отримайте сповіщення,
                         коли ціна стане нижчою.
                     </p>
 
+                    <form id="priceAlertForm" class="price-alert__form">
 
-                    <form id="priceAlertForm">
-
-                        <label for="priceAlertEmail">
+                        <label for="priceAlertEmail" class="price-alert__label">
                             Email
                         </label>
 
@@ -1014,16 +926,15 @@
                             placeholder="Ваш email"
                             autocomplete="email"
                             required
-                        >
+                         class="price-alert__input">
 
-
-                        <label for="targetPrice">
+                        <label for="targetPrice" class="price-alert__label">
                             Бажана ціна
                         </label>
 
                         <div class="price-alert__price-input">
 
-                            <span>
+                            <span class="price-alert__price-input-text">
                                 €
                             </span>
 
@@ -1033,20 +944,17 @@
                                 min="0"
                                 step="0.01"
                                 placeholder="15.00"
-                            >
+                             class="price-alert__input price-alert__price-input-input">
 
                         </div>
 
-
-                        <button type="submit">
+                        <button type="submit" class="price-alert__button">
                             Стежити за ціною
                         </button>
 
                     </form>
 
                 </section>
-
-
 
                 <!-- =========================================
                      BEST PRICE
@@ -1058,7 +966,6 @@
                         НАЙКРАЩА ЦІНА
                     </span>
 
-
                     <strong
                         class="price-best__value"
                         id="sidebarBestPrice"
@@ -1066,14 +973,12 @@
                         €19.99
                     </strong>
 
-
                     <span
                         class="price-best__store"
                         id="sidebarBestStore"
                     >
                         Steam
                     </span>
-
 
                     <span
                         class="price-best__saving"
@@ -1084,8 +989,6 @@
 
                 </section>
 
-
-
                 <!-- =========================================
                      SIMILAR GAMES
                 ========================================== -->
@@ -1094,19 +997,17 @@
 
                     <header class="price-sidebar-heading">
 
-                        <h2>
+                        <h2 class="price-sidebar-heading__title">
                             Схожі ігри
                         </h2>
 
-
-                        <a href="./games.html">
+                        <a href="./games.html" class="price-sidebar-heading__link">
                             Всі
 
                             <i class="fa-solid fa-arrow-right"></i>
                         </a>
 
                     </header>
-
 
                     <div
                         class="price-similar-games"
@@ -1123,8 +1024,6 @@
 
 </main>
 
-
-
 <!-- =========================================================
      FOOTER
 ========================================================= -->
@@ -1132,7 +1031,6 @@
 <footer class="footer">
 
     <div class="container footer__inner">
-
 
         <!-- Logo -->
 
@@ -1146,11 +1044,10 @@
                 <i class="fa-solid fa-gamepad"></i>
             </span>
 
-
             <span class="logo__content">
 
                 <span class="logo__name">
-                    Play<span>Finder</span>
+                    Play<span class="logo__name-text">Finder</span>
                 </span>
 
                 <span class="logo__slogan">
@@ -1161,8 +1058,6 @@
 
         </a>
 
-
-
         <!-- Navigation -->
 
         <nav
@@ -1170,28 +1065,26 @@
             aria-label="Навігація у футері"
         >
 
-            <a href="./index.html">
+            <a href="./index.html" class="footer__link">
                 Головна
             </a>
 
-            <a href="./games.html">
+            <a href="./games.html" class="footer__link">
                 Ігри
             </a>
 
             <a
                 href="./prices.html"
-                class="active"
+                class="footer__link footer__link--active"
             >
                 Порівняння цін
             </a>
 
-            <a href="./about.html">
+            <a href="./about.html" class="footer__link">
                 Про нас
             </a>
 
         </nav>
-
-
 
         <!-- Socials -->
 
@@ -1200,37 +1093,32 @@
             <a
                 href="#"
                 aria-label="Discord"
-            >
+             class="footer__socials-link">
                 <i class="fa-brands fa-discord"></i>
             </a>
-
 
             <a
                 href="#"
                 aria-label="YouTube"
-            >
+             class="footer__socials-link">
                 <i class="fa-brands fa-youtube"></i>
             </a>
-
 
             <a
                 href="#"
                 aria-label="X"
-            >
+             class="footer__socials-link">
                 <i class="fa-brands fa-x-twitter"></i>
             </a>
-
 
             <a
                 href="#"
                 aria-label="Instagram"
-            >
+             class="footer__socials-link">
                 <i class="fa-brands fa-instagram"></i>
             </a>
 
         </div>
-
-
 
         <!-- Copyright -->
 
@@ -1238,7 +1126,7 @@
 
             © 2026 PlayFinder.
 
-            <span>
+            <span class="footer__copyright-text">
                 Усі права захищені.
             </span>
 
@@ -1247,8 +1135,6 @@
     </div>
 
 </footer>
-
-
 
 <!-- =========================================================
      MOBILE BOTTOM NAVIGATION
@@ -1259,9 +1145,9 @@
     aria-label="Мобільна навігація"
 >
 
-    <a href="./index.html">
+    <a href="./index.html" class="mobile-bottom-nav__link">
 
-        <i class="fa-solid fa-house"></i>
+        <i class="fa-solid fa-house mobile-bottom-nav__icon"></i>
 
         <span>
             Головна
@@ -1269,10 +1155,9 @@
 
     </a>
 
+    <a href="./games.html" class="mobile-bottom-nav__link">
 
-    <a href="./games.html">
-
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <i class="fa-solid fa-magnifying-glass mobile-bottom-nav__icon"></i>
 
         <span>
             Пошук
@@ -1280,10 +1165,9 @@
 
     </a>
 
+    <a href="./favorites.html" class="mobile-bottom-nav__link">
 
-    <a href="./favorites.html">
-
-        <i class="fa-regular fa-heart"></i>
+        <i class="fa-regular fa-heart mobile-bottom-nav__icon"></i>
 
         <span>
             Обране
@@ -1291,10 +1175,9 @@
 
     </a>
 
+    <a href="./login.html" class="mobile-bottom-nav__link">
 
-    <a href="./login.html">
-
-        <i class="fa-regular fa-user"></i>
+        <i class="fa-regular fa-user mobile-bottom-nav__icon"></i>
 
         <span>
             Увійти
@@ -1303,8 +1186,6 @@
     </a>
 
 </nav>
-
-
 
 <!-- =========================================================
      PRICE OFFER TEMPLATE
@@ -1316,7 +1197,6 @@
         class="price-offer"
         data-offer-id=""
     >
-
 
         <!-- Store -->
 
@@ -1330,17 +1210,15 @@
                     width="36"
                     height="36"
                     loading="lazy"
-                >
+                 class="price-offer__logo-image">
 
             </div>
-
 
             <div>
 
                 <strong
                     class="price-offer__store-name"
                 ></strong>
-
 
                 <span
                     class="price-offer__region"
@@ -1349,8 +1227,6 @@
             </div>
 
         </div>
-
-
 
         <!-- Edition -->
 
@@ -1363,14 +1239,11 @@
                 Найкраща ціна
             </span>
 
-
             <span
                 class="price-offer__edition-name"
             ></span>
 
         </div>
-
-
 
         <!-- Price -->
 
@@ -1381,14 +1254,11 @@
                 hidden
             ></span>
 
-
             <strong
                 class="price-offer__current-price"
             ></strong>
 
         </div>
-
-
 
         <!-- Discount -->
 
@@ -1396,8 +1266,6 @@
             class="price-offer__discount"
             hidden
         ></div>
-
-
 
         <!-- Button -->
 
@@ -1410,15 +1278,13 @@
 
             Перейти
 
-            <i class="fa-solid fa-arrow-right"></i>
+            <i class="fa-solid fa-arrow-right price-offer__button-icon"></i>
 
         </a>
 
     </article>
 
 </template>
-
-
 
 <!-- =========================================================
      SEARCH GAME RESULT TEMPLATE
@@ -1432,7 +1298,6 @@
         data-game-id=""
     >
 
-
         <img
             class="price-search-result__cover"
             src=""
@@ -1442,28 +1307,23 @@
             loading="lazy"
         >
 
-
         <div>
 
             <strong
-                class="price-search-result__title"
+                class="price-search-result__title price-search-result__value"
             ></strong>
 
-
             <span
-                class="price-search-result__meta"
+                class="price-search-result__meta price-search-result__text"
             ></span>
 
         </div>
 
-
-        <i class="fa-solid fa-chevron-right"></i>
+        <i class="fa-solid fa-chevron-right price-search-result__icon"></i>
 
     </button>
 
 </template>
-
-
 
 <!-- =========================================================
      SIMILAR GAME TEMPLATE
@@ -1477,7 +1337,6 @@
         data-game-id=""
     >
 
-
         <img
             class="price-similar-game__image"
             src=""
@@ -1487,15 +1346,13 @@
             loading="lazy"
         >
 
-
         <div>
 
             <strong
-                class="price-similar-game__title"
+                class="price-similar-game__title price-similar-game__value"
             ></strong>
 
-
-            <span>
+            <span class="price-similar-game__text">
 
                 Від
 
@@ -1507,99 +1364,21 @@
 
         </div>
 
-
-        <i class="fa-solid fa-chevron-right"></i>
+        <i class="fa-solid fa-chevron-right price-similar-game__icon"></i>
 
     </a>
 
 </template>
 
-
-
 <!-- =========================================================
      API CONFIG
 ========================================================= -->
-
-<script>
-
-    window.PLAYFINDER_CONFIG = {
-
-        locale: "uk-UA",
-
-        currency: "EUR",
-
-
-        api: {
-
-            baseUrl: "/api",
-
-
-            endpoints: {
-
-                games:
-                    "/games",
-
-                search:
-                    "/games/search",
-
-                prices:
-                    "/prices",
-
-                priceHistory:
-                    "/prices/history",
-
-                stores:
-                    "/stores",
-
-                similar:
-                    "/games/similar",
-
-                priceAlerts:
-                    "/price-alerts"
-
-            }
-
-        },
-
-
-        prices: {
-
-            defaultRegion:
-                "all",
-
-            defaultCurrency:
-                "EUR",
-
-            defaultEdition:
-                "standard",
-
-            historyPeriod:
-                30
-
-        }
-
-    };
-
-</script>
-
-
 
 <!-- =========================================================
      JAVASCRIPT
 ========================================================= -->
 
-<script
-    type="module"
-    src="./js/app.js"
-></script>
-
-
-<script
-    type="module"
-    src="./js/prices.js"
-></script>
-
-
+<script type="module" src="/src/main.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,61 @@
+/* ==========================================================
+   MAIN CONTENT
+========================================================== */
+
+.home-main {
+    grid-area: main;
+
+    min-width: 0;
+}
+
+.games-section {
+    margin-bottom: 16px;
+
+    content-visibility: auto;
+
+    contain-intrinsic-size: auto 240px;
+}
+
+
+/* Heading */
+
+.section-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    height: 30px;
+
+    margin-bottom: 6px;
+}
+
+.section-heading .section-heading__title {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 20px;
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -0.4px;
+}
+
+.section-heading .section-heading__link {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color: var(--accent);
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+

@@ -1,0 +1,2458 @@
+/* ==========================================================
+   PLAYFINDER
+   PRICE COMPARISON PAGE
+   prices.html
+
+========================================================== */
+
+
+/* ==========================================================
+   PAGE
+========================================================== */
+
+.prices-page {
+    padding:
+        12px 0 28px;
+}
+
+.prices-page__container {
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   MOBILE SEARCH
+========================================================== */
+
+.prices-mobile-search-wrap {
+    display: none;
+}
+
+
+/* ==========================================================
+   PAGE HEADER
+========================================================== */
+
+.prices-header {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    min-height: 116px;
+
+    padding:
+        22px 24px;
+
+    margin-bottom: 12px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            120deg,
+            #0c191f 0%,
+            #0b171d 55%,
+            #101d23 100%
+        );
+}
+
+.prices-header__eyebrow {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--mint);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 2.4px;
+}
+
+.prices-header .prices-header__title {
+    margin:
+        0 0 5px;
+
+    color: #f5f7f8;
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+    line-height: 1.05;
+
+    letter-spacing: -0.8px;
+}
+
+.prices-header .prices-header__text {
+    margin: 0;
+
+    color: #9dabb1;
+
+    font-size: 11px;
+}
+
+
+/* stats */
+
+.prices-header__stats {
+    display: flex;
+
+    align-items: center;
+
+    gap: 38px;
+
+    flex: 0 0 auto;
+}
+
+.prices-header__stats > div {
+    position: relative;
+
+    min-width: 70px;
+}
+
+.prices-header__stats > div:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    top: 2px;
+    right: -19px;
+
+    width: 1px;
+    height: 32px;
+
+    background: #25353d;
+}
+
+.prices-header__stats .prices-header__stats-value,
+.prices-header__stats .prices-header__stats-text {
+    display: block;
+}
+
+.prices-header__stats .prices-header__stats-value {
+    color: var(--accent);
+
+    font-size: 18px;
+
+    line-height: 1.1;
+}
+
+.prices-header__stats .prices-header__stats-text {
+    margin-top: 3px;
+
+    color: #78888e;
+
+    font-size: 8px;
+}
+
+
+/* ==========================================================
+   GAME SEARCH
+========================================================== */
+
+.price-game-search {
+    position: relative;
+
+    z-index: 20;
+
+    margin-bottom: 12px;
+}
+
+.price-game-search__content {
+    display: grid;
+
+    grid-template-columns:
+        30px
+        minmax(0, 1fr)
+        95px;
+
+    align-items: center;
+
+    min-height: 60px;
+
+    padding:
+        8px 10px 8px 15px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 4px;
+
+    background: var(--panel);
+}
+
+.price-game-search__content > .price-game-search__content-icon {
+    color: #9daab0;
+
+    font-size: 16px;
+}
+
+.price-game-search__content > div {
+    min-width: 0;
+}
+
+.price-game-search .price-game-search__label {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #89989e;
+
+    font-size: 8px;
+}
+
+.price-game-search .price-game-search__input {
+    width: 100%;
+
+    padding: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: #f2f4f5;
+
+    font-size: 12px;
+}
+
+.price-game-search .price-game-search__input::placeholder {
+    color: #65767d;
+}
+
+.price-game-search__content > .price-game-search__content-button {
+    height: 36px;
+
+    border-radius: 3px;
+
+    background: var(--accent);
+
+    color: #071116;
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+
+/* search results */
+
+.price-game-search__results {
+    position: absolute;
+
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+
+    z-index: 50;
+
+    max-height: 330px;
+
+    overflow-y: auto;
+
+    padding: 5px;
+
+    border:
+        1px solid #2d4048;
+
+    border-radius: 4px;
+
+    background: #09151b;
+
+    box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, 0.5);
+}
+
+.price-search-result {
+    display: grid;
+
+    grid-template-columns:
+        48px
+        minmax(0, 1fr)
+        20px;
+
+    align-items: center;
+
+    gap: 9px;
+
+    width: 100%;
+
+    min-height: 56px;
+
+    padding: 5px;
+
+    border-radius: 3px;
+
+    background: transparent;
+
+    color: inherit;
+
+    text-align: left;
+}
+
+.price-search-result:hover {
+    background: #102027;
+}
+
+.price-search-result__cover {
+    width: 48px;
+    height: 48px;
+
+    object-fit: cover;
+
+    border-radius: 2px;
+}
+
+.price-search-result .price-search-result__value {
+    display: block;
+
+    overflow: hidden;
+
+    color: #eef2f3;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+.price-search-result .price-search-result__text {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #78878d;
+
+    font-size: 8px;
+}
+
+.price-search-result > .price-search-result__icon {
+    color: #687980;
+
+    font-size: 8px;
+}
+
+
+/* ==========================================================
+   SELECTED GAME
+========================================================== */
+
+.price-game-card {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        148px
+        minmax(0, 1fr)
+        92px;
+
+    min-height: 148px;
+
+    overflow: hidden;
+
+    margin-bottom: 10px;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #0b171d 0%,
+            #0e1c23 100%
+        );
+}
+
+
+/* cover */
+
+.price-game-card__cover {
+    width: 148px;
+    height: 100%;
+
+    min-height: 148px;
+
+    overflow: hidden;
+
+    background: #101b20;
+}
+
+.price-game-card__cover .price-game-card__cover-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* info */
+
+.price-game-card__info {
+    min-width: 0;
+
+    padding:
+        16px 18px;
+}
+
+.price-game-card__top {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.price-game-card__label {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: var(--accent);
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.price-game-card .price-game-card__title {
+    margin: 0;
+
+    color: #f4f6f7;
+
+    font-size: 23px;
+
+    line-height: 1.1;
+
+    letter-spacing: -0.5px;
+}
+
+.price-game-card__favorite {
+    display: grid;
+
+    place-items: center;
+
+    width: 30px;
+    height: 30px;
+
+    flex: 0 0 auto;
+
+    padding: 0;
+
+    border:
+        1px solid #2d3e46;
+
+    border-radius: 50%;
+
+    background: #0d1a20;
+
+    color: var(--accent);
+
+    font-size: 15px;
+}
+
+
+/* genres */
+
+.price-game-card__genres {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 5px;
+
+    margin-top: 9px;
+}
+
+.price-game-card__genres .price-game-card__genres-text {
+    padding:
+        3px 7px;
+
+    border:
+        1px solid #2c3e46;
+
+    border-radius: 3px;
+
+    color: #9faeb4;
+
+    font-size: 7px;
+}
+
+
+/* description */
+
+.price-game-card__description {
+    max-width: 610px;
+
+    margin:
+        10px 0 9px;
+
+    color: #a7b3b8;
+
+    font-size: 9px;
+
+    line-height: 1.45;
+}
+
+
+/* meta */
+
+.price-game-card__meta {
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    color: #829198;
+
+    font-size: 8px;
+}
+
+.price-game-card__meta > .price-game-card__meta-text {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+.price-game-card__meta .price-game-card__meta-value {
+    color: #aeb9bd;
+
+    font-weight: 500;
+}
+
+.price-game-card__meta .price-game-card__meta-icon {
+    color: #9aa7ad;
+}
+
+
+/* rating */
+
+.price-game-card__rating {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    align-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 4px;
+
+    padding:
+        20px 10px;
+
+    border-left:
+        1px solid #1f3037;
+
+    color: #89979d;
+
+    font-size: 8px;
+
+    text-align: center;
+}
+
+.price-game-card__rating .price-game-card__rating-icon {
+    width: 100%;
+
+    color: var(--yellow);
+
+    font-size: 16px;
+}
+
+.price-game-card__rating .price-game-card__rating-value {
+    color: #f3f5f6;
+
+    font-size: 17px;
+}
+
+
+/* ==========================================================
+   GAME TABS
+========================================================== */
+
+.price-tabs {
+    display: flex;
+
+    align-items: stretch;
+
+    min-height: 42px;
+
+    margin-bottom: 12px;
+
+    overflow-x: auto;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 4px;
+
+    background: var(--panel);
+
+    scrollbar-width: none;
+}
+
+.price-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.price-tabs__item {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 auto;
+
+    min-width: 126px;
+
+    padding:
+        0 15px;
+
+    border-right:
+        1px solid #1b2b32;
+
+    background: transparent;
+
+    color: #9ba9af;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+}
+
+.price-tabs__item:hover {
+    color: #f1f4f5;
+}
+
+.price-tabs__item--active {
+    color: #f4f6f7;
+
+    background:
+        rgba(255, 111, 97, 0.04);
+}
+
+.price-tabs__item--active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+
+    height: 2px;
+
+    background: var(--accent);
+}
+
+
+/* ==========================================================
+   MAIN PRICE LAYOUT
+========================================================== */
+
+.price-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        232px;
+
+    gap: 12px;
+
+    align-items: start;
+}
+
+.price-main {
+    min-width: 0;
+}
+
+.price-sidebar {
+    display: grid;
+
+    gap: 10px;
+}
+
+
+/* ==========================================================
+   PRICE COMPARISON
+========================================================== */
+
+.price-comparison {
+    overflow: hidden;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 4px;
+
+    background: var(--panel);
+}
+
+
+/* heading */
+
+.price-comparison__header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 57px;
+
+    padding:
+        10px 14px;
+
+    border-bottom:
+        1px solid #1a2a31;
+}
+
+.price-comparison__header .price-comparison__header-title {
+    margin:
+        0 0 2px;
+
+    color: #f2f4f5;
+
+    font-size: 17px;
+}
+
+.price-comparison__header .price-comparison__header-text {
+    margin: 0;
+
+    color: #7c8c92;
+
+    font-size: 8px;
+}
+
+.price-comparison__header .price-comparison__header-text strong {
+    color: #a8b5ba;
+
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   COMPARISON FILTERS
+========================================================== */
+
+.price-comparison__filters {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 9px;
+
+    padding:
+        10px 13px;
+
+    border-bottom:
+        1px solid #1a2a31;
+
+    background: #0a161c;
+}
+
+.price-filter {
+    min-width: 0;
+}
+
+.price-filter > .price-filter__text {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #7f8e94;
+
+    font-size: 7px;
+}
+
+.price-filter .price-filter__select {
+    width: 100%;
+    height: 31px;
+
+    padding:
+        0 27px 0 8px;
+
+    border:
+        1px solid #30434b;
+
+    border-radius: 3px;
+
+    outline: 0;
+
+    background: #0f1e24;
+
+    color: #d6dddf;
+
+    font-size: 9px;
+}
+
+.price-filter .price-filter__select:focus {
+    border-color: var(--accent);
+}
+
+
+/* ==========================================================
+   PRICE OFFERS
+========================================================== */
+
+.price-offers {
+    display: grid;
+}
+
+
+/* one row */
+
+.price-offer {
+    display: grid;
+
+    grid-template-columns:
+        minmax(145px, 1.45fr)
+        minmax(125px, 1.35fr)
+        95px
+        55px
+        79px;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 58px;
+
+    padding:
+        7px 11px;
+
+    border-bottom:
+        1px solid #182930;
+
+    transition:
+        background 140ms ease;
+}
+
+.price-offer:last-child {
+    border-bottom: 0;
+}
+
+.price-offer:hover {
+    background: #0f1d23;
+}
+
+
+/* store */
+
+.price-offer__store {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    min-width: 0;
+}
+
+.price-offer__logo {
+    display: grid;
+
+    place-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 auto;
+
+    overflow: hidden;
+
+    border:
+        1px solid #2a3c44;
+
+    border-radius: 4px;
+
+    background: #101e24;
+}
+
+.price-offer__logo .price-offer__logo-image {
+    width: 23px;
+    height: 23px;
+
+    object-fit: contain;
+}
+
+.price-offer__store-name {
+    display: block;
+
+    overflow: hidden;
+
+    color: #edf1f2;
+
+    font-size: 10px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+.price-offer__region {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #718188;
+
+    font-size: 7px;
+}
+
+
+/* edition */
+
+.price-offer__edition {
+    min-width: 0;
+}
+
+.price-offer__best-label {
+    display: inline-block;
+
+    margin-bottom: 2px;
+
+    padding:
+        2px 5px;
+
+    border-radius: 2px;
+
+    background: #4fc78f;
+
+    color: #052015;
+
+    font-size: 6px;
+
+    font-weight: 800;
+}
+
+.price-offer__edition-name {
+    display: block;
+
+    overflow: hidden;
+
+    color: #96a4aa;
+
+    font-size: 8px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+
+/* price */
+
+.price-offer__price {
+    text-align: right;
+}
+
+.price-offer__old-price {
+    display: block;
+
+    color: #67787f;
+
+    font-size: 7px;
+
+    text-decoration: line-through;
+}
+
+.price-offer__current-price {
+    color: var(--mint);
+
+    font-size: 15px;
+}
+
+
+/* discount */
+
+.price-offer__discount {
+    justify-self: end;
+
+    padding:
+        3px 5px;
+
+    border-radius: 2px;
+
+    background:
+        rgba(95, 210, 151, 0.13);
+
+    color: var(--green);
+
+    font-size: 7px;
+
+    font-weight: 700;
+}
+
+
+/* go button */
+
+.price-offer__button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    height: 31px;
+
+    border-radius: 3px;
+
+    background: #293b43;
+
+    color: #e2e7e9;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    transition:
+        background 140ms ease,
+        color 140ms ease;
+}
+
+.price-offer:first-child
+.price-offer__button {
+    background: var(--green);
+
+    color: #052015;
+
+    font-weight: 800;
+}
+
+.price-offer__button:hover {
+    background: var(--accent);
+
+    color: #071116;
+}
+
+
+/* ==========================================================
+   OFFERS LOADING
+========================================================== */
+
+.price-offers-loading {
+    display: grid;
+
+    gap: 1px;
+}
+
+.price-offer-skeleton {
+    height: 58px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0a161c 0%,
+            #13252c 50%,
+            #0a161c 100%
+        );
+
+    background-size:
+        200% 100%;
+
+    animation:
+        price-skeleton
+        1.15s linear infinite;
+}
+
+@keyframes price-skeleton {
+
+    from {
+        background-position:
+            200% 0;
+    }
+
+    to {
+        background-position:
+            -200% 0;
+    }
+
+}
+
+
+/* ==========================================================
+   EMPTY OFFERS
+========================================================== */
+
+.price-empty {
+    display: grid;
+
+    place-items: center;
+
+    min-height: 260px;
+
+    padding: 30px;
+
+    text-align: center;
+}
+
+.price-empty > .price-empty__icon {
+    margin-bottom: 8px;
+
+    color: #62737a;
+
+    font-size: 30px;
+}
+
+.price-empty .price-empty__subtitle {
+    margin:
+        0 0 4px;
+
+    font-size: 14px;
+}
+
+.price-empty .price-empty__text {
+    margin: 0;
+
+    color: #78888e;
+
+    font-size: 9px;
+}
+
+
+/* ==========================================================
+   PRICE HISTORY
+========================================================== */
+
+.price-history {
+    margin-top: 11px;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 4px;
+
+    background: var(--panel);
+}
+
+.price-section-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    min-height: 56px;
+
+    padding:
+        10px 13px;
+
+    border-bottom:
+        1px solid #192a31;
+}
+
+.price-section-heading .price-section-heading__title {
+    margin:
+        0 0 2px;
+
+    font-size: 15px;
+}
+
+.price-section-heading .price-section-heading__text {
+    margin: 0;
+
+    color: #77878d;
+
+    font-size: 8px;
+}
+
+.price-section-heading .price-section-heading__select {
+    height: 30px;
+
+    min-width: 93px;
+
+    padding:
+        0 8px;
+
+    border:
+        1px solid #30434b;
+
+    border-radius: 3px;
+
+    outline: 0;
+
+    background: #0d1a20;
+
+    color: #aeb9bd;
+
+    font-size: 8px;
+}
+
+
+/* summary */
+
+.price-history__summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    border-bottom:
+        1px solid #1a2a31;
+}
+
+.price-history__summary > div {
+    padding:
+        10px 13px;
+}
+
+.price-history__summary > div:not(:last-child) {
+    border-right:
+        1px solid #1a2a31;
+}
+
+.price-history__summary .price-history__summary-text,
+.price-history__summary .price-history__summary-value {
+    display: block;
+}
+
+.price-history__summary .price-history__summary-text {
+    color: #7e8e94;
+
+    font-size: 7px;
+}
+
+.price-history__summary .price-history__summary-value {
+    margin-top: 2px;
+
+    color: var(--mint);
+
+    font-size: 14px;
+}
+
+
+/* chart */
+
+.price-history__chart {
+    position: relative;
+
+    width: 100%;
+
+    min-height: 235px;
+
+    padding:
+        12px 14px 14px;
+}
+
+.price-history__chart canvas {
+    display: block;
+
+    width: 100% !important;
+    height: 210px !important;
+}
+
+
+/* ==========================================================
+   SIDEBAR CARDS
+========================================================== */
+
+.price-sidebar-card {
+    overflow: hidden;
+
+    border:
+        1px solid var(--line);
+
+    border-radius: 4px;
+
+    background: var(--panel);
+}
+
+
+/* ==========================================================
+   PRICE ALERT
+========================================================== */
+
+.price-alert {
+    padding:
+        14px;
+}
+
+.price-alert__icon {
+    display: grid;
+
+    place-items: center;
+
+    width: 36px;
+    height: 36px;
+
+    margin-bottom: 10px;
+
+    border:
+        1px solid #31434b;
+
+    border-radius: 50%;
+
+    color: #e3e8ea;
+
+    font-size: 17px;
+}
+
+.price-alert .price-alert__title {
+    margin:
+        0 0 5px;
+
+    color: #f0f3f4;
+
+    font-size: 14px;
+
+    line-height: 1.2;
+}
+
+.price-alert > .price-alert__text {
+    margin:
+        0 0 12px;
+
+    color: #819097;
+
+    font-size: 8px;
+
+    line-height: 1.45;
+}
+
+.price-alert .price-alert__form {
+    display: grid;
+
+    gap: 6px;
+}
+
+.price-alert .price-alert__label {
+    color: #86959b;
+
+    font-size: 7px;
+}
+
+.price-alert .price-alert__input {
+    width: 100%;
+    height: 31px;
+
+    padding:
+        0 9px;
+
+    border:
+        1px solid #30434b;
+
+    border-radius: 3px;
+
+    outline: 0;
+
+    background: #0d1a20;
+
+    color: #e4e8ea;
+
+    font-size: 9px;
+}
+
+.price-alert .price-alert__input:focus {
+    border-color: var(--accent);
+}
+
+
+/* price target */
+
+.price-alert__price-input {
+    position: relative;
+}
+
+.price-alert__price-input > .price-alert__price-input-text {
+    position: absolute;
+
+    left: 9px;
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #7d8c92;
+
+    font-size: 9px;
+}
+
+.price-alert__price-input .price-alert__price-input-input {
+    padding-left: 20px;
+}
+
+.price-alert .price-alert__button {
+    height: 34px;
+
+    margin-top: 4px;
+
+    border-radius: 3px;
+
+    background: var(--accent);
+
+    color: #071116;
+
+    font-size: 9px;
+
+    font-weight: 800;
+}
+
+
+/* ==========================================================
+   BEST PRICE CARD
+========================================================== */
+
+.price-best {
+    padding:
+        15px 14px;
+}
+
+.price-best__label,
+.price-best__value,
+.price-best__store,
+.price-best__saving {
+    display: block;
+}
+
+.price-best__label {
+    margin-bottom: 5px;
+
+    color: var(--mint);
+
+    font-size: 7px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.3px;
+}
+
+.price-best__value {
+    color: var(--mint);
+
+    font-size: 26px;
+
+    line-height: 1;
+}
+
+.price-best__store {
+    margin-top: 5px;
+
+    color: #d9dfe1;
+
+    font-size: 10px;
+}
+
+.price-best__saving {
+    margin-top: 3px;
+
+    color: var(--green);
+
+    font-size: 8px;
+}
+
+
+/* ==========================================================
+   SIDEBAR HEADING
+========================================================== */
+
+.price-sidebar-heading {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 38px;
+
+    padding:
+        0 11px;
+
+    border-bottom:
+        1px solid #1a2a31;
+}
+
+.price-sidebar-heading .price-sidebar-heading__title {
+    margin: 0;
+
+    font-size: 12px;
+}
+
+.price-sidebar-heading .price-sidebar-heading__link {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: var(--accent);
+
+    font-size: 8px;
+}
+
+
+/* ==========================================================
+   SIMILAR GAMES
+========================================================== */
+
+.price-similar-games {
+    display: grid;
+}
+
+.price-similar-game {
+    display: grid;
+
+    grid-template-columns:
+        48px
+        minmax(0, 1fr)
+        14px;
+
+    align-items: center;
+
+    gap: 8px;
+
+    min-height: 58px;
+
+    padding:
+        5px 8px;
+
+    border-bottom:
+        1px solid #182930;
+}
+
+.price-similar-game:last-child {
+    border-bottom: 0;
+}
+
+.price-similar-game:hover {
+    background: #0f1d23;
+}
+
+.price-similar-game__image {
+    width: 48px;
+    height: 48px;
+
+    object-fit: cover;
+
+    border-radius: 2px;
+}
+
+.price-similar-game .price-similar-game__value {
+    display: block;
+
+    overflow: hidden;
+
+    color: #edf1f2;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+.price-similar-game .price-similar-game__text {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #7e8d93;
+
+    font-size: 7px;
+}
+
+.price-similar-game .price-similar-game__text b {
+    color: var(--mint);
+
+    font-size: 9px;
+
+    font-weight: 600;
+}
+
+.price-similar-game > .price-similar-game__icon {
+    color: #5f7077;
+
+    font-size: 7px;
+}
+
+
+/* ==========================================================
+   DESKTOP > 1400
+========================================================== */
+
+@media (min-width: 1400px) {
+
+    .price-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            250px;
+    }
+
+    .price-game-card {
+        grid-template-columns:
+            165px
+            minmax(0, 1fr)
+            105px;
+    }
+
+    .price-game-card__cover {
+        width: 165px;
+    }
+
+}
+
+
+/* ==========================================================
+   TABLET / SMALL DESKTOP
+   <= 1199
+========================================================== */
+
+@media (max-width: 1199px) {
+
+    .prices-page {
+        padding-top: 10px;
+    }
+
+
+    /* header */
+
+    .prices-header {
+        min-height: 105px;
+
+        padding:
+            18px 20px;
+    }
+
+    .prices-header .prices-header__title {
+        font-size: 26px;
+    }
+
+    .prices-header__stats {
+        gap: 25px;
+    }
+
+    .prices-header__stats > div:not(:last-child)::after {
+        right: -13px;
+    }
+
+
+    /* game */
+
+    .price-game-card {
+        grid-template-columns:
+            130px
+            minmax(0, 1fr)
+            78px;
+    }
+
+    .price-game-card__cover {
+        width: 130px;
+    }
+
+
+    /* layout */
+
+    .price-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            210px;
+    }
+
+
+    /* offers */
+
+    .price-offer {
+        grid-template-columns:
+            minmax(120px, 1.3fr)
+            minmax(105px, 1fr)
+            80px
+            68px;
+
+        gap: 7px;
+    }
+
+    .price-offer__discount {
+        display: none;
+    }
+
+}
+
+
+/* ==========================================================
+   TABLET
+   <= 900
+========================================================== */
+
+@media (max-width: 900px) {
+
+    /* header stats */
+
+    .prices-header__stats {
+        display: none;
+    }
+
+
+    /* selected game */
+
+    .price-game-card {
+        grid-template-columns:
+            125px
+            minmax(0, 1fr)
+            75px;
+    }
+
+
+    /* tabs */
+
+    .price-tabs__item {
+        min-width: 115px;
+    }
+
+
+    /* main layout */
+
+    .price-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            190px;
+
+        gap: 9px;
+    }
+
+
+    /* offers */
+
+    .price-offer {
+        grid-template-columns:
+            minmax(115px, 1.2fr)
+            minmax(90px, 1fr)
+            72px
+            67px;
+    }
+
+    .price-offer__edition {
+        overflow: hidden;
+    }
+
+
+    /* sidebar */
+
+    .price-alert {
+        padding: 12px;
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+   <= 767
+========================================================== */
+
+@media (max-width: 767px) {
+
+    /* ======================================================
+       PAGE
+    ====================================================== */
+
+    .prices-page {
+        padding:
+            7px 0 12px;
+    }
+
+
+    /* ======================================================
+       MOBILE SEARCH
+    ====================================================== */
+
+    .prices-mobile-search-wrap {
+        display: block;
+
+        padding-top: 8px;
+    }
+
+    .prices-mobile-search {
+        display: flex;
+    }
+
+
+    /* ======================================================
+       BREADCRUMB
+    ====================================================== */
+
+    .prices-page
+    .breadcrumbs {
+        height: 27px;
+    }
+
+
+    /* ======================================================
+       PAGE HEADER
+    ====================================================== */
+
+    .prices-header {
+        display: block;
+
+        min-height: auto;
+
+        padding:
+            15px 12px;
+
+        margin-bottom: 8px;
+    }
+
+    .prices-header__eyebrow {
+        margin-bottom: 4px;
+
+        font-size: 6px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .prices-header .prices-header__title {
+        margin-bottom: 4px;
+
+        font-size: 23px;
+    }
+
+    .prices-header .prices-header__text {
+        max-width: 280px;
+
+        font-size: 8px;
+
+        line-height: 1.4;
+    }
+
+    .prices-header__stats {
+        display: none;
+    }
+
+
+    /* ======================================================
+       SEARCH BOX
+    ====================================================== */
+
+    .price-game-search {
+        margin-bottom: 8px;
+    }
+
+    .price-game-search__content {
+        grid-template-columns:
+            24px
+            minmax(0, 1fr)
+            70px;
+
+        min-height: 50px;
+
+        padding:
+            6px 7px 6px 10px;
+    }
+
+    .price-game-search__content > .price-game-search__content-icon {
+        font-size: 14px;
+    }
+
+    .price-game-search .price-game-search__label {
+        font-size: 6px;
+    }
+
+    .price-game-search .price-game-search__input {
+        font-size: 9px;
+    }
+
+    .price-game-search__content > .price-game-search__content-button {
+        height: 32px;
+
+        font-size: 8px;
+    }
+
+
+    /* ======================================================
+       SELECTED GAME
+    ====================================================== */
+
+    .price-game-card {
+        grid-template-columns:
+            94px
+            minmax(0, 1fr);
+
+        min-height: 112px;
+
+        margin-bottom: 8px;
+    }
+
+    .price-game-card__cover {
+        width: 94px;
+
+        min-height: 112px;
+    }
+
+    .price-game-card__info {
+        padding:
+            9px 10px;
+    }
+
+    .price-game-card__label {
+        font-size: 5px;
+    }
+
+    .price-game-card .price-game-card__title {
+        font-size: 15px;
+    }
+
+    .price-game-card__favorite {
+        width: 25px;
+        height: 25px;
+
+        font-size: 12px;
+    }
+
+    .price-game-card__genres {
+        gap: 3px;
+
+        margin-top: 6px;
+    }
+
+    .price-game-card__genres .price-game-card__genres-text {
+        padding:
+            2px 5px;
+
+        font-size: 5px;
+    }
+
+    .price-game-card__description {
+        display: -webkit-box;
+
+        margin:
+            6px 0;
+
+        overflow: hidden;
+
+        font-size: 6px;
+
+        line-height: 1.35;
+
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .price-game-card__meta {
+        gap: 7px;
+
+        font-size: 6px;
+    }
+
+    .price-game-card__rating {
+        position: absolute;
+
+        top: 8px;
+        right: 8px;
+
+        display: flex;
+
+        width: auto;
+
+        padding: 0;
+
+        border: 0;
+
+        gap: 3px;
+
+        background: transparent;
+    }
+
+    .price-game-card__rating .price-game-card__rating-icon {
+        width: auto;
+
+        font-size: 10px;
+    }
+
+    .price-game-card__rating .price-game-card__rating-value {
+        font-size: 9px;
+    }
+
+    .price-game-card__rating .price-game-card__rating-text {
+        display: none;
+    }
+
+
+    /* ======================================================
+       TABS
+    ====================================================== */
+
+    .price-tabs {
+        min-height: 37px;
+
+        margin-bottom: 8px;
+    }
+
+    .price-tabs__item {
+        min-width: auto;
+
+        padding:
+            0 13px;
+
+        font-size: 7px;
+    }
+
+
+    /* ======================================================
+       MAIN LAYOUT
+    ====================================================== */
+
+    .price-layout {
+        display: block;
+    }
+
+    .price-sidebar {
+        margin-top: 9px;
+    }
+
+
+    /* ======================================================
+       COMPARISON
+    ====================================================== */
+
+    .price-comparison__header {
+        min-height: 48px;
+
+        padding:
+            8px 10px;
+    }
+
+    .price-comparison__header .price-comparison__header-title {
+        font-size: 14px;
+    }
+
+    .price-comparison__header .price-comparison__header-text {
+        font-size: 6px;
+    }
+
+
+    /* Filters */
+
+    .price-comparison__filters {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 6px;
+
+        padding:
+            8px;
+    }
+
+    .price-filter:last-child {
+        display: none;
+    }
+
+    .price-filter > .price-filter__text {
+        font-size: 6px;
+    }
+
+    .price-filter .price-filter__select {
+        height: 29px;
+
+        font-size: 7px;
+    }
+
+
+    /* ======================================================
+       OFFERS — MOBILE
+    ====================================================== */
+
+    .price-offer {
+        grid-template-columns:
+            minmax(0, 1fr)
+            65px
+            20px;
+
+        gap: 7px;
+
+        min-height: 53px;
+
+        padding:
+            6px 8px;
+    }
+
+
+    /* hide edition column on small mobile */
+
+    .price-offer__edition {
+        display: none;
+    }
+
+    .price-offer__discount {
+        display: none;
+    }
+
+
+    /* store */
+
+    .price-offer__logo {
+        width: 29px;
+        height: 29px;
+    }
+
+    .price-offer__logo .price-offer__logo-image {
+        width: 20px;
+        height: 20px;
+    }
+
+    .price-offer__store-name {
+        font-size: 8px;
+    }
+
+    .price-offer__region {
+        font-size: 6px;
+    }
+
+
+    /* price */
+
+    .price-offer__price {
+        text-align: right;
+    }
+
+    .price-offer__current-price {
+        font-size: 12px;
+    }
+
+    .price-offer__old-price {
+        font-size: 6px;
+    }
+
+
+    /* button becomes arrow */
+
+    .price-offer__button {
+        width: 20px;
+        height: 30px;
+
+        padding: 0;
+
+        background: transparent !important;
+
+        color: #9aabb1 !important;
+
+        font-size: 0;
+    }
+
+    .price-offer__button .price-offer__button-icon {
+        font-size: 8px;
+    }
+
+
+    /* ======================================================
+       HISTORY
+    ====================================================== */
+
+    .price-history {
+        margin-top: 8px;
+    }
+
+    .price-section-heading {
+        min-height: 48px;
+
+        padding:
+            8px 10px;
+    }
+
+    .price-section-heading .price-section-heading__title {
+        font-size: 13px;
+    }
+
+    .price-section-heading .price-section-heading__text {
+        font-size: 6px;
+    }
+
+    .price-section-heading .price-section-heading__select {
+        height: 27px;
+
+        min-width: 75px;
+
+        font-size: 7px;
+    }
+
+    .price-history__summary > div {
+        padding:
+            8px;
+    }
+
+    .price-history__summary .price-history__summary-text {
+        font-size: 6px;
+    }
+
+    .price-history__summary .price-history__summary-value {
+        font-size: 11px;
+    }
+
+    .price-history__chart {
+        min-height: 185px;
+
+        padding:
+            8px;
+    }
+
+    .price-history__chart canvas {
+        height: 170px !important;
+    }
+
+
+    /* ======================================================
+       SIDEBAR -> SINGLE COLUMN
+    ====================================================== */
+
+    .price-sidebar {
+        display: grid;
+
+        grid-template-columns:
+            1fr;
+
+        gap: 8px;
+    }
+
+
+    /* Alert */
+
+    .price-alert {
+        padding: 11px;
+    }
+
+    .price-alert__icon {
+        width: 30px;
+        height: 30px;
+
+        margin-bottom: 7px;
+
+        font-size: 14px;
+    }
+
+    .price-alert .price-alert__title {
+        font-size: 12px;
+    }
+
+    .price-alert > .price-alert__text {
+        font-size: 7px;
+    }
+
+    .price-alert .price-alert__form {
+        grid-template-columns:
+            1fr
+            95px;
+
+        gap: 6px;
+    }
+
+    .price-alert .price-alert__form > label {
+        display: none;
+    }
+
+    .price-alert .price-alert__form > input {
+        grid-column: 1;
+    }
+
+    .price-alert__price-input {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .price-alert .price-alert__button {
+        grid-column:
+            1 / -1;
+
+        height: 31px;
+
+        margin-top: 0;
+
+        font-size: 8px;
+    }
+
+
+    /* best price */
+
+    .price-best {
+        padding:
+            11px;
+    }
+
+    .price-best__value {
+        font-size: 21px;
+    }
+
+
+    /* similar */
+
+    .price-similar-games {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 0;
+    }
+
+    .price-similar-game {
+        display: block;
+
+        min-width: 0;
+
+        padding:
+            7px;
+
+        border-right:
+            1px solid #182930;
+
+        border-bottom: 0;
+    }
+
+    .price-similar-game:last-child {
+        border-right: 0;
+    }
+
+    .price-similar-game__image {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio:
+            1 / 0.72;
+
+        margin-bottom: 5px;
+    }
+
+    .price-similar-game .price-similar-game__value {
+        font-size: 7px;
+    }
+
+    .price-similar-game .price-similar-game__text {
+        font-size: 6px;
+    }
+
+    .price-similar-game > .price-similar-game__icon {
+        display: none;
+    }
+
+}
+
+
+/* ==========================================================
+   375 PX
+========================================================== */
+
+@media (max-width: 420px) {
+
+    .price-game-search__content {
+        grid-template-columns:
+            21px
+            minmax(0, 1fr)
+            62px;
+    }
+
+    .price-game-card {
+        grid-template-columns:
+            88px
+            minmax(0, 1fr);
+    }
+
+    .price-game-card__cover {
+        width: 88px;
+    }
+
+    .price-game-card .price-game-card__title {
+        max-width: 175px;
+
+        font-size: 14px;
+    }
+
+    .price-game-card__meta {
+        gap: 5px;
+    }
+
+    .price-tabs__item {
+        padding:
+            0 11px;
+    }
+
+    .price-offer {
+        grid-template-columns:
+            minmax(0, 1fr)
+            60px
+            18px;
+    }
+
+}
+
+
+/* ==========================================================
+   VERY SMALL MOBILE
+========================================================== */
+
+@media (max-width: 350px) {
+
+    .prices-header .prices-header__title {
+        font-size: 21px;
+    }
+
+    .price-game-card {
+        grid-template-columns:
+            80px
+            minmax(0, 1fr);
+    }
+
+    .price-game-card__cover {
+        width: 80px;
+    }
+
+    .price-game-card__genres .price-game-card__genres-text:nth-child(n + 3) {
+        display: none;
+    }
+
+    .price-game-card__meta .price-game-card__meta-text:nth-child(2) {
+        display: none;
+    }
+
+}
+
+
+/* ==========================================================
+   TOUCH DEVICES
+========================================================== */
+
+@media (hover: none) {
+
+    .price-offer:hover,
+    .price-similar-game:hover,
+    .price-search-result:hover {
+        background:
+            inherit;
+    }
+
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .price-offer-skeleton {
+        animation: none;
+    }
+
+}
+
