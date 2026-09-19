@@ -1,0 +1,8 @@
+# Include authored styles in GitHub's language statistics.
+*.scss linguist-language=SCSS linguist-detectable=true linguist-generated=false linguist-vendored=false
+*.css linguist-language=CSS linguist-detectable=true linguist-generated=false linguist-vendored=false
+
+# Exclude dependencies and build output if they are ever tracked.
+node_modules/** linguist-vendored=true
+dist/** linguist-generated=true
+dist-ssr/** linguist-generated=true
