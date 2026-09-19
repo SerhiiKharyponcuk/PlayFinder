@@ -2,6 +2,7 @@ import './scss/main.scss';
 import { initNavigation } from './js/components/navigation.js';
 import { initSearch } from './js/features/search.js';
 import { initForms } from './js/components/forms.js';
+import { initPageAnimations } from './js/animations/page-animations.js';
 
 const pages = {
   home: () => import('./js/pages/home.js'),
@@ -20,7 +21,10 @@ initSearch();
 initForms();
 const loadPage = pages[document.body.dataset.page];
 if (loadPage) {
-  loadPage().then(({ init }) => init()).catch(error => {
+  loadPage().then(async ({ init }) => {
+    await init();
+    initPageAnimations();
+  }).catch(error => {
     console.error('Не вдалося ініціалізувати сторінку', error);
   });
 }

@@ -139,3 +139,22 @@ GitHub Pages має публікувати `dist`, а не вихідний HTML
 Локальний preview збірки: `npm run preview`, адреса `/PlayFinder/`.
 
 Офіційна інструкція: https://vite.dev/guide/static-deploy.html#github-pages
+
+## Анімації GSAP
+
+GSAP встановлено як npm-залежність; Vite включає його у збірку для GitHub Pages.
+
+- `src/js/animations/page-animations.js` — послідовна поява вмісту hero та
+  поява секцій при прокручуванні через ScrollTrigger (один раз).
+- `src/js/animations/menu-animation.js` — поява мобільного меню; переривання
+  анімації при закритті та очищення тимчасових inline-стилів.
+- `src/main.js` запускає анімації після `init()` поточної сторінки.
+
+Тривалість, відстань і послідовність налаштовуй через `duration`, `y`, `stagger`.
+Для нового блоку додай його БЕМ-селектор до відповідного списку.
+`initPageAnimations(root)` повертає функцію очищення: викликай її перед повторною
+ініціалізацією, якщо згодом додаси динамічну заміну контенту.
+
+При `prefers-reduced-motion: reduce` ці анімації не запускаються.
+`gsap.matchMedia()` також прибирає їх при зміні цього налаштування.
+Офіційна документація: https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/
