@@ -119,3 +119,23 @@ Backend, endpoint-и та proxy поки не реалізовані; самі `
 Фони скопійовані з папки «зображення для проекту»; для каталогу використано
 той самий пейзаж, що й на головній. Обкладинок ігор у вихідній папці немає —
 їх зможе постачати API. Font Awesome поки підключено з наявного CDN.
+
+## Публікація на GitHub Pages
+
+Для адреси `https://serhiikharyponcuk.github.io/PlayFinder/` у Vite встановлено
+`base: '/PlayFinder/'`. Стилі SCSS компілюються в CSS командою `npm run build`.
+GitHub Pages має публікувати `dist`, а не вихідний HTML із гілки.
+
+1. У репозиторії відкрий Settings → Pages → Build and deployment.
+2. У Source обери **GitHub Actions**.
+3. Зроби commit і push змін, включно з `.github/workflows/deploy.yml`, у `main`.
+4. На вкладці Actions дочекайся успішного `Deploy PlayFinder to GitHub Pages`.
+   Якщо змінив Source вже після push, запусти workflow через Run workflow.
+
+Наступні push у `main` автоматично встановлюють залежності, запускають тести,
+збирають сайт і публікують готові HTML/CSS/JS та зображення.
+`dist` комітити не потрібно. `.gitattributes` впливає лише на статистику мов,
+а не на завантаження стилів у браузері.
+Локальний preview збірки: `npm run preview`, адреса `/PlayFinder/`.
+
+Офіційна інструкція: https://vite.dev/guide/static-deploy.html#github-pages
