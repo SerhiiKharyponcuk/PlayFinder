@@ -3,6 +3,7 @@ import { initNavigation } from './js/components/navigation.js';
 import { initSearch } from './js/features/search.js';
 import { initForms } from './js/components/forms.js';
 import { initPageAnimations } from './js/animations/page-animations.js';
+import { catalogProvider } from './js/api/providers/catalog.js';
 
 const pages = {
   home: () => import('./js/pages/home.js'),
@@ -28,3 +29,8 @@ if (loadPage) {
     console.error('Не вдалося ініціалізувати сторінку', error);
   });
 }
+
+catalogProvider.getGames({key:import.meta.env.VITE_CATALOG_API_URL}).then(games => console.log(games)).catch(error => {
+  console.error('Не вдалося отримати ігри з каталогу', error);
+});
+
