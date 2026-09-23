@@ -1575,6 +1575,7 @@
 
     </div>
 
+<p class="data-attribution">Дані та зображення: <a href="https://rawg.io/" target="_blank" rel="noopener noreferrer">RAWG</a>. Ціни: <a href="https://www.cheapshark.com/" target="_blank" rel="noopener noreferrer">CheapShark</a> (USD).</p>
 </main>
 
 <!-- =========================================================
@@ -1830,116 +1831,7 @@
      - discount
 ========================================================= -->
 
-<template id="gameCardTemplate">
-
-    <article
-        class="game-card"
-        data-game-id=""
-    >
-
-        <!-- Cover -->
-
-        <div class="game-card__image">
-
-            <a
-                class="game-card__image-link"
-                href="#"
-            >
-
-                <img
-                    class="game-card__cover"
-                    src=""
-                    alt=""
-                    width="320"
-                    height="320"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-            </a>
-
-            <!-- Favorite -->
-
-            <button
-                class="game-card__favorite"
-                type="button"
-                aria-label="Додати в обране"
-            >
-
-                <i class="fa-regular fa-heart"></i>
-
-            </button>
-
-            <!-- Discount -->
-
-            <span
-                class="game-card__discount"
-                hidden
-            ></span>
-
-        </div>
-
-        <!-- Body -->
-
-        <div class="game-card__body">
-
-            <!-- Title -->
-
-            <a
-                class="game-card__title"
-                href="#"
-            ></a>
-
-            <!-- Platforms -->
-
-            <div class="game-card__platforms"></div>
-
-            <!-- Rating -->
-
-            <div class="game-card__rating">
-
-                <i class="fa-solid fa-star"></i>
-
-                <span
-                    class="game-card__rating-value"
-                ></span>
-
-            </div>
-
-            <!-- Price -->
-
-            <div class="game-card__price">
-
-                <span class="game-card__price-text">
-                    Від
-                </span>
-
-                <strong class="game-card__price-value"></strong>
-
-            </div>
-
-            <!-- Old price -->
-
-            <div
-                class="game-card__old-price"
-                hidden
-            ></div>
-
-            <!-- Stores -->
-
-            <div class="game-card__stores">
-
-                <span
-                    class="game-card__store-count"
-                ></span>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</template>
+<!-- Картка тепер у src/templates/game-card.hbs; рендер у src/js/components/cards.js. -->
 
 <!-- =========================================================
      LIST VIEW TEMPLATE

@@ -1401,6 +1401,7 @@
 
     </div>
 
+<p class="data-attribution">Дані та зображення: <a href="https://rawg.io/" target="_blank" rel="noopener noreferrer">RAWG</a>. Ціни: <a href="https://www.cheapshark.com/" target="_blank" rel="noopener noreferrer">CheapShark</a> (USD).</p>
 </main>
 
 <!-- =========================================================
@@ -1574,174 +1575,13 @@
      JavaScript створює картки з RAWG / backend API.
 ========================================================= -->
 
-<template id="gameCardTemplate">
-
-    <article
-        class="game-card"
-        data-game-id=""
-    >
-
-        <!-- Image -->
-
-        <div class="game-card__image">
-
-            <a
-                href="#"
-                class="game-card__image-link"
-            >
-
-                <img
-                    class="game-card__cover"
-                    src=""
-                    alt=""
-                    width="320"
-                    height="240"
-                    loading="lazy"
-                    decoding="async"
-                >
-
-            </a>
-
-            <!-- Favorite -->
-
-            <button
-                class="game-card__favorite"
-                type="button"
-                aria-label="Додати в обране"
-            >
-
-                <i class="fa-regular fa-heart"></i>
-
-            </button>
-
-            <!-- Discount -->
-
-            <span
-                class="game-card__discount"
-                hidden
-            ></span>
-
-        </div>
-
-        <!-- Content -->
-
-        <div class="game-card__body">
-
-            <!-- Title -->
-
-            <a
-                href="#"
-                class="game-card__title"
-            ></a>
-
-            <!-- Platforms -->
-
-            <div class="game-card__platforms"></div>
-
-            <!-- Rating -->
-
-            <div
-                class="game-card__rating"
-                hidden
-            >
-
-                <i class="fa-solid fa-star"></i>
-
-                <span
-                    class="game-card__rating-value"
-                ></span>
-
-            </div>
-
-            <!-- Price -->
-
-            <div class="game-card__price">
-
-                <span class="game-card__price-text">
-                    Від
-                </span>
-
-                <strong class="game-card__price-value"></strong>
-
-            </div>
-
-            <!-- Old price -->
-
-            <div
-                class="game-card__old-price"
-                hidden
-            ></div>
-
-            <!-- Stores -->
-
-            <div class="game-card__stores">
-
-                <span
-                    class="game-card__store-count"
-                ></span>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</template>
+<!-- Картка тепер у src/templates/game-card.hbs; рендер у src/js/components/cards.js. -->
 
 <!-- =========================================================
      BEST PRICE TEMPLATE
 ========================================================= -->
 
-<template id="dealTemplate">
-
-    <article
-        class="deal-item"
-        data-game-id=""
-    >
-
-        <a
-            href="#"
-            class="deal-item__image-link"
-        >
-
-            <img
-                class="deal-item__image"
-                src=""
-                alt=""
-                width="100"
-                height="100"
-                loading="lazy"
-                decoding="async"
-            >
-
-        </a>
-
-        <div class="deal-item__content">
-
-            <a
-                href="#"
-                class="deal-item__title"
-            ></a>
-
-            <span
-                class="deal-item__platform"
-            ></span>
-
-            <div class="deal-item__price">
-
-                <span class="deal-item__price-text">
-                    Від
-                </span>
-
-                <strong class="deal-item__price-value"></strong>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</template>
+<!-- Шаблон пропозиції: src/templates/deal.hbs. -->
 
 <!-- =========================================================
      SEARCH RESULT TEMPLATE

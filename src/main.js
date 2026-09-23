@@ -1,9 +1,18 @@
+/**
+ * СТАРТ ПРОЄКТУ. Кожна HTML-сторінка підключає саме цей файл.
+ * Тут запускаємо спільні можливості та обираємо модуль сторінки за body[data-page].
+ * Наприклад, index.html має data-page="home" → виконується pages/home.js.
+ * Код отримання й виведення карток головної сторінки пиши в pages/home.js → init(),
+ * а не тут: main.js виконується також на «Про нас», «Вхід» та інших сторінках.
+ * Карта файлів і пояснення помилок: docs/LEARNING-GUIDE.md.
+ */
+
 import './scss/main.scss';
 import { initNavigation } from './js/components/navigation.js';
 import { initSearch } from './js/features/search.js';
 import { initForms } from './js/components/forms.js';
 import { initPageAnimations } from './js/animations/page-animations.js';
-import { catalogProvider } from './js/api/providers/catalog.js';
+
 
 const pages = {
   home: () => import('./js/pages/home.js'),
@@ -29,8 +38,4 @@ if (loadPage) {
     console.error('Не вдалося ініціалізувати сторінку', error);
   });
 }
-
-catalogProvider.getGames({key:import.meta.env.VITE_CATALOG_API_URL}).then(games => console.log(games)).catch(error => {
-  console.error('Не вдалося отримати ігри з каталогу', error);
-});
 

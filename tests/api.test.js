@@ -7,7 +7,7 @@ const offer = (price, extra = {}) => ({ id: String(price), gameId: 'game-1', pri
 const provider = (id, offers) => ({ id, enabled: true, getOffers: async () => offers });
 
 test('ціни сортуються лише для тієї самої гри, валюти, регіону й видання', async () => {
-  const result = await getOffers({ id: 'game-1' }, { region: 'eu', edition: 'standard' }, [
+  const result = await getOffers({ id: 'game-1' }, { currency: 'EUR', region: 'eu', edition: 'standard' }, [
     provider('one', [offer(20), offer(0), offer(1, { currency: 'USD' }), offer(2, { gameId: 'other' }), offer(-1)]),
     provider('two', [offer(10), offer(3, { region: 'us' }), offer(4, { edition: 'deluxe' }), offer('5')]),
   ]);
@@ -16,7 +16,7 @@ test('ціни сортуються лише для тієї самої гри, 
 });
 
 test('часткова відмова API зберігає справні пропозиції та повідомляє про помилку', async () => {
-  const result = await getOffers({ id: 'game-1' }, {}, [provider('ok', [offer(10)]), {
+  const result = await getOffers({ id: 'game-1' }, { currency: 'EUR' }, [provider('ok', [offer(10)]), {
     id: 'failed', enabled: true, getOffers() { throw new Error('offline'); },
   }]);
   assert.equal(result.offers.length, 1);
@@ -24,7 +24,7 @@ test('часткова відмова API зберігає справні про
 });
 
 test('вимкнені адаптери не роблять запитів', async () => {
-  const result = await getOffers({ id: 'game-1' });
+  const result = await getOffers({ id: 'game-1' }, {}, [{ enabled: false, getOffers() { throw new Error('Не має викликатися'); } }]);
   assert.deepEqual(result, { offers: [], errors: [], configured: false });
 });
 

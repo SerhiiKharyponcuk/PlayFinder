@@ -1,160 +1,73 @@
 # PlayFinder
 
-Багатосторінковий сайт на Vite, HTML (БЕМ), SCSS і JavaScript ES modules.
+Навчальний сайт: Vite + SCSS/БЕМ + Handlebars + GSAP.
+**Почни з [карти файлів для уроку](docs/LEARNING-GUIDE.md).**
 
 ## Запуск
 
 ```sh
 npm install
 npm run dev
-npm run build
-npm run preview
 npm test
+npm run build
 ```
 
-Vite збирає всі 9 HTML-сторінок. Працюй у вихідних файлах, не у `dist/`.
+Адреса локально — `/PlayFinder/`. Для перегляду збірки: `npm run preview`.
 
-## Структура
+## Три інтеграції
 
-```text
-*.html                       точки входу сторінок і HTML templates
-public/images/               локальні зображення (URL /images/...)
-src/
-  main.js                    єдиний вхід: стилі, спільний UI, потрібна сторінка
-  scss/
-    main.scss                порядок підключення через @use
-    abstracts/_tokens.scss   кольори, радіуси, CSS custom properties
-    base/_reset.scss         базові стилі
-    components/              header, footer, hero, game-card, фільтри тощо
-    layout/_responsive.scss  спільні адаптивні перевизначення
-    pages/                   games, prices, about та їхні медіазапити
-  js/
-    config.js                мова, валюта, URL джерел, таймаут
-    api/
-      http.js                JSON fetch, HTTP-помилки, таймаут, AbortSignal
-      types.js               JSDoc-контракти Game і Offer
-      providers/             catalog, prices-primary, prices-secondary
-    services/                спільний доступ до каталогу й пропозицій
-    pages/                   окремий init() для кожної HTML-сторінки
-    components/              меню, форми, стани сторінок
-    features/                пошук, фільтри, обране
-    utils/format.js          форматування ціни
- tests/api.test.js           перевірки API-клієнта та агрегування цін
-```
+| Сервіс | Дані | Налаштування |
+| --- | --- | --- |
+| RAWG | Каталог, назви, платформи, обкладинки | `VITE_RAWG_API_KEY` |
+| CheapShark | Пропозиції магазинів у USD | Без ключа |
+| Firebase | Email/password вхід, реєстрація, обране у Firestore | Конфіг Web App: 4 `VITE_FIREBASE_*` поля |
 
-## Де писати JavaScript
+[Покрокове налаштування](docs/API-SETUP.md) пояснює отримання ключів,
+Firebase Console, правила Firestore та GitHub Pages.
 
-На кожній сторінці є `data-page="..."` на `body` та один `/src/main.js`.
-`main.js` автоматично імпортує потрібний модуль із `src/js/pages/`.
-Наприклад, каталог заповнюй у `pages/games.js`, порівняння — у `pages/prices.js`.
-Спільний код винось у `features/` або `components/` і явно імпортуй там, де він потрібен.
+Ключі не вгадуються і не підставляються автоматично зі старого `VITE_CATALOG_API_URL`.
+Скопіюй `.env.example` у `.env.local`, заповни значення та перезапусти Vite.
+Увесь клієнтський `VITE_*` конфіг видимий у браузері; не використовуй серверні секрети.
 
-HTML `template` для карток, результатів пошуку та пропозицій збережені.
-Клонуй `template.content`, записуй текст через `textContent`, додавай готовий фрагмент
-у відповідний контейнер. Не вставляй відповідь API як довільний HTML.
-Використовуй збережені ID або `data-*` для JS, БЕМ-класи — для оформлення.
+## Що підключено
 
-## Підключення 2–3 API
+- Головна: RAWG → популярні / релізи, CheapShark → права колонка пропозицій.
+- Каталог: RAWG, пошук через `?q=...`; Handlebars малює реальні картки.
+- Деталі: базова назва, обкладинка й платформи вибраної гри.
+- Вхід: Firebase Email/Password, реєстрація та вихід.
+- Сердечко: збереження RAWG ID у персональне обране; сторінка обраного читає його.
+- Окремі повідомлення про порожній результат, помилку та відсутність конфігу.
+- GSAP: поява банера, секцій і меню з підтримкою reduced motion.
 
-1. Скопіюй `.env.example` у `.env.local` і вкажи адреси API або свого backend proxy.
-2. Реалізуй `getGames` / `getGame` в `api/providers/catalog.js`.
-3. Реалізуй `getOffers` у `prices-primary.js`, за потреби — у `prices-secondary.js`.
-   У готових адаптерах установи `enabled: true`.
-4. Перетвори відповіді кожного сервісу у формати `Game` та `Offer` з `api/types.js`.
-5. Викликай сервіси з модулів сторінок; заміни `showSetupState` своїм завантаженням
-   і рендерингом. Передбач loading, empty, error та успішний стан.
+У браузері для RAWG і Firebase потрібні ваші налаштування; автоматичні тести
+не перевіряють доступність ваших акаунтів. `firestore.rules` треба опублікувати окремо.
+Firebase Hosting не використовується — сайт залишається на GitHub Pages.
 
-```js
-import { gamesService } from '../services/games-service.js';
-import { getOffers } from '../services/prices-service.js';
+## Що дописувати на уроках
 
-const game = await gamesService.getGame(id);
-const { offers, errors, configured } = await getOffers(game, {
-  currency: 'EUR',
-  region: 'eu',
-  edition: 'standard',
-});
-// offers відсортовані за зростанням ціни; offers[0] — найдешевша відповідна пропозиція.
-// errors містить недоступні джерела; configured=false означає, що адаптери вимкнені.
-```
+Фільтри бокової панелі, пагінація, список/сітка, історія цін, сповіщення,
+повний дизайн деталей гри та прив’язка пошуку CheapShark до сторінки порівняння
+ще не реалізовані. На `prices.html` поки залишається заглушка.
 
-У різних сервісах різні ID: зберігай їх у `Game.providerIds`, а `Offer.gameId`
-має дорівнювати канонічному `Game.id`. Не зіставляй ігри лише за назвою.
-Сервіс не конвертує валют: USD не бере участі у порівнянні EUR.
-Для коректного порівняння передавай потрібне видання і регіон.
-Пропозиції різних джерел зберігаються окремо з полем `provider`.
+У `prices-service.js` вже є отримання пропозицій перевіреної гри CheapShark.
+ID RAWG і CheapShark різні: автоматично прирівнювати їх або брати перший збіг назви не можна.
+Ціни CheapShark не підставляються в картки RAWG без зіставлення.
+Старі статичні EUR-фільтри на макеті порівняння ще не керують сервісом цін.
 
-`http.js` не вгадує формат конкретного API. Метод `request` адаптера вже містить
-base URL; передавай endpoint і `{ query, signal, headers, method, body }`.
-Для JSON POST самостійно вкажи `Content-Type` та `JSON.stringify(body)`.
-Секретні API-ключі зберігай на сервері: всі `VITE_*` потрапляють у браузер.
-Backend, endpoint-и та proxy поки не реалізовані; самі `.env` URL їх не створюють.
+## Файли
 
-## БЕМ і SCSS
+- `src/js/api/providers/rawg.js`, `cheapshark.js` — зовнішні HTTP API.
+- `src/js/api/firebase/client.js` — Firebase Web SDK (лінива ініціалізація).
+- `src/js/services/` — каталог, ціни, авторизація, обране.
+- `src/js/pages/` — поведінка кожної сторінки; запуск через `src/main.js`.
+- `src/templates/*.hbs` — спільні шаблони картки й пропозиції.
+- `src/js/components/cards.js` — компіляція Handlebars і вставка HTML.
+- `src/scss/` — стилі, `public/images/` — локальні зображення.
+- `tests/` — тести контрактів API, ключа RAWG, валют, помилок і таймаутів.
 
-Приклад: `game-card`, `game-card__title`, `game-card--featured`.
-Модифікатор ставиться разом із базовим класом. Загальні `active` / `is-open`
-замінені на модифікатори конкретних блоків. Класи `fa-*` належать Font Awesome.
-Вкладеним заголовкам, текстам, полям і посиланням додані БЕМ-елементи.
+## Публікація
 
-Порядок SCSS-модулів зберігає початковий каскад і медіазапити.
-`components/_shared.scss` збирає спільні компоненти через `@forward`.
-Сторінкові перевизначення залишені після спільних адаптивних правил, як в оригіналі.
-Для нових компонентів можна використовувати `&__element` / `&--modifier`.
-
-## Що вже працює, а що залишено тобі
-
-Працюють збірка, переходи між сторінками, мобільне меню, акордеони «Про нас»,
-перехід пошуку в каталог із `?q=...` та читання цього параметра.
-Форми повідомляють, що сервіс сповіщень ще не підключений.
-
-Каталог, ціни, пошукові підказки, сортування, фільтрація, пагінація, обране,
-авторизація, сповіщення, історія цін і детальна модалка очікують твоєї реалізації.
-Файли адаптерів — явні заготовки, а не вигадані працюючі інтеграції.
-Поки API немає, замість нескінченних skeleton показується пояснення.
-Початкові статичні тексти та лічильники у макеті не є живими даними API.
-
-Раніше порожні `game`, `favorites`, `login`, `privacy`, `terms` тепер мають
-базову оболонку і власний JS-модуль. Повний дизайн цих сторінок ще не реалізовано.
-Фони скопійовані з папки «зображення для проекту»; для каталогу використано
-той самий пейзаж, що й на головній. Обкладинок ігор у вихідній папці немає —
-їх зможе постачати API. Font Awesome поки підключено з наявного CDN.
-
-## Публікація на GitHub Pages
-
-Для адреси `https://serhiikharyponcuk.github.io/PlayFinder/` у Vite встановлено
-`base: '/PlayFinder/'`. Стилі SCSS компілюються в CSS командою `npm run build`.
-GitHub Pages має публікувати `dist`, а не вихідний HTML із гілки.
-
-1. У репозиторії відкрий Settings → Pages → Build and deployment.
-2. У Source обери **GitHub Actions**.
-3. Зроби commit і push змін, включно з `.github/workflows/deploy.yml`, у `main`.
-4. На вкладці Actions дочекайся успішного `Deploy PlayFinder to GitHub Pages`.
-   Якщо змінив Source вже після push, запусти workflow через Run workflow.
-
-Наступні push у `main` автоматично встановлюють залежності, запускають тести,
-збирають сайт і публікують готові HTML/CSS/JS та зображення.
-`dist` комітити не потрібно. `.gitattributes` впливає лише на статистику мов,
-а не на завантаження стилів у браузері.
-Локальний preview збірки: `npm run preview`, адреса `/PlayFinder/`.
-
-Офіційна інструкція: https://vite.dev/guide/static-deploy.html#github-pages
-
-## Анімації GSAP
-
-GSAP встановлено як npm-залежність; Vite включає його у збірку для GitHub Pages.
-
-- `src/js/animations/page-animations.js` — послідовна поява вмісту hero та
-  поява секцій при прокручуванні через ScrollTrigger (один раз).
-- `src/js/animations/menu-animation.js` — поява мобільного меню; переривання
-  анімації при закритті та очищення тимчасових inline-стилів.
-- `src/main.js` запускає анімації після `init()` поточної сторінки.
-
-Тривалість, відстань і послідовність налаштовуй через `duration`, `y`, `stagger`.
-Для нового блоку додай його БЕМ-селектор до відповідного списку.
-`initPageAnimations(root)` повертає функцію очищення: викликай її перед повторною
-ініціалізацією, якщо згодом додаси динамічну заміну контенту.
-
-При `prefers-reduced-motion: reduce` ці анімації не запускаються.
-`gsap.matchMedia()` також прибирає їх при зміні цього налаштування.
-Офіційна документація: https://gsap.com/docs/v3/GSAP/gsap.matchMedia()/
+GitHub Pages → Source: **GitHub Actions**.
+Workflow `.github/workflows/deploy.yml` збирає `dist` на push у `main`.
+Додай Secrets/Variables за інструкцією, інакше онлайн-збірка не матиме локальних налаштувань.
+`dist` не комітимо; `.gitattributes` керує тільки статистикою мов GitHub.

@@ -1,7 +1,6 @@
-import { catalogProvider } from '../api/providers/catalog.js';
-
-// Сторінки звертаються до сервісу, а не напряму до fetch або конкретного API.
+import { rawgProvider } from '../api/providers/rawg.js';
+// Сторінки викликають сервіс. getGames повертає { games, total, hasNext }, не сирий JSON.
 export const gamesService = {
-  getGames: (params, options) => catalogProvider.getGames(params, options),
-  getGame: (id, options) => catalogProvider.getGame(id, options),
+  getGames: (params, options) => rawgProvider.getGames(params, options),
+  getGame: (id, options) => rawgProvider.getGame(id, options),
 };

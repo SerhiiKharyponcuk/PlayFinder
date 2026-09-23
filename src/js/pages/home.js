@@ -1,29 +1,18 @@
-import { showSetupState } from '../components/page-state.js';
-import Handlebars from 'handlebars';
-export function init() {
-  showSetupState('popularGames', ['popularLoading']);
-  showSetupState('newReleaseGames', ['newReleasesLoading']);
-  showSetupState('bestDeals', ['dealsLoading']);
-  // TODO: gamesService.getGames → клонувати #gameCardTemplate / #dealTemplate.
-  // Заповнюй текст через textContent, зображення через src, посилання через href.
+import { gamesService } from '../services/games-service.js';
+import { cheapsharkProvider } from '../api/providers/cheapshark.js';
+import { renderGames, renderDeals } from '../components/cards.js';
+import { loadSection } from '../components/load-section.js';
+import { initFavorites } from '../features/favorites.js';
+
+/** ПИШИ ЛОГІКУ ГОЛОВНОЇ ТУТ. Запит → нормалізовані дані → Handlebars → DOM.
+ * RAWG дає картки, CheapShark — праву колонку з цінами.
+ * Рендер відбувається всередині init: заглушка більше не стирає картки.
+ */
+export async function init() {
+  await Promise.all([
+    loadSection('popularGames', 'popularLoading', async () => (await gamesService.getGames({ pageSize: 6 })).games, renderGames),
+    loadSection('newReleaseGames', 'newReleasesLoading', async () => (await gamesService.getGames({ sort: 'release', pageSize: 6 })).games, renderGames),
+    loadSection('bestDeals', 'dealsLoading', () => cheapsharkProvider.getDeals({ limit: 5 }), renderDeals),
+  ]);
+  initFavorites();
 }
-
-const gameCardTemplate = document.querySelector('#gameCardTemplate');
-const dealTemplate = document.querySelector('#dealTemplate');
-const template = Handlebars.compile(gameCardTemplate.innerHTML);
-const murkup = template({
-  title: 'Game Title',
-  id: '009088',
-  image: 'https://via.placeholder.com/300x400',
-  patforms: ['PC', 'PS5', 'XBOX'],
-  providerIds: {
-    catalog: '009088',
-    pricesPrimary: '009088',
-    pricesSecondary: '009088',
-  },
- 
-
-});
-document.querySelector('#popularGames').innerHTML = murkup;
-document.querySelector('#newReleaseGames').innerHTML = murkup;
-document.querySelector('#bestDeals').innerHTML = murkup;

@@ -1,3 +1,11 @@
+/**
+ * НИЗЬКОРІВНЕВИЙ HTTP-КЛІЄНТ. Для виведення карток цей файл змінювати не потрібно.
+ * request(baseUrl, path, { query }) будує URL, робить fetch та читає JSON.
+ * Наприклад query: { page: 2 } додає ?page=2. Ключ можна передати окремим query-полем.
+ * Успіх → повертає JavaScript-об'єкт; HTTP-помилка → throw, який ловить catch сторінки.
+ * await request(...) не додає нічого в DOM: це лише отримання даних.
+ */
+
 import { config } from '../config.js';
 
 export class ApiError extends Error {

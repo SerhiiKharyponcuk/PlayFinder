@@ -1,0 +1,10 @@
+<article class="game-card" data-game-id="{{id}}">
+  <div class="game-card__image">
+    <a class="game-card__image-link" href="{{detailsUrl}}"><img class="game-card__cover" src="{{image}}" alt="{{title}}" width="320" height="240" loading="lazy"></a>
+    <button class="game-card__favorite" type="button" data-favorite-id="{{id}}" aria-label="Додати в обране" aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+  </div>
+  <div class="game-card__body">
+    <a class="game-card__title" href="{{detailsUrl}}">{{title}}</a>
+    <div class="game-card__platforms">{{#each platforms}}<span>{{this}}</span>{{/each}}</div>
+  </div>
+</article>

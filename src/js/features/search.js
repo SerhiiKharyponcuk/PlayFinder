@@ -1,3 +1,9 @@
+/**
+ * СПІЛЬНИЙ ПОШУК у шапці: зараз лише відкриває games.html?q=введений_текст.
+ * Запит до API за цим текстом потрібно додати в pages/games.js.
+ * Підказки під полем — окреме майбутнє завдання, вони тут поки не реалізовані.
+ */
+
 export function initSearch() {
   for (const id of ['headerSearchForm', 'mobileSearchForm']) {
     const form = document.getElementById(id);
