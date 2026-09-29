@@ -73,13 +73,16 @@ const candidates = await cheapsharkProvider.searchGames('Portal');
 
 ```js
 import { getOffers } from '../services/prices-service.js';
-// game — об'єкт RAWG. cheapshark ID береться з перевіреного кандидата (поле gameID).
-const linkedGame = { ...game, providerIds: { ...game.providerIds, cheapshark: selectedCandidate.gameID } };
-const { offers, errors } = await getOffers(linkedGame, { currency: 'USD' });
-// Ця прив'язка поки в пам'яті; її довготривале збереження — наступне завдання.
+// gamesService вже знаходить однозначний збіг CheapShark і додає мінімальну ціну.
+const game = await gamesService.getGame(id);
+if (game.providerIds.cheapshark) {
+  const { offers, errors } = await getOffers(game, { currency: 'USD' });
+  // offers — усі поточні пропозиції для таблиці порівняння.
+}
 ```
 
 CheapShark не підтверджує регіон/видання у нашому адаптері: вони позначені `unknown`.
+Докладний шлях даних картки: [CARD-PRICES.md](./CARD-PRICES.md).
 Фільтр `edition: 'standard'` свідомо відсіє такі непідтверджені пропозиції.
 RAWG покриває також консолі; наявність гри у RAWG не гарантує пропозицію CheapShark.
 

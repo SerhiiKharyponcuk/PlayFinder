@@ -190,4 +190,17 @@
     font-size: 8px;
 }
 
+// Постійна висота рядка платформ і ціни: картки не стрибають через довгі назви.
+.game-card__platforms {
+    gap: 9px;
+    font-size: 13px;
+    flex-wrap: wrap;
+}
+
+.game-card__platform { display: inline-flex; align-items: center; }
+.game-card__price { margin: 5px 0 0; }
+.game-card__price--unavailable { color: #9aa8ad; font-size: 10px; }
+.game-card__stores { font-size: 10px; line-height: 1.4; }
+.game-card__title { font-size: 12px; min-height: 34px; }
+.game-card__favorite[aria-pressed='true'] { color: var(--accent); }
 

@@ -5,7 +5,8 @@ import { loadSection } from '../components/load-section.js';
 import { initFavorites } from '../features/favorites.js';
 
 /** ПИШИ ЛОГІКУ ГОЛОВНОЇ ТУТ. Запит → нормалізовані дані → Handlebars → DOM.
- * RAWG дає картки, CheapShark — праву колонку з цінами.
+ * RAWG дає назви/зображення; gamesService додає ціни CheapShark до кожної картки.
+ * Права колонка окремо показує актуальні пропозиції CheapShark.
  * Рендер відбувається всередині init: заглушка більше не стирає картки.
  */
 export async function init() {

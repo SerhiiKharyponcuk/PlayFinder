@@ -5,6 +5,13 @@
   </div>
   <div class="game-card__body">
     <a class="game-card__title" href="{{detailsUrl}}">{{title}}</a>
-    <div class="game-card__platforms">{{#each platforms}}<span>{{this}}</span>{{/each}}</div>
+    <div class="game-card__platforms" aria-label="Платформи">{{#each platformIcons}}<span class="game-card__platform" title="{{label}}" role="img" aria-label="{{label}}"><i class="{{icon}}" aria-hidden="true"></i></span>{{/each}}</div>
+    {{#if hasPrice}}
+      <p class="game-card__price"><span class="game-card__price-text">Від</span> <strong class="game-card__price-value">{{formattedPrice}}</strong></p>
+      <p class="game-card__stores">{{storeCount}} {{storesLabel}} · PC</p>
+    {{else}}
+      <p class="game-card__price game-card__price--unavailable">{{priceMessage}}</p>
+      <p class="game-card__stores">Пропозиції для PC</p>
+    {{/if}}
   </div>
 </article>

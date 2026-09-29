@@ -38,4 +38,3 @@ if (loadPage) {
     console.error('Не вдалося ініціалізувати сторінку', error);
   });
 }
-

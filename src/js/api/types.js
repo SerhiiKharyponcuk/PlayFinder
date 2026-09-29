@@ -12,6 +12,10 @@
  * @property {string} title
  * @property {string} image URL обкладинки.
  * @property {string[]} platforms
+ * @property {number} [price] Найнижча поточна PC-ціна з CheapShark. Відсутня, якщо пропозицій немає; 0 означає безкоштовно.
+ * @property {string} [currency] USD для CheapShark.
+ * @property {number} [storeCount] Кількість унікальних магазинів із поточними пропозиціями.
+ * @property {'ready'|'unmatched'|'empty'|'error'} [priceStatus] Результат завантаження ціни.
  * @property {Record<string, string>} providerIds ID у різних сервісах: rawg обов’язковий для каталогу, cheapshark — тільки після перевіреного зіставлення.
  *
  * @typedef {Object} Offer
