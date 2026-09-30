@@ -1,0 +1,99 @@
+// ВІДКРИТА КАРТКА: game.html + templates/game-detail.hbs.
+// Стилі ізольовані від game-card каталогу; кольори беруться зі спільних tokens.
+.game-details-page {
+  width: min(1120px, calc(100% - 40px)); margin-inline: auto; padding-block: 28px 44px;
+  &__toolbar { display: flex; align-items: center; gap: 24px; margin-bottom: 22px; }
+  &__back { display: inline-flex; align-items: center; gap: 9px; flex-shrink: 0; color: var(--text-soft); font-size: 13px; }
+  &__back:hover { color: var(--accent); }
+  &__breadcrumbs { display: flex; flex-wrap: wrap; gap: 9px; color: var(--muted); font-size: 12px; }
+  &__breadcrumbs [aria-current] { color: var(--text-soft); }
+  &__body { min-height: 420px; }
+  &__account { margin-left: auto; color: var(--accent); font-size: 22px; }
+}
+.game-detail {
+  display: grid; grid-template-columns: minmax(240px, 340px) minmax(0, 1fr); gap: 36px;
+  padding: 28px; border: 1px solid var(--line-light); border-radius: 12px;
+  background: linear-gradient(145deg, #101e26, #08141a 70%); box-shadow: 0 20px 70px rgba(0, 0, 0, .24);
+  &__media, &__content { min-width: 0; }
+  &__cover-wrap { position: relative; overflow: hidden; border: 1px solid var(--line-light); border-radius: 8px; background: var(--bg-dark); }
+  &__cover { width: 100%; height: auto; aspect-ratio: 1 / 1.08; object-fit: cover; }
+  &__badge { position: absolute; left: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; border: 1px solid #77613b; border-radius: 5px; background: #17201de8; color: var(--yellow); font-size: 12px; font-weight: 700; }
+  &__facts { margin-top: 20px; padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: rgba(5, 12, 16, .35); }
+  &__section-title { margin: 0; color: var(--text); font-size: 18px; font-weight: 700; }
+  &__facts-list { display: grid; gap: 12px; margin: 16px 0 0; font-size: 12px; }
+  &__facts-list > div { display: grid; grid-template-columns: 94px minmax(0, 1fr); gap: 12px; }
+  &__facts-list dt { color: var(--muted); }
+  &__facts-list dd { margin: 0; overflow-wrap: anywhere; color: var(--text-soft); }
+  &__eyebrow { margin: 0 0 10px; color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; }
+  &__title { margin: 0 0 16px; color: var(--text); font-size: clamp(26px, 3vw, 38px); line-height: 1.1; letter-spacing: -.6px; }
+  &__platforms { display: flex; align-items: center; flex-wrap: wrap; gap: 15px; margin: 0 0 17px; color: #c9d4da; font-size: 19px; }
+  &__platform { display: inline-flex; }
+  &__genres { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 17px; padding: 0; list-style: none; }
+  &__genre { padding: 5px 9px; border: 1px solid var(--line); border-radius: 4px; background: var(--panel-2); color: var(--text-soft); font-size: 11px; }
+  &__rating { display: flex; align-items: center; gap: 8px; margin: 0 0 18px; }
+  &__rating > i { color: var(--yellow); }
+  &__rating strong { font-size: 16px; }
+  &__rating strong span { color: var(--muted); font-size: 12px; font-weight: 400; }
+  &__reviews { color: var(--muted); font-size: 11px; }
+  &__release-notice { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding: 14px; border: 1px solid #665335; border-radius: 7px; background: rgba(255, 200, 92, .055); color: var(--yellow); }
+  &__release-notice > i { font-size: 24px; }
+  &__release-notice strong, &__release-notice span { display: block; }
+  &__release-notice span { margin-top: 4px; color: var(--text-soft); font-size: 12px; }
+  &__description { margin: 0 0 25px; color: var(--text-soft); font-size: 13px; line-height: 1.75; white-space: pre-line; overflow-wrap: anywhere; }
+  &__description-more { margin: -10px 0 24px; }
+  &__description-more summary { display: flex; align-items: center; gap: 8px; width: fit-content; cursor: pointer; color: var(--accent); font-size: 12px; }
+  &__description-more[open] summary { margin-bottom: 16px; }
+  &__description-more[open] summary i { transform: rotate(180deg); }
+  &__prices { padding-top: 22px; border-top: 1px solid var(--line); }
+  &__price-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+  &__edition { padding: 3px 7px; border: 1px solid var(--line-light); border-radius: 4px; color: var(--text-soft); font-size: 11px; }
+  &__minimum { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; margin: 13px 0 16px; color: var(--text-soft); font-size: 13px; }
+  &__minimum strong { color: var(--mint); font-size: 25px; }
+  &__minimum > span { margin-left: auto; color: var(--muted); font-size: 11px; }
+  &__offers { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  &__offer { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 15px; min-height: 48px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 5px; background: var(--panel-2); }
+  &__offer--best { border-color: #315e50; background: linear-gradient(90deg, #132923, #10201e); }
+  &__store { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; min-width: 0; color: var(--text-soft); font-size: 12px; }
+  &__store > i { color: var(--mint); font-size: 16px; }
+  &__best { color: var(--green); font-size: 9px; }
+  &__offer-price { white-space: nowrap; font-size: 13px; }
+  &__offer--best &__offer-price { color: var(--mint); }
+  &__offer-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line-light); border-radius: 4px; color: var(--text-soft); background: #192831; font-size: 10px; }
+  &__offer-link:hover { border-color: var(--mint); color: var(--mint); }
+  &__offer--best &__offer-link { border-color: #346651; color: #0c251a; background: var(--green); }
+  &__price-caption { margin: 12px 0 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+  &__price-note, &__empty-price { margin: 14px 0; color: var(--text-soft); font-size: 13px; line-height: 1.6; }
+  &__price-note { color: var(--yellow); }
+  &__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  &__action { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 42px; padding: 10px 16px; border: 1px solid var(--line-light); border-radius: 5px; background: transparent; color: var(--text-soft); font-size: 12px; }
+  &__action--favorite { flex: 1; border-color: #9d4f48; color: var(--accent); }
+  &__action:hover, &__action[aria-pressed='true'] { border-color: var(--accent); color: var(--accent); background: rgba(255, 111, 97, .07); }
+  a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+}
+@media (max-width: 900px) {
+  .game-detail { grid-template-columns: minmax(220px, 32%) minmax(0, 1fr); gap: 24px; padding: 22px; }
+  .game-detail__facts { padding: 14px; }
+  .game-detail__facts-list > div { grid-template-columns: 1fr; gap: 3px; }
+  .game-detail__offer { gap: 8px; padding-inline: 9px; }
+  .game-detail__best { flex-basis: 100%; margin-left: 23px; }
+}
+@media (max-width: 640px) {
+  .game-details-page { width: calc(100% - 24px); padding-block: 18px 28px; }
+  .game-details-page__breadcrumbs { display: none; }
+  .game-details-page__toolbar { margin-bottom: 14px; }
+  .game-detail { display: flex; flex-direction: column; gap: 20px; padding: 14px; border-radius: 8px; }
+  .game-detail__media { display: contents; }
+  .game-detail__cover-wrap { order: 0; }
+  .game-detail__cover { aspect-ratio: 16 / 10; }
+  .game-detail__content { order: 1; }
+  .game-detail__facts { order: 2; margin-top: 0; }
+  .game-detail__facts-list > div { grid-template-columns: 100px minmax(0, 1fr); gap: 10px; }
+  .game-detail__title { font-size: 27px; }
+  .game-detail__description { font-size: 12px; }
+  .game-detail__offer { grid-template-columns: minmax(0, 1fr) auto auto; gap: 7px; }
+  .game-detail__store { font-size: 11px; }
+  .game-detail__offer-price { font-size: 12px; }
+  .game-detail__offer-link { font-size: 0; width: 28px; height: 30px; padding: 0; border-color: transparent; background: transparent; }
+  .game-detail__offer-link > i { font-size: 11px; }
+  .game-detail__action { flex: 1; padding-inline: 10px; }
+}

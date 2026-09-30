@@ -2,6 +2,7 @@ import { favoritesService } from '../services/favorites-service.js';
 import { authService } from '../services/auth-service.js';
 import { isFirebaseConfigured } from '../api/firebase/client.js';
 import { gamesService } from '../services/games-service.js';
+import { addCardPrices } from '../services/card-prices.js';
 import { renderGames } from '../components/cards.js';
 import { showMessage } from '../components/load-section.js';
 
@@ -18,11 +19,13 @@ export function init() {
       const games = [];
       // Малими порціями, щоб не відправляти сотні RAWG-запитів одночасно.
       for (let i = 0; i < ids.length; i += 4) {
-        games.push(...await Promise.all(ids.slice(i, i + 4).map(id => gamesService.getGame(id))));
+        games.push(...await Promise.all(ids.slice(i, i + 4).map(id => gamesService.getGame(id, { withPrices: false }))));
         if (current !== revision) return;
       }
       if (!games.length) { showMessage(container, 'В обраному ще немає ігор.'); return; }
-      renderGames(container, games);
+      const priced = await addCardPrices(games);
+      if (current !== revision) return;
+      renderGames(container, priced);
       container.querySelectorAll('[data-favorite-id]').forEach(button => {
         button.setAttribute('aria-pressed', 'true'); button.setAttribute('aria-label', 'Видалити з обраного');
       });

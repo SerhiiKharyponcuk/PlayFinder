@@ -47,6 +47,11 @@ test('JSON-клієнт обробляє порожню відповідь 204',
   assert.equal(await request('/api', 'games'), null);
 });
 
+test('JSON-клієнт зберігає Retry-After для паузи CheapShark', async t => {
+  t.mock.method(globalThis, 'fetch', async () => new Response('{}', { status: 429, headers: { 'Retry-After': '600' } }));
+  await assert.rejects(request('/api', 'games'), error => error.status === 429 && error.retryAfterMs === 600000);
+});
+
 test('таймаут скасовує завислий запит', async t => {
   t.mock.method(globalThis, 'fetch', async (url, { signal }) => new Promise((resolve, reject) => {
     signal.addEventListener('abort', () => reject(signal.reason), { once: true });

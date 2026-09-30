@@ -1,16 +1,21 @@
 <article class="game-card" data-game-id="{{id}}">
   <div class="game-card__image">
     <a class="game-card__image-link" href="{{detailsUrl}}"><img class="game-card__cover" src="{{image}}" alt="{{title}}" width="320" height="240" loading="lazy"></a>
+    {{#if release.isUpcoming}}<span class="game-card__release-badge"><i class="fa-regular fa-clock" aria-hidden="true"></i> Ще не вийшла</span>{{/if}}
     <button class="game-card__favorite" type="button" data-favorite-id="{{id}}" aria-label="Додати в обране" aria-pressed="false"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
   </div>
   <div class="game-card__body">
     <a class="game-card__title" href="{{detailsUrl}}">{{title}}</a>
     <div class="game-card__platforms" aria-label="Платформи">{{#each platformIcons}}<span class="game-card__platform" title="{{label}}" role="img" aria-label="{{label}}"><i class="{{icon}}" aria-hidden="true"></i></span>{{/each}}</div>
+    {{#if release.isUpcoming}}<p class="game-card__release-date">{{release.dateLabel}}</p>{{/if}}
     {{#if hasPrice}}
-      <p class="game-card__price"><span class="game-card__price-text">Від</span> <strong class="game-card__price-value">{{formattedPrice}}</strong></p>
+      {{#if release.isUpcoming}}<p class="game-card__availability">Пропозиція до релізу</p>{{/if}}
+      <p class="game-card__price" title="{{priceCheckedLabel}}"><span class="game-card__price-text">Від</span> <strong class="game-card__price-value">{{formattedPrice}}</strong></p>
       <p class="game-card__stores">{{storeCount}} {{storesLabel}} · PC</p>
+      {{#if priceEditionLabel}}<p class="game-card__edition" title="{{priceProductTitle}}">{{priceEditionLabel}}</p>{{/if}}
+      {{#if priceStale}}<p class="game-card__price-note" title="{{priceCheckedLabel}}">Збережена ціна · уточни в магазині</p>{{/if}}
     {{else}}
-      <p class="game-card__price game-card__price--unavailable">{{priceMessage}}</p>
+      <p class="game-card__price game-card__price--unavailable" title="{{priceError}}">{{priceMessage}}</p>
       <p class="game-card__stores">Пропозиції для PC</p>
     {{/if}}
   </div>

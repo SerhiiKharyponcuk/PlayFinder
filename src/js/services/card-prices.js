@@ -1,85 +1,91 @@
 import { cheapsharkProvider, parsePrice } from '../api/providers/cheapshark.js';
+import { gameLinks } from './game-links.js';
+import { titleKey, searchTitle, findGameMatch, fallbackSearchTitle, matchedProduct } from './game-matching.js';
+// Зберігаємо попередні імпорти уроку. Сам нормалізатор тепер у game-matching.js.
+export { titleKey, matchGame } from './game-matching.js';
 
-/**
- * ПОЧНИ РОЗБІР ЦІН ІЗ ЦЬОГО ФАЙЛУ.
- * Шлях даних: gamesService → addPrice → searchGames → matchGame → getOffers.
- * Потім cards.js передає готові price/storeCount у game-card.hbs.
- *
- * ВАЖЛИВО: нижче є зіставлення назв, але ще немає повної перевірки типу товару.
- * Точна назва сама по собі НЕ доводить, що це базова гра, а не DLC чи перевидання.
- * TODO для уроку: перевірити на конкретних відповідях API тип товару і видання;
- * для неоднозначних випадків додати перевірені пари RAWG ID → CheapShark gameID.
- * Якщо вирішимо показувати лише базові ігри, потрібна окрема перевірка цього правила.
+/** ШЛЯХ ЦІНИ: games-service → resolveGame → CheapShark → summarize → cards.js.
+ * Кеш і ліміти винесені в api/cheapshark-client.js. Цей файл обирає ТОВАР.
+ * Deluxe/DLC/продовження не об'єднуємо з базовою грою за частиною назви.
  */
-
-// Не використовуємо includes: Portal і Portal 2, базова гра і Deluxe — різні товари.
-// Нормалізація прибирає лише відмінності написання: регістр, пробіли, ™ і ®.
-// Не видаляй цифри або слова Deluxe, Ultimate, DLC: вони можуть визначати інший товар.
-// Двокрапки/дефіси зараз зберігаємо: різні варіанти назви можуть залишитися без збігу.
-const titleKey = title => String(title).normalize('NFKC').replace(/[™®]/g, '').trim().replace(/\s+/g, ' ').toLowerCase();
-export function matchGame(game, candidates) {
-  // candidates — МАСИВ. У кожного результату external — назва, gameID — ID CheapShark.
-  // filter збирає всі точні збіги. Беремо результат лише коли він один.
-  // Нуль або кілька збігів → null. candidates[0] може виявитися доповненням!
-  const matches = candidates.filter(item => item.gameID && titleKey(item.external) === titleKey(game.title));
-  return matches.length === 1 ? matches[0] : null;
+// Залишили навчальну функцію вчителя, але не використовуємо її для вибору ціни.
+// Вона може допомогти згрупувати видання в UI; ототожнювати їхні ID не можна.
+const EDITION_PATTERN = /\b(game of the year|goty|complete|premium|deluxe|ultimate|gold|definitive|enhanced|standard|special|remastered)( edition)?\b|\bdirectors cut\b/gi;
+export function stripEdition(title = '') {
+  return titleKey(title).replace(EDITION_PATTERN, '').trim().replace(/\s+/g, ' ');
 }
-
-// Один сервіс для всіх карток. Кеш на 5 хвилин і максимум 3 одночасні пошуки.
-// Помилка ціни не повинна приховувати саму гру. API-ключі тут не потрібні.
-export function createCardPrices(provider = cheapsharkProvider) {
-  const cache = new Map();
-  let active = 0;
-  const queue = [];
-  async function limited(task) {
-    if (active >= 3) await new Promise(resolve => queue.push(resolve));
-    else active++;
-    try { return await task(); }
-    finally { const next = queue.shift(); if (next) next(); else active--; }
+export function createCardPrices(provider = cheapsharkProvider, links = gameLinks) {
+  const resolving = new Map();
+  async function search(title) {
+    const key = searchTitle(title);
+    let promise = resolving.get(key);
+    if (!promise) {
+      promise = provider.searchGames(title);
+      resolving.set(key, promise);
+      promise.finally(() => resolving.delete(key)).catch(() => {});
+    }
+    return promise;
   }
-  return async function addPrice(game) {
-    // providerIds — номери гри в різних базах, НЕ ключі доступу до API.
-    // Наприклад { rawg: '123', cheapshark: '789' } (номери тут вигадані).
-    const key = game.providerIds?.cheapshark || titleKey(game.title);
-    let entry = cache.get(key);
-    if (!entry || entry.expires < Date.now()) {
-      const promise = limited(async () => {
-        // Якщо CheapShark ID уже записаний, довіряємо йому і пропускаємо пошук.
-        // Тому вручну записуй тільки перевірений ID потрібної гри та видання.
-        const match = game.providerIds?.cheapshark
-          ? { gameID: game.providerIds.cheapshark }
-          : matchGame(game, await provider.searchGames(game.title));
-        if (!match) return { priceStatus: 'unmatched' };
-        // Створюємо копію гри з ID CheapShark. RAWG ID залишається окремим.
-        const linked = { ...game, providerIds: { ...game.providerIds, cheapshark: String(match.gameID) } };
-        const offers = await provider.getOffers(linked);
-        const valid = offers.filter(offer => offer.currency === 'USD' && parsePrice(offer.price) !== null);
-        // Цей filter перевіряє тільки валюту та число. Він НЕ відсіює DLC/Deluxe.
-        // Правильний товар потрібно визначити ДО обчислення мінімальної ціни.
-        if (!valid.length) return { cheapsharkId: String(match.gameID), priceStatus: 'empty' };
-        return {
-          cheapsharkId: String(match.gameID), priceStatus: 'ready',
-          // Поточний мінімум серед пропозицій вибраного товару, не історичний рекорд.
-          // 0 — справжня безкоштовна пропозиція; відсутню ціну не замінюємо нулем.
-          price: Math.min(...valid.map(offer => Number(offer.price))),
-          // Set прибирає повтори: кілька пропозицій одного магазину рахуються як один.
-          storeCount: new Set(valid.map(offer => offer.store)).size,
-        };
-      });
-      entry = { promise, expires: Date.now() + 5 * 60 * 1000 };
-      cache.set(key, entry);
-      // Невдалий запит не кешуємо на 5 хвилин: наступний виклик зможе спробувати знову.
-      promise.catch(() => cache.delete(key));
+  async function resolveGame(game) {
+    const known = game.providerIds?.cheapshark || links[game.providerIds?.rawg || game.id];
+    if (known) return { ...game, providerIds: { ...game.providerIds, cheapshark: String(known) } };
+    // Розділяємо запит пошуку і саме зіставлення: дві картки різних видань
+    // можуть мати спільний пошук, але не можуть отримати спільний випадковий ID.
+    const candidates = await search(game.title);
+    let result = findGameMatch(game, candidates);
+    const fallback = fallbackSearchTitle(game.title);
+    if (result.status === 'unmatched' && fallback) {
+      const more = await search(fallback);
+      result = findGameMatch(game, [...candidates, ...more]);
     }
-    try {
-      const summary = await entry.promise;
-      return { ...game, ...summary, currency: 'USD', providerIds: {
-        ...game.providerIds, ...(summary.cheapsharkId ? { cheapshark: summary.cheapsharkId } : {}),
-      } };
-    } catch {
-      // Збій CheapShark не ламає картку RAWG. cards.js покаже повідомлення замість ціни.
-      return { ...game, priceStatus: 'error' };
+    const match = result.match;
+    return match ? { ...game, ...matchedProduct(match.external), providerIds: { ...game.providerIds, cheapshark: String(match.gameID) } }
+      : { ...game, priceStatus: 'unmatched', priceError: result.status === 'ambiguous'
+        ? 'CheapShark має кілька товарів із цією назвою. Потрібна перевірена відповідність ID.'
+        : 'Не знайдено відповідного повного товару: перевір назву, підзаголовок і видання.' };
+  }
+  function summarize(game, offers) {
+    const valid = offers.filter(offer => offer.currency === 'USD' && parsePrice(offer.price) !== null);
+    if (!valid.length) return { ...game, priceStatus: 'empty' };
+    return {
+      ...game, ...(valid[0].productTitle ? matchedProduct(valid[0].productTitle) : {}),
+      priceStatus: 'ready', currency: 'USD',
+      // Поточний мінімум потрібного товару. 0 — коректна безкоштовна пропозиція.
+      price: Math.min(...valid.map(offer => Number(offer.price))),
+      storeCount: new Set(valid.map(offer => offer.storeId || offer.store)).size,
+      priceStale: valid.some(offer => offer.priceStale),
+      priceUpdatedAt: Math.min(...valid.map(offer => offer.priceUpdatedAt || Date.now())),
+    };
+  }
+  const failed = (game, error) => ({ ...game, priceStatus: error.status === 429 ? 'limited' : 'error', priceError: error.message });
+  async function addPrices(games) {
+    // Спочатку знаходимо всі ID видимих карток, потім отримуємо пропозиції пакетом.
+    // Ми не завантажуємо весь каталог наперед — тільки ігри відкритої сторінки.
+    const resolved = await Promise.all(games.map(async game => {
+      // При повторному оновленні не залишаємо стару суму під новим статусом помилки.
+      const base = { ...game };
+      for (const key of ['price', 'priceStatus', 'priceError', 'priceStale', 'priceUpdatedAt', 'storeCount', 'priceProductTitle', 'priceEditionLabel']) delete base[key];
+      try { return await resolveGame(base); } catch (error) { return failed(base, error); }
+    }));
+    const linked = resolved.filter(game => game.providerIds?.cheapshark && !game.priceStatus);
+    let outcomes;
+    if (provider.getOffersForGames) {
+      try { outcomes = await provider.getOffersForGames(linked); }
+      catch (error) { outcomes = new Map(linked.map(game => [game.id, error])); }
+    } else {
+      outcomes = new Map(await Promise.all(linked.map(async game => {
+        try { return [game.id, await provider.getOffers(game)]; } catch (error) { return [game.id, error]; }
+      })));
     }
-  };
+    return resolved.map(game => {
+      if (game.priceStatus) return game;
+      const result = outcomes.get(game.id);
+      return result instanceof Error ? failed(game, result) : summarize(game, result || []);
+    });
+  }
+  const enrich = async game => (await addPrices([game]))[0];
+  enrich.many = addPrices;
+  return enrich;
 }
 export const addCardPrice = createCardPrices();
+export const addCardPrices = games => addCardPrice.many(games);

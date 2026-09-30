@@ -9,10 +9,11 @@
 import { config } from '../config.js';
 
 export class ApiError extends Error {
-  constructor(message, status = 0) {
+  constructor(message, status = 0, { retryAfterMs = 0 } = {}) {
     super(message);
     this.name = 'ApiError';
     this.status = status;
+    this.retryAfterMs = retryAfterMs;
   }
 }
 
@@ -31,7 +32,13 @@ export async function request(baseUrl, path, { query = {}, signal, timeout = con
     const headers = new Headers(options.headers);
     if (!headers.has('Accept')) headers.set('Accept', 'application/json');
     const response = await fetch(url, { ...options, headers, signal: controller.signal });
-    if (!response.ok) throw new ApiError('Помилка API: ' + response.status, response.status);
+    if (!response.ok) {
+      const retryAfter = response.headers.get('Retry-After');
+      const seconds = retryAfter === null ? NaN : Number(retryAfter);
+      const retryAfterMs = Number.isFinite(seconds) ? Math.max(0, seconds * 1000)
+        : Math.max(0, Date.parse(retryAfter) - Date.now()) || 0;
+      throw new ApiError('Помилка API: ' + response.status, response.status, { retryAfterMs });
+    }
     if (response.status === 204) return null;
     return await response.json();
   } finally {

@@ -3,6 +3,7 @@ import { readFilters } from '../features/filters.js';
 import { renderGames } from '../components/cards.js';
 import { loadSection } from '../components/load-section.js';
 import { initFavorites } from '../features/favorites.js';
+import { cheapsharkProvider } from '../api/providers/cheapshark.js';
 
 /** Каталог RAWG. Фільтри API дописуй тут; назви API-параметрів — у rawg.js. */
 export async function init() {
@@ -16,5 +17,6 @@ export async function init() {
     return result.games;
   }, renderGames);
   initFavorites();
+  if (import.meta.env.DEV) console.info('CheapShark: запити цієї сторінки', JSON.stringify(cheapsharkProvider.diagnostics()));
   // Наступне завдання уроку: зв'язати решту toolbar/sidebar і пагінацію з getGames.
 }

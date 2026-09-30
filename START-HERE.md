@@ -10,10 +10,15 @@
 | Вміст головної: популярні ігри, релізи | [home.js](src/js/pages/home.js) | Які списки завантажувати та в які блоки їх виводити |
 | Каталог ігор | [games.js](src/js/pages/games.js) | Завантаження каталогу, обробники його елементів |
 | Що показується після натискання на гру | [game.js](src/js/pages/game.js) | Вміст сторінки конкретної гри |
-| Знайти відповідність гри між RAWG і CheapShark | [card-prices.js](src/js/services/card-prices.js) | `matchGame()` — порівняння назв; `addPrice()` — отримання ціни |
+| Розмітка та стилі відкритої картки | [game-detail.hbs](src/templates/game-detail.hbs), [_game.scss](src/scss/pages/_game.scss) | Обкладинка, опис, таблиця пропозицій, адаптивний вигляд |
+| Позначка «Ще не вийшла» і дата виходу | [release.js](src/js/utils/release.js) | RAWG `released` / `tba` приходять із [rawg.js](src/js/api/providers/rawg.js); статус обчислюється при показі |
+| Знайти відповідність гри між RAWG і CheapShark | [game-matching.js](src/js/services/game-matching.js) | `titleKey()` — нормалізатор; `matchGame()` — перевірка повної назви й видання; `ALIASES` — відомі скорочення |
 | Змінити, як обирається найнижча ціна | [card-prices.js](src/js/services/card-prices.js) | Відбір пропозицій і `Math.min(...)` |
 | Змінити поля чи параметри запиту RAWG | [rawg.js](src/js/api/providers/rawg.js) | `normalizeGame()` — поля гри; `getGames()` — параметри запиту |
 | Змінити запит CheapShark | [cheapshark.js](src/js/api/providers/cheapshark.js) | `searchGames()` — пошук; `getOffers()` — пропозиції гри |
+| Кеш, частота запитів і пауза після 429 | [cheapshark-client.js](src/js/api/cheapshark-client.js) | Строки кешу, спільна черга, діагностика; збереження — [response-cache.js](src/js/api/response-cache.js) |
+| Записати перевірену пару ID | [game-links.js](src/js/services/game-links.js) | RAWG ID → ID конкретного товару CheapShark |
+| Дозволити нову PC-назву конкретної гри, як GTA V → Enhanced | [game-matching.js](src/js/services/game-matching.js) | `CURRENT_PC_TITLES` — тільки підтверджені повні товари; посилання на джерело залиште в коментарі |
 | Додати рейтинг або інше поле на картку | [game-card.hbs](src/templates/game-card.hbs) | HTML картки; поле також має прийти з `rawg.js` |
 | Підготувати дані до показу в картці | [cards.js](src/js/components/cards.js) | Формат ціни, підписи, дані для шаблону |
 | Змінити іконки платформ | [platforms.js](src/js/utils/platforms.js) | Відповідність назв платформ іконкам |
@@ -33,19 +38,23 @@
 ## Найближчий урок: ціни — відкрийте ці файли по черзі
 
 1. [games-service.js](src/js/services/games-service.js) — отримує гру RAWG і передає її на доповнення ціною.
-2. [card-prices.js](src/js/services/card-prices.js) — шукає відповідність, записує CheapShark ID і обирає мінімум.
-3. [cheapshark.js](src/js/api/providers/cheapshark.js) — робить запити до CheapShark.
+2. [card-prices.js](src/js/services/card-prices.js) — шукає відповідність, записує CheapShark ID і обирає мінімум. Сам нормалізатор і перевірка видань — [game-matching.js](src/js/services/game-matching.js).
+3. [cheapshark.js](src/js/api/providers/cheapshark.js) — готує запити та об'єднує пропозиції до 25 ігор в один пакет. У мережу вони йдуть через [cheapshark-client.js](src/js/api/cheapshark-client.js).
 4. [cards.js](src/js/components/cards.js) — готує підписи та формат суми.
 5. [game-card.hbs](src/templates/game-card.hbs) — показує готову картку.
 
-**Де допрацьовувати DLC та видання:** починайте з `matchGame()` у `card-prices.js`.
-Зараз перевіряється повна нормалізована назва, але немає повної перевірки типу товару.
+**Де допрацьовувати DLC та видання:** починайте з `findGameMatch()` у `game-matching.js`.
+Перевіряється повна нормалізована назва з номером, підзаголовком і виданням. GTA V має перевірене правило нової PC-назви Enhanced; біля ціни виводиться це видання.
 Не використовуйте `includes` або перший результат пошуку: так можна взяти ціну доповнення.
 Не прибирайте з назв слова Deluxe/Ultimate чи цифри — вони можуть позначати інший товар.
+Навчальна `stripEdition()` збережена для розбору, але для автоматичного вибору ціни не використовується.
+
+Як перевірити кількість запитів і кеш: [PRICE-CACHE.md](docs/PRICE-CACHE.md).
 
 `providerIds.rawg` і `providerIds.cheapshark` — номери гри в різних базах, не API-ключі.
 Ціна обирається з поточних пропозицій знайденого товару. Ціни CheapShark у картках стосуються PC.
 Деталі: [як працюють ціни](docs/CARD-PRICES.md).
+Релізи та оформлення відкритої картки: [GAME-DETAILS.md](docs/GAME-DETAILS.md).
 
 ## Чому є кілька папок JavaScript
 
@@ -77,8 +86,8 @@
 | Симптом | Де дивитися |
 | --- | --- |
 | Немає всіх карток | Консоль браузера → `pages/home.js` або `pages/games.js` → `games-service.js` → RAWG |
-| Картка є, ціни немає | `card-prices.js`: чи є один збіг, його `gameID`, чи повернулися пропозиції |
-| Є ціна іншого видання | `matchGame()` та джерело вже записаного `providerIds.cheapshark` |
+| Картка є, ціни немає | `game-matching.js`: чи є однозначний збіг; `card-prices.js`: його `gameID`, чи повернулися пропозиції; причина є в підказці рядка ціни |
+| Є ціна іншого видання | `findGameMatch()` у `game-matching.js` та джерело вже записаного `providerIds.cheapshark` |
 | Дані є в консолі, але не на картці | Чи передає `cards.js` поле з тією самою назвою, що у `game-card.hbs` |
 | Стилі не такі на телефоні | `_responsive.scss`: правило може перевизначати `_game-card.scss` |
 | Локально зміни є, на GitHub немає | Чи зроблено commit/push і чи успішна остання збірка в GitHub Actions |

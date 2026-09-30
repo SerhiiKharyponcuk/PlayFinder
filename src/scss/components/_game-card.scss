@@ -203,4 +203,12 @@
 .game-card__stores { font-size: 10px; line-height: 1.4; }
 .game-card__title { font-size: 12px; min-height: 34px; }
 .game-card__favorite[aria-pressed='true'] { color: var(--accent); }
-
+.game-card__price-note { margin: 3px 0 0; font-size: 10px; line-height: 1.4; color: #c9b78e; }
+.game-card__edition { margin: 2px 0 0; font-size: 10px; line-height: 1.4; color: #a6b7bf; }
+.game-card__release-badge {
+    position: absolute; left: 7px; bottom: 7px; display: inline-flex; align-items: center; gap: 5px;
+    max-width: calc(100% - 14px); padding: 4px 7px; border: 1px solid rgba(255, 200, 92, .4);
+    border-radius: 4px; color: var(--yellow); background: rgba(7, 17, 22, .93); font-size: 10px; font-weight: 700;
+}
+.game-card__release-date { margin: 3px 0; font-size: 10px; line-height: 1.4; color: var(--text-soft); }
+.game-card__availability { margin: 4px 0 0; font-size: 10px; color: var(--yellow); }

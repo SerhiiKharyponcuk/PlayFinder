@@ -10,10 +10,19 @@ import { initFavorites } from '../features/favorites.js';
  * Рендер відбувається всередині init: заглушка більше не стирає картки.
  */
 export async function init() {
+  const lists = gamesService.getGameLists([{ pageSize: 6 }, { sort: 'release', pageSize: 6 }]);
+  const loadGames = async index => {
+    const result = (await lists)[index];
+    if (result.status === 'rejected') throw result.reason;
+    return result.value.games;
+  };
   await Promise.all([
-    loadSection('popularGames', 'popularLoading', async () => (await gamesService.getGames({ pageSize: 6 })).games, renderGames),
-    loadSection('newReleaseGames', 'newReleasesLoading', async () => (await gamesService.getGames({ sort: 'release', pageSize: 6 })).games, renderGames),
+    loadSection('popularGames', 'popularLoading', () => loadGames(0), renderGames),
+    loadSection('newReleaseGames', 'newReleasesLoading', () => loadGames(1), renderGames),
     loadSection('bestDeals', 'dealsLoading', () => cheapsharkProvider.getDeals({ limit: 5 }), renderDeals),
   ]);
   initFavorites();
+  // На уроці дивись цей звіт у консолі: network — реальні HTTP-спроби,
+  // byEndpoint — пошуки / пропозиції / магазини / знижки, networkTotal — з початку нового кешу.
+  if (import.meta.env.DEV) console.info('CheapShark: запити цієї сторінки', JSON.stringify(cheapsharkProvider.diagnostics()));
 }
