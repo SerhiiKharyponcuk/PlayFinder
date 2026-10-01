@@ -1,6 +1,6 @@
 import { cheapsharkClient, SHARK_CACHE } from '../cheapshark-client.js';
 import { safeImage } from '../../utils/urls.js';
-import { searchTitle } from '../../services/game-matching.js';
+import { searchTitle, titleKey } from '../../services/game-matching.js';
 
 // CheapShark дає PC-ціни в USD. Порожнє значення — НЕ безкоштовна гра.
 export function parsePrice(value) {
@@ -81,8 +81,18 @@ export function createCheapsharkProvider(client = cheapsharkClient) {
     id: 'cheapshark', enabled: true,
     diagnostics: () => client.diagnostics(),
     async getDeals({ limit = 5, signal } = {}) {
-      const response = await client.get('deals', { pageSize: limit }, { ...SHARK_CACHE.prices, validate: isList, signal });
-      return response.data.filter(item => item.dealID && parsePrice(item.salePrice) !== null).map(item => ({
+      // API повертає ПРОПОЗИЦІЇ магазинів, тому одна гра могла займати 3 рядки.
+      // Одна сторінка на 60 пропозицій — один HTTP-запит; для кожного gameID
+      // залишаємо найдешевшу. Назви різних видань при цьому не об'єднуємо.
+      const response = await client.get('deals', { pageSize: 60 }, { ...SHARK_CACHE.prices, validate: isList, signal });
+      const unique = new Map();
+      for (const item of response.data) {
+        const price = parsePrice(item.salePrice);
+        if (!item.dealID || price === null || !item.title) continue;
+        const key = item.gameID ? 'id:' + item.gameID : 'title:' + titleKey(item.title);
+        if (!unique.has(key) || price < parsePrice(unique.get(key).salePrice)) unique.set(key, item);
+      }
+      return [...unique.values()].slice(0, Math.max(0, limit)).map(item => ({
         id: item.dealID, title: item.title, image: safeImage(item.thumb),
         price: parsePrice(item.salePrice), currency: 'USD', url: dealUrl(item.dealID),
         priceUpdatedAt: response.updatedAt, priceStale: response.stale,

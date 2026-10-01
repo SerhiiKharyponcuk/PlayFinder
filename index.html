@@ -50,6 +50,12 @@
 
 <body data-page="home">
 
+    <!-- Видимий ще до запуску JS. site-loader.js приховає його, коли дані готові. -->
+    <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
+        <span class="loading-spinner" aria-hidden="true"></span>
+        <div class="site-loader__content"><strong>Завантажуємо PlayFinder</strong><span class="site-loader__label" data-loading-label>Готуємо сторінку…</span></div>
+    </div>
+
 <!-- =========================================================
      HEADER
 ========================================================= -->
@@ -792,11 +798,14 @@
             <div class="hero__background">
 
                 <img
-                    src="/images/hero-home.png"
+                    src="/images/hero-home.webp"
+                    srcset="/images/hero-home-640.webp 640w, /images/hero-home.webp 2048w"
+                    sizes="(max-width: 767px) calc(100vw - 24px), (max-width: 1199px) calc(100vw - 32px), 960px"
                     alt=""
                     width="1200"
                     height="500"
                     fetchpriority="high"
+                    decoding="async"
                  class="hero__background-image">
 
             </div>
@@ -1132,9 +1141,10 @@
                 <div
                     class="games-loading"
                     id="popularLoading"
-                    hidden
+                    role="status"
+                    aria-label="Завантажуємо популярні ігри"
                 >
-
+                    <p class="loading-label">Завантажуємо популярні ігри…</p>
                     <div class="game-skeleton"></div>
 
                     <div class="game-skeleton"></div>
@@ -1185,9 +1195,10 @@
                 <div
                     class="games-loading"
                     id="newReleasesLoading"
-                    hidden
+                    role="status"
+                    aria-label="Завантажуємо нові релізи"
                 >
-
+                    <p class="loading-label">Завантажуємо нові релізи…</p>
                     <div class="game-skeleton"></div>
 
                     <div class="game-skeleton"></div>
@@ -1242,9 +1253,10 @@
                 <div
                     class="deal-loading"
                     id="dealsLoading"
-                    hidden
+                    role="status"
+                    aria-label="Завантажуємо пропозиції"
                 >
-
+                    <p class="loading-label">Завантажуємо пропозиції…</p>
                     <div class="deal-skeleton"></div>
 
                     <div class="deal-skeleton"></div>

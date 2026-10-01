@@ -1,0 +1,61 @@
+// Лоадери видимі до відповіді RAWG. Після неї лишається маленький індикатор ціни.
+.site-loader {
+  position: fixed; z-index: 100; right: 24px; bottom: 24px; display: flex; align-items: center;
+  gap: 12px; width: min(340px, calc(100% - 32px)); padding: 15px 18px;
+  color: #f2faf9; background: rgba(12, 29, 36, .97); border: 1px solid var(--mint);
+  border-radius: 8px; box-shadow: 0 6px 28px rgba(0, 0, 0, .45); pointer-events: none;
+  &__content { display: grid; gap: 4px; font-size: 13px; }
+  &__label { color: var(--mint); font-size: 12px; }
+  .loading-spinner { width: 26px; height: 26px; border-width: 3px; }
+  &::before {
+    content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 3px;
+    border-radius: 8px; background: var(--mint); transform-origin: left;
+    animation: loading-progress 1.6s ease-in-out infinite;
+  }
+}
+@keyframes loading-progress { 0%, 100% { transform: scaleX(.2); opacity: .5; } 50% { transform: scaleX(1); opacity: 1; } }
+.loading-spinner {
+  display: inline-block; flex-shrink: 0; width: 14px; height: 14px; vertical-align: middle;
+  border: 2px solid rgba(155, 236, 227, .22); border-top-color: var(--mint); border-radius: 50%;
+  animation: loading-turn .8s linear infinite;
+}
+@keyframes loading-turn { to { transform: rotate(360deg); } }
+.game-card__pricing { min-height: 45px; }
+.game-card__price--loading { align-items: center; color: var(--text-soft); font-size: 10px; }
+.price-feedback {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: 10px; padding: 10px 12px; color: var(--text-soft); border: 1px solid var(--line);
+  border-radius: 4px; background: var(--panel); font-size: 12px; line-height: 1.5;
+  &__retry {
+    padding: 7px 12px; color: var(--mint); border: 1px solid var(--line); border-radius: 4px;
+    background: #15252d; cursor: pointer;
+    &:disabled { opacity: .65; cursor: default; }
+    &:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  }
+}
+.games-loading { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 9px; }
+.games-loading .game-skeleton, .deal-skeleton {
+  min-height: 225px; border: 1px solid var(--line); border-radius: 4px;
+  background: linear-gradient(100deg, #101e25 20%, #20333d 40%, #101e25 60%); background-size: 200% 100%;
+  animation: loading-shimmer 1.6s ease-in-out infinite;
+}
+.deal-loading { display: grid; gap: 10px; }
+.deal-skeleton { min-height: 55px; }
+.loading-label { grid-column: 1 / -1; margin: 4px 0 9px; color: var(--text-soft); font-size: 12px; }
+@keyframes loading-shimmer { to { background-position: -200% 0; } }
+@media (max-width: 1199px) {
+  .games-loading { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .games-loading .game-skeleton { min-height: 120px; }
+  .games-loading .game-skeleton:nth-of-type(n + 5) { display: none; }
+}
+@media (max-width: 767px) {
+  .site-loader { right: 12px; bottom: 74px; width: calc(100% - 24px); padding: 12px 14px; }
+  .games-loading .game-skeleton:nth-of-type(n + 4) { display: none; }
+  #popularLoading { grid-template-columns: 1fr; }
+  #popularLoading .game-skeleton { min-height: 105px; }
+  #newReleasesLoading { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #newReleasesLoading .game-skeleton { min-height: 180px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-loader::before, .loading-spinner, .game-skeleton, .deal-skeleton, .price-offer-skeleton { animation: none !important; }
+}

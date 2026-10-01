@@ -21,6 +21,10 @@
 | Дозволити нову PC-назву конкретної гри, як GTA V → Enhanced | [game-matching.js](src/js/services/game-matching.js) | `CURRENT_PC_TITLES` — тільки підтверджені повні товари; посилання на джерело залиште в коментарі |
 | Додати рейтинг або інше поле на картку | [game-card.hbs](src/templates/game-card.hbs) | HTML картки; поле також має прийти з `rawg.js` |
 | Підготувати дані до показу в картці | [cards.js](src/js/components/cards.js) | Формат ціни, підписи, дані для шаблону |
+| Лоадери, ранній показ карток і кнопка оновлення цін | [game-list.js](src/js/components/game-list.js), [_loading.scss](src/scss/components/_loading.scss) | Пояснення — [LOADING.md](docs/LOADING.md) |
+| Спільний індикатор завантаження в кутку екрана | [site-loader.js](src/js/components/site-loader.js) | `begin()` → `update()` → `finish()`; завершуйте завдання у `finally` |
+| Як Vite компілює шаблони карток | [handlebars-plugin.js](scripts/handlebars-plugin.js), [vite.config.js](vite.config.js) | `.hbs?template` готується до відправлення в браузер; HTML редагуйте в `src/templates` |
+| Полегшені фони | [public/images](public/images) | Сторінки використовують `.webp` та мобільний `-640.webp`; PNG лишені як оригінали |
 | Змінити іконки платформ | [platforms.js](src/js/utils/platforms.js) | Відповідність назв платформ іконкам |
 | Змінити кольори, розміри, відступи картки | [_game-card.scss](src/scss/components/_game-card.scss) | Стилі `.game-card` та її елементів |
 | Змінити кількість колонок карток | [_games-grid.scss](src/scss/components/_games-grid.scss) | Сітка карток; для каталогу дивись також [_games.scss](src/scss/pages/_games.scss) |

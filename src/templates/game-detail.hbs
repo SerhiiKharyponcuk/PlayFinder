@@ -1,7 +1,7 @@
 <article class="game-detail" aria-labelledby="gameTitle">
   <div class="game-detail__media">
     <div class="game-detail__cover-wrap">
-      <img class="game-detail__cover" src="{{image}}" alt="{{title}}" width="720" height="800">
+      <img class="game-detail__cover" src="{{image}}" alt="{{title}}" width="720" height="800" decoding="async">
       {{#if release.isUpcoming}}<span class="game-detail__badge"><i class="fa-regular fa-clock" aria-hidden="true"></i> Ще не вийшла</span>{{/if}}
     </div>
     <section class="game-detail__facts" aria-labelledby="gameFactsTitle">
@@ -28,11 +28,12 @@
     {{/if}}
     <p class="game-detail__description">{{description}}</p>
     {{#if fullDescription}}<details class="game-detail__description-more"><summary>Читати повний опис <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></summary><p class="game-detail__description">{{fullDescription}}</p></details>{{/if}}
-    <section class="game-detail__prices" aria-labelledby="gamePricesTitle">
+    <section class="game-detail__prices" aria-labelledby="gamePricesTitle" aria-busy="{{#if priceLoading}}true{{else}}false{{/if}}">
       <div class="game-detail__price-heading">
         <h2 class="game-detail__section-title" id="gamePricesTitle">{{#if release.isUpcoming}}Пропозиції до релізу · PC{{else}}Ціни для PC{{/if}}</h2>
         {{#if priceEditionLabel}}<span class="game-detail__edition" title="{{priceProductTitle}}">{{priceEditionLabel}}</span>{{/if}}
       </div>
+      {{#if priceLoading}}<p class="game-detail__empty-price"><span class="loading-spinner" aria-hidden="true"></span> Шукаємо актуальні пропозиції…</p>{{else}}
       {{#if hasPrice}}<p class="game-detail__minimum">Від <strong>{{formattedPrice}}</strong><span>{{storeCount}} {{storesLabel}}</span></p>{{/if}}
       {{#if priceStale}}<p class="game-detail__price-note">Збережена ціна · уточни в магазині</p>{{/if}}
       {{#if offers}}
@@ -44,6 +45,7 @@
           </li>{{/each}}
         </ul>
       {{else}}<p class="game-detail__empty-price">{{priceMessage}}</p>{{/if}}
+      {{/if}}
       <p class="game-detail__price-caption">Пропозиції CheapShark у USD для PC. Ціни на інші платформи не враховані.</p>
     </section>
     <div class="game-detail__actions">

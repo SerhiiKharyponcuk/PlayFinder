@@ -12,6 +12,7 @@ import { initNavigation } from './js/components/navigation.js';
 import { initSearch } from './js/features/search.js';
 import { initForms } from './js/components/forms.js';
 import { initPageAnimations } from './js/animations/page-animations.js';
+import { siteLoading } from './js/components/site-loader.js';
 
 
 const pages = {
@@ -31,10 +32,15 @@ initSearch();
 initForms();
 const loadPage = pages[document.body.dataset.page];
 if (loadPage) {
+  const boot = siteLoading.begin('Готуємо сторінку…');
   loadPage().then(async ({ init }) => {
-    await init();
+    const initialized = init();
+    boot.finish();
+    // Анімація оболонки починається одразу, а не через десятки секунд після цін.
     initPageAnimations();
+    await initialized;
   }).catch(error => {
+    boot.finish();
     console.error('Не вдалося ініціалізувати сторінку', error);
   });
 }

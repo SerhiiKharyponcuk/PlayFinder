@@ -48,6 +48,11 @@
 
 <body data-page="games">
 
+    <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
+        <span class="loading-spinner" aria-hidden="true"></span>
+        <div class="site-loader__content"><strong>Завантажуємо PlayFinder</strong><span class="site-loader__label" data-loading-label>Готуємо сторінку…</span></div>
+    </div>
+
 <!-- =========================================================
      HEADER
 ========================================================= -->
@@ -927,9 +932,12 @@
                 <div class="games-hero__background">
 
                     <img
-                        src="/images/hero-home.png"
+                        src="/images/hero-home.webp"
+                        srcset="/images/hero-home-640.webp 640w, /images/hero-home.webp 2048w"
+                        sizes="(max-width: 767px) calc(100vw - 24px), 1200px"
                         alt=""
                         fetchpriority="high"
+                        decoding="async"
                      class="games-hero__background-image">
 
                 </div>
@@ -1415,8 +1423,10 @@
                 <div
                     class="games-catalog-loading"
                     id="gamesCatalogLoading"
+                    role="status"
+                    aria-label="Завантажуємо каталог"
                 >
-
+                    <p class="loading-label">Завантажуємо каталог…</p>
                     <div class="game-skeleton"></div>
                     <div class="game-skeleton"></div>
                     <div class="game-skeleton"></div>

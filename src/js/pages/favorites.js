@@ -3,17 +3,22 @@ import { authService } from '../services/auth-service.js';
 import { isFirebaseConfigured } from '../api/firebase/client.js';
 import { gamesService } from '../services/games-service.js';
 import { addCardPrices } from '../services/card-prices.js';
-import { renderGames } from '../components/cards.js';
-import { showMessage } from '../components/load-section.js';
+import { renderGames, updateGamePrices } from '../components/cards.js';
+import { showMessage, showLoading } from '../components/load-section.js';
+import { siteLoading } from '../components/site-loader.js';
 
 export function init() {
   const container = document.getElementById('favoriteGames');
   if (!isFirebaseConfigured()) { showMessage(container, 'Спочатку налаштуй Firebase.'); return; }
   let revision = 0;
-  authService.subscribe(async user => {
+  let loading = siteLoading.begin('Завантажуємо обране…', 2);
+  const onUser = async user => {
     const current = ++revision;
+    loading?.finish();
+    const task = user ? siteLoading.begin('Завантажуємо обране…', 2) : undefined;
+    loading = task;
     if (!user) { showMessage(container, 'Увійди, щоб побачити своє обране.'); return; }
-    showMessage(container, 'Завантаження обраного…');
+    showLoading(container, 'Завантаження обраного…');
     try {
       const ids = await favoritesService.listIds();
       const games = [];
@@ -23,14 +28,20 @@ export function init() {
         if (current !== revision) return;
       }
       if (!games.length) { showMessage(container, 'В обраному ще немає ігор.'); return; }
-      const priced = await addCardPrices(games);
-      if (current !== revision) return;
-      renderGames(container, priced);
+      // Назви й обкладинки готові: не чекаємо всіх пошуків цін для їх показу.
+      renderGames(container, games.map(game => ({ ...game, priceStatus: 'loading' })));
       container.querySelectorAll('[data-favorite-id]').forEach(button => {
         button.setAttribute('aria-pressed', 'true'); button.setAttribute('aria-label', 'Видалити з обраного');
       });
+      task.update('Перевіряємо ціни обраного…', 1);
+      const priced = await addCardPrices(games);
+      if (current !== revision) return;
+      updateGamePrices(container, priced);
     } catch (error) { if (current === revision) showMessage(container, error.message); }
-  });
+    finally { task.finish(); }
+  };
+  try { authService.subscribe(onUser); }
+  catch (error) { loading.finish(); showMessage(container, error.message); return; }
   container.addEventListener('click', async event => {
     const button = event.target.closest('[data-favorite-id]'); if (!button) return;
     button.disabled = true;
