@@ -5,14 +5,9 @@ import { platformIcons } from '../utils/platforms.js';
 import { releaseInfo } from '../utils/release.js';
 import { matchedProduct } from '../services/game-matching.js';
 
-/** Тільки відображення. Game приходить з RAWG, Offer[] — з сервісу цін.
- * Шаблон {{...}} екранує текст: навіть опис API не є довільним HTML.
- * Не вигадуємо рейтинг, дату або назви компаній для незаповнених полів.
- */
 export function renderGameDetails(container, game, { offers = [], errors = [] } = {}, { pricesOnly = false } = {}) {
   const release = releaseInfo(game);
-  // Таблиця може оновитися на межі TTL після завантаження summary-картки.
-  // У такому разі мінімум і кількість магазинів беремо з цієї самої таблиці.
+
   const price = offers.length ? offers[0].price : game.price;
   const storeCount = offers.length ? new Set(offers.map(offer => offer.storeId || offer.store)).size : game.storeCount;
   const hasPrice = Number.isFinite(price) && price >= 0;

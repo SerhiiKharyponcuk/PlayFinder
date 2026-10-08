@@ -2,7 +2,7 @@ import { isFirebaseConfigured } from '../api/firebase/config.js';
 const controllers = new WeakMap();
 let services;
 function loadServices() {
-  // Каталог не чекає Firebase. SDK потрібен лише коли обране налаштоване.
+
   if (!isFirebaseConfigured()) return Promise.reject(new Error('Спочатку налаштуй Firebase для входу й обраного.'));
   services ||= Promise.all([import('../services/auth-service.js'), import('../services/favorites-service.js')])
     .then(([auth, favorites]) => ({ authService: auth.authService, favoritesService: favorites.favoritesService }))
@@ -10,10 +10,9 @@ function loadServices() {
   return services;
 }
 
-/** Один listener на контейнер працює і для карток, доданих пізніше. */
 export function initFavorites(root = document.querySelector('main')) {
   if (!root) return;
-  // Після раннього показу карток ціни ще оновлюються. Не додаємо другий listener.
+
   if (controllers.has(root)) return controllers.get(root);
   const status = document.createElement('p'); status.className = 'page-state';
   status.setAttribute('role', 'status'); status.hidden = true; root.append(status);
@@ -28,9 +27,7 @@ export function initFavorites(root = document.querySelector('main')) {
   let revision = 0;
   let snapshot = Promise.resolve();
   let snapshotError;
-  // Після лінивого імпорту Auth ще має прочитати користувача та його обране.
-  // Раннє натискання чекає цього читання: інакше збережена гра додалася б знову
-  // замість видалення. Каталог і його ціни цього очікування не потребують.
+
   const ready = isFirebaseConfigured() ? loadServices().then(({ authService, favoritesService }) => new Promise(resolve => {
     authService.subscribe(user => {
       const current = ++revision; ids.clear(); snapshotError = undefined; paint();

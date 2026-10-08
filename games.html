@@ -22,27 +22,15 @@
 
     <title>Ігри — PlayFinder</title>
 
-    <!-- =====================================================
-         PRECONNECT
-    ====================================================== -->
-
     <link
         rel="preconnect"
         href="https://cdnjs.cloudflare.com"
     >
 
-    <!-- =====================================================
-         FONT AWESOME
-    ====================================================== -->
-
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
-
-    <!-- =====================================================
-         MAIN CSS
-    ====================================================== -->
 
 </head>
 
@@ -53,15 +41,9 @@
         <div class="site-loader__content"><strong>Завантажуємо PlayFinder</strong><span class="site-loader__label" data-loading-label>Готуємо сторінку…</span></div>
     </div>
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
 <header class="header">
 
     <div class="container header__container">
-
-        <!-- Logo -->
 
         <a
             href="./index.html"
@@ -87,8 +69,6 @@
 
         </a>
 
-        <!-- Navigation -->
-
         <nav
             class="nav"
             aria-label="Основна навігація"
@@ -109,12 +89,7 @@
                 Ігри
             </a>
 
-            <a
-                href="./prices.html"
-                class="nav__link"
-            >
-                Порівняння цін
-            </a>
+
 
             <a
                 href="./about.html"
@@ -124,8 +99,6 @@
             </a>
 
         </nav>
-
-        <!-- Search -->
 
         <form
             class="header-search"
@@ -151,11 +124,7 @@
 
         </form>
 
-        <!-- Header actions -->
-
         <div class="header-actions">
-
-            <!-- Language -->
 
             <button
                 class="header-action"
@@ -172,8 +141,6 @@
 
             </button>
 
-            <!-- Favorites -->
-
             <a
                 href="./favorites.html"
                 class="header-action header-action--favorite"
@@ -188,8 +155,6 @@
 
             </a>
 
-            <!-- Login -->
-
             <a
                 href="./login.html"
                 class="login-button"
@@ -202,8 +167,6 @@
                 </span>
 
             </a>
-
-            <!-- Mobile menu -->
 
             <button
                 class="mobile-menu-button"
@@ -221,10 +184,6 @@
     </div>
 
 </header>
-
-<!-- =========================================================
-     MOBILE MENU
-========================================================= -->
 
 <div
     class="mobile-menu"
@@ -245,9 +204,7 @@
             Ігри
         </a>
 
-        <a href="./prices.html" class="mobile-menu__link">
-            Порівняння цін
-        </a>
+
 
         <a href="./favorites.html" class="mobile-menu__link">
             Обране
@@ -264,10 +221,6 @@
     </nav>
 
 </div>
-
-<!-- =========================================================
-     MOBILE SEARCH
-========================================================= -->
 
 <div class="games-mobile-search-wrap">
 
@@ -295,26 +248,14 @@
 
 </div>
 
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
 <main class="games-page">
 
     <div class="container games-layout">
-
-        <!-- =================================================
-             LEFT SIDEBAR
-        ================================================== -->
 
         <aside
             class="games-sidebar"
             id="gamesSidebar"
         >
-
-            <!-- =============================================
-                 PLATFORMS
-            ============================================== -->
 
             <section class="catalog-filter">
 
@@ -395,22 +336,18 @@
                         <input
                             type="checkbox"
                             name="platform"
-                            value="steam-deck"
+                            value="linux"
                          class="catalog-check__input">
 
                         <span class="catalog-check__box"></span>
 
-                        <span>Steam Deck</span>
+                        <span>Linux</span>
 
                     </label>
 
                 </div>
 
             </section>
-
-            <!-- =============================================
-                 GENRES
-            ============================================== -->
 
             <section class="catalog-filter">
 
@@ -586,10 +523,6 @@
 
             </section>
 
-            <!-- =============================================
-                 STORES
-            ============================================== -->
-
             <section class="catalog-filter">
 
                 <button
@@ -655,12 +588,12 @@
                         <input
                             type="checkbox"
                             name="store"
-                            value="ubisoft"
+                            value="xbox"
                          class="catalog-check__input">
 
                         <span class="catalog-check__box"></span>
 
-                        <span>Ubisoft Store</span>
+                        <span>Xbox Store</span>
 
                     </label>
 
@@ -669,12 +602,12 @@
                         <input
                             type="checkbox"
                             name="store"
-                            value="ea"
+                            value="itch"
                          class="catalog-check__input">
 
                         <span class="catalog-check__box"></span>
 
-                        <span>EA App</span>
+                        <span>itch.io</span>
 
                     </label>
 
@@ -683,12 +616,12 @@
                         <input
                             type="checkbox"
                             name="store"
-                            value="microsoft"
+                            value="google"
                          class="catalog-check__input">
 
                         <span class="catalog-check__box"></span>
 
-                        <span>Microsoft Store</span>
+                        <span>Google Play</span>
 
                     </label>
 
@@ -736,10 +669,6 @@
 
             </section>
 
-            <!-- =============================================
-                 PRICE
-            ============================================== -->
-
             <section class="catalog-filter catalog-filter--price">
 
                 <button
@@ -749,7 +678,7 @@
                 >
 
                     <span>
-                        Ціна (EUR)
+                        Ціна (USD · на сторінці)
                     </span>
 
                     <i class="fa-solid fa-chevron-up catalog-filter__title-icon"></i>
@@ -761,19 +690,19 @@
                     <div class="catalog-price__slider">
 
                         <input
-                            id="priceMinRange"
+                            id="priceMinRange" aria-label="Мінімальна ціна, USD"
                             type="range"
                             min="0"
-                            max="100"
+                            max="500"
                             value="0"
                          class="catalog-price__slider-input">
 
                         <input
-                            id="priceMaxRange"
+                            id="priceMaxRange" aria-label="Максимальна ціна, USD; 500 — без межі"
                             type="range"
                             min="0"
-                            max="100"
-                            value="100"
+                            max="500"
+                            value="500"
                          class="catalog-price__slider-input">
 
                     </div>
@@ -790,8 +719,8 @@
                                 id="priceMin"
                                 type="number"
                                 min="0"
-                                max="100"
-                                value="0"
+                                max="100000"
+                                value="" placeholder="Від 0" step="0.01"
                              class="catalog-price__fields-input">
 
                         </label>
@@ -810,8 +739,8 @@
                                 id="priceMax"
                                 type="number"
                                 min="0"
-                                max="100"
-                                value="100"
+                                max="100000"
+                                value="" placeholder="Без межі" step="0.01"
                              class="catalog-price__fields-input">
 
                         </label>
@@ -821,10 +750,6 @@
                 </div>
 
             </section>
-
-            <!-- =============================================
-                 RELEASE YEAR
-            ============================================== -->
 
             <section class="catalog-filter">
 
@@ -896,15 +821,7 @@
 
         </aside>
 
-        <!-- =================================================
-             MAIN CONTENT
-        ================================================== -->
-
         <div class="games-content">
-
-            <!-- =============================================
-                 BREADCRUMBS
-            ============================================== -->
 
             <nav
                 class="breadcrumbs"
@@ -922,10 +839,6 @@
                 </span>
 
             </nav>
-
-            <!-- =============================================
-                 PAGE HERO
-            ============================================== -->
 
             <section class="games-hero">
 
@@ -982,13 +895,7 @@
 
             </section>
 
-            <!-- =============================================
-                 TOP FILTER BAR
-            ============================================== -->
-
             <section class="games-toolbar">
-
-                <!-- Platform -->
 
                 <label class="games-toolbar__filter">
 
@@ -1022,8 +929,6 @@
 
                 </label>
 
-                <!-- Genre -->
-
                 <label class="games-toolbar__filter">
 
                     <span class="games-toolbar__filter-text">
@@ -1056,8 +961,6 @@
 
                 </label>
 
-                <!-- Store -->
-
                 <label class="games-toolbar__filter">
 
                     <span class="games-toolbar__filter-text">
@@ -1086,8 +989,6 @@
 
                 </label>
 
-                <!-- Price -->
-
                 <label class="games-toolbar__filter">
 
                     <span class="games-toolbar__filter-text">
@@ -1105,26 +1006,24 @@
                         </option>
 
                         <option value="0-10">
-                            До €10
+                            До $10
                         </option>
 
                         <option value="10-30">
-                            €10 — €30
+                            $10 — $30
                         </option>
 
                         <option value="30-60">
-                            €30 — €60
+                            $30 — $60
                         </option>
 
                         <option value="60+">
-                            Від €60
+                            Від $60
                         </option>
 
                     </select>
 
                 </label>
-
-                <!-- Release -->
 
                 <label class="games-toolbar__filter">
 
@@ -1158,8 +1057,6 @@
 
                 </label>
 
-                <!-- Sort -->
-
                 <label class="games-toolbar__filter games-toolbar__filter--sort">
 
                     <span class="games-toolbar__filter-text">
@@ -1191,8 +1088,6 @@
                     </select>
 
                 </label>
-
-                <!-- View mode -->
 
                 <div
                     class="games-view"
@@ -1228,15 +1123,11 @@
 
             </section>
 
-            <!-- =============================================
-                 MOBILE FILTER BUTTON
-            ============================================== -->
-
             <div class="games-mobile-actions">
 
                 <button
                     class="games-mobile-filter-button"
-                    id="openGamesFilters"
+                    id="openGamesFilters" aria-controls="gamesFilterDrawer" aria-expanded="false"
                     type="button"
                 >
 
@@ -1252,7 +1143,7 @@
                         Сортування
                     </span>
 
-                    <select id="mobileGamesSort" class="games-mobile-sort__select">
+                    <select id="mobileGamesSort" class="games-mobile-sort__select"><option value="price-low">Ціна: від низької</option><option value="price-high">Ціна: від високої</option>
 
                         <option value="popular">
                             Популярні
@@ -1271,10 +1162,6 @@
                 </label>
 
             </div>
-
-            <!-- =============================================
-                 CATEGORY CHIPS
-            ============================================== -->
 
             <div class="games-category-row">
 
@@ -1334,7 +1221,7 @@
                     <button
                         class="games-category"
                         type="button"
-                        data-category="upcoming"
+                        data-category="upcoming" title="Ігри з оголошеною майбутньою датою виходу"
                     >
                         Очікувані
                     </button>
@@ -1387,11 +1274,9 @@
 
             </div>
 
-            <!-- =============================================
-                 ACTIVE FILTERS
-            ============================================== -->
-
-            <div
+            <p class="catalog-status" id="gamesVisibleCount" role="status" aria-live="polite"></p>
+<p class="catalog-status" id="gamesPriceScope" hidden>Ціна й порядок за ціною — серед ігор цієї сторінки. Пропозиції CheapShark для PC у USD. Магазини фільтрують наявність гри в каталозі RAWG.</p>
+<div
                 class="active-filters"
                 id="activeFilters"
                 hidden
@@ -1412,13 +1297,7 @@
 
             </div>
 
-            <!-- =============================================
-                 GAMES GRID
-            ============================================== -->
-
             <section class="games-catalog">
-
-                <!-- Loading -->
 
                 <div
                     class="games-catalog-loading"
@@ -1443,15 +1322,11 @@
 
                 </div>
 
-                <!-- API games -->
-
                 <div
                     class="games-catalog-grid"
                     id="gamesCatalog"
                     aria-live="polite"
                 ></div>
-
-                <!-- Empty -->
 
                 <div
                     class="games-empty"
@@ -1477,8 +1352,6 @@
                     </button>
 
                 </div>
-
-                <!-- Error -->
 
                 <div
                     class="games-error"
@@ -1506,10 +1379,6 @@
                 </div>
 
             </section>
-
-            <!-- =============================================
-                 PAGINATION
-            ============================================== -->
 
             <div class="games-pagination-wrap">
 
@@ -1549,8 +1418,6 @@
 
                 </nav>
 
-                <!-- Per page -->
-
                 <label class="games-per-page">
 
                     <span>
@@ -1571,8 +1438,8 @@
                             36 на сторінці
                         </option>
 
-                        <option value="48">
-                            48 на сторінці
+                        <option value="40">
+                            40 на сторінці
                         </option>
 
                     </select>
@@ -1588,10 +1455,6 @@
 <p class="data-attribution">Дані та зображення: <a href="https://rawg.io/" target="_blank" rel="noopener noreferrer">RAWG</a>. Ціни: <a href="https://www.cheapshark.com/" target="_blank" rel="noopener noreferrer">CheapShark</a> (USD).</p>
 </main>
 
-<!-- =========================================================
-     MOBILE FILTER DRAWER
-========================================================= -->
-
 <div
     class="games-filter-overlay"
     id="gamesFilterOverlay"
@@ -1600,7 +1463,7 @@
 
 <aside
     class="games-filter-drawer"
-    id="gamesFilterDrawer"
+    id="gamesFilterDrawer" role="dialog" aria-modal="true" aria-label="Фільтри каталогу" hidden
     aria-hidden="true"
 >
 
@@ -1627,11 +1490,6 @@
         id="mobileFiltersContent"
     >
 
-        <!--
-            JS може клонувати сюди desktop filters,
-            щоб не дублювати логіку вручну.
-        -->
-
     </div>
 
     <footer class="games-filter-drawer__footer">
@@ -1656,15 +1514,9 @@
 
 </aside>
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
 <footer class="footer">
 
     <div class="container footer__inner">
-
-        <!-- Logo -->
 
         <a
             href="./index.html"
@@ -1690,8 +1542,6 @@
 
         </a>
 
-        <!-- Navigation -->
-
         <nav
             class="footer__nav"
             aria-label="Навігація у футері"
@@ -1708,17 +1558,13 @@
                 Ігри
             </a>
 
-            <a href="./prices.html" class="footer__link">
-                Порівняння цін
-            </a>
+
 
             <a href="./about.html" class="footer__link">
                 Про нас
             </a>
 
         </nav>
-
-        <!-- Social -->
 
         <div class="footer__socials">
 
@@ -1752,8 +1598,6 @@
 
         </div>
 
-        <!-- Copyright -->
-
         <div class="footer__copyright">
 
             © 2026 PlayFinder.
@@ -1767,10 +1611,6 @@
     </div>
 
 </footer>
-
-<!-- =========================================================
-     MOBILE BOTTOM NAV
-========================================================= -->
 
 <nav
     class="mobile-bottom-nav"
@@ -1822,30 +1662,6 @@
     </a>
 
 </nav>
-
-<!-- =========================================================
-     GAME CARD TEMPLATE
-
-     RAWG:
-     - id
-     - slug
-     - name
-     - background_image
-     - rating
-     - platforms
-     - released
-
-     PRICE API:
-     - price
-     - stores count
-     - discount
-========================================================= -->
-
-<!-- Картка тепер у src/templates/game-card.hbs; рендер у src/js/components/cards.js. -->
-
-<!-- =========================================================
-     LIST VIEW TEMPLATE
-========================================================= -->
 
 <template id="gameListTemplate">
 
@@ -1937,10 +1753,6 @@
 
 </template>
 
-<!-- =========================================================
-     SEARCH RESULT TEMPLATE
-========================================================= -->
-
 <template id="searchResultTemplate">
 
     <a
@@ -1972,10 +1784,6 @@
 
 </template>
 
-<!-- =========================================================
-     ACTIVE FILTER TEMPLATE
-========================================================= -->
-
 <template id="activeFilterTemplate">
 
     <button
@@ -1994,14 +1802,6 @@
     </button>
 
 </template>
-
-<!-- =========================================================
-     APP CONFIG
-========================================================= -->
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
 
 <script type="module" src="/src/main.js"></script>
 </body>

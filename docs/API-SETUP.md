@@ -77,7 +77,7 @@ import { getOffers } from '../services/prices-service.js';
 const game = await gamesService.getGame(id);
 if (game.providerIds.cheapshark) {
   const { offers, errors } = await getOffers(game, { currency: 'USD' });
-  // offers — усі поточні пропозиції для таблиці порівняння.
+  // offers — поточні пропозиції магазинів у деталях гри.
 }
 ```
 

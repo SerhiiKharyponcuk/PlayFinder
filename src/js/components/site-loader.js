@@ -1,7 +1,3 @@
-/** Лоадер відображає справжні завдання, а не штучний таймер/відсотки.
- * RAWG і CheapShark можуть завершитися в різному порядку. Кінець однієї
- * секції не приховує індикатор, поки інша ще завантажується.
- */
 export function createLoadingController(render) {
   const tasks = new Map();
   let nextId = 0;

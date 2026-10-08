@@ -1,7 +1,3 @@
-/* ==========================================================
-   RIGHT SIDEBAR
-========================================================== */
-
 .home-sidebar {
     grid-area: sidebar;
 
@@ -21,9 +17,6 @@
 
     background: var(--panel);
 }
-
-
-/* heading */
 
 .sidebar-heading {
     display: flex;
@@ -55,5 +48,3 @@
 
     font-size: 9px;
 }
-
-

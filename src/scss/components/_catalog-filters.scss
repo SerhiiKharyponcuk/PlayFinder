@@ -1,7 +1,3 @@
-/* ==========================================================
-   LEFT SIDEBAR
-========================================================== */
-
 .catalog-sidebar {
     grid-area: filters;
 
@@ -53,9 +49,6 @@
     padding:
         0 13px 13px;
 }
-
-
-/* Checkbox */
 
 .catalog-check {
     display: flex;
@@ -146,9 +139,6 @@
     font-size: 8px;
 }
 
-
-/* Sort */
-
 .catalog-sort {
     padding: 12px 13px;
 }
@@ -181,5 +171,3 @@
 
     font-size: 10px;
 }
-
-

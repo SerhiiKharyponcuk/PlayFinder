@@ -1,15 +1,9 @@
 import { cheapsharkProvider, parsePrice } from '../api/providers/cheapshark.js';
 import { gameLinks } from './game-links.js';
 import { titleKey, searchTitle, findGameMatch, fallbackSearchTitle, matchedProduct } from './game-matching.js';
-// Зберігаємо попередні імпорти уроку. Сам нормалізатор тепер у game-matching.js.
+
 export { titleKey, matchGame } from './game-matching.js';
 
-/** ШЛЯХ ЦІНИ: games-service → resolveGame → CheapShark → summarize → cards.js.
- * Кеш і ліміти винесені в api/cheapshark-client.js. Цей файл обирає ТОВАР.
- * Deluxe/DLC/продовження не об'єднуємо з базовою грою за частиною назви.
- */
-// Залишили навчальну функцію вчителя, але не використовуємо її для вибору ціни.
-// Вона може допомогти згрупувати видання в UI; ототожнювати їхні ID не можна.
 const EDITION_PATTERN = /\b(game of the year|goty|complete|premium|deluxe|ultimate|gold|definitive|enhanced|standard|special|remastered)( edition)?\b|\bdirectors cut\b/gi;
 export function stripEdition(title = '') {
   return titleKey(title).replace(EDITION_PATTERN, '').trim().replace(/\s+/g, ' ');
@@ -29,8 +23,7 @@ export function createCardPrices(provider = cheapsharkProvider, links = gameLink
   async function resolveGame(game) {
     const known = game.providerIds?.cheapshark || links[game.providerIds?.rawg || game.id];
     if (known) return { ...game, providerIds: { ...game.providerIds, cheapshark: String(known) } };
-    // Розділяємо запит пошуку і саме зіставлення: дві картки різних видань
-    // можуть мати спільний пошук, але не можуть отримати спільний випадковий ID.
+
     const candidates = await search(game.title);
     let result = findGameMatch(game, candidates);
     const fallback = fallbackSearchTitle(game.title);
@@ -50,7 +43,7 @@ export function createCardPrices(provider = cheapsharkProvider, links = gameLink
     return {
       ...game, ...(valid[0].productTitle ? matchedProduct(valid[0].productTitle) : {}),
       priceStatus: 'ready', currency: 'USD',
-      // Поточний мінімум потрібного товару. 0 — коректна безкоштовна пропозиція.
+
       price: Math.min(...valid.map(offer => Number(offer.price))),
       storeCount: new Set(valid.map(offer => offer.storeId || offer.store)).size,
       priceStale: valid.some(offer => offer.priceStale),
@@ -59,10 +52,9 @@ export function createCardPrices(provider = cheapsharkProvider, links = gameLink
   }
   const failed = (game, error) => ({ ...game, priceStatus: error.status === 429 ? 'limited' : 'error', priceError: error.message });
   async function addPrices(games) {
-    // Спочатку знаходимо всі ID видимих карток, потім отримуємо пропозиції пакетом.
-    // Ми не завантажуємо весь каталог наперед — тільки ігри відкритої сторінки.
+
     const resolved = await Promise.all(games.map(async game => {
-      // При повторному оновленні не залишаємо стару суму під новим статусом помилки.
+
       const base = { ...game };
       for (const key of ['price', 'priceStatus', 'priceError', 'priceStale', 'priceUpdatedAt', 'storeCount', 'priceProductTitle', 'priceEditionLabel']) delete base[key];
       try { return await resolveGame(base); } catch (error) { return failed(base, error); }

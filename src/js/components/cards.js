@@ -5,13 +5,8 @@ import { formatPrice } from '../utils/format.js';
 import { platformIcons } from '../utils/platforms.js';
 import { releaseInfo } from '../utils/release.js';
 
-// Шаблони вже компілює Vite: браузер не завантажує важкий компілятор.
-// {{...}} зберігає Handlebars escaping, дані API не стають довільним HTML.
 export function renderGames(container, games) {
-  // Тут лише відображення: не шукаємо відповідності і не обчислюємо мінімум повторно.
-  // game.price приходить із card-prices.js. hasPrice перевіряє число, бо if (price)
-  // помилково приховав би справжню нульову ціну. Іконки — всі платформи з RAWG,
-  // але ціна CheapShark стосується PC (ця позначка є в шаблоні).
+
   container.innerHTML = games.map(game => card(cardModel(game))).join('');
 }
 function cardModel(game) {
@@ -29,8 +24,7 @@ function cardModel(game) {
     detailsUrl: './game.html?id=' + encodeURIComponent(game.id),
   };
 }
-// Оновлюємо тільки блок ціни. Обкладинка не перезавантажується, сердечко
-// не втрачає стан Firebase, а фокус користувача на посиланні лишається на місці.
+
 export function updateGamePrices(container, games) {
   const cards = new Map([...container.querySelectorAll('.game-card')].map(node => [node.dataset.gameId, node]));
   for (const game of games) {

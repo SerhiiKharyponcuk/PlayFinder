@@ -1,6 +1,5 @@
 import { siteLoading } from './site-loader.js';
 
-/** Завантаження однієї секції: збій RAWG не блокує CheapShark і навпаки. */
 export function showMessage(container, text) {
   const message = document.createElement('p');
   message.className = 'page-state'; message.setAttribute('role', 'status');
@@ -24,9 +23,7 @@ export async function loadSection(id, loaderId, load, render, { track = true, la
     if (items.length) render(container, items);
     else showMessage(container, 'За цим запитом нічого не знайдено.');
   } catch (error) {
-    // Помилка стає видимою користувачу, а не тільки в console.log.
-    // Прогресивна сітка має власне завдання лоадера й власний стан цін.
-    // Її fail() закриває обидва також при помилці RAWG, а не тільки при успіху.
+
     if (onError) onError(error);
     else showMessage(container, error.message || 'Не вдалося завантажити дані. Спробуй пізніше.');
   } finally {

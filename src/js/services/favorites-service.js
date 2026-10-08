@@ -2,9 +2,6 @@ import { collection, doc, getDocs, setDoc, deleteDoc, serverTimestamp } from 'fi
 import { getFirebase } from '../api/firebase/client.js';
 import { authService } from './auth-service.js';
 
-/** Шлях users/{uid}/favorites/{rawgId}. Доступ власника забезпечують firestore.rules.
- * Зберігаємо лише RAWG ID, а не копію каталогу чи паролі.
- */
 async function favoritesCollection() {
   const user = await authService.requireUser();
   return collection(getFirebase().db, 'users', user.uid, 'favorites');

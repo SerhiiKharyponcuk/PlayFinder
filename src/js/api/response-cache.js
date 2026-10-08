@@ -1,8 +1,3 @@
-/**
- * КЕШ ВІДПОВІДЕЙ: localStorage переживає F5, переходи між HTML і перезапуск Vite.
- * Зберігаємо тільки публічні дані CheapShark, без RAWG-ключа та даних користувача.
- * Якщо сховище заборонене/переповнене, залишається кеш у пам'яті.
- */
 export function browserStorage() {
   try { return globalThis.localStorage; } catch { return null; }
 }
@@ -13,7 +8,7 @@ export function createResponseCache({ storage = browserStorage(), prefix = 'play
   const storageKey = key => entryPrefix + key;
   function read(key) {
     let entry;
-    try { entry = JSON.parse(storage?.getItem(storageKey(key)) || 'null'); } catch { /* Пошкоджений JSON — промах кешу. */ }
+    try { entry = JSON.parse(storage?.getItem(storageKey(key)) || 'null'); } catch {                                       }
     entry ||= memory.get(key);
     return entry && Number.isFinite(entry.updatedAt) && Object.hasOwn(entry, 'data') ? entry : null;
   }
@@ -28,9 +23,9 @@ export function createResponseCache({ storage = browserStorage(), prefix = 'play
         }
       }
       entries.sort((a, b) => a.time - b.time);
-      // Залишаємо запас; видаляємо лише НАШІ найстаріші записи, не чужі дані.
+
       for (const entry of entries.slice(0, Math.max(0, entries.length - maxEntries + 20))) storage.removeItem(entry.key);
-    } catch { /* Недоступне сховище не повинно ламати ціни. */ }
+    } catch {                                                  }
   }
   return {
     prefix,
@@ -50,7 +45,7 @@ export function createResponseCache({ storage = browserStorage(), prefix = 'play
         storage?.setItem(storageKey(key), JSON.stringify(entry));
       } catch {
         prune();
-        try { storage?.setItem(storageKey(key), JSON.stringify(entry)); } catch { /* Кеш у пам'яті вже є. */ }
+        try { storage?.setItem(storageKey(key), JSON.stringify(entry)); } catch {                            }
       }
     },
   };

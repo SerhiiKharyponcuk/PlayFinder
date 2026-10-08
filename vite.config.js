@@ -2,9 +2,9 @@ import { defineConfig } from 'vite';
 import { fileURLToPath } from 'node:url';
 import { handlebarsPlugin } from './scripts/handlebars-plugin.js';
 
-const pages = ['index', 'games', 'prices', 'about', 'game', 'favorites', 'login', 'privacy', 'terms'];
+const pages = ['index', 'games', 'about', 'game', 'favorites', 'login', 'privacy', 'terms'];
 export default defineConfig({
-  // GitHub Pages hosts this repository at /PlayFinder/.
+
   base: '/PlayFinder/',
   plugins: [handlebarsPlugin()],
   build: {

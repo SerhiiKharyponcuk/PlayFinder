@@ -8,7 +8,6 @@ export const SHARK_CACHE = Object.freeze({
   stores: { ttl: 24 * 60 * 60 * 1000, maxAge: 7 * 24 * 60 * 60 * 1000 },
 });
 
-// query входить у ключ: пошук Portal не може повернути кеш Portal 2.
 function requestKey(path, query) {
   const params = new URLSearchParams();
   Object.entries(query).sort(([a], [b]) => a.localeCompare(b)).forEach(([key, value]) => {
@@ -17,7 +16,6 @@ function requestKey(path, query) {
   return path + '?' + params;
 }
 
-// Скасування одного споживача не скасовує спільний запит для інших карток.
 function withSignal(promise, signal) {
   if (!signal) return promise;
   if (signal.aborted) return Promise.reject(signal.reason);
@@ -28,10 +26,6 @@ function withSignal(promise, signal) {
   });
 }
 
-/** ЄДИНІ ворота до CheapShark: кеш → спільна черга → HTTP.
- * Немає нескінченних retry. Після 429 зберігаємо паузу і зупиняємо ВСЮ чергу.
- * Web Locks узгоджує вкладки одного сайту; без підтримки працює черга цієї вкладки.
- */
 export function createCheapsharkClient({ send = request, storage = browserStorage(), now = Date.now,
   sleep = ms => new Promise(resolve => setTimeout(resolve, ms)), interval = 1200,
   locks = globalThis.navigator?.locks,
@@ -46,12 +40,12 @@ export function createCheapsharkClient({ send = request, storage = browserStorag
     try {
       const saved = JSON.parse(storage?.getItem(stateKey) || 'null');
       if (saved && Number.isFinite(saved.pausedUntil) && Number.isFinite(saved.nextAt)) state = saved;
-    } catch { /* Користуємось станом у пам'яті. */ }
+    } catch {                                      }
     return state;
   }
   function saveState(patch) {
     state = { ...readState(), ...patch };
-    try { storage?.setItem(stateKey, JSON.stringify(state)); } catch { /* Пауза працює в пам'яті. */ }
+    try { storage?.setItem(stateKey, JSON.stringify(state)); } catch {                               }
   }
   function pauseError() {
     const saved = readState();
@@ -66,7 +60,7 @@ export function createCheapsharkClient({ send = request, storage = browserStorag
     return cache.get(keyFor(path, query), { ...policy, allowStale });
   }
   async function perform(path, query, policy) {
-    // Після очікування перевіряємо кеш знову: інша вкладка могла вже отримати дані.
+
     const fresh = peek(path, query, policy);
     if (fresh) { stats.cacheHits++; return fresh; }
     if (readState().pausedUntil > now()) { stats.blocked++; throw pauseError(); }
@@ -87,8 +81,7 @@ export function createCheapsharkClient({ send = request, storage = browserStorag
       return result;
     } catch (error) {
       const failures = (readState().failures || 0) + 1;
-      // Retry-After враховуємо, якщо CORS дозволив браузеру прочитати заголовок.
-      // Без нього 429 дає паузу щонайменше 5 хвилин; інші збої — 30 с з backoff.
+
       const delay = error.status === 429 ? Math.max(error.retryAfterMs || 0, 5 * 60 * 1000)
         : error.status === 403 ? 15 * 60 * 1000 : Math.min(5 * 60 * 1000, 30000 * 2 ** Math.min(failures - 1, 4));
       saveState({ pausedUntil: now() + delay, failures, status: error.status || 0 });

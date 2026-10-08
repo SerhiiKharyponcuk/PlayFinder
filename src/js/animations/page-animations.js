@@ -3,11 +3,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Викликай після рендерингу сторінки. Перед повторним init виклич повернений cleanup.
 export function initPageAnimations(root = document) {
   const media = gsap.matchMedia();
   media.add('(prefers-reduced-motion: no-preference)', () => {
-    const hero = root.querySelector('.hero__content, .about-hero__content, .games-hero__content, .prices-header, .placeholder-page, .game-detail__content');
+    const hero = root.querySelector('.hero__content, .about-hero__content, .games-hero__content, .placeholder-page, .game-detail__content');
     if (hero) {
       gsap.from(hero.children, {
         y: 18,
@@ -19,7 +18,7 @@ export function initPageAnimations(root = document) {
       });
     }
 
-    const sections = root.querySelectorAll('.games-section, .sidebar-card, .newsletter, .games-toolbar, .games-catalog, .price-game-card, .price-comparison, .price-sidebar-card, .about-features, .about-story, .about-values, .about-cta, .game-detail__media');
+    const sections = root.querySelectorAll('.games-section, .sidebar-card, .newsletter, .games-toolbar, .games-catalog, .about-features, .about-story, .about-values, .about-cta, .game-detail__media');
     sections.forEach(section => {
       gsap.from(section, {
         y: 20,

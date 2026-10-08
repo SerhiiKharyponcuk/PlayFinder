@@ -20,7 +20,7 @@ export async function init() {
   try {
     const game = await gamesService.getGame(id, { onGame: early => {
       loading.update('Перевіряємо ціни гри…', 1);
-      // Опис і обкладинка відкриваються відразу. Тільки таблиця цін ще очікує API.
+
       document.title = early.title + ' — PlayFinder';
       document.getElementById('gameBreadcrumb').textContent = early.title;
       renderGameDetails(container, early);
@@ -28,15 +28,13 @@ export async function init() {
       container.setAttribute('aria-busy', 'false');
       repaint?.();
     } });
-    // ID та мінімум уже знайдені. Повні пропозиції читають той самий індивідуальний
-    // кеш, який записав пакет карток: не починаємо новий пошук CheapShark.
+
     const prices = game.providerIds.cheapshark ? await getOffers(game) : { offers: [], errors: [] };
     document.title = game.title + ' — PlayFinder';
     document.getElementById('gameBreadcrumb').textContent = game.title;
-    // Не закриваємо розгорнутий опис і не перемальовуємо обкладинку чи сердечко.
+
     renderGameDetails(container, game, prices, { pricesOnly: true });
     if (import.meta.env.DEV) console.info('CheapShark: запити цієї сторінки', JSON.stringify(cheapsharkProvider.diagnostics()));
   } catch (error) { showMessage(container, error.message); }
   finally { loading.finish(); container.setAttribute('aria-busy', 'false'); }
 }
-

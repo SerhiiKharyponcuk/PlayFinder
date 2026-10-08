@@ -4,11 +4,7 @@ import { addCardPrices } from '../services/card-prices.js';
 import { cheapsharkProvider } from '../api/providers/cheapshark.js';
 import { siteLoading } from './site-loader.js';
 
-/** РАННІЙ ПОКАЗ КАРТОК + окремий стан цін.
- * publish() викликається двічі: щойно RAWG готовий і коли CheapShark додав суми.
- * Не прискорюємо мережу додатковими запитами: черга й кеш лишаються спільними.
- */
-export function createGameList(id, loaderId, repaintFavorites = () => {}) {
+export function createGameList(id, loaderId, repaintFavorites = () => {}, { transform = games => games, onPublish = () => {} } = {}) {
   const container = document.getElementById(id);
   const loader = document.getElementById(loaderId);
   const feedback = document.createElement('div');
@@ -38,8 +34,7 @@ export function createGameList(id, loaderId, repaintFavorites = () => {}) {
       feedback.append(spinner);
       text.textContent = `Картки готові · шукаємо ціни ще для ${pending} ігор…`;
     } else {
-      // Не ховаємо картки через збій іншого API. Кнопка повторює тільки невдалі
-      // ціни та не очищує кеш. Пауза 429/403 не обходиться натисканням кнопки.
+
       text.textContent = 'Частина цін тимчасово недоступна. Картки можна відкривати.';
       const wait = Math.max(0, Math.ceil((cheapsharkProvider.diagnostics().pausedUntil - Date.now()) / 1000));
       const button = document.createElement('button'); button.type = 'button'; button.className = 'price-feedback__retry';
@@ -53,14 +48,16 @@ export function createGameList(id, loaderId, repaintFavorites = () => {}) {
 
   function publish(games) {
     current = games;
+    const visible = transform(games);
     const shown = [...container.querySelectorAll('.game-card')].map(node => node.dataset.gameId);
-    if (!games.length) showMessage(container, 'За цим запитом нічого не знайдено.');
-    else if (shown.length === games.length && games.every((game, index) => String(game.id) === shown[index])) updateGamePrices(container, games);
-    else renderGames(container, games);
+    if (!visible.length) showMessage(container, 'За цим запитом нічого не знайдено.');
+    else if (shown.length === visible.length && visible.every((game, index) => String(game.id) === shown[index])) updateGamePrices(container, visible);
+    else renderGames(container, visible);
     if (loader) loader.hidden = true;
     container.setAttribute('aria-busy', 'false');
     repaintFavorites();
     showPriceState();
+    onPublish(visible, games);
   }
 
   feedback.addEventListener('click', async event => {
@@ -73,7 +70,7 @@ export function createGameList(id, loaderId, repaintFavorites = () => {}) {
       const updated = new Map((await addCardPrices(retry)).map(game => [game.id, game]));
       publish(current.map(game => updated.get(game.id) || game));
     } catch {
-      // Захист також від неочікуваного збою сервісу: лоадер не лишається назавжди.
+
       const originals = new Map(retry.map(game => [game.id, game]));
       publish(current.map(game => originals.get(game.id) || game));
     } finally { retrying = false; showPriceState(); }

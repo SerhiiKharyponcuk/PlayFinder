@@ -22,13 +22,13 @@ export function init() {
     try {
       const ids = await favoritesService.listIds();
       const games = [];
-      // Малими порціями, щоб не відправляти сотні RAWG-запитів одночасно.
+
       for (let i = 0; i < ids.length; i += 4) {
         games.push(...await Promise.all(ids.slice(i, i + 4).map(id => gamesService.getGame(id, { withPrices: false }))));
         if (current !== revision) return;
       }
       if (!games.length) { showMessage(container, 'В обраному ще немає ігор.'); return; }
-      // Назви й обкладинки готові: не чекаємо всіх пошуків цін для їх показу.
+
       renderGames(container, games.map(game => ({ ...game, priceStatus: 'loading' })));
       container.querySelectorAll('[data-favorite-id]').forEach(button => {
         button.setAttribute('aria-pressed', 'true'); button.setAttribute('aria-label', 'Видалити з обраного');

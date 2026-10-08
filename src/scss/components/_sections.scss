@@ -1,7 +1,3 @@
-/* ==========================================================
-   MAIN CONTENT
-========================================================== */
-
 .home-main {
     grid-area: main;
 
@@ -15,9 +11,6 @@
 
     contain-intrinsic-size: auto 240px;
 }
-
-
-/* Heading */
 
 .section-heading {
     display: flex;
@@ -57,5 +50,3 @@
 
     font-weight: 700;
 }
-
-

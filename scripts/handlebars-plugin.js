@@ -1,11 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import Handlebars from 'handlebars';
 
-/** Vite компілює .hbs ДО відправлення в браузер.
- * На уроці редагуйте src/templates/*.hbs, як раніше. ?template повертає вже
- * готову функцію; у браузер потрапляє тільки маленький handlebars/runtime.
- * Цей файл не викликає API і не містить даних чи ключів користувача.
- */
 export function handlebarsPlugin() {
   return {
     name: 'playfinder-handlebars',

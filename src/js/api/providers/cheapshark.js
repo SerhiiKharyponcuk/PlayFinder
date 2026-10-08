@@ -2,7 +2,6 @@ import { cheapsharkClient, SHARK_CACHE } from '../cheapshark-client.js';
 import { safeImage } from '../../utils/urls.js';
 import { searchTitle, titleKey } from '../../services/game-matching.js';
 
-// CheapShark дає PC-ціни в USD. Порожнє значення — НЕ безкоштовна гра.
 export function parsePrice(value) {
   if (typeof value !== 'number' && typeof value !== 'string') return null;
   if (String(value).trim() === '') return null;
@@ -10,9 +9,9 @@ export function parsePrice(value) {
   return Number.isFinite(price) && price >= 0 ? price : null;
 }
 export function dealUrl(id) {
-  // API іноді вже кодує dealID. Декодуємо один раз, щоб не отримати %253D.
+
   let decoded = String(id);
-  try { decoded = decodeURIComponent(decoded); } catch { /* Зберігаємо початковий ID. */ }
+  try { decoded = decodeURIComponent(decoded); } catch {                                 }
   return 'https://www.cheapshark.com/redirect?dealID=' + encodeURIComponent(decoded);
 }
 const isList = data => Array.isArray(data);
@@ -20,10 +19,17 @@ const isLookup = data => data && typeof data === 'object' && Array.isArray(data.
 const pricePolicy = { ...SHARK_CACHE.prices, validate: isLookup };
 const isBatch = data => data && typeof data === 'object' && !Array.isArray(data);
 
-/** Усі HTTP-виклики проходять через cheapshark-client.js, зокрема пошук і права колонка.
- * Пакет до 25 ID повертає пропозиції всіх цих ігор; кешуємо також кожну окремо.
- * Тому перехід головна → каталог → деталі використовує вже отримані ціни.
- */
+function storeIcon(store) {
+  for (const image of [store?.images?.icon, store?.images?.logo]) {
+    if (typeof image !== 'string' || !image.trim()) continue;
+    try {
+      const url = new URL(image, 'https://www.cheapshark.com');
+      if (url.origin === 'https://www.cheapshark.com' && url.pathname.startsWith('/img/stores/')) return url.href;
+    } catch {}
+  }
+  return '';
+}
+
 export function createCheapsharkProvider(client = cheapsharkClient) {
   async function lookups(ids, signal) {
     const result = new Map();
@@ -44,7 +50,7 @@ export function createCheapsharkProvider(client = cheapsharkClient) {
             continue;
           }
           const item = { ...response, data: response.data[id] };
-          // Не продовжуємо вік кешу, якщо API недоступний і дані вже застарілі.
+
           client.remember('games', { id }, item);
           result.set(id, item);
         }
@@ -59,20 +65,20 @@ export function createCheapsharkProvider(client = cheapsharkClient) {
     return result;
   }
   function normalizeOffers(game, lookup, stores) {
-    // providerIds.cheapshark — ID обраного товару; він не дорівнює RAWG ID.
-    // Не використовуємо історичний cheapestPriceEver як поточну ціну.
+    const storesById = new Map(stores.map(store => [String(store.storeID), store]));
     const seen = new Set();
     return lookup.data.deals.filter(deal => {
       if (!deal.dealID || parsePrice(deal.price) === null || seen.has(deal.dealID)) return false;
-      const store = stores.find(item => String(item.storeID) === String(deal.storeID));
+      const store = storesById.get(String(deal.storeID));
       if (store?.isActive === 0 || store?.isActive === '0') return false;
       seen.add(deal.dealID); return true;
     }).map(deal => ({
       id: deal.dealID, gameId: game.id, storeId: String(deal.storeID),
       productTitle: lookup.data.info.title,
-      store: stores.find(store => store.storeID === String(deal.storeID))?.storeName || 'Магазин ' + deal.storeID,
+      store: storesById.get(String(deal.storeID))?.storeName || 'Магазин ' + deal.storeID,
+      storeIcon: storeIcon(storesById.get(String(deal.storeID))),
       price: parsePrice(deal.price), currency: 'USD',
-      // API не підтверджує видання/регіон; unknown не означає Standard Edition.
+
       edition: 'unknown', region: 'unknown', url: dealUrl(deal.dealID),
       priceUpdatedAt: lookup.updatedAt, priceStale: lookup.stale,
     })).sort((a, b) => a.price - b.price);
@@ -81,9 +87,7 @@ export function createCheapsharkProvider(client = cheapsharkClient) {
     id: 'cheapshark', enabled: true,
     diagnostics: () => client.diagnostics(),
     async getDeals({ limit = 5, signal } = {}) {
-      // API повертає ПРОПОЗИЦІЇ магазинів, тому одна гра могла займати 3 рядки.
-      // Одна сторінка на 60 пропозицій — один HTTP-запит; для кожного gameID
-      // залишаємо найдешевшу. Назви різних видань при цьому не об'єднуємо.
+
       const response = await client.get('deals', { pageSize: 60 }, { ...SHARK_CACHE.prices, validate: isList, signal });
       const unique = new Map();
       for (const item of response.data) {
@@ -99,8 +103,7 @@ export function createCheapsharkProvider(client = cheapsharkClient) {
       }));
     },
     async searchGames(title, { signal } = {}) {
-      // Результат — масив кандидатів, кожен має external (назва) і gameID.
-      // Кешуємо також порожній масив, щоб F5 не повторював невдалий пошук.
+
       const query = searchTitle(title);
       if (!query) return [];
       const response = await client.get('games', { title: query, limit: 60 }, { ...SHARK_CACHE.search, validate: isList, signal });
@@ -117,7 +120,7 @@ export function createCheapsharkProvider(client = cheapsharkClient) {
       if (!linked.length) return outcomes;
       const [data, storesResponse] = await Promise.all([
         lookups(linked.map(game => String(game.providerIds.cheapshark)), signal),
-        // Навіть якщо список назв магазинів недоступний, не прибираємо отримані ціни.
+
         client.get('stores', {}, { ...SHARK_CACHE.stores, validate: isList, signal }).catch(() => ({ data: [] })),
       ]);
       signal?.throwIfAborted();

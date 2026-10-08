@@ -4,13 +4,10 @@ import { renderDeals } from '../components/cards.js';
 import { createGameList } from '../components/game-list.js';
 import { loadSection } from '../components/load-section.js';
 import { initFavorites } from '../features/favorites.js';
+import { initHomeFilters } from '../features/filters.js';
 
-/** ПИШИ ЛОГІКУ ГОЛОВНОЇ ТУТ. Запит → нормалізовані дані → Handlebars → DOM.
- * RAWG дає назви/зображення; gamesService додає ціни CheapShark до кожної картки.
- * Права колонка окремо показує актуальні пропозиції CheapShark.
- * Рендер відбувається всередині init: заглушка більше не стирає картки.
- */
 export async function init() {
+  initHomeFilters();
   const repaint = initFavorites();
   const views = [createGameList('popularGames', 'popularLoading', repaint), createGameList('newReleaseGames', 'newReleasesLoading', repaint)];
   const lists = gamesService.getGameLists([{ pageSize: 6 }, { sort: 'release', pageSize: 6 }], {
@@ -27,7 +24,6 @@ export async function init() {
     loadSection('newReleaseGames', 'newReleasesLoading', () => loadGames(1), views[1].render, { track: false, onError: views[1].fail }),
     loadSection('bestDeals', 'dealsLoading', () => cheapsharkProvider.getDeals({ limit: 5 }), renderDeals),
   ]);
-  // На уроці дивись цей звіт у консолі: network — реальні HTTP-спроби,
-  // byEndpoint — пошуки / пропозиції / магазини / знижки, networkTotal — з початку нового кешу.
+
   if (import.meta.env.DEV) console.info('CheapShark: запити цієї сторінки', JSON.stringify(cheapsharkProvider.diagnostics()));
 }

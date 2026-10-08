@@ -1,15 +1,3 @@
-/* ==========================================================
-   PLAYFINDER
-   GAMES PAGE
-   games.html
-
-========================================================== */
-
-
-/* ==========================================================
-   ACCESSIBILITY
-========================================================== */
-
 .sr-only {
     position: absolute;
 
@@ -28,20 +16,24 @@
     border: 0;
 }
 
-
-/* ==========================================================
-   GAMES PAGE
-========================================================== */
-
 .games-page {
     padding:
         14px 0 26px;
 }
 
-
-/* ==========================================================
-   MAIN LAYOUT
-========================================================== */
+.catalog-status { color: var(--muted); font-size: 12px; line-height: 1.5; margin: 10px 0; }
+.games-filter-drawer[hidden] { display: none; }
+#gamesCatalog.games-grid--list { grid-template-columns: minmax(0, 1fr); }
+#gamesCatalog > .game-card { display: block; }
+#gamesCatalog.games-grid--list > .game-card { display: grid; grid-template-columns: 140px minmax(0, 1fr); }
+#gamesCatalog.games-grid--list .game-card__image { height: 140px; }
+#gamesCatalog.games-grid--list .game-card__cover { height: 100%; }
+#gamesCatalog.games-grid--list .game-card__title { min-height: auto; }
+.catalog-price__fields-input::placeholder { font-size: 10px; }
+@media (max-width: 600px) {
+  #gamesCatalog.games-grid--list > .game-card { grid-template-columns: 110px minmax(0, 1fr); }
+  #gamesCatalog.games-grid--list .game-card__image { height: 130px; }
+}
 
 .games-layout {
     display: grid;
@@ -54,11 +46,6 @@
 
     align-items: start;
 }
-
-
-/* ==========================================================
-   LEFT SIDEBAR
-========================================================== */
 
 .games-sidebar {
     position: sticky;
@@ -75,11 +62,6 @@
     background: var(--panel);
 }
 
-
-/* ==========================================================
-   PRICE FILTER
-========================================================== */
-
 .catalog-filter--price {
     padding-bottom: 0;
 }
@@ -88,9 +70,6 @@
     padding:
         0 13px 14px;
 }
-
-
-/* Slider area */
 
 .catalog-price__slider {
     position: relative;
@@ -117,9 +96,6 @@
     background: var(--accent);
 }
 
-
-/* Both range inputs */
-
 .catalog-price__slider .catalog-price__slider-input[type="range"] {
     position: absolute;
 
@@ -137,9 +113,6 @@
 
     pointer-events: none;
 }
-
-
-/* Chrome */
 
 .catalog-price__slider
 .catalog-price__slider-input[type="range"]::-webkit-slider-thumb {
@@ -160,9 +133,6 @@
     pointer-events: auto;
 }
 
-
-/* Firefox */
-
 .catalog-price__slider
 .catalog-price__slider-input[type="range"]::-moz-range-thumb {
     width: 14px;
@@ -178,9 +148,6 @@
 
     pointer-events: auto;
 }
-
-
-/* Min / max fields */
 
 .catalog-price__fields {
     display: grid;
@@ -226,9 +193,6 @@
     font-size: 11px;
 }
 
-
-/* remove number arrows */
-
 .catalog-price__fields
 .catalog-price__fields-input[type="number"]::-webkit-inner-spin-button,
 .catalog-price__fields
@@ -239,19 +203,9 @@
     -webkit-appearance: none;
 }
 
-
-/* ==========================================================
-   GAMES CONTENT
-========================================================== */
-
 .games-content {
     min-width: 0;
 }
-
-
-/* ==========================================================
-   BREADCRUMBS
-========================================================== */
 
 .breadcrumbs {
     display: flex;
@@ -286,11 +240,6 @@
     color: #b5c0c4;
 }
 
-
-/* ==========================================================
-   GAMES HERO
-========================================================== */
-
 .games-hero {
     position: relative;
 
@@ -303,9 +252,6 @@
 
     isolation: isolate;
 }
-
-
-/* image */
 
 .games-hero__background {
     position: absolute;
@@ -325,9 +271,6 @@
         center 52%;
 }
 
-
-/* dark overlay */
-
 .games-hero__shade {
     position: absolute;
 
@@ -345,9 +288,6 @@
             rgba(7, 17, 22, 0.20) 100%
         );
 }
-
-
-/* Title */
 
 .games-hero__content {
     position: absolute;
@@ -379,9 +319,6 @@
     font-size: 12px;
 }
 
-
-/* count */
-
 .games-hero__info {
     position: absolute;
 
@@ -403,9 +340,6 @@
     font-weight: 500;
 }
 
-
-/* orange underline */
-
 .games-hero__info::after {
     content: "";
 
@@ -416,9 +350,6 @@
 
     background: var(--accent);
 }
-
-
-/* handwritten text */
 
 .games-hero__handwriting {
     position: absolute;
@@ -463,11 +394,6 @@
         rotate(-5deg);
 }
 
-
-/* ==========================================================
-   FILTER TOOLBAR
-========================================================== */
-
 .games-toolbar {
     display: grid;
 
@@ -493,9 +419,6 @@
 
     background: var(--panel);
 }
-
-
-/* individual filter */
 
 .games-toolbar__filter {
     display: block;
@@ -545,11 +468,6 @@
 .games-toolbar__filter .games-toolbar__filter-select:focus {
     border-color: var(--accent);
 }
-
-
-/* ==========================================================
-   GRID / LIST SWITCHER
-========================================================== */
 
 .games-view {
     display: grid;
@@ -603,20 +521,10 @@
     color: var(--accent);
 }
 
-
-/* ==========================================================
-   MOBILE ACTIONS
-========================================================== */
-
 .games-mobile-search-wrap,
 .games-mobile-actions {
     display: none;
 }
-
-
-/* ==========================================================
-   CATEGORY ROW
-========================================================== */
 
 .games-category-row {
     display: flex;
@@ -628,9 +536,6 @@
 
     min-height: 52px;
 }
-
-
-/* Chips */
 
 .games-categories {
     display: flex;
@@ -693,9 +598,6 @@
     font-weight: 700;
 }
 
-
-/* result count */
-
 .games-found {
     flex: 0 0 auto;
 
@@ -709,11 +611,6 @@
 .games-found .games-found__value {
     font-weight: 500;
 }
-
-
-/* ==========================================================
-   ACTIVE FILTERS
-========================================================== */
 
 .active-filters {
     display: flex;
@@ -792,19 +689,9 @@
     font-weight: 600;
 }
 
-
-/* ==========================================================
-   GAME CATALOG
-========================================================== */
-
 .games-catalog {
     min-height: 450px;
 }
-
-
-/* ==========================================================
-   CATALOG GRID
-========================================================== */
 
 .games-catalog-grid {
     display: grid;
@@ -815,13 +702,6 @@
     gap:
         12px 10px;
 }
-
-
-/*
-   ВАЖЛИВО:
-   перевизначення global .game-card
-   тільки для каталогу
-*/
 
 .games-catalog-grid .game-card {
     display: block;
@@ -852,9 +732,6 @@
 
     border-color: #3c5059;
 }
-
-
-/* cover */
 
 .games-catalog-grid
 .game-card__image {
@@ -889,9 +766,6 @@
         scale(1.018);
 }
 
-
-/* favorite */
-
 .games-catalog-grid
 .game-card__favorite {
     position: absolute;
@@ -918,9 +792,6 @@
     font-size: 13px;
 }
 
-
-/* body */
-
 .games-catalog-grid
 .game-card__body {
     display: block;
@@ -930,9 +801,6 @@
     padding:
         8px 9px 9px;
 }
-
-
-/* title */
 
 .games-catalog-grid
 .game-card__title {
@@ -957,9 +825,6 @@
     -webkit-box-orient: vertical;
 }
 
-
-/* platforms */
-
 .games-catalog-grid
 .game-card__platforms {
     display: flex;
@@ -979,16 +844,10 @@
     font-size: 9px;
 }
 
-
-/* rating */
-
 .games-catalog-grid
 .game-card__rating {
     display: none;
 }
-
-
-/* price */
 
 .games-catalog-grid
 .game-card__price {
@@ -1019,9 +878,6 @@
     font-weight: 700;
 }
 
-
-/* store count */
-
 .games-catalog-grid
 .game-card__stores {
     margin-top: 1px;
@@ -1030,11 +886,6 @@
 
     font-size: 8px;
 }
-
-
-/* ==========================================================
-   LOADING SKELETONS
-========================================================== */
 
 .games-catalog-loading {
     display: grid;
@@ -1083,11 +934,6 @@
     }
 
 }
-
-
-/* ==========================================================
-   EMPTY / ERROR
-========================================================== */
 
 .games-empty,
 .games-error {
@@ -1152,17 +998,9 @@
     font-weight: 700;
 }
 
-
-/* ==========================================================
-   LIST VIEW
-========================================================== */
-
 .games-catalog-grid.games-catalog-grid--list {
     grid-template-columns: 1fr;
 }
-
-
-/* list card */
 
 .game-list-card {
     display: grid;
@@ -1315,11 +1153,6 @@
     font-weight: 700;
 }
 
-
-/* ==========================================================
-   PAGINATION
-========================================================== */
-
 .games-pagination-wrap {
     position: relative;
 
@@ -1332,9 +1165,6 @@
 
     margin-top: 8px;
 }
-
-
-/* pager */
 
 .pagination {
     display: flex;
@@ -1407,9 +1237,6 @@
     cursor: default;
 }
 
-
-/* per page */
-
 .games-per-page {
     position: absolute;
 
@@ -1447,11 +1274,6 @@
 
     font-size: 9px;
 }
-
-
-/* ==========================================================
-   MOBILE FILTER DRAWER
-========================================================== */
 
 .games-filter-overlay {
     position: fixed;
@@ -1594,11 +1416,6 @@
     color: #071116;
 }
 
-
-/* ==========================================================
-   SEARCH RESULTS
-========================================================== */
-
 .search-results {
     position: absolute;
 
@@ -1678,11 +1495,6 @@
     font-size: 8px;
 }
 
-
-/* ==========================================================
-   MOBILE MENU
-========================================================== */
-
 .mobile-menu {
     position: fixed;
 
@@ -1736,11 +1548,6 @@
     color: #fff;
 }
 
-
-/* ==========================================================
-   LARGE DESKTOP
-========================================================== */
-
 @media (min-width: 1400px) {
 
     .games-layout {
@@ -1756,12 +1563,6 @@
     }
 
 }
-
-
-/* ==========================================================
-   SMALL DESKTOP
-   1024 — 1199
-========================================================== */
 
 @media (max-width: 1199px) {
 
@@ -1781,15 +1582,9 @@
         top: 78px;
     }
 
-
-    /* hero */
-
     .games-hero__info {
         right: 230px;
     }
-
-
-    /* toolbar */
 
     .games-toolbar {
         grid-template-columns:
@@ -1805,26 +1600,15 @@
         display: none;
     }
 
-
-    /* categories */
-
     .games-category-row {
         min-height: 48px;
     }
-
-
-    /* catalog */
 
     .games-catalog-grid,
     .games-catalog-loading {
         grid-template-columns:
             repeat(4, minmax(0, 1fr));
     }
-
-
-    /*
-       Перекриваємо tablet стилі головної сторінки
-    */
 
     .games-catalog-grid
     .game-card {
@@ -1856,27 +1640,15 @@
 
 }
 
-
-/* ==========================================================
-   TABLET
-   768 — 991
-========================================================== */
-
 @media (max-width: 991px) {
 
     .games-layout {
         grid-template-columns: 1fr;
     }
 
-
-    /* desktop sidebar off */
-
     .games-sidebar {
         display: none;
     }
-
-
-    /* hero */
 
     .games-hero {
         height: 102px;
@@ -1890,24 +1662,15 @@
         right: 205px;
     }
 
-
-    /* toolbar */
-
     .games-toolbar {
         grid-template-columns:
             repeat(3, minmax(0, 1fr))
             70px;
     }
 
-
-    /* mobile filter row enabled */
-
     .games-mobile-actions {
         display: none;
     }
-
-
-    /* grid */
 
     .games-catalog-grid,
     .games-catalog-loading {
@@ -1915,36 +1678,18 @@
             repeat(4, minmax(0, 1fr));
     }
 
-
-    /* pagination */
-
     .games-per-page {
         right: 0;
     }
 
 }
 
-
-/* ==========================================================
-   MOBILE
-   <= 767
-========================================================== */
-
 @media (max-width: 767px) {
-
-    /* ======================================================
-       PAGE
-    ====================================================== */
 
     .games-page {
         padding:
             7px 0 13px;
     }
-
-
-    /* ======================================================
-       MOBILE SEARCH
-    ====================================================== */
 
     .games-mobile-search-wrap {
         display: block;
@@ -1958,11 +1703,6 @@
         width: 100%;
     }
 
-
-    /* ======================================================
-       LAYOUT
-    ====================================================== */
-
     .games-layout {
         display: block;
     }
@@ -1971,21 +1711,11 @@
         display: none;
     }
 
-
-    /* ======================================================
-       BREADCRUMBS
-    ====================================================== */
-
     .breadcrumbs {
         height: 27px;
 
         font-size: 8px;
     }
-
-
-    /* ======================================================
-       HERO
-    ====================================================== */
 
     .games-hero {
         height: 105px;
@@ -2049,19 +1779,9 @@
         left: 8px;
     }
 
-
-    /* ======================================================
-       DESKTOP TOOLBAR OFF
-    ====================================================== */
-
     .games-toolbar {
         display: none;
     }
-
-
-    /* ======================================================
-       MOBILE ACTIONS
-    ====================================================== */
 
     .games-mobile-actions {
         display: grid;
@@ -2115,11 +1835,6 @@
         outline: 0;
     }
 
-
-    /* ======================================================
-       CATEGORY CHIPS
-    ====================================================== */
-
     .games-category-row {
         display: block;
 
@@ -2154,11 +1869,6 @@
         font-size: 8px;
     }
 
-
-    /* ======================================================
-       ACTIVE FILTERS
-    ====================================================== */
-
     .active-filters {
         align-items: flex-start;
 
@@ -2173,11 +1883,6 @@
         align-self: flex-end;
     }
 
-
-    /* ======================================================
-       GRID
-    ====================================================== */
-
     .games-catalog-grid,
     .games-catalog-loading {
         grid-template-columns:
@@ -2186,9 +1891,6 @@
         gap:
             8px 7px;
     }
-
-
-    /* reset styles inherited from homepage */
 
     .games-catalog-grid
     .game-card {
@@ -2266,20 +1968,10 @@
         font-size: 7px;
     }
 
-
-    /* ======================================================
-       SKELETON
-    ====================================================== */
-
     .games-catalog-loading
     .game-skeleton {
         min-height: 225px;
     }
-
-
-    /* ======================================================
-       LIST VIEW
-    ====================================================== */
 
     .game-list-card {
         grid-template-columns:
@@ -2311,11 +2003,6 @@
     .game-list-card__button {
         display: none;
     }
-
-
-    /* ======================================================
-       PAGINATION
-    ====================================================== */
 
     .games-pagination-wrap {
         flex-direction: column;
@@ -2349,22 +2036,12 @@
         font-size: 8px;
     }
 
-
-    /* ======================================================
-       EMPTY / ERROR
-    ====================================================== */
-
     .games-empty,
     .games-error {
         min-height: 330px;
     }
 
 }
-
-
-/* ==========================================================
-   375 PX TUNING
-========================================================== */
 
 @media (max-width: 420px) {
 
@@ -2405,11 +2082,6 @@
 
 }
 
-
-/* ==========================================================
-   VERY SMALL MOBILE
-========================================================== */
-
 @media (max-width: 350px) {
 
     .games-catalog-grid,
@@ -2423,11 +2095,6 @@
     }
 
 }
-
-
-/* ==========================================================
-   NO HOVER DEVICE
-========================================================== */
 
 @media (hover: none) {
 
@@ -2443,4 +2110,3 @@
     }
 
 }
-

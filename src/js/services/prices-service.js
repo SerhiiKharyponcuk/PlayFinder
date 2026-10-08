@@ -1,8 +1,6 @@
-// Єдине джерело цін зараз CheapShark. Firebase не є другим магазином.
 import { cheapsharkProvider } from '../api/providers/cheapshark.js';
 import { config } from '../config.js';
 
-/** Відмова одного джерела не прибирає пропозиції іншого. errors не приховуються. */
 export async function getOffers(game, options = {}, providers = [cheapsharkProvider]) {
   const { currency = config.currency, region, edition, signal } = options;
   const active = providers.filter(provider => provider.enabled);

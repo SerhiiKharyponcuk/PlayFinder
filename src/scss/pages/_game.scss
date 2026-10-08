@@ -1,5 +1,3 @@
-// ВІДКРИТА КАРТКА: game.html + templates/game-detail.hbs.
-// Стилі ізольовані від game-card каталогу; кольори беруться зі спільних tokens.
 .game-details-page {
   width: min(1120px, calc(100% - 40px)); margin-inline: auto; padding-block: 28px 44px;
   &__toolbar { display: flex; align-items: center; gap: 24px; margin-bottom: 22px; }

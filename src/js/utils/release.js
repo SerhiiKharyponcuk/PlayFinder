@@ -1,9 +1,5 @@
-/** СТАТУС РЕЛІЗУ: RAWG released + tba, без додаткового HTTP-запиту.
- * Відсутня дата сама по собі НЕ означає, що гра ще не вийшла.
- * Обчислюємо при показі: збережена вчора картка не лишиться «майбутньою» назавжди.
- */
 export function calendarToday(now = new Date()) {
-  // День браузера, а не UTC: опівночі у нас уже може бути наступна дата.
+
   return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
 }
 export function validReleaseDate(value) {
@@ -19,7 +15,7 @@ export function releaseInfo(game, today = calendarToday()) {
   return {
     status, isUpcoming: status === 'upcoming',
     label: { upcoming: 'Ще не вийшла', today: 'Реліз сьогодні', released: 'Вже вийшла', unknown: 'Статус релізу невідомий' }[status],
-    // tba=true: навіть заповнена дата може бути приблизним placeholder, її не обіцяємо.
+
     dateTime: tba ? null : date,
     dateLabel: tba ? 'Дату ще не оголошено' : date
       ? new Intl.DateTimeFormat('uk-UA', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(new Date(date + 'T12:00:00Z'))

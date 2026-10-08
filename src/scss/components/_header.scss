@@ -6,11 +6,6 @@
     margin-inline: auto;
 }
 
-
-/* ==========================================================
-   HEADER
-========================================================== */
-
 .header {
     position: sticky;
 
@@ -35,9 +30,6 @@
 
     gap: 24px;
 }
-
-
-/* LOGO */
 
 .logo {
     display: flex;
@@ -96,9 +88,6 @@
     letter-spacing: 2.1px;
 }
 
-
-/* NAV */
-
 .nav {
     display: flex;
 
@@ -143,9 +132,6 @@
 
     background: var(--accent);
 }
-
-
-/* HEADER SEARCH */
 
 .header-search {
     position: relative;
@@ -196,9 +182,6 @@
 .header-search .header-search__input::placeholder {
     color: #78858b;
 }
-
-
-/* HEADER ACTIONS */
 
 .header-actions {
     display: flex;
@@ -259,5 +242,3 @@
 .mobile-menu-button {
     display: none;
 }
-
-

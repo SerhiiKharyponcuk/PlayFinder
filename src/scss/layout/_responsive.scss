@@ -1,16 +1,8 @@
-/* ==========================================================
-   TABLET
-   768px — 1199px
-========================================================== */
-
 @media (max-width: 1199px) {
 
     .container {
         width: calc(100% - 32px);
     }
-
-
-    /* Header */
 
     .nav {
         display: none;
@@ -39,9 +31,6 @@
         font-size: 18px;
     }
 
-
-    /* Main layout */
-
     .home-grid {
         grid-template-columns:
             minmax(0, 1fr)
@@ -61,9 +50,6 @@
         display: none;
     }
 
-
-    /* Hero */
-
     .hero {
         height: 249px;
     }
@@ -78,9 +64,6 @@
     .hero .hero__title {
         font-size: 27px;
     }
-
-
-    /* quick filters */
 
     .quick-filters {
         display: grid;
@@ -145,9 +128,6 @@
         font-size: 10px;
     }
 
-
-    /* Cards become horizontal */
-
     .games-grid {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
@@ -207,9 +187,6 @@
         font-size: 19px;
     }
 
-
-    /* sidebar */
-
     .sidebar-heading .sidebar-heading__title {
         font-size: 12px;
     }
@@ -218,12 +195,6 @@
         display: none;
     }
 }
-
-
-/* ==========================================================
-   MOBILE
-   375px reference
-========================================================== */
 
 @media (max-width: 767px) {
 
@@ -238,9 +209,6 @@
     .container {
         width: calc(100% - 20px);
     }
-
-
-    /* Header */
 
     .header {
         height: 56px;
@@ -302,9 +270,6 @@
         font-size: 18px;
     }
 
-
-    /* Main */
-
     .home-page {
         padding-top: 8px;
     }
@@ -323,9 +288,6 @@
 
         gap: 9px;
     }
-
-
-    /* Search */
 
     .mobile-search {
         display: flex;
@@ -365,9 +327,6 @@
 
         font-size: 11px;
     }
-
-
-    /* Hero */
 
     .hero {
         height: 235px;
@@ -450,9 +409,6 @@
         width: 15px;
     }
 
-
-    /* filters */
-
     .quick-filters {
         grid-template-columns:
             repeat(4, minmax(0, 1fr));
@@ -494,9 +450,6 @@
         text-align: center;
     }
 
-
-    /* Sections */
-
     .games-section {
         margin-bottom: 13px;
     }
@@ -514,11 +467,6 @@
     .section-heading .section-heading__link {
         font-size: 8px;
     }
-
-
-    /* ==============================================
-       POPULAR — MOBILE LIST
-    ============================================== */
 
     .games-grid--popular {
         display: grid;
@@ -578,11 +526,6 @@
     .game-card__stores {
         font-size: 7px;
     }
-
-
-    /* ==============================================
-       NEW RELEASES — 3 COLUMNS
-    ============================================== */
 
     .games-grid--releases {
         display: grid;
@@ -669,15 +612,6 @@
         font-size: 11px;
     }
 
-
-    /* ==============================================
-       RIGHT SIDEBAR ON MOBILE
-
-       reference:
-       deals and why disappear,
-       newsletter remains
-    ============================================== */
-
     .home-sidebar {
         display: block;
     }
@@ -686,9 +620,6 @@
     .sidebar-why {
         display: none;
     }
-
-
-    /* Newsletter mobile */
 
     .newsletter {
         display: grid;
@@ -731,11 +662,6 @@
 
         font-size: 8px;
     }
-
-
-    /* ==============================================
-       BOTTOM NAV
-    ============================================== */
 
     .mobile-bottom-nav {
         position: fixed;
@@ -785,11 +711,6 @@
     }
 }
 
-
-/* ==========================================================
-   VERY SMALL MOBILE
-========================================================== */
-
 @media (max-width: 360px) {
 
     .logo__slogan {
@@ -809,11 +730,6 @@
     }
 }
 
-
-/* ==========================================================
-   PERFORMANCE
-========================================================== */
-
 .games-section {
     content-visibility: auto;
 
@@ -829,18 +745,12 @@
     content-visibility: auto;
 }
 
-
-/* no desktop hover animation on touchscreen */
-
 @media (hover: none) {
 
     .game-card:hover {
         transform: none;
     }
 }
-
-
-/* reduced motion */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -859,4 +769,3 @@
             1 !important;
     }
 }
-

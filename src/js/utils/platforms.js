@@ -1,5 +1,3 @@
-// Об'єднуємо покоління консолей: PS4 + PS5 показуємо однією іконкою.
-// Назви залишаються доступними читачам екрана та в підказці при наведенні.
 export function platformIcons(platforms = []) {
   const groups = [
     ['Windows', /^(PC|Windows)$/i, 'fa-brands fa-windows'],

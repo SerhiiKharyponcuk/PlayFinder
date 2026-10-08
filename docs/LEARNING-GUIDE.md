@@ -2,6 +2,9 @@
 
 ## Починай тут
 
+Фільтри завершені: [FILTERS-LESSON.md](FILTERS-LESSON.md) описує їхню роботу та перевірки.
+Ціни карток описані в [CARD-PRICES.md](CARD-PRICES.md), а сторінка деталей гри — у [GAME-DETAILS.md](GAME-DETAILS.md).
+
 1. Ключі й Firebase Console → [API-SETUP.md](API-SETUP.md).
 2. Логіка головної → `src/js/pages/home.js`, усередині `async init()`.
 3. Шаблон картки → `src/templates/game-card.hbs`.
@@ -27,7 +30,7 @@
 | Пошук і фільтри каталогу | `pages/games.js` → передати параметри у сервіс |
 | Параметри конкретного API | `api/providers/rawg.js` |
 | Пропозиції магазинів | `api/providers/cheapshark.js` |
-| Порівняння пропозицій | `services/prices-service.js` |
+| Пропозиції в деталях гри | `services/prices-service.js` |
 | Вхід / реєстрація | `pages/login.js` + `services/auth-service.js` |
 | Зберігати/читати обране | `services/favorites-service.js` |
 | Реакція на сердечко | `features/favorites.js` |
@@ -64,7 +67,6 @@ Email/Password та опубліковані Rules. CheapShark може прац
 
 ## Що ще лишилося навчальним завданням
 
-Повна пагінація, складні фільтри, історія цін, сповіщення та UI вибору відповідної гри
-CheapShark на prices.html. Заготовка сторінки порівняння не стала готовою від самого API-адаптера.
+Пагінація, фільтри каталогу, мінімальні ціни карток і пропозиції в деталях гри вже підключені.
 Автоматичні тести перевіряють код із підставними даними; власний Firebase треба перевірити
 двома різними користувачами після налаштування.

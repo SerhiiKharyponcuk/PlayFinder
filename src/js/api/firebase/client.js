@@ -5,7 +5,6 @@ import { config } from '../../config.js';
 import { isFirebaseConfigured } from './config.js';
 export { isFirebaseConfigured } from './config.js';
 
-// Немає конфігу → не ініціалізуємо Firebase й не ламаємо каталог.
 export function getFirebase() {
   if (!isFirebaseConfigured()) throw new Error('Заповни чотири VITE_FIREBASE_* поля з .env.example.');
   const app = getApps().length ? getApp() : initializeApp(config.firebase);
