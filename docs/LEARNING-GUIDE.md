@@ -2,6 +2,8 @@
 
 ## Починай тут
 
+Найближчий урок — [SEARCH-LESSON.md](SEARCH-LESSON.md): дописуємо обробку пошукового запиту в одній підключеній функції. Перевірка прикладів працює без API.
+
 Фільтри завершені: [FILTERS-LESSON.md](FILTERS-LESSON.md) описує їхню роботу та перевірки.
 Ціни карток описані в [CARD-PRICES.md](CARD-PRICES.md), а сторінка деталей гри — у [GAME-DETAILS.md](GAME-DETAILS.md).
 
@@ -24,6 +26,8 @@
 
 | Завдання | Файл |
 | --- | --- |
+| Пробіли й скорочення у пошуку | `features/search-query.js` → `normalizeSearchQuery` |
+| Реакція форм на Enter | `features/search.js` → `initSearch` |
 | Додати поле RAWG до нашої гри | `api/providers/rawg.js` → `normalizeGame` |
 | Додати поле в HTML картки | `src/templates/game-card.hbs` → `{{назваПоля}}` |
 | Змінити кількість популярних | `pages/home.js` → `pageSize` |

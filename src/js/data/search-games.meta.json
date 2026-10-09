@@ -1,0 +1,14 @@
+{
+  "source": "RAWG",
+  "sourceUrl": "https://rawg.io/apidocs",
+  "ordering": "-added",
+  "count": 10000,
+  "pageSize": 40,
+  "sourcePages": 250,
+  "requestsThisRun": 250,
+  "cachedPagesThisRun": 0,
+  "firstFetchedAt": "2026-10-09T15:36:32.565Z",
+  "lastFetchedAt": "2026-10-09T15:40:01.816Z",
+  "generatedAt": "2026-10-09T15:40:01.827Z",
+  "bytes": 818058
+}

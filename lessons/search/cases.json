@@ -1,0 +1,11 @@
+[
+  { "input": "  Portal 2  ", "expected": "Portal 2", "reason": "Пробіли на початку й наприкінці" },
+  { "input": "   ", "expected": "", "reason": "Порожній запит" },
+  { "input": "Grand Theft Auto IV", "expected": "Grand Theft Auto IV", "reason": "Не підміняти четверту частину п'ятою" },
+  { "input": "Baldur's Gate 3", "expected": "Baldur's Gate 3", "reason": "Зберегти апостроф і номер гри" },
+  { "input": "Grand   Theft\tAuto   V", "expected": "Grand Theft Auto V", "reason": "Зайві пробіли між словами" },
+  { "input": "gta 5", "expected": "Grand Theft Auto V", "reason": "Скорочення та арабська цифра" },
+  { "input": "GTA V", "expected": "Grand Theft Auto V", "reason": "Скорочення та римська цифра" },
+  { "input": "GTAV", "expected": "Grand Theft Auto V", "reason": "Скорочення без пробілів" },
+  { "input": "  GtA   5  ", "expected": "Grand Theft Auto V", "reason": "Регістр і пробіли разом" }
+]

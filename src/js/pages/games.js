@@ -31,6 +31,7 @@ export async function init() {
   try {
     const result = await gamesService.getGames(filters, { onGames: publish });
     publish(result);
+    console.log('Games catalog loaded', result);
   } catch (error) {
     view.fail(error); container.hidden = true; errorPanel.hidden = false;
     errorPanel.querySelector('p').textContent = error.message || 'Не вдалося завантажити каталог.';

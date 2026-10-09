@@ -2,12 +2,15 @@
 
 Головна й каталог показують ігри з мінімальними цінами. На сторінці деталей є інформація про гру та пропозиції магазинів. Фільтри каталогу, вхід і обране підключені.
 
-**Почни з таблиці нижче:** знайди потрібну частину сайту та відкрий відповідний файл.
+**Для найближчого уроку відкрий [план покращення пошуку](docs/SEARCH-LESSON.md).** За годину дописуємо обробку пробілів і скорочень. Підключення функції та перевірка прикладів підготовлені; самі покращення ще потрібно написати.
 
 ## Карта проєкту
 
 | Що змінюємо | Файл |
 | --- | --- |
+| Обробка пошукового запиту: файл уроку | [search-query.js](src/js/features/search-query.js), `normalizeSearchQuery` |
+| Підключення комп'ютерної й мобільної форм | [search.js](src/js/features/search.js), `initSearch` |
+| Локальний об'єкт із 10 000 ігор для пошуку | [search-games.js](src/js/data/search-games.js), [як використати](docs/SEARCH-DATA.md) |
 | Стан фільтрів каталогу, URL, відбір за ціною | [catalog-state.js](src/js/features/catalog-state.js) |
 | Списки, чекбокси, категорії, мобільна панель, пагінація | [filters.js](src/js/features/filters.js) |
 | Завантаження каталогу | [games.js](src/js/pages/games.js) |
@@ -32,6 +35,7 @@
 
 ```sh
 npm run dev
+npm run lesson:search
 npm run check:filters
 npm test
 npm run build
@@ -39,6 +43,6 @@ npm run build
 
 Пояснення винесені в документацію; коментарі в HTML/JS/SCSS прибрані.
 
-Деталі: [фільтри](docs/FILTERS-LESSON.md), [ціни карток](docs/CARD-PRICES.md), [сторінка гри](docs/GAME-DETAILS.md), [кеш цін](docs/PRICE-CACHE.md), [налаштування API](docs/API-SETUP.md).
+Деталі: [план пошуку](docs/SEARCH-LESSON.md), [фільтри](docs/FILTERS-LESSON.md), [ціни карток](docs/CARD-PRICES.md), [сторінка гри](docs/GAME-DETAILS.md), [кеш цін](docs/PRICE-CACHE.md), [налаштування API](docs/API-SETUP.md).
 
 Після commit і push GitHub Actions збирає сайт у `dist` і публікує на GitHub Pages. Не редагуйте `dist` вручну.
