@@ -25,7 +25,9 @@
 | Перевірені пари RAWG ID → CheapShark gameID | [game-links.js](src/js/services/game-links.js) |
 | CheapShark, кеш, черга та пауза 429 | [cheapshark.js](src/js/api/providers/cheapshark.js), [cheapshark-client.js](src/js/api/cheapshark-client.js) |
 | Вигляд каталогу та деталей гри | [_games.scss](src/scss/pages/_games.scss), [_game.scss](src/scss/pages/_game.scss) |
-| Вхід та обране | [auth-service.js](src/js/services/auth-service.js), [favorites-service.js](src/js/services/favorites-service.js) |
+| Вкладки входу, реєстрація та стан акаунта | [login.html](login.html), [login.js](src/js/pages/login.js), [_login.scss](src/scss/pages/_login.scss) |
+| Список обраного, лічильник і видалення | [favorites.html](favorites.html), [favorites.js](src/js/pages/favorites.js), [_favorites.scss](src/scss/pages/_favorites.scss) |
+| Firebase для входу та обраного | [auth-service.js](src/js/services/auth-service.js), [favorites-service.js](src/js/services/favorites-service.js) |
 | Налаштування API | [config.js](src/js/config.js), [.env.example](.env.example) |
 | Старт сторінок і спільні стилі | [main.js](src/main.js), [main.scss](src/scss/main.scss) |
 
@@ -43,6 +45,6 @@ npm run build
 
 Пояснення винесені в документацію; коментарі в HTML/JS/SCSS прибрані.
 
-Деталі: [план пошуку](docs/SEARCH-LESSON.md), [фільтри](docs/FILTERS-LESSON.md), [ціни карток](docs/CARD-PRICES.md), [сторінка гри](docs/GAME-DETAILS.md), [кеш цін](docs/PRICE-CACHE.md), [налаштування API](docs/API-SETUP.md).
+Деталі: [план пошуку](docs/SEARCH-LESSON.md), [фільтри](docs/FILTERS-LESSON.md), [ціни карток](docs/CARD-PRICES.md), [сторінка гри](docs/GAME-DETAILS.md), [вхід та обране](docs/ACCOUNT-PAGES.md), [кеш цін](docs/PRICE-CACHE.md), [налаштування API](docs/API-SETUP.md).
 
 Після commit і push GitHub Actions збирає сайт у `dist` і публікує на GitHub Pages. Не редагуйте `dist` вручну.

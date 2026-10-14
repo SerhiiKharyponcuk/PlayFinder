@@ -4,24 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#071116">
+  <meta name="description" content="Увійди в PlayFinder, щоб зберігати улюблені ігри та повертатися до свого списку.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <title>Вхід — PlayFinder</title>
 </head>
-<body data-page="login">
-  <header class="header"><div class="container header__container"><a class="logo" href="./index.html"><span class="logo__name">Play<span class="logo__name-text">Finder</span></span></a><nav class="nav" aria-label="Основна навігація"><a class="nav__link" href="./games.html">Ігри</a></nav></div></header>
-  <main class="container placeholder-page">
-    <h1 class="placeholder-page__title">Вхід</h1>
-    <p id="authStatus" role="status">Вхід через Firebase</p>
-    <form id="authForm" class="auth-form"><fieldset class="auth-form__fields">
-      <legend>Вхід або створення акаунта</legend>
-      <label>Email <input name="email" type="email" autocomplete="email" required></label>
-      <label>Пароль <input name="password" type="password" autocomplete="current-password" minlength="6" required></label>
-      <button type="submit" value="login">Увійти</button>
-      <button type="submit" value="register">Зареєструватися</button>
-    </fieldset></form>
-    <button id="logoutButton" type="button" hidden>Вийти</button>
-    <a href="./favorites.html">Перейти в обране</a>
-    <a class="placeholder-page__link" href="./index.html">На головну →</a>
+<body class="account-shell" data-page="login">
+  <div class="site-loader" id="siteLoader" role="status" aria-live="polite" hidden><span class="loading-spinner" aria-hidden="true"></span><div class="site-loader__content"><strong>Завантажуємо PlayFinder</strong><span data-loading-label>Готуємо сторінку…</span></div></div>
+  <header class="header account-header"><div class="container header__container">
+    <a class="logo" href="./index.html" aria-label="PlayFinder, головна"><i class="logo__icon fa-solid fa-gamepad" aria-hidden="true"></i><span class="logo__name">Play<span class="logo__name-text">Finder</span></span></a>
+    <nav class="nav" aria-label="Основна навігація"><a class="nav__link" href="./index.html">Головна</a><a class="nav__link" href="./games.html">Ігри</a><a class="nav__link" href="./about.html">Про нас</a></nav>
+    <div class="account-header__actions"><a class="account-header__link" href="./favorites.html" aria-label="Обране"><i class="fa-regular fa-heart" aria-hidden="true"></i><span>Обране</span></a><a class="account-header__link account-header__link--active" href="./login.html" aria-current="page" aria-label="Акаунт"><i class="fa-regular fa-user" aria-hidden="true"></i><span>Акаунт</span></a></div>
+  </div></header>
+  <main class="container auth-page">
+    <section class="auth-page__intro" aria-labelledby="authIntroTitle">
+      <img class="auth-page__art" src="/images/hero-about.webp" alt="" width="1194" height="500" decoding="async">
+      <div class="auth-page__intro-content"><p class="account-eyebrow">Грай більше. Витрачай менше.</p><h2 class="auth-page__headline" id="authIntroTitle">Твої ігри.<br>Твій <span>PlayFinder.</span></h2><p class="auth-page__description">Зберігай те, що хочеш зіграти, і знаходь найкращі пропозиції в одному місці.</p></div>
+      <div class="auth-page__benefits"><div class="auth-page__benefit"><i class="fa-regular fa-heart" aria-hidden="true"></i><div><strong>Свій список обраного</strong><span>Улюблені ігри завжди поруч</span></div></div><div class="auth-page__benefit"><i class="fa-solid fa-tags" aria-hidden="true"></i><div><strong>Вигідні пропозиції</strong><span>Ціни магазинів без зайвих пошуків</span></div></div></div>
+    </section>
+    <section class="auth-card" aria-labelledby="authTitle">
+      <span class="auth-card__badge"><i class="fa-regular fa-user" aria-hidden="true"></i> Твій простір для ігор</span>
+      <h1 class="auth-card__title" id="authTitle">Раді бачити знову</h1>
+      <p class="auth-card__description" id="authDescription">Увійди, щоб повернутися до свого обраного.</p>
+      <div class="auth-tabs" id="authTabs" role="tablist" aria-label="Вхід або реєстрація"><button class="auth-tabs__button" id="authLoginTab" type="button" role="tab" aria-selected="true" aria-controls="authPanel">Вхід</button><button class="auth-tabs__button" id="authRegisterTab" type="button" role="tab" aria-selected="false" aria-controls="authPanel" tabindex="-1">Реєстрація</button></div>
+      <p class="auth-card__status" id="authStatus" role="status" aria-live="polite" data-state="loading">Перевіряємо вхід…</p>
+      <div id="authPanel" role="tabpanel" aria-labelledby="authLoginTab">
+        <form class="auth-form" id="authForm"><fieldset class="auth-form__fields" disabled>
+          <legend class="account-visually-hidden" id="authLegend">Вхід в акаунт</legend>
+          <div class="auth-field"><label class="auth-field__label" for="authEmail">Email</label><div class="auth-field__control"><i class="fa-regular fa-envelope" aria-hidden="true"></i><input class="auth-field__input" id="authEmail" name="email" type="email" placeholder="you@example.com" autocomplete="username" maxlength="254" required></div></div>
+          <div class="auth-field"><label class="auth-field__label" for="authPassword">Пароль</label><div class="auth-field__control"><i class="fa-solid fa-lock" aria-hidden="true"></i><input class="auth-field__input" id="authPassword" name="password" type="password" placeholder="Введи пароль" autocomplete="current-password" minlength="6" aria-describedby="passwordHint" required><button class="auth-field__visibility" id="togglePassword" type="button" aria-label="Показати пароль" aria-pressed="false"><i class="fa-regular fa-eye" aria-hidden="true"></i></button></div><span class="auth-field__hint" id="passwordHint">Використай пароль свого акаунта.</span></div>
+          <button class="account-button auth-form__submit" id="authSubmitButton" type="submit" value="login"><span id="authSubmitLabel">Увійти</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+        </fieldset></form>
+      </div>
+      <div class="account-summary" id="accountSummary" hidden><span class="account-summary__avatar"><i class="fa-solid fa-user-check" aria-hidden="true"></i></span><strong class="account-summary__title">Ти вже з нами!</strong><p class="account-summary__email" id="accountEmail"></p><a class="account-button" href="./favorites.html">Відкрити обране <i class="fa-regular fa-heart" aria-hidden="true"></i></a><button class="account-button account-button--secondary" id="logoutButton" type="button" hidden>Вийти з акаунта</button></div>
+      <a class="auth-card__catalog" href="./games.html">Просто переглянути ігри <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </section>
   </main>
+  <footer class="account-footer container"><p>© 2026 PlayFinder</p><nav aria-label="Правова інформація"><a href="./privacy.html">Конфіденційність</a><a href="./terms.html">Умови використання</a></nav></footer>
+  <nav class="mobile-bottom-nav" aria-label="Мобільна навігація"><a class="mobile-bottom-nav__link" href="./index.html"><i class="fa-solid fa-house mobile-bottom-nav__icon" aria-hidden="true"></i>Головна</a><a class="mobile-bottom-nav__link" href="./games.html"><i class="fa-solid fa-magnifying-glass mobile-bottom-nav__icon" aria-hidden="true"></i>Пошук</a><a class="mobile-bottom-nav__link" href="./favorites.html"><i class="fa-regular fa-heart mobile-bottom-nav__icon" aria-hidden="true"></i>Обране</a><a class="mobile-bottom-nav__link mobile-bottom-nav__link--active" href="./login.html" aria-current="page"><i class="fa-regular fa-user mobile-bottom-nav__icon" aria-hidden="true"></i>Акаунт</a></nav>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>

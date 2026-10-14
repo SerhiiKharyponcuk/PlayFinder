@@ -5,7 +5,7 @@ export const authService = {
   register: (email, password) => createUserWithEmailAndPassword(getFirebase().auth, email, password),
   login: (email, password) => signInWithEmailAndPassword(getFirebase().auth, email, password),
   logout: () => signOut(getFirebase().auth),
-  subscribe: callback => onAuthStateChanged(getFirebase().auth, callback),
+  subscribe: (callback, onError) => onAuthStateChanged(getFirebase().auth, callback, onError),
   async requireUser() {
     const { auth } = getFirebase();
     await auth.authStateReady();
