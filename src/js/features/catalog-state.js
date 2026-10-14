@@ -1,4 +1,5 @@
 import { FILTER_LABELS, normalizeChoices, normalizeGenre, normalizeSort, normalizeYear } from '../api/rawg-filters.js';
+import { normalizeSearchQuery } from './search-query.js';
 
 export const FILTER_DEFAULTS = Object.freeze({ query: '', sort: 'popular', genre: '', platform: '', store: '',
   year: '', release: '', minPrice: null, maxPrice: null, page: 1, pageSize: 12, view: 'grid' });
@@ -13,7 +14,7 @@ export function normalizeFilters(values = {}) {
   const page = Number(values.page);
   let minPrice = price(values.minPrice), maxPrice = price(values.maxPrice);
   if (minPrice !== null && maxPrice !== null && minPrice > maxPrice) [minPrice, maxPrice] = [maxPrice, minPrice];
-  return { query: String(values.query || '').trim().slice(0, 200), sort: normalizeSort(values.sort),
+  return { query: normalizeSearchQuery(values.query), sort: normalizeSort(values.sort),
     genre: normalizeGenre(values.genre), platform: normalizeChoices(values.platform, FILTER_LABELS.platform),
     store: normalizeChoices(values.store, FILTER_LABELS.store), year: normalizeYear(values.year),
     release: ['recent', 'upcoming'].includes(values.release) ? values.release : '', minPrice, maxPrice,

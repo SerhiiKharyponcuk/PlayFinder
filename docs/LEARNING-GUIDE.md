@@ -2,7 +2,7 @@
 
 ## Починай тут
 
-Найближчий урок — [SEARCH-LESSON.md](SEARCH-LESSON.md): дописуємо обробку пошукового запиту в одній підключеній функції. Перевірка прикладів працює без API.
+Пошук завершений: [SEARCH.md](SEARCH.md) пояснює логіку й файли, [SEARCH-LESSON.md](SEARCH-LESSON.md) пропонує розбір готового коду. Перевірка прикладів працює без API.
 
 Фільтри завершені: [FILTERS-LESSON.md](FILTERS-LESSON.md) описує їхню роботу та перевірки.
 Ціни карток описані в [CARD-PRICES.md](CARD-PRICES.md), а сторінка деталей гри — у [GAME-DETAILS.md](GAME-DETAILS.md).

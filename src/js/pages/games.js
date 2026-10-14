@@ -7,6 +7,10 @@ import { initFavorites } from '../features/favorites.js';
 export async function init() {
   const filters = readFilters();
   const controls = initFilters(filters);
+  if (filters.query) for (const id of ['gamesSortFilter', 'mobileGamesSort']) {
+    const option = document.getElementById(id)?.querySelector('option[value="popular"]');
+    if (option) option.textContent = 'За відповідністю';
+  }
   const container = document.getElementById('gamesCatalog');
   const empty = document.getElementById('gamesEmpty');
   const errorPanel = document.getElementById('gamesError');
@@ -29,7 +33,7 @@ export async function init() {
     view.publish(result.games);
   };
   try {
-    const result = await gamesService.getGames(filters, { onGames: publish });
+    const result = await gamesService.getGames({ ...filters, searchRelevance: Boolean(filters.query) && !['rating', 'release'].includes(filters.sort) }, { onGames: publish });
     publish(result);
     console.log('Games catalog loaded', result);
   } catch (error) {
