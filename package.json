@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test",
+    "check:firebase": "node scripts/check-firebase-config.js",
     "lesson:filters": "npm run check:filters",
     "check:filters": "node --test tests/filters.test.js",
     "lesson:search": "node scripts/check-search-lesson.js",
