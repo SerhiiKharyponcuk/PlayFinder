@@ -4,6 +4,7 @@ import { initSearch } from './js/features/search.js';
 import { initForms } from './js/components/forms.js';
 import { initPageAnimations } from './js/animations/page-animations.js';
 import { siteLoading } from './js/components/site-loader.js';
+import { initI18n } from './js/i18n/dom.js';
 
 const pages = {
   home: () => import('./js/pages/home.js'),
@@ -12,10 +13,10 @@ const pages = {
   game: () => import('./js/pages/game.js'),
   favorites: () => import('./js/pages/favorites.js'),
   login: () => import('./js/pages/login.js'),
-  privacy: () => import('./js/pages/privacy.js'),
-  terms: () => import('./js/pages/terms.js'),
 };
 
+// Спочатку мова, потім запускаємо кнопки та завантаження сторінки.
+initI18n();
 initNavigation();
 initSearch();
 initForms();

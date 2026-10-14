@@ -41,7 +41,7 @@ export function initFilters(initial, { root = document, onChange = changes => {
     if (select && FILTER_LABELS[field] && select.options) {
       const existing = new Set([...select.options].map(option => option.value));
       for (const [value, label] of Object.entries(FILTER_LABELS[field])) {
-        if (!existing.has(value)) { const option = doc.createElement('option'); option.value = value; option.textContent = label; select.append(option); }
+        if (!existing.has(value)) { const option = doc.createElement('option'); option.value = value; option.textContent = label; option.setAttribute('data-i18n', ''); select.append(option); }
       }
     }
     select?.addEventListener('change', event => onChange({ [field]: event.target.value }));
@@ -63,6 +63,7 @@ export function initFilters(initial, { root = document, onChange = changes => {
     const chip = (label, changes) => {
       const button = doc.createElement('button'); button.type = 'button'; button.className = 'active-filter';
       button.textContent = label + ' ×'; button.setAttribute('aria-label', 'Прибрати: ' + label);
+      button.setAttribute('data-i18n', ''); button.setAttribute('data-i18n-attrs', 'aria-label');
       button.addEventListener('click', () => onChange(changes)); container.append(button);
     };
     for (const field of ['platform', 'genre', 'store']) for (const value of filters[field].split(',').filter(Boolean)) {
@@ -80,7 +81,7 @@ export function initFilters(initial, { root = document, onChange = changes => {
       const value = field === 'sort' && filters.sort === 'release' ? 'newest' : String(filters[field] ?? '');
       if (value.includes(',') && select.options) {
         let option = select.querySelector('[data-multiple]');
-        if (!option) { option = doc.createElement('option'); option.dataset.multiple = ''; select.append(option); }
+        if (!option) { option = doc.createElement('option'); option.dataset.multiple = ''; option.setAttribute('data-i18n', ''); select.append(option); }
         option.value = value; option.textContent = `Обрано: ${value.split(',').length}`;
       }
       select.value = value;
@@ -150,6 +151,7 @@ export function initFilters(initial, { root = document, onChange = changes => {
         input.className = 'catalog-check__input'; input.checked = (draft || filters)[field].split(',').includes(value);
         const box = doc.createElement('span'); box.className = 'catalog-check__box';
         const text = doc.createElement('span'); text.textContent = label;
+        text.setAttribute('data-i18n', '');
         item.append(input, box, text); extra.append(item);
       }
       if (!extra.children.length) { button.hidden = true; continue; }
@@ -231,6 +233,7 @@ export function initFilters(initial, { root = document, onChange = changes => {
         if (previous && page - previous > 1) { const gap = doc.createElement('span'); gap.textContent = '…'; pages.append(gap); }
         const button = doc.createElement('button'); button.type = 'button'; button.className = 'pagination__pages-button';
         button.textContent = page; button.setAttribute('aria-label', `Сторінка ${page}`);
+        button.setAttribute('data-i18n-attrs', 'aria-label');
         if (page === filters.page) button.setAttribute('aria-current', 'page');
         button.addEventListener('click', () => onChange({ page })); pages.append(button); previous = page;
       }

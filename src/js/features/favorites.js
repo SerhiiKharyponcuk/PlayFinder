@@ -15,6 +15,7 @@ export function initFavorites(root = document.querySelector('main')) {
 
   if (controllers.has(root)) return controllers.get(root);
   const status = document.createElement('p'); status.className = 'page-state';
+  status.setAttribute('data-i18n', '');
   status.setAttribute('role', 'status'); status.hidden = true; root.append(status);
   let ids = new Set();
   const paint = () => root.querySelectorAll('[data-favorite-id]').forEach(button => {

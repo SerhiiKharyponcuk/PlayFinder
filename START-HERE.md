@@ -29,6 +29,7 @@
 | Список обраного, лічильник і видалення | [favorites.html](favorites.html), [favorites.js](src/js/pages/favorites.js), [_favorites.scss](src/scss/pages/_favorites.scss) |
 | Firebase для входу та обраного | [auth-service.js](src/js/services/auth-service.js), [favorites-service.js](src/js/services/favorites-service.js) |
 | Налаштування API | [config.js](src/js/config.js), [.env.example](.env.example) |
+| Переклад UA / EN | [en.js](src/js/i18n/en.js), [core.js](src/js/i18n/core.js), [dom.js](src/js/i18n/dom.js), [інструкція](docs/TRANSLATION.md) |
 | Старт сторінок і спільні стилі | [main.js](src/main.js), [main.scss](src/scss/main.scss) |
 
 Каталог: `games.html`. Деталі вибраної гри: `game.html?id=4200`, де 4200 — RAWG ID Portal 2. Сторінки запускаються через `src/main.js`.
@@ -43,7 +44,7 @@ npm test
 npm run build
 ```
 
-Пояснення винесені в документацію; коментарі в HTML/JS/SCSS прибрані.
+Короткі коментарі є в коді, а докладні пояснення винесені в документацію.
 
 Деталі: [план пошуку](docs/SEARCH-LESSON.md), [фільтри](docs/FILTERS-LESSON.md), [ціни карток](docs/CARD-PRICES.md), [сторінка гри](docs/GAME-DETAILS.md), [вхід та обране](docs/ACCOUNT-PAGES.md), [кеш цін](docs/PRICE-CACHE.md), [налаштування API](docs/API-SETUP.md).
 

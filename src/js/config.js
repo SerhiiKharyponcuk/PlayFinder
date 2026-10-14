@@ -1,6 +1,6 @@
 const env = import.meta.env ?? {};
 export const config = Object.freeze({
-  locale: 'uk-UA', currency: 'USD', pageSize: 12, requestTimeout: 10000,
+  currency: 'USD', pageSize: 12, requestTimeout: 10000,
   rawg: { baseUrl: 'https://api.rawg.io/api', apiKey: env.VITE_RAWG_API_KEY || '' },
   cheapshark: { baseUrl: 'https://www.cheapshark.com/api/1.0' },
   firebase: {

@@ -43,15 +43,19 @@ export function initSearch({ root = document, service = searchService, navigate 
     popup.id ||= id === 'headerSearchForm' ? 'searchResults' : 'mobileSearchResults';
     popup.hidden = true;
     const status = doc.createElement('p'); status.className = 'search-results__status';
+    status.setAttribute('data-i18n', '');
     status.id = input.id + '-status'; status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
     const list = doc.createElement('div'); list.className = 'search-results__list'; list.id = input.id + '-listbox';
     list.setAttribute('role', 'listbox'); list.setAttribute('aria-label', 'Знайдені ігри');
+    list.setAttribute('data-i18n-attrs', 'aria-label');
     const all = doc.createElement('a'); all.className = 'search-results__all'; all.tabIndex = -1;
     all.textContent = 'Показати всі результати →';
+    all.setAttribute('data-i18n', '');
     popup.replaceChildren(status, list, all);
     if (!popup.parentElement) form.append(popup);
     const clear = doc.createElement('button'); clear.type = 'button'; clear.className = 'search-clear';
     clear.textContent = '×'; clear.setAttribute('aria-label', 'Очистити пошук'); clear.hidden = !input.value;
+    clear.setAttribute('data-i18n-attrs', 'aria-label');
     form.append(clear);
     input.setAttribute('role', 'combobox'); input.setAttribute('aria-autocomplete', 'list');
     input.setAttribute('aria-haspopup', 'listbox'); input.setAttribute('aria-controls', list.id);
@@ -98,6 +102,7 @@ export function initSearch({ root = document, service = searchService, navigate 
         const content = doc.createElement('span'); content.className = 'search-result__content';
         const title = doc.createElement('strong'); title.className = 'search-result__title'; appendTitle(title, game.title, state.query, doc);
         const meta = doc.createElement('span'); meta.className = 'search-result__meta';
+        meta.setAttribute('data-i18n', '');
         meta.textContent = game.approximate ? 'Схожа назва · відкрити гру' : 'Відкрити гру';
         content.append(title, meta); option.append(content); list.append(option); options.push(option);
         option.addEventListener('pointerdown', event => { if (event.pointerType === 'mouse') event.preventDefault(); });

@@ -22,7 +22,9 @@ export async function init() {
       loading.update('Перевіряємо ціни гри…', 1);
 
       document.title = early.title + ' — PlayFinder';
+      document.querySelector('title').removeAttribute('data-i18n');
       document.getElementById('gameBreadcrumb').textContent = early.title;
+      document.getElementById('gameBreadcrumb').removeAttribute('data-i18n');
       renderGameDetails(container, early);
       initPageAnimations(container);
       container.setAttribute('aria-busy', 'false');

@@ -17,11 +17,12 @@ export function renderGameDetails(container, game, { offers = [], errors = [] } 
   const cut = description.lastIndexOf(' ', 450);
   const html = template({
     ...game, ...(offers[0]?.productTitle ? matchedProduct(offers[0].productTitle) : {}),
-    release, hasPrice, storeCount, priceLoading: game.priceStatus === 'loading', priceStale: offers.length ? offers.some(offer => offer.priceStale) : game.priceStale,
+    release, price, hasPrice, storeCount, priceLoading: game.priceStatus === 'loading', priceStale: offers.length ? offers.some(offer => offer.priceStale) : game.priceStale,
     image: safeImage(game.image), website: safeLink(game.website),
     platformIcons: platformIcons(game.platforms),
     description: longDescription ? description.slice(0, cut > 300 ? cut : 450) + '…' : description,
     fullDescription: longDescription ? description : '',
+    descriptionIsMissing: !game.description?.trim(),
     genreLabel: game.genres?.join(', '), developerLabel: game.developers?.join(', '), publisherLabel: game.publishers?.join(', '),
     hasRating: !release.isUpcoming && Number.isFinite(game.rating) && game.rating > 0 && game.ratingsCount > 0,
     ratingLabel: Number.isFinite(game.rating) ? game.rating.toFixed(1) : '',

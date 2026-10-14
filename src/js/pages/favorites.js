@@ -16,6 +16,7 @@ export function init({ root = document, auth = authService, favorites = favorite
   const reload = root.getElementById('favoritesReloadButton');
   const link = root.getElementById('favoritesStateLink');
   let revision = 0;
+  // Це число допомагає не показати старий список після зміни користувача.
   let currentUser = null;
   let savedIds = new Set();
   let task = null;
@@ -82,6 +83,7 @@ export function init({ root = document, auth = authService, favorites = favorite
     task = currentTask;
     showLoading();
     try {
+      // Firestore зберігає ID, а назви та обкладинки беремо з RAWG.
       const ids = [...new Set(await favorites.listIds())];
       if (current !== revision) return;
       savedIds = new Set(ids.map(String));

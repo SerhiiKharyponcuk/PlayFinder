@@ -13,6 +13,7 @@
     <meta
         name="description"
         content="Про PlayFinder — сервіс для пошуку ігор та порівняння цін у магазинах."
+        data-i18n-attrs="content"
     >
 
     <meta
@@ -20,7 +21,7 @@
         content="#071116"
     >
 
-    <title>
+    <title data-i18n>
         Про нас — PlayFinder
     </title>
 
@@ -62,7 +63,7 @@
 
                 </span>
 
-                <span class="logo__slogan">
+                <span class="logo__slogan" data-i18n>
 
                     БІЛЬШЕ ІГОР. КРАЩІ ЦІНИ.
 
@@ -75,11 +76,13 @@
         <nav
             class="nav"
             aria-label="Основна навігація"
+            data-i18n-attrs="aria-label"
         >
 
             <a
                 href="./index.html"
                 class="nav__link"
+                data-i18n
             >
                 Головна
             </a>
@@ -87,16 +90,16 @@
             <a
                 href="./games.html"
                 class="nav__link"
+                data-i18n
             >
                 Ігри
             </a>
-
-
 
             <a
                 href="./about.html"
                 class="nav__link nav__link--active"
                 aria-current="page"
+                data-i18n
             >
                 Про нас
             </a>
@@ -117,7 +120,7 @@
                 placeholder="Пошук за назвою гри…"
                 autocomplete="off"
                 aria-label="Пошук ігор"
-             class="header-search__input">
+             class="header-search__input" data-i18n-attrs="aria-label,placeholder">
 
             <div
                 class="search-results"
@@ -129,30 +132,24 @@
 
         <div class="header-actions">
 
-            <button
-                class="header-action"
-                id="languageButton"
-                type="button"
-                aria-label="Змінити мову"
-            >
-
-                <i class="fa-solid fa-globe header-action__icon"></i>
-
-                <span>UA</span>
-
-                <i class="fa-solid fa-chevron-down header-action__icon"></i>
-
-            </button>
+            <label class="language-switch">
+  <i class="fa-solid fa-globe" aria-hidden="true"></i>
+  <select class="language-switch__select" data-language-switch aria-label="Мова інтерфейсу" data-i18n-attrs="aria-label">
+    <option value="uk">UA</option>
+    <option value="en">EN</option>
+  </select>
+</label>
 
             <a
                 href="./favorites.html"
                 class="header-action header-action--favorite"
                 aria-label="Обране"
+                data-i18n-attrs="aria-label"
             >
 
                 <i class="fa-regular fa-heart header-action__icon"></i>
 
-                <span class="header-action__text">
+                <span class="header-action__text" data-i18n>
                     Обране
                 </span>
 
@@ -165,7 +162,7 @@
 
                 <i class="fa-regular fa-user"></i>
 
-                <span>
+                <span data-i18n>
                     Увійти
                 </span>
 
@@ -176,7 +173,7 @@
                 id="mobileMenuButton"
                 type="button"
                 aria-label="Відкрити меню"
-             data-menu-toggle aria-controls="mobile-menu" aria-expanded="false">
+             data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" data-i18n-attrs="aria-label">
 
                 <i class="fa-solid fa-bars"></i>
 
@@ -196,28 +193,27 @@
 
     <nav>
 
-        <a href="./index.html" class="mobile-menu__link">
+        <a href="./index.html" class="mobile-menu__link" data-i18n>
             Головна
         </a>
 
-        <a href="./games.html" class="mobile-menu__link">
+        <a href="./games.html" class="mobile-menu__link" data-i18n>
             Ігри
         </a>
 
-
-
-        <a href="./favorites.html" class="mobile-menu__link">
+        <a href="./favorites.html" class="mobile-menu__link" data-i18n>
             Обране
         </a>
 
         <a
             href="./about.html"
             class="mobile-menu__link mobile-menu__link--active"
+            data-i18n
         >
             Про нас
         </a>
 
-        <a href="./login.html" class="mobile-menu__link">
+        <a href="./login.html" class="mobile-menu__link" data-i18n>
             Увійти
         </a>
 
@@ -243,7 +239,7 @@
                 placeholder="Пошук ігор..."
                 autocomplete="off"
                 aria-label="Пошук ігор"
-             class="mobile-search__input">
+             class="mobile-search__input" data-i18n-attrs="aria-label,placeholder">
 
         </form>
 
@@ -276,13 +272,13 @@
 
             <div class="about-hero__content">
 
-                <span class="about-hero__eyebrow">
+                <span class="about-hero__eyebrow" data-i18n>
 
                     ПРО НАС
 
                 </span>
 
-                <h1 class="about-hero__title">
+                <h1 class="about-hero__title" data-i18n>
 
                     PlayFinder —
                     <br>
@@ -291,7 +287,7 @@
 
                 </h1>
 
-                <p class="about-hero__text">
+                <p class="about-hero__text" data-i18n>
 
                     Ми допомагаємо гравцям знаходити найкращі
                     пропозиції на ігри та економити час і гроші.
@@ -304,6 +300,7 @@
                 <a
                     href="#mission"
                     class="about-hero__button"
+                    data-i18n
                 >
 
                     Наша місія
@@ -314,7 +311,7 @@
 
             </div>
 
-            <div class="about-hero__handwriting">
+            <div class="about-hero__handwriting" data-i18n>
 
                 Грайте
                 <br>
@@ -343,11 +340,11 @@
 
                 <div>
 
-                    <h2 class="about-feature__title">
+                    <h2 class="about-feature__title" data-i18n>
                         Порівняння цін
                     </h2>
 
-                    <p class="about-feature__text">
+                    <p class="about-feature__text" data-i18n>
 
                         Знаходимо найвигідніші пропозиції
                         у десятках магазинів.
@@ -368,11 +365,11 @@
 
                 <div>
 
-                    <h2 class="about-feature__title">
+                    <h2 class="about-feature__title" data-i18n>
                         Економія часу
                     </h2>
 
-                    <p class="about-feature__text">
+                    <p class="about-feature__text" data-i18n>
 
                         Вся інформація в одному місці —
                         більше не потрібно відкривати
@@ -394,11 +391,11 @@
 
                 <div>
 
-                    <h2 class="about-feature__title">
+                    <h2 class="about-feature__title" data-i18n>
                         Актуальні дані
                     </h2>
 
-                    <p class="about-feature__text">
+                    <p class="about-feature__text" data-i18n>
 
                         Регулярно оновлюємо ціни,
                         магазини та інформацію про ігри.
@@ -419,11 +416,11 @@
 
                 <div>
 
-                    <h2 class="about-feature__title">
+                    <h2 class="about-feature__title" data-i18n>
                         Для геймерів
                     </h2>
 
-                    <p class="about-feature__text">
+                    <p class="about-feature__text" data-i18n>
 
                         Ми теж любимо ігри й створюємо
                         сервіс, яким користувалися б самі.
@@ -446,7 +443,7 @@
                 aria-controls="storyContent"
             >
 
-                <span>
+                <span data-i18n>
                     Наша історія
                 </span>
 
@@ -461,11 +458,11 @@
 
                 <div class="about-story__text">
 
-                    <h2 class="about-story__text-title">
+                    <h2 class="about-story__text-title" data-i18n>
                         Наша історія
                     </h2>
 
-                    <p class="about-story__text-text">
+                    <p class="about-story__text-text" data-i18n>
 
                         PlayFinder створений командою ентузіастів,
                         які вірять, що ігри повинні бути доступними
@@ -473,9 +470,9 @@
 
                     </p>
 
-                    <p class="about-story__text-text">
+                    <p class="about-story__text-text" data-i18n>
 
-                        Ми об'єднали нашу досвід у розробці,
+                        Ми об'єднали наш досвід у розробці,
                         аналітиці та любов до ігор, щоб створити
                         зручний сервіс для геймерів по всьому світу.
 
@@ -495,7 +492,7 @@
 
                         </strong>
 
-                        <span class="about-stat__text">
+                        <span class="about-stat__text" data-i18n>
 
                             магазинів
 
@@ -513,7 +510,7 @@
 
                         </strong>
 
-                        <span class="about-stat__text">
+                        <span class="about-stat__text" data-i18n>
 
                             користувачів
 
@@ -531,7 +528,7 @@
 
                         </strong>
 
-                        <span class="about-stat__text">
+                        <span class="about-stat__text" data-i18n>
 
                             знайдених
                             <br>
@@ -557,7 +554,7 @@
                 aria-controls="valuesContent"
             >
 
-                <span>
+                <span data-i18n>
                     Наші цінності
                 </span>
 
@@ -570,7 +567,7 @@
                 id="valuesContent"
             >
 
-                <h2 class="about-values__title">
+                <h2 class="about-values__title" data-i18n>
 
                     Наші цінності
 
@@ -586,13 +583,13 @@
 
                         </div>
 
-                        <h3 class="about-value__subtitle">
+                        <h3 class="about-value__subtitle" data-i18n>
 
                             Прозорість
 
                         </h3>
 
-                        <p class="about-value__text">
+                        <p class="about-value__text" data-i18n>
 
                             Чесні ціни та надійна інформація.
 
@@ -608,13 +605,13 @@
 
                         </div>
 
-                        <h3 class="about-value__subtitle">
+                        <h3 class="about-value__subtitle" data-i18n>
 
                             Спільнота
 
                         </h3>
 
-                        <p class="about-value__text">
+                        <p class="about-value__text" data-i18n>
 
                             Ми слухаємо геймерів
                             і враховуємо ваші побажання.
@@ -631,13 +628,13 @@
 
                         </div>
 
-                        <h3 class="about-value__subtitle">
+                        <h3 class="about-value__subtitle" data-i18n>
 
                             Якість
 
                         </h3>
 
-                        <p class="about-value__text">
+                        <p class="about-value__text" data-i18n>
 
                             Працюємо над постійним
                             покращенням сервісу.
@@ -654,13 +651,13 @@
 
                         </div>
 
-                        <h3 class="about-value__subtitle">
+                        <h3 class="about-value__subtitle" data-i18n>
 
                             Розвиток
 
                         </h3>
 
-                        <p class="about-value__text">
+                        <p class="about-value__text" data-i18n>
 
                             Додаємо нові функції
                             та магазини.
@@ -683,13 +680,13 @@
 
                 <div>
 
-                    <h2 class="about-cta__title">
+                    <h2 class="about-cta__title" data-i18n>
 
                         Приєднуйтесь до спільноти PlayFinder
 
                     </h2>
 
-                    <p class="about-cta__text">
+                    <p class="about-cta__text" data-i18n>
 
                         Слідкуйте за знижками,
                         новинками та спеціальними пропозиціями.
@@ -701,6 +698,7 @@
                 <a
                     href="./games.html"
                     class="about-cta__button"
+                    data-i18n
                 >
 
                     Розпочати зараз
@@ -741,7 +739,7 @@
 
                 </span>
 
-                <span class="logo__slogan">
+                <span class="logo__slogan" data-i18n>
 
                     БІЛЬШЕ ІГОР. КРАЩІ ЦІНИ.
 
@@ -754,25 +752,25 @@
         <nav
             class="footer__nav"
             aria-label="Навігація у футері"
+            data-i18n-attrs="aria-label"
         >
 
-            <a href="./index.html" class="footer__link">
+            <a href="./index.html" class="footer__link" data-i18n>
 
                 Головна
 
             </a>
 
-            <a href="./games.html" class="footer__link">
+            <a href="./games.html" class="footer__link" data-i18n>
 
                 Ігри
 
             </a>
 
-
-
             <a
                 href="./about.html"
                 class="footer__link footer__link--active"
+                data-i18n
             >
 
                 Про нас
@@ -825,7 +823,7 @@
 
             © 2026 PlayFinder.
 
-            <span class="footer__copyright-text">
+            <span class="footer__copyright-text" data-i18n>
 
                 Усі права захищені.
 
@@ -840,13 +838,13 @@
 <nav
     class="mobile-bottom-nav"
     aria-label="Мобільна навігація"
->
+ data-i18n-attrs="aria-label">
 
     <a href="./index.html" class="mobile-bottom-nav__link">
 
         <i class="fa-solid fa-house mobile-bottom-nav__icon"></i>
 
-        <span>
+        <span data-i18n>
             Головна
         </span>
 
@@ -856,7 +854,7 @@
 
         <i class="fa-solid fa-magnifying-glass mobile-bottom-nav__icon"></i>
 
-        <span>
+        <span data-i18n>
             Пошук
         </span>
 
@@ -866,7 +864,7 @@
 
         <i class="fa-regular fa-heart mobile-bottom-nav__icon"></i>
 
-        <span>
+        <span data-i18n>
             Обране
         </span>
 
@@ -876,7 +874,7 @@
 
         <i class="fa-regular fa-user mobile-bottom-nav__icon"></i>
 
-        <span>
+        <span data-i18n>
             Увійти
         </span>
 

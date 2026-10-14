@@ -26,6 +26,7 @@ function cardModel(game) {
 }
 
 export function updateGamePrices(container, games) {
+  // Оновлюю лише ціну: сердечко та інші елементи картки залишаються.
   const cards = new Map([...container.querySelectorAll('.game-card')].map(node => [node.dataset.gameId, node]));
   for (const game of games) {
     const current = cards.get(String(game.id))?.querySelector('.game-card__pricing');

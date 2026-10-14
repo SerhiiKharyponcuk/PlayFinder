@@ -2,7 +2,7 @@
   <a class="deal-item__image-link" href="{{url}}" target="_blank" rel="noopener noreferrer"><img class="deal-item__image" src="{{image}}" alt="{{title}}" width="100" height="100" loading="lazy"></a>
   <div class="deal-item__content">
     <a class="deal-item__title" href="{{url}}" target="_blank" rel="noopener noreferrer">{{title}}</a>
-    <div class="deal-item__price"><strong class="deal-item__price-value">{{formattedPrice}}</strong></div>
-    {{#if priceStale}}<p class="game-card__price-note">Збережена ціна</p>{{/if}}
+    <div class="deal-item__price"><strong class="deal-item__price-value" data-i18n-price="{{price}}" data-currency="{{currency}}">{{formattedPrice}}</strong></div>
+    {{#if priceStale}}<p class="game-card__price-note" data-i18n>Збережена ціна</p>{{/if}}
   </div>
 </article>

@@ -4,23 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#071116">
-  <title>Деталі гри — PlayFinder</title>
+  <title data-i18n>Деталі гри — PlayFinder</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body data-page="game">
   <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
     <span class="loading-spinner" aria-hidden="true"></span>
-    <div class="site-loader__content"><strong>Завантажуємо PlayFinder</strong><span class="site-loader__label" data-loading-label>Готуємо сторінку…</span></div>
+    <div class="site-loader__content"><strong data-i18n>Завантажуємо PlayFinder</strong><span class="site-loader__label" data-loading-label data-i18n>Готуємо сторінку…</span></div>
   </div>
-  <header class="header"><div class="container header__container"><a class="logo" href="./index.html" aria-label="PlayFinder, головна"><i class="logo__icon fa-solid fa-gamepad" aria-hidden="true"></i><span class="logo__name">Play<span class="logo__name-text">Finder</span></span></a><nav class="nav" aria-label="Основна навігація"><a class="nav__link" href="./index.html">Головна</a><a class="nav__link nav__link--active" href="./games.html">Ігри</a></nav><a class="game-details-page__account" href="./favorites.html" aria-label="Обране"><i class="fa-regular fa-heart" aria-hidden="true"></i></a></div></header>
+  <header class="header"><div class="container header__container"><a class="logo" href="./index.html" aria-label="PlayFinder, головна" data-i18n-attrs="aria-label"><i class="logo__icon fa-solid fa-gamepad" aria-hidden="true"></i><span class="logo__name">Play<span class="logo__name-text">Finder</span></span></a><nav class="nav" aria-label="Основна навігація" data-i18n-attrs="aria-label"><a class="nav__link" href="./index.html" data-i18n>Головна</a><a class="nav__link nav__link--active" href="./games.html" data-i18n>Ігри</a></nav><label class="language-switch">
+  <i class="fa-solid fa-globe" aria-hidden="true"></i>
+  <select class="language-switch__select" data-language-switch aria-label="Мова інтерфейсу" data-i18n-attrs="aria-label">
+    <option value="uk">UA</option>
+    <option value="en">EN</option>
+  </select>
+</label><a class="game-details-page__account" href="./favorites.html" aria-label="Обране" data-i18n-attrs="aria-label"><i class="fa-regular fa-heart" aria-hidden="true"></i></a></div></header>
   <main class="container game-details-page">
     <div class="game-details-page__toolbar">
-      <a class="game-details-page__back" href="./games.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> До каталогу</a>
-      <nav class="game-details-page__breadcrumbs" aria-label="Навігаційний ланцюжок"><a href="./index.html">Головна</a><span aria-hidden="true">/</span><a href="./games.html">Ігри</a><span aria-hidden="true">/</span><span id="gameBreadcrumb" aria-current="page">Деталі гри</span></nav>
+      <a class="game-details-page__back" href="./games.html" data-i18n><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> До каталогу</a>
+      <nav class="game-details-page__breadcrumbs" aria-label="Навігаційний ланцюжок" data-i18n-attrs="aria-label"><a href="./index.html" data-i18n>Головна</a><span aria-hidden="true">/</span><a href="./games.html" data-i18n>Ігри</a><span aria-hidden="true">/</span><span id="gameBreadcrumb" aria-current="page" data-i18n>Деталі гри</span></nav>
     </div>
 
-    <div id="gameDetails" class="game-details-page__body" aria-busy="true"><p class="page-state" role="status"><span class="loading-spinner" aria-hidden="true"></span> Завантажуємо гру…</p></div>
-    <p class="data-attribution">Дані та зображення: <a href="https://rawg.io/">RAWG</a>. Ціни: <a href="https://www.cheapshark.com/">CheapShark</a>.</p>
+    <div id="gameDetails" class="game-details-page__body" aria-busy="true"><p class="page-state" role="status" data-i18n><span class="loading-spinner" aria-hidden="true"></span> Завантажуємо гру…</p></div>
+    <p class="data-attribution" data-i18n>Дані та зображення: <a href="https://rawg.io/">RAWG</a>. Ціни: <a href="https://www.cheapshark.com/">CheapShark</a>.</p>
   </main>
   <script type="module" src="/src/main.js"></script>
 </body>

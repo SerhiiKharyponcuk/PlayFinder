@@ -101,6 +101,7 @@ export function init({ root = document, auth = authService, configured = isFireb
   }
 
   function onUser(nextUser) {
+    // Після входу замість форми показую інформацію про акаунт.
     ready = true;
     user = nextUser;
     tabs.hidden = panel.hidden = Boolean(user);

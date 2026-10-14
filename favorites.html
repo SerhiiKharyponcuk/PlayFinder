@@ -4,35 +4,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#071116">
-  <meta name="description" content="Твої улюблені ігри у PlayFinder. Зберігай ігри та повертайся до найкращих пропозицій.">
+  <meta name="description" content="Твої улюблені ігри у PlayFinder. Зберігай ігри та повертайся до найкращих пропозицій." data-i18n-attrs="content">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <title>Обране — PlayFinder</title>
+  <title data-i18n>Обране — PlayFinder</title>
 </head>
 <body class="account-shell" data-page="favorites">
   <div class="site-loader" id="siteLoader" role="status" aria-live="polite" hidden>
     <span class="loading-spinner" aria-hidden="true"></span>
-    <div class="site-loader__content"><strong>Завантажуємо PlayFinder</strong><span class="site-loader__label" data-loading-label>Готуємо сторінку…</span></div>
+    <div class="site-loader__content"><strong data-i18n>Завантажуємо PlayFinder</strong><span class="site-loader__label" data-loading-label data-i18n>Готуємо сторінку…</span></div>
   </div>
   <header class="header account-header"><div class="container header__container">
-    <a class="logo" href="./index.html" aria-label="PlayFinder, головна"><i class="logo__icon fa-solid fa-gamepad" aria-hidden="true"></i><span class="logo__name">Play<span class="logo__name-text">Finder</span></span></a>
-    <nav class="nav" aria-label="Основна навігація"><a class="nav__link" href="./index.html">Головна</a><a class="nav__link" href="./games.html">Ігри</a><a class="nav__link" href="./about.html">Про нас</a></nav>
-    <div class="account-header__actions"><a class="account-header__link account-header__link--active" href="./favorites.html" aria-current="page" aria-label="Обране"><i class="fa-solid fa-heart" aria-hidden="true"></i><span>Обране</span></a><a class="account-header__link" href="./login.html" aria-label="Акаунт"><i class="fa-regular fa-user" aria-hidden="true"></i><span>Акаунт</span></a></div>
+    <a class="logo" href="./index.html" aria-label="PlayFinder, головна" data-i18n-attrs="aria-label"><i class="logo__icon fa-solid fa-gamepad" aria-hidden="true"></i><span class="logo__name">Play<span class="logo__name-text">Finder</span></span></a>
+    <nav class="nav" aria-label="Основна навігація" data-i18n-attrs="aria-label"><a class="nav__link" href="./index.html" data-i18n>Головна</a><a class="nav__link" href="./games.html" data-i18n>Ігри</a><a class="nav__link" href="./about.html" data-i18n>Про нас</a></nav>
+    <div class="account-header__actions"><label class="language-switch">
+  <i class="fa-solid fa-globe" aria-hidden="true"></i>
+  <select class="language-switch__select" data-language-switch aria-label="Мова інтерфейсу" data-i18n-attrs="aria-label">
+    <option value="uk">UA</option>
+    <option value="en">EN</option>
+  </select>
+</label><a class="account-header__link account-header__link--active" href="./favorites.html" aria-current="page" aria-label="Обране" data-i18n-attrs="aria-label"><i class="fa-solid fa-heart" aria-hidden="true"></i><span data-i18n>Обране</span></a><a class="account-header__link" href="./login.html" aria-label="Акаунт" data-i18n-attrs="aria-label"><i class="fa-regular fa-user" aria-hidden="true"></i><span data-i18n>Акаунт</span></a></div>
   </div></header>
   <main class="container favorites-page">
-    <a class="account-back" href="./games.html"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> До каталогу</a>
-    <section class="favorites-hero" aria-labelledby="favoritesTitle"><div class="favorites-hero__content"><p class="account-eyebrow">Збережи сьогодні. Зіграй згодом.</p><h1 class="favorites-hero__title" id="favoritesTitle">Твоє <span>обране</span></h1><p class="favorites-hero__description">Ігри, до яких хочеться повертатися. Усі в одному місці.</p></div><span class="favorites-hero__heart" aria-hidden="true"><i class="fa-regular fa-heart"></i></span></section>
-    <div class="favorites-toolbar"><div class="favorites-toolbar__heading"><h2>Збережені ігри</h2><span class="favorites-toolbar__count" id="favoriteGamesCount">—</span></div><a class="account-button account-button--secondary favorites-toolbar__account" id="favoritesAccount" href="./login.html" aria-label="Акаунт"><i class="fa-regular fa-user" aria-hidden="true"></i><span id="favoritesAccountLabel">Увійти</span></a></div>
-    <p class="favorites-notice" id="favoritesStatus" role="status" aria-live="polite" hidden></p>
-    <div class="favorites-grid favorites-loading" id="favoriteGamesLoading" role="status" aria-label="Завантаження обраного" hidden>
+    <a class="account-back" href="./games.html" data-i18n><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> До каталогу</a>
+    <section class="favorites-hero" aria-labelledby="favoritesTitle"><div class="favorites-hero__content"><p class="account-eyebrow" data-i18n>Збережи сьогодні. Зіграй згодом.</p><h1 class="favorites-hero__title" id="favoritesTitle" data-i18n>Твоє <span data-i18n>обране</span></h1><p class="favorites-hero__description" data-i18n>Ігри, до яких хочеться повертатися. Усі в одному місці.</p></div><span class="favorites-hero__heart" aria-hidden="true"><i class="fa-regular fa-heart"></i></span></section>
+    <div class="favorites-toolbar"><div class="favorites-toolbar__heading"><h2 data-i18n>Збережені ігри</h2><span class="favorites-toolbar__count" id="favoriteGamesCount" data-i18n data-i18n-attrs="title">—</span></div><a class="account-button account-button--secondary favorites-toolbar__account" id="favoritesAccount" href="./login.html" aria-label="Акаунт" data-i18n-attrs="aria-label"><i class="fa-regular fa-user" aria-hidden="true"></i><span id="favoritesAccountLabel" data-i18n>Увійти</span></a></div>
+    <p class="favorites-notice" id="favoritesStatus" role="status" aria-live="polite" data-i18n hidden></p>
+    <div class="favorites-grid favorites-loading" id="favoriteGamesLoading" role="status" aria-label="Завантаження обраного" hidden data-i18n-attrs="aria-label">
       <div class="favorites-skeleton" aria-hidden="true"></div><div class="favorites-skeleton" aria-hidden="true"></div><div class="favorites-skeleton" aria-hidden="true"></div><div class="favorites-skeleton" aria-hidden="true"></div>
       <div class="favorites-skeleton" aria-hidden="true"></div><div class="favorites-skeleton" aria-hidden="true"></div><div class="favorites-skeleton" aria-hidden="true"></div><div class="favorites-skeleton" aria-hidden="true"></div>
     </div>
     <div class="games-grid favorites-grid" id="favoriteGames" aria-busy="false" hidden></div>
-    <section class="favorites-state" id="favoritesState" aria-labelledby="favoritesStateTitle"><span class="favorites-state__icon" aria-hidden="true"><i class="fa-regular fa-heart" id="favoritesStateIcon"></i></span><h2 class="favorites-state__title" id="favoritesStateTitle">Твій список чекає на тебе</h2><p class="favorites-state__description" id="favoritesStateDescription">Увійди в акаунт, щоб побачити збережені ігри.</p><div class="favorites-state__actions"><a class="account-button" id="favoritesStateLink" href="./login.html">Увійти в акаунт <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><button class="account-button" id="favoritesReloadButton" type="button" hidden><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Спробувати ще</button><a class="account-button account-button--secondary" href="./games.html">Переглянути ігри</a></div></section>
-    <p class="data-attribution favorites-page__attribution">Дані та зображення: <a href="https://rawg.io/">RAWG</a>. Ціни для PC: <a href="https://www.cheapshark.com/">CheapShark</a>.</p>
+    <section class="favorites-state" id="favoritesState" aria-labelledby="favoritesStateTitle"><span class="favorites-state__icon" aria-hidden="true"><i class="fa-regular fa-heart" id="favoritesStateIcon"></i></span><h2 class="favorites-state__title" id="favoritesStateTitle" data-i18n>Твій список чекає на тебе</h2><p class="favorites-state__description" id="favoritesStateDescription" data-i18n>Увійди в акаунт, щоб побачити збережені ігри.</p><div class="favorites-state__actions"><a class="account-button" id="favoritesStateLink" href="./login.html" data-i18n>Увійти в акаунт <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a><button class="account-button" id="favoritesReloadButton" type="button" hidden data-i18n><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Спробувати ще</button><a class="account-button account-button--secondary" href="./games.html" data-i18n>Переглянути ігри</a></div></section>
+    <p class="data-attribution favorites-page__attribution" data-i18n>Дані та зображення: <a href="https://rawg.io/">RAWG</a>. Ціни для PC: <a href="https://www.cheapshark.com/">CheapShark</a>.</p>
   </main>
-  <footer class="account-footer container"><p>© 2026 PlayFinder</p><nav aria-label="Правова інформація"><a href="./privacy.html">Конфіденційність</a><a href="./terms.html">Умови використання</a></nav></footer>
-  <nav class="mobile-bottom-nav" aria-label="Мобільна навігація"><a class="mobile-bottom-nav__link" href="./index.html"><i class="fa-solid fa-house mobile-bottom-nav__icon" aria-hidden="true"></i>Головна</a><a class="mobile-bottom-nav__link" href="./games.html"><i class="fa-solid fa-magnifying-glass mobile-bottom-nav__icon" aria-hidden="true"></i>Пошук</a><a class="mobile-bottom-nav__link mobile-bottom-nav__link--active" href="./favorites.html" aria-current="page"><i class="fa-solid fa-heart mobile-bottom-nav__icon" aria-hidden="true"></i>Обране</a><a class="mobile-bottom-nav__link" href="./login.html"><i class="fa-regular fa-user mobile-bottom-nav__icon" aria-hidden="true"></i>Акаунт</a></nav>
+  <footer class="account-footer container"><p>© 2026 PlayFinder</p><nav aria-label="Правова інформація" data-i18n-attrs="aria-label"><a href="./privacy.html" data-i18n>Конфіденційність</a><a href="./terms.html" data-i18n>Умови використання</a></nav></footer>
+  <nav class="mobile-bottom-nav" aria-label="Мобільна навігація" data-i18n-attrs="aria-label"><a class="mobile-bottom-nav__link" href="./index.html" data-i18n><i class="fa-solid fa-house mobile-bottom-nav__icon" aria-hidden="true"></i>Головна</a><a class="mobile-bottom-nav__link" href="./games.html" data-i18n><i class="fa-solid fa-magnifying-glass mobile-bottom-nav__icon" aria-hidden="true"></i>Пошук</a><a class="mobile-bottom-nav__link mobile-bottom-nav__link--active" href="./favorites.html" aria-current="page" data-i18n><i class="fa-solid fa-heart mobile-bottom-nav__icon" aria-hidden="true"></i>Обране</a><a class="mobile-bottom-nav__link" href="./login.html" data-i18n><i class="fa-regular fa-user mobile-bottom-nav__icon" aria-hidden="true"></i>Акаунт</a></nav>
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>

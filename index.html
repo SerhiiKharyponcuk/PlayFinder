@@ -13,6 +13,7 @@
     <meta
         name="description"
         content="PlayFinder — порівнюйте ціни на ігри та знаходьте найвигідніші пропозиції."
+        data-i18n-attrs="content"
     >
 
     <meta
@@ -20,7 +21,7 @@
         content="#071116"
     >
 
-    <title>
+    <title data-i18n>
         PlayFinder — більше ігор, кращі ціни
     </title>
 
@@ -40,7 +41,7 @@
 
     <div class="site-loader" id="siteLoader" role="status" aria-live="polite">
         <span class="loading-spinner" aria-hidden="true"></span>
-        <div class="site-loader__content"><strong>Завантажуємо PlayFinder</strong><span class="site-loader__label" data-loading-label>Готуємо сторінку…</span></div>
+        <div class="site-loader__content"><strong data-i18n>Завантажуємо PlayFinder</strong><span class="site-loader__label" data-loading-label data-i18n>Готуємо сторінку…</span></div>
     </div>
 
 <header class="header">
@@ -67,7 +68,7 @@
 
                 </span>
 
-                <span class="logo__slogan">
+                <span class="logo__slogan" data-i18n>
 
                     БІЛЬШЕ ІГОР. КРАЩІ ЦІНИ.
 
@@ -80,11 +81,13 @@
         <nav
             class="nav"
             aria-label="Основна навігація"
+            data-i18n-attrs="aria-label"
         >
 
             <a
                 href="./index.html"
                 class="nav__link nav__link--active"
+                data-i18n
             >
                 Головна
             </a>
@@ -92,15 +95,15 @@
             <a
                 href="./games.html"
                 class="nav__link"
+                data-i18n
             >
                 Ігри
             </a>
 
-
-
             <a
                 href="./about.html"
                 class="nav__link"
+                data-i18n
             >
                 Про нас
             </a>
@@ -121,7 +124,7 @@
                 placeholder="Пошук за назвою гри…"
                 autocomplete="off"
                 aria-label="Пошук ігор"
-             class="header-search__input">
+             class="header-search__input" data-i18n-attrs="aria-label,placeholder">
 
             <div
                 class="search-results"
@@ -133,30 +136,24 @@
 
         <div class="header-actions">
 
-            <button
-                class="header-action"
-                id="languageButton"
-                type="button"
-                aria-label="Змінити мову"
-            >
-
-                <i class="fa-solid fa-globe header-action__icon"></i>
-
-                <span>UA</span>
-
-                <i class="fa-solid fa-chevron-down header-action__icon"></i>
-
-            </button>
+            <label class="language-switch">
+  <i class="fa-solid fa-globe" aria-hidden="true"></i>
+  <select class="language-switch__select" data-language-switch aria-label="Мова інтерфейсу" data-i18n-attrs="aria-label">
+    <option value="uk">UA</option>
+    <option value="en">EN</option>
+  </select>
+</label>
 
             <a
                 href="./favorites.html"
                 class="header-action header-action--favorite"
                 aria-label="Обране"
+                data-i18n-attrs="aria-label"
             >
 
                 <i class="fa-regular fa-heart header-action__icon"></i>
 
-                <span class="header-action__text">
+                <span class="header-action__text" data-i18n>
                     Обране
                 </span>
 
@@ -169,7 +166,7 @@
 
                 <i class="fa-regular fa-user"></i>
 
-                <span>
+                <span data-i18n>
                     Увійти
                 </span>
 
@@ -180,7 +177,7 @@
                 id="mobileMenuButton"
                 type="button"
                 aria-label="Відкрити меню"
-             data-menu-toggle aria-controls="mobile-menu" aria-expanded="false">
+             data-menu-toggle aria-controls="mobile-menu" aria-expanded="false" data-i18n-attrs="aria-label">
 
                 <i class="fa-solid fa-bars"></i>
 
@@ -200,25 +197,23 @@
 
     <nav>
 
-        <a href="./index.html" class="mobile-menu__link">
+        <a href="./index.html" class="mobile-menu__link" data-i18n>
             Головна
         </a>
 
-        <a href="./games.html" class="mobile-menu__link">
+        <a href="./games.html" class="mobile-menu__link" data-i18n>
             Ігри
         </a>
 
-
-
-        <a href="./favorites.html" class="mobile-menu__link">
+        <a href="./favorites.html" class="mobile-menu__link" data-i18n>
             Обране
         </a>
 
-        <a href="./about.html" class="mobile-menu__link">
+        <a href="./about.html" class="mobile-menu__link" data-i18n>
             Про нас
         </a>
 
-        <a href="./login.html" class="mobile-menu__link">
+        <a href="./login.html" class="mobile-menu__link" data-i18n>
             Увійти
         </a>
 
@@ -244,7 +239,7 @@
                 placeholder="Пошук за назвою гри…"
                 autocomplete="off"
                 aria-label="Пошук ігор"
-             class="mobile-search__input">
+             class="mobile-search__input" data-i18n-attrs="aria-label,placeholder">
 
         </form>
 
@@ -257,7 +252,7 @@
                     type="button"
                 >
 
-                    <span>
+                    <span data-i18n>
                         Платформи
                     </span>
 
@@ -359,7 +354,7 @@
                     type="button"
                 >
 
-                    <span>
+                    <span data-i18n>
                         Жанри
                     </span>
 
@@ -379,7 +374,7 @@
 
                         <span class="catalog-check__box"></span>
 
-                        <span>
+                        <span data-i18n>
                             Екшен
                         </span>
 
@@ -395,7 +390,7 @@
 
                         <span class="catalog-check__box"></span>
 
-                        <span>
+                        <span data-i18n>
                             Пригоди
                         </span>
 
@@ -427,7 +422,7 @@
 
                         <span class="catalog-check__box"></span>
 
-                        <span>
+                        <span data-i18n>
                             Стратегії
                         </span>
 
@@ -443,7 +438,7 @@
 
                         <span class="catalog-check__box"></span>
 
-                        <span>
+                        <span data-i18n>
                             Симулятори
                         </span>
 
@@ -459,7 +454,7 @@
 
                         <span class="catalog-check__box"></span>
 
-                        <span>
+                        <span data-i18n>
                             Спорт
                         </span>
 
@@ -475,7 +470,7 @@
 
                         <span class="catalog-check__box"></span>
 
-                        <span>
+                        <span data-i18n>
                             Гонки
                         </span>
 
@@ -491,7 +486,7 @@
 
                         <span class="catalog-check__box"></span>
 
-                        <span>
+                        <span data-i18n>
                             Інді
                         </span>
 
@@ -500,6 +495,7 @@
                     <button
                         class="catalog-more"
                         type="button"
+                        data-i18n
                     >
 
                         Більше жанрів
@@ -519,7 +515,7 @@
                     type="button"
                 >
 
-                    <span>
+                    <span data-i18n>
                         Магазини
                     </span>
 
@@ -660,6 +656,7 @@
                     <button
                         class="catalog-more"
                         type="button"
+                        data-i18n
                     >
 
                         Більше магазинів
@@ -674,7 +671,7 @@
 
             <section class="catalog-sort">
 
-                <label for="sidebarSort" class="catalog-sort__label">
+                <label for="sidebarSort" class="catalog-sort__label" data-i18n>
 
                     Сортувати
 
@@ -682,19 +679,19 @@
 
                 <select id="sidebarSort" class="catalog-sort__select">
 
-                    <option value="popular">
+                    <option value="popular" data-i18n>
                         За популярністю
                     </option>
 
-                    <option value="rating">
+                    <option value="rating" data-i18n>
                         За рейтингом
                     </option>
 
-                    <option value="price-low">
+                    <option value="price-low" data-i18n>
                         За ціною
                     </option>
 
-                    <option value="release">
+                    <option value="release" data-i18n>
                         За датою виходу
                     </option>
 
@@ -725,13 +722,13 @@
 
             <div class="hero__content">
 
-                <span class="hero__eyebrow">
+                <span class="hero__eyebrow" data-i18n>
 
                     КРАЩІ ЦІНИ — БІЛЬШЕ ІГОР
 
                 </span>
 
-                <h1 class="hero__title">
+                <h1 class="hero__title" data-i18n>
 
                     Порівнюємо ціни
                     <br>
@@ -739,13 +736,13 @@
                     на ігри — знаходимо
                     <br>
 
-                    <strong>
+                    <strong data-i18n>
                         найвигіднішу пропозицію
                     </strong>
 
                 </h1>
 
-                <p class="hero__text">
+                <p class="hero__text" data-i18n>
 
                     Один пошук — десятки магазинів.
                     <br>
@@ -757,6 +754,7 @@
                 <a
                     href="./games.html"
                     class="hero__button"
+                    data-i18n
                 >
 
                     Знайти гру
@@ -767,7 +765,7 @@
 
             </div>
 
-            <div class="hero__handwriting">
+            <div class="hero__handwriting" data-i18n>
 
                 Грайте
                 <br>
@@ -781,7 +779,7 @@
 
             <div class="hero__features">
 
-                <span class="hero__features-text">
+                <span class="hero__features-text" data-i18n>
 
                     <i class="fa-regular fa-heart hero__features-icon"></i>
 
@@ -789,7 +787,7 @@
 
                 </span>
 
-                <span class="hero__features-text">
+                <span class="hero__features-text" data-i18n>
 
                     <i class="fa-regular fa-circle-check hero__features-icon"></i>
 
@@ -797,7 +795,7 @@
 
                 </span>
 
-                <span class="hero__features-text">
+                <span class="hero__features-text" data-i18n>
 
                     <i class="fa-regular fa-star hero__features-icon"></i>
 
@@ -816,22 +814,23 @@
                     class="hero__dot hero__dot--active"
                     type="button"
                     aria-label="Слайд 1"
+                    data-i18n-attrs="aria-label"
                 ></button>
 
                 <button
                     type="button"
                     aria-label="Слайд 2"
-                 class="hero__dot"></button>
+                 class="hero__dot" data-i18n-attrs="aria-label"></button>
 
                 <button
                     type="button"
                     aria-label="Слайд 3"
-                 class="hero__dot"></button>
+                 class="hero__dot" data-i18n-attrs="aria-label"></button>
 
                 <button
                     type="button"
                     aria-label="Слайд 4"
-                 class="hero__dot"></button>
+                 class="hero__dot" data-i18n-attrs="aria-label"></button>
 
             </div>
 
@@ -845,13 +844,13 @@
 
                 <span class="quick-filter__text">
 
-                    <small class="quick-filter__caption">
+                    <small class="quick-filter__caption" data-i18n>
                         Платформа
                     </small>
 
                     <select id="platformFilter" class="quick-filter__select">
 
-                        <option value="">
+                        <option value="" data-i18n>
                             Усі платформи
                         </option>
 
@@ -883,21 +882,21 @@
 
                 <span class="quick-filter__text">
 
-                    <small class="quick-filter__caption">
+                    <small class="quick-filter__caption" data-i18n>
                         Жанр
                     </small>
 
                     <select id="gamesGenreFilter" class="quick-filter__select">
 
-                        <option value="">
+                        <option value="" data-i18n>
                             Усі жанри
                         </option>
 
-                        <option value="action">
+                        <option value="action" data-i18n>
                             Екшен
                         </option>
 
-                        <option value="adventure">
+                        <option value="adventure" data-i18n>
                             Пригоди
                         </option>
 
@@ -905,7 +904,7 @@
                             RPG
                         </option>
 
-                        <option value="strategy">
+                        <option value="strategy" data-i18n>
                             Стратегії
                         </option>
 
@@ -921,13 +920,13 @@
 
                 <span class="quick-filter__text">
 
-                    <small class="quick-filter__caption">
+                    <small class="quick-filter__caption" data-i18n>
                         Магазин
                     </small>
 
                     <select id="storeFilter" class="quick-filter__select">
 
-                        <option value="">
+                        <option value="" data-i18n>
                             Усі магазини
                         </option>
 
@@ -955,25 +954,25 @@
 
                 <span class="quick-filter__text">
 
-                    <small class="quick-filter__caption">
+                    <small class="quick-filter__caption" data-i18n>
                         Сортування
                     </small>
 
                     <select id="sortFilter" class="quick-filter__select">
 
-                        <option value="popular">
+                        <option value="popular" data-i18n>
                             Популярні
                         </option>
 
-                        <option value="rating">
+                        <option value="rating" data-i18n>
                             Рейтинг
                         </option>
 
-                        <option value="price-low">
+                        <option value="price-low" data-i18n>
                             За ціною
                         </option>
 
-                        <option value="release">
+                        <option value="release" data-i18n>
                             Нові
                         </option>
 
@@ -994,11 +993,11 @@
 
                 <header class="section-heading">
 
-                    <h2 class="section-heading__title">
+                    <h2 class="section-heading__title" data-i18n>
                         Популярні ігри
                     </h2>
 
-                    <a href="./games.html?sort=popular" class="section-heading__link">
+                    <a href="./games.html?sort=popular" class="section-heading__link" data-i18n>
 
                         Всі ігри
 
@@ -1019,8 +1018,9 @@
                     id="popularLoading"
                     role="status"
                     aria-label="Завантажуємо популярні ігри"
+                    data-i18n-attrs="aria-label"
                 >
-                    <p class="loading-label">Завантажуємо популярні ігри…</p>
+                    <p class="loading-label" data-i18n>Завантажуємо популярні ігри…</p>
                     <div class="game-skeleton"></div>
 
                     <div class="game-skeleton"></div>
@@ -1044,11 +1044,11 @@
 
                 <header class="section-heading">
 
-                    <h2 class="section-heading__title">
+                    <h2 class="section-heading__title" data-i18n>
                         Нові релізи
                     </h2>
 
-                    <a href="./games.html?sort=release" class="section-heading__link">
+                    <a href="./games.html?sort=release" class="section-heading__link" data-i18n>
 
                         Всі
 
@@ -1069,8 +1069,9 @@
                     id="newReleasesLoading"
                     role="status"
                     aria-label="Завантажуємо нові релізи"
+                    data-i18n-attrs="aria-label"
                 >
-                    <p class="loading-label">Завантажуємо нові релізи…</p>
+                    <p class="loading-label" data-i18n>Завантажуємо нові релізи…</p>
                     <div class="game-skeleton"></div>
 
                     <div class="game-skeleton"></div>
@@ -1095,11 +1096,11 @@
 
                 <header class="sidebar-heading">
 
-                    <h2 class="sidebar-heading__title">
+                    <h2 class="sidebar-heading__title" data-i18n>
                         Найкращі ціни зараз
                     </h2>
 
-                    <a href="./games.html?sort=price-low" class="sidebar-heading__link">
+                    <a href="./games.html?sort=price-low" class="sidebar-heading__link" data-i18n>
 
                         Всі
 
@@ -1119,8 +1120,9 @@
                     id="dealsLoading"
                     role="status"
                     aria-label="Завантажуємо пропозиції"
+                    data-i18n-attrs="aria-label"
                 >
-                    <p class="loading-label">Завантажуємо пропозиції…</p>
+                    <p class="loading-label" data-i18n>Завантажуємо пропозиції…</p>
                     <div class="deal-skeleton"></div>
 
                     <div class="deal-skeleton"></div>
@@ -1137,7 +1139,7 @@
 
             <section class="sidebar-card sidebar-why">
 
-                <h2 class="sidebar-why__title">
+                <h2 class="sidebar-why__title" data-i18n>
                     Чому PlayFinder?
                 </h2>
 
@@ -1147,11 +1149,11 @@
 
                     <span>
 
-                        <strong class="why-row__value">
+                        <strong class="why-row__value" data-i18n>
                             Порівняння цін
                         </strong>
 
-                        <small class="why-row__caption">
+                        <small class="why-row__caption" data-i18n>
                             У понад 30 магазинах
                         </small>
 
@@ -1165,11 +1167,11 @@
 
                     <span>
 
-                        <strong class="why-row__value">
+                        <strong class="why-row__value" data-i18n>
                             Завжди актуальні дані
                         </strong>
 
-                        <small class="why-row__caption">
+                        <small class="why-row__caption" data-i18n>
                             Регулярно перевіряємо ціни
                         </small>
 
@@ -1183,11 +1185,11 @@
 
                     <span>
 
-                        <strong class="why-row__value">
+                        <strong class="why-row__value" data-i18n>
                             Економія вашого часу
                         </strong>
 
-                        <small class="why-row__caption">
+                        <small class="why-row__caption" data-i18n>
                             Усе в одному місці
                         </small>
 
@@ -1201,11 +1203,11 @@
 
                     <span>
 
-                        <strong class="why-row__value">
+                        <strong class="why-row__value" data-i18n>
                             Жодних прихованих платежів
                         </strong>
 
-                        <small class="why-row__caption">
+                        <small class="why-row__caption" data-i18n>
                             Показуємо реальні ціни
                         </small>
 
@@ -1223,11 +1225,11 @@
 
                     <div>
 
-                        <h2 class="newsletter__title">
+                        <h2 class="newsletter__title" data-i18n>
                             Будьте в курсі
                         </h2>
 
-                        <p class="newsletter__text">
+                        <p class="newsletter__text" data-i18n>
 
                             Отримуйте сповіщення про нові
                             ігри та найкращі ціни.
@@ -1253,9 +1255,9 @@
                         placeholder="Ваш email"
                         autocomplete="email"
                         required
-                     class="newsletter__input">
+                     class="newsletter__input" data-i18n-attrs="placeholder">
 
-                    <button type="submit" class="newsletter__button">
+                    <button type="submit" class="newsletter__button" data-i18n>
 
                         Підписатися
 
@@ -1269,7 +1271,7 @@
 
     </div>
 
-<p class="data-attribution">Дані та зображення: <a href="https://rawg.io/" target="_blank" rel="noopener noreferrer">RAWG</a>. Ціни: <a href="https://www.cheapshark.com/" target="_blank" rel="noopener noreferrer">CheapShark</a> (USD).</p>
+<p class="data-attribution" data-i18n>Дані та зображення: <a href="https://rawg.io/" target="_blank" rel="noopener noreferrer">RAWG</a>. Ціни: <a href="https://www.cheapshark.com/" target="_blank" rel="noopener noreferrer">CheapShark</a> (USD).</p>
 </main>
 
 <footer class="footer">
@@ -1292,7 +1294,7 @@
                     Play<span class="logo__name-text">Finder</span>
                 </span>
 
-                <span class="logo__slogan">
+                <span class="logo__slogan" data-i18n>
                     БІЛЬШЕ ІГОР. КРАЩІ ЦІНИ.
                 </span>
 
@@ -1303,21 +1305,21 @@
         <nav
             class="footer__nav"
             aria-label="Навігація у футері"
+            data-i18n-attrs="aria-label"
         >
 
-            <a href="./index.html" class="footer__link">
+            <a href="./index.html" class="footer__link" data-i18n>
                 Головна
             </a>
 
-            <a href="./games.html" class="footer__link">
+            <a href="./games.html" class="footer__link" data-i18n>
                 Ігри
             </a>
-
-
 
             <a
                 href="./about.html"
                 class="footer__link footer__link--active"
+                data-i18n
             >
                 Про нас
             </a>
@@ -1359,7 +1361,7 @@
         <div class="footer__copyright">
 
             © 2026 PlayFinder.
-            <span class="footer__copyright-text">Усі права захищені.</span>
+            <span class="footer__copyright-text" data-i18n>Усі права захищені.</span>
 
         </div>
 
@@ -1370,7 +1372,7 @@
 <nav
     class="mobile-bottom-nav"
     aria-label="Мобільна навігація"
->
+ data-i18n-attrs="aria-label">
 
     <a
         href="./index.html"
@@ -1379,7 +1381,7 @@
 
         <i class="fa-solid fa-house mobile-bottom-nav__icon"></i>
 
-        <span>
+        <span data-i18n>
             Головна
         </span>
 
@@ -1389,7 +1391,7 @@
 
         <i class="fa-solid fa-magnifying-glass mobile-bottom-nav__icon"></i>
 
-        <span>
+        <span data-i18n>
             Пошук
         </span>
 
@@ -1399,7 +1401,7 @@
 
         <i class="fa-regular fa-heart mobile-bottom-nav__icon"></i>
 
-        <span>
+        <span data-i18n>
             Обране
         </span>
 
@@ -1409,213 +1411,13 @@
 
         <i class="fa-regular fa-user mobile-bottom-nav__icon"></i>
 
-        <span>
+        <span data-i18n>
             Увійти
         </span>
 
     </a>
 
 </nav>
-
-
-
-<dialog
-    class="game-modal"
-    id="gameModal"
->
-
-    <button
-        class="game-modal__close"
-        id="gameModalClose"
-        type="button"
-        aria-label="Закрити"
-    >
-
-        <i class="fa-solid fa-xmark"></i>
-
-    </button>
-
-    <div class="game-modal__content">
-
-        <div class="game-modal__media">
-
-            <img
-                id="modalGameImage"
-                src=""
-                alt=""
-            >
-
-            <div
-                class="game-modal__video"
-                id="modalGameVideo"
-                hidden
-            ></div>
-
-        </div>
-
-        <div class="game-modal__information">
-
-            <div class="game-modal__top">
-
-                <div>
-
-                    <h2 id="modalGameTitle"></h2>
-
-                    <div
-                        class="game-modal__genres"
-                        id="modalGameGenres"
-                    ></div>
-
-                </div>
-
-                <div class="game-modal__rating">
-
-                    <i class="fa-solid fa-star"></i>
-
-                    <strong
-                        id="modalGameRating"
-                    ></strong>
-
-                </div>
-
-            </div>
-
-            <div
-                class="game-modal__platforms"
-                id="modalGamePlatforms"
-            ></div>
-
-            <p
-                class="game-modal__description"
-                id="modalGameDescription"
-            ></p>
-
-            <dl class="game-modal__meta">
-
-                <div>
-
-                    <dt>
-                        Розробник
-                    </dt>
-
-                    <dd
-                        id="modalGameDeveloper"
-                    ></dd>
-
-                </div>
-
-                <div>
-
-                    <dt>
-                        Видавець
-                    </dt>
-
-                    <dd
-                        id="modalGamePublisher"
-                    ></dd>
-
-                </div>
-
-                <div>
-
-                    <dt>
-                        Дата релізу
-                    </dt>
-
-                    <dd
-                        id="modalGameRelease"
-                    ></dd>
-
-                </div>
-
-            </dl>
-
-            <div class="game-modal__price">
-
-                <span>
-                    Найкраща ціна
-                </span>
-
-                <strong
-                    id="modalGamePrice"
-                ></strong>
-
-            </div>
-
-            <div
-                class="game-modal__stores"
-                id="modalGameStores"
-            ></div>
-
-            <a
-                href="#"
-                id="modalGameLink"
-                class="button button--primary"
-            >
-
-                Переглянути гру
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </div>
-
-    </div>
-
-</dialog>
-
-<template id="storeOfferTemplate">
-
-    <div
-        class="store-offer"
-        data-store=""
-    >
-
-        <div class="store-offer__store">
-
-            <img
-                class="store-offer__logo"
-                src=""
-                alt=""
-                width="40"
-                height="40"
-            >
-
-            <div>
-
-                <strong
-                    class="store-offer__name"
-                ></strong>
-
-                <span
-                    class="store-offer__edition"
-                ></span>
-
-            </div>
-
-        </div>
-
-        <strong
-            class="store-offer__price"
-        ></strong>
-
-        <a
-            class="store-offer__button"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-
-            Перейти
-
-            <i class="fa-solid fa-arrow-right"></i>
-
-        </a>
-
-    </div>
-
-</template>
 
 <script type="module" src="/src/main.js"></script>
 </body>

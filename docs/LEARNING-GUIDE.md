@@ -42,7 +42,7 @@
 | Стилі картки | `src/scss/components/_game-card.scss` |
 
 Шляхи JS у таблиці відносні до `src/js/`.
-Початковий `api/providers/catalog.js` тепер лише переекспортує RAWG для сумісності.
+Дані каталогу отримує `api/providers/rawg.js`; старий невикористаний `catalog.js` прибрано.
 Старі порожні `prices-primary/secondary.js` замінені на один `cheapshark.js`.
 
 ## Контракти, які важливо не плутати

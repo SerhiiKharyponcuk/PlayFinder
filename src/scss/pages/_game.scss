@@ -35,8 +35,8 @@
   &__reviews { color: var(--muted); font-size: 11px; }
   &__release-notice { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; padding: 14px; border: 1px solid #665335; border-radius: 7px; background: rgba(255, 200, 92, .055); color: var(--yellow); }
   &__release-notice > i { font-size: 24px; }
-  &__release-notice strong, &__release-notice span { display: block; }
-  &__release-notice span { margin-top: 4px; color: var(--text-soft); font-size: 12px; }
+  &__release-notice strong { display: block; }
+  &__release-notice p { margin: 4px 0 0; color: var(--text-soft); font-size: 12px; }
   &__description { margin: 0 0 25px; color: var(--text-soft); font-size: 13px; line-height: 1.75; white-space: pre-line; overflow-wrap: anywhere; }
   &__description-more { margin: -10px 0 24px; }
   &__description-more summary { display: flex; align-items: center; gap: 8px; width: fit-content; cursor: pointer; color: var(--accent); font-size: 12px; }

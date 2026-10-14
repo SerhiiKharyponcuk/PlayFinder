@@ -29,6 +29,7 @@ export function createGameList(id, loaderId, repaintFavorites = () => {}, { tran
     feedback.hidden = !pending && !errors;
     if (feedback.hidden) return;
     const text = document.createElement('span');
+    text.setAttribute('data-i18n', '');
     if (pending) {
       const spinner = document.createElement('span'); spinner.className = 'loading-spinner'; spinner.setAttribute('aria-hidden', 'true');
       feedback.append(spinner);
@@ -38,6 +39,7 @@ export function createGameList(id, loaderId, repaintFavorites = () => {}, { tran
       text.textContent = 'Частина цін тимчасово недоступна. Картки можна відкривати.';
       const wait = Math.max(0, Math.ceil((cheapsharkProvider.diagnostics().pausedUntil - Date.now()) / 1000));
       const button = document.createElement('button'); button.type = 'button'; button.className = 'price-feedback__retry';
+      button.setAttribute('data-i18n', '');
       button.textContent = wait ? `Оновити через ${wait} с` : 'Оновити ціни';
       button.disabled = retrying || wait > 0;
       feedback.append(button);

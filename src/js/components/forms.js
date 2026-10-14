@@ -9,6 +9,7 @@ export function initForms() {
         message.setAttribute('role', 'status');
         form.append(message);
       }
+      message.setAttribute('data-i18n', '');
       message.textContent = 'Функція стане доступною після підключення сервісу сповіщень.';
     });
   }

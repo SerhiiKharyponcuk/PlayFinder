@@ -29,13 +29,13 @@ export async function init() {
   for (const id of ['headerSearchInput', 'mobileSearchInput']) document.getElementById(id).value = filters.query;
   const publish = result => {
     document.getElementById('gamesFoundCount').textContent = new Intl.NumberFormat('uk-UA').format(result.total);
+    document.getElementById('gamesFoundCount').dataset.i18nNumber = result.total;
     controls.pagination(result);
     view.publish(result.games);
   };
   try {
     const result = await gamesService.getGames({ ...filters, searchRelevance: Boolean(filters.query) && !['rating', 'release'].includes(filters.sort) }, { onGames: publish });
     publish(result);
-    console.log('Games catalog loaded', result);
   } catch (error) {
     view.fail(error); container.hidden = true; errorPanel.hidden = false;
     errorPanel.querySelector('p').textContent = error.message || 'Не вдалося завантажити каталог.';
