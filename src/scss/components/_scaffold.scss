@@ -15,8 +15,6 @@
   &__link { color: var(--accent); }
 }
 
-.data-attribution { padding: 16px; color: var(--text-soft); font-size: 12px; }
-.data-attribution a { color: var(--mint); }
 .game-card__favorite--saved, .game-card__favorite[aria-pressed='true'] { color: var(--accent); }
 
 .game-card__platforms { flex-wrap: wrap; font-size: 10px; overflow-wrap: anywhere; }
