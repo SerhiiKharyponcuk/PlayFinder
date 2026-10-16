@@ -50,21 +50,6 @@
         display: none;
     }
 
-    .hero {
-        height: 249px;
-    }
-
-    .hero__content {
-        left: 22px;
-        top: 27px;
-
-        width: 410px;
-    }
-
-    .hero .hero__title {
-        font-size: 27px;
-    }
-
     .quick-filters {
         display: grid;
 
@@ -326,87 +311,6 @@
         background: transparent;
 
         font-size: 11px;
-    }
-
-    .hero {
-        height: 235px;
-    }
-
-    .hero__background .hero__background-image {
-        object-position: 58% center;
-    }
-
-    .hero__shade {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(4, 12, 16, 0.97) 0%,
-                rgba(4, 12, 16, 0.87) 38%,
-                rgba(4, 12, 16, 0.33) 72%,
-                rgba(4, 12, 16, 0.18) 100%
-            );
-    }
-
-    .hero__content {
-        left: 12px;
-        top: 18px;
-
-        width: 60%;
-    }
-
-    .hero__eyebrow {
-        margin-bottom: 6px;
-
-        font-size: 6px;
-
-        letter-spacing: 1.6px;
-    }
-
-    .hero .hero__title {
-        margin-bottom: 7px;
-
-        font-size: 20px;
-
-        line-height: 1.08;
-
-        letter-spacing: -0.5px;
-    }
-
-    .hero .hero__text {
-        margin-bottom: 11px;
-
-        font-size: 8px;
-
-        line-height: 1.35;
-    }
-
-    .hero__button {
-        width: 126px;
-        height: 31px;
-
-        gap: 9px;
-
-        font-size: 8px;
-    }
-
-    .hero__handwriting {
-        top: 25px;
-        right: 15px;
-
-        font-size: 10px;
-    }
-
-    .hero__features {
-        display: none;
-    }
-
-    .hero__dots {
-        right: 10px;
-        bottom: 8px;
-    }
-
-    .hero__dots .hero__dot {
-        width: 15px;
     }
 
     .quick-filters {
@@ -715,14 +619,6 @@
 
     .logo__slogan {
         display: none;
-    }
-
-    .hero .hero__title {
-        font-size: 18px;
-    }
-
-    .hero__content {
-        width: 64%;
     }
 
     .quick-filter .quick-filter__select {

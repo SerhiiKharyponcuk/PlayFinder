@@ -15,6 +15,10 @@
 | Списки, чекбокси, категорії, мобільна панель, пагінація | [filters.js](src/js/features/filters.js) |
 | Завантаження каталогу | [games.js](src/js/pages/games.js) |
 | Секції головної | [home.js](src/js/pages/home.js) |
+| Слайди херо: тексти, картинки та посилання | [index.html](index.html), блок `data-hero-slider` |
+| Кнопки, свайп і GSAP-анімація слайдера | [hero-slider.js](src/js/components/hero-slider.js) |
+| Таймер на 7 секунд, пауза та порядок слайдів | [hero-slider-state.js](src/js/components/hero-slider-state.js) |
+| Вигляд херо на всіх розмірах екрана | [_hero.scss](src/scss/components/_hero.scss) |
 | Деталі гри та її пропозиції | [game.js](src/js/pages/game.js), [game-details.js](src/js/components/game-details.js), [game-detail.hbs](src/templates/game-detail.hbs) |
 | Довідники ID та перетин дат | [rawg-filters.js](src/js/api/rawg-filters.js) |
 | Параметри RAWG, нормалізація гри | [rawg.js](src/js/api/providers/rawg.js) |

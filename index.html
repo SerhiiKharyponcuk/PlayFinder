@@ -701,139 +701,74 @@
 
         </aside>
 
-        <section class="hero">
-
-            <div class="hero__background">
-
-                <img
-                    src="/images/hero-home.webp"
-                    srcset="/images/hero-home-640.webp 640w, /images/hero-home.webp 2048w"
-                    sizes="(max-width: 767px) calc(100vw - 24px), (max-width: 1199px) calc(100vw - 32px), 960px"
-                    alt=""
-                    width="1200"
-                    height="500"
-                    fetchpriority="high"
-                    decoding="async"
-                 class="hero__background-image">
-
+        <section class="hero" data-hero-slider aria-label="Можливості PlayFinder" aria-roledescription="Карусель" data-i18n-attrs="aria-label,aria-roledescription" tabindex="0">
+            <div class="hero__slide hero__slide--active" id="heroSlide1" data-hero-slide role="group" aria-roledescription="Слайд" aria-label="Слайд 1 із 4" data-i18n-attrs="aria-label,aria-roledescription">
+                <div class="hero__background">
+                    <img class="hero__background-image" src="/images/hero-home.webp" srcset="/images/hero-home-640.webp 640w, /images/hero-home.webp 2048w" sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1199px) calc(100vw - 32px), 960px" alt="" width="1200" height="500" decoding="async" fetchpriority="high">
+                </div>
+                <div class="hero__shade"></div>
+                <div class="hero__content">
+                    <span class="hero__eyebrow" data-i18n>КРАЩІ ЦІНИ — БІЛЬШЕ ІГОР</span>
+                    <h1 class="hero__title"><span data-i18n>Порівнюємо ціни</span><br><span data-i18n>на ігри — знаходимо</span><br><strong data-i18n>найвигіднішу пропозицію</strong></h1>
+                    <p class="hero__text"><span data-i18n>Один пошук — десятки магазинів.</span><br><span data-i18n>Економте час і гроші на улюблених іграх.</span></p>
+                    <a class="hero__button" href="./games.html"><span data-i18n>Знайти гру</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
             </div>
-
-            <div class="hero__shade"></div>
-
-            <div class="hero__content">
-
-                <span class="hero__eyebrow" data-i18n>
-
-                    КРАЩІ ЦІНИ — БІЛЬШЕ ІГОР
-
-                </span>
-
-                <h1 class="hero__title" data-i18n>
-
-                    Порівнюємо ціни
-                    <br>
-
-                    на ігри — знаходимо
-                    <br>
-
-                    <strong data-i18n>
-                        найвигіднішу пропозицію
-                    </strong>
-
-                </h1>
-
-                <p class="hero__text" data-i18n>
-
-                    Один пошук — десятки магазинів.
-                    <br>
-
-                    Економте час і гроші на улюблених іграх.
-
-                </p>
-
-                <a
-                    href="./games.html"
-                    class="hero__button"
-                    data-i18n
-                >
-
-                    Знайти гру
-
-                    <i class="fa-solid fa-arrow-right"></i>
-
-                </a>
-
+            <div class="hero__slide hero__slide--discover" id="heroSlide2" data-hero-slide role="group" aria-roledescription="Слайд" aria-label="Слайд 2 із 4" data-i18n-attrs="aria-label,aria-roledescription" hidden inert>
+                <div class="hero__background">
+                    <img class="hero__background-image" src="/images/hero-home.webp" srcset="/images/hero-home-640.webp 640w, /images/hero-home.webp 2048w" sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1199px) calc(100vw - 32px), 960px" alt="" width="1200" height="500" decoding="async" loading="lazy">
+                </div>
+                <div class="hero__shade"></div>
+                <div class="hero__content">
+                    <span class="hero__eyebrow" data-i18n>ЗНАЙДИ СВОЮ НАСТУПНУ ГРУ</span>
+                    <h2 class="hero__title"><span data-i18n>Тисячі ігор.</span><br><span data-i18n>Один пошук.</span><br><strong data-i18n>Твоя наступна пригода.</strong></h2>
+                    <p class="hero__text"><span data-i18n>Шукай за назвою, жанром і платформою.</span><br><span data-i18n>Відкривай ігри, які сподобаються саме тобі.</span></p>
+                    <a class="hero__button" href="./games.html"><span data-i18n>Переглянути ігри</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
             </div>
-
-            <div class="hero__handwriting" data-i18n>
-
-                Грайте
-                <br>
-
-                більше
-                <br>
-
-                за менше
-
+            <div class="hero__slide hero__slide--favorites" id="heroSlide3" data-hero-slide role="group" aria-roledescription="Слайд" aria-label="Слайд 3 із 4" data-i18n-attrs="aria-label,aria-roledescription" hidden inert>
+                <div class="hero__background">
+                    <img class="hero__background-image" src="/images/hero-about.webp" srcset="/images/hero-about-640.webp 640w, /images/hero-about.webp 2048w" sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1199px) calc(100vw - 32px), 960px" alt="" width="1200" height="500" decoding="async" loading="lazy">
+                </div>
+                <div class="hero__shade"></div>
+                <div class="hero__content">
+                    <span class="hero__eyebrow" data-i18n>ТВОЇ ІГРИ ЗАВЖДИ ПОРУЧ</span>
+                    <h2 class="hero__title"><span data-i18n>Зберігай цікаве.</span><br><span data-i18n>Повертайся</span><br><strong data-i18n>до свого обраного.</strong></h2>
+                    <p class="hero__text"><span data-i18n>Збирай ігри, в які хочеш зіграти.</span><br><span data-i18n>Твій список зберігається в акаунті.</span></p>
+                    <a class="hero__button" href="./favorites.html"><span data-i18n>Відкрити обране</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
             </div>
-
+            <div class="hero__slide hero__slide--releases" id="heroSlide4" data-hero-slide role="group" aria-roledescription="Слайд" aria-label="Слайд 4 із 4" data-i18n-attrs="aria-label,aria-roledescription" hidden inert>
+                <div class="hero__background">
+                    <img class="hero__background-image" src="/images/hero-about.webp" srcset="/images/hero-about-640.webp 640w, /images/hero-about.webp 2048w" sizes="(max-width: 767px) calc(100vw - 20px), (max-width: 1199px) calc(100vw - 32px), 960px" alt="" width="1200" height="500" decoding="async" loading="lazy">
+                </div>
+                <div class="hero__shade"></div>
+                <div class="hero__content">
+                    <span class="hero__eyebrow" data-i18n>ЧАС ДЛЯ НОВОЇ ПРИГОДИ</span>
+                    <h2 class="hero__title"><span data-i18n>Нові релізи.</span><br><span data-i18n>Нові історії.</span><br><strong data-i18n>Знайди свою наступну гру.</strong></h2>
+                    <p class="hero__text"><span data-i18n>Переглядай новинки й дати виходу.</span><br><span data-i18n>Обирай, у що зіграти наступним.</span></p>
+                    <a class="hero__button" href="./games.html?sort=release"><span data-i18n>Дивитися новинки</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="hero__handwriting" aria-hidden="true"><span data-i18n>Грайте</span><br><span data-i18n>більше</span><br><span data-i18n>за менше</span></div>
             <div class="hero__features">
-
-                <span class="hero__features-text" data-i18n>
-
-                    <i class="fa-regular fa-heart hero__features-icon"></i>
-
-                    Популярні магазини
-
-                </span>
-
-                <span class="hero__features-text" data-i18n>
-
-                    <i class="fa-regular fa-circle-check hero__features-icon"></i>
-
-                    Актуальні ціни
-
-                </span>
-
-                <span class="hero__features-text" data-i18n>
-
-                    <i class="fa-regular fa-star hero__features-icon"></i>
-
-                    Реальні пропозиції
-
-                </span>
-
+                <span class="hero__features-text"><i class="fa-regular fa-heart hero__features-icon" aria-hidden="true"></i><span data-i18n>Популярні магазини</span></span>
+                <span class="hero__features-text"><i class="fa-regular fa-circle-check hero__features-icon" aria-hidden="true"></i><span data-i18n>Актуальні ціни</span></span>
+                <span class="hero__features-text"><i class="fa-regular fa-star hero__features-icon" aria-hidden="true"></i><span data-i18n>Реальні пропозиції</span></span>
             </div>
-
-            <div
-                class="hero__dots"
-                id="heroDots"
-            >
-
-                <button
-                    class="hero__dot hero__dot--active"
-                    type="button"
-                    aria-label="Слайд 1"
-                    data-i18n-attrs="aria-label"
-                ></button>
-
-                <button
-                    type="button"
-                    aria-label="Слайд 2"
-                 class="hero__dot" data-i18n-attrs="aria-label"></button>
-
-                <button
-                    type="button"
-                    aria-label="Слайд 3"
-                 class="hero__dot" data-i18n-attrs="aria-label"></button>
-
-                <button
-                    type="button"
-                    aria-label="Слайд 4"
-                 class="hero__dot" data-i18n-attrs="aria-label"></button>
-
+            <div class="hero__controls" data-hero-controls role="group" aria-label="Керування слайдером" data-i18n-attrs="aria-label" hidden>
+                <span class="hero__counter" aria-hidden="true"><span data-hero-current>01</span><span> / 04</span></span>
+                <button class="hero__control" type="button" data-hero-prev aria-label="Попередній слайд" data-i18n-attrs="aria-label"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                <div class="hero__dots" id="heroDots" role="group" aria-label="Обрати слайд" data-i18n-attrs="aria-label">
+                    <button class="hero__dot hero__dot--active" type="button" data-hero-dot aria-label="Слайд 1" aria-controls="heroSlide1" aria-current="true" tabindex="0" data-i18n-attrs="aria-label"></button>
+                    <button class="hero__dot" type="button" data-hero-dot aria-label="Слайд 2" aria-controls="heroSlide2" aria-current="false" tabindex="-1" data-i18n-attrs="aria-label"></button>
+                    <button class="hero__dot" type="button" data-hero-dot aria-label="Слайд 3" aria-controls="heroSlide3" aria-current="false" tabindex="-1" data-i18n-attrs="aria-label"></button>
+                    <button class="hero__dot" type="button" data-hero-dot aria-label="Слайд 4" aria-controls="heroSlide4" aria-current="false" tabindex="-1" data-i18n-attrs="aria-label"></button>
+                </div>
+                <button class="hero__control" type="button" data-hero-next aria-label="Наступний слайд" data-i18n-attrs="aria-label"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                <button class="hero__control hero__control--playback" type="button" data-hero-toggle aria-label="Призупинити слайдер" data-i18n-attrs="aria-label"><i class="fa-solid fa-pause" aria-hidden="true"></i></button>
             </div>
-
+            <span class="sr-only" data-hero-status role="status" aria-live="polite" aria-atomic="true" data-i18n></span>
         </section>
 
         <section class="quick-filters">

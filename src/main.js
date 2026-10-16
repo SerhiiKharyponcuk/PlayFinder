@@ -5,6 +5,7 @@ import { initForms } from './js/components/forms.js';
 import { initPageAnimations } from './js/animations/page-animations.js';
 import { siteLoading } from './js/components/site-loader.js';
 import { initI18n } from './js/i18n/dom.js';
+import { initHeroSlider } from './js/components/hero-slider.js';
 
 const pages = {
   home: () => import('./js/pages/home.js'),
@@ -17,6 +18,7 @@ const pages = {
 
 // Спочатку мова, потім запускаємо кнопки та завантаження сторінки.
 initI18n();
+initHeroSlider();
 initNavigation();
 initSearch();
 initForms();
